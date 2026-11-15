@@ -1,0 +1,217 @@
+{
+  "url": "https://mi-retiroseguro.com/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 17,
+  "aeo": 15,
+  "total": 32,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 53 caracteres que dice de qué trata la página (asesoría de pensiones IMSS), dónde (Tijuana) y la marca (Retiro Seguro). No es genérico y coincide con el tema del H1.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 143 caracteres (dentro de 140–160), es clara y concreta (Ley 73, Ley 97, ISSSTE, diagnósticos y proyecciones personalizadas, atención en línea). Están og:title, og:description y og:image, y la imagen es una URL absoluta en https. También declara twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 que dice de qué trata la página, 6 H2 y 22 H3 sin saltos de nivel (0 H4–H6). Los H3 cuelgan de su H2 con lógica: regímenes, servicios, guías del blog y las 10 preguntas del FAQ. Los encabezados no se usan solo para dar estilo.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (asesoría en pensiones IMSS) coincide en el título, el H1 y el primer párrafo del contenido, y la página tiene unas 1,660 palabras útiles, muy por encima de las 300 esperadas. El texto no es relleno: la mayor parte es una sección de preguntas frecuentes con datos reales.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 en https sin redirecciones. No hay noindex en la meta robots ni en X-Robots-Tag. El canonical apunta a sí misma y <html> declara lang=\"es-MX\", que coincide con el contenido en español.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt y sitemap.xml (ambos con 200). El robots.txt permite todo a `User-agent: *` (`Allow: /`) y solo bloquea con `Disallow: /` a bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended, etc.), lo que no afecta la indexación en buscadores. El sitemap está declarado en robots.txt y lista 7 URL del mismo dominio y protocolo, incluida la página de inicio.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Las 2 imágenes con contenido tienen alt descriptivo (\"Pareja disfrutando con tranquilidad una nueva etapa de vida\", \"Documentos y herramientas preparados para una asesoría de pensión\") y el peso total es de solo 83 KB, sin imágenes > 300 KB. Lo que queda a medias es la entrega: Lighthouse marca uses-responsive-images (el logo PNG de 27 KB se sirve mucho más grande de lo que se muestra, ahorro de 26 KiB) y su insight de entrega de imágenes estima 60 KiB de ahorro en las 3 imágenes, todas PNG. El logo con alt=\"\" es aceptable porque el enlace ya incluye el texto \"Retiro Seguro\".",
+      "mejoras": [
+        "Reexporta el logo (a30aa17e…png) al doble de su tamaño real en pantalla, o como SVG, para recuperar los ~26 KiB que Lighthouse marca como desperdicio.",
+        "Convierte la imagen del hero y la de documentos de PNG a WebP o AVIF, y añade srcset/sizes para que el teléfono descargue la versión de 390–768 px."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Lighthouse móvil (una sola medición, que varía entre corridas y equipos): rendimiento 82 (cumple ≥ 80), CLS 0.000 (cumple < 0.1), pero LCP 4.20 s (no cumple < 2.5 s). Cumple 2 de 3 parámetros, así que confirmo el 1 del script. El servidor responde rápido (60 ms), por lo que el retraso viene del lado del navegador: el FCP ya es de 2.4 s y Lighthouse marca 2 recursos que bloquean el render.",
+      "mejoras": [
+        "Elimina el bloqueo de render que marca Lighthouse: inserta en línea el CSS crítico de /assets/index-UWngDO63.css y carga las fuentes de Google (Manrope y Plus Jakarta Sans) con preconnect o autoalojadas, reduciendo los pesos cargados (hoy 5 de Manrope y 7 variantes de Plus Jakarta Sans).",
+        "Baja el LCP de 4.2 s a menos de 2.5 s: Lighthouse no detalla qué elemento es el LCP, pero lo probable es que sea la imagen o el titular del hero; convierte esa imagen a WebP/AVIF y añade fetchpriority=\"high\".",
+        "Como el contenido se pinta con JavaScript (div#root), considera prerenderizar o generar estáticamente la portada para que el primer texto no espere al bundle; esto es una inferencia mía, no un dato directo de Lighthouse."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y solo 5% del texto es menor a 12 px. En las capturas el diseño no se ve roto: el botón de menú (hamburguesa) está visible junto al logo, el texto del hero es blanco sobre fondo oscuro y se lee sin zoom, y no hay banner de cookies ni pop-up que tape la pantalla. Lo que queda a medias son los objetivos táctiles: 17 de 57 enlaces miden menos de 24 px de alto (\"Conoce tus opciones\" 21 px, \"Solicitar asesoría por WhatsApp\" 23 px) y el botón flotante de chat tapa parte de la flecha de la tarjeta 01 y queda pegado al borde de las tarjetas.",
+      "mejoras": [
+        "Agranda el área táctil de los enlaces de texto (\"Conoce tus opciones\", \"Explorar el blog\", \"Leer artículo\", \"Solicitar asesoría por WhatsApp\") a al menos 44 px de alto con padding vertical, o haz clicable toda la tarjeta.",
+        "Reubica o reduce el botón flotante de chat para que no cubra las flechas de las tarjetas (por ejemplo, con un margen inferior mayor o un tamaño de ~48 px).",
+        "Separa la tarjeta superpuesta \"Una nueva etapa…\" del enlace de WhatsApp del hero con más espacio vertical, y revisa que no recorte el texto que queda detrás."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 4 enlaces internos (Inicio, Servicios, Blog, Contacto) y los 5 enlaces internos únicos que se revisaron respondieron bien: 0 rotos y 0 sin verificar. Las URLs son legibles (/blog/ley-73-o-ley-97, /blog/modalidad-40, /privacidad) y Lighthouse aprueba el texto descriptivo de enlaces. Detalle menor: cada tarjeta del blog repite un enlace «Leer artículo» junto al título, que ya es descriptivo y apunta a la misma URL, así que no afecta el puntaje.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Lo primero que se lee es un bloque de eslogan («Tu tranquilidad comienza con información clara») y una imagen; el párrafo útil llega después del H1. Ese párrafo sí dice qué ofrece («Analizamos tu historial de cotizaciones, realizamos cálculos y proyecciones»), pero no nombra a Retiro Seguro ni dice para quién es (¿afiliados al IMSS o ISSSTE?, ¿próximos a pensionarse?); solo dice «para todo México».",
+      "mejoras": [
+        "Reescribe el párrafo bajo el H1 para que diga quién eres, para quién es y qué ofrece, por ejemplo: «Retiro Seguro es una asesoría independiente en pensiones con sede en Tijuana, para trabajadores afiliados al IMSS (Ley 73 y Ley 97) o al ISSSTE que quieren conocer sus alternativas de retiro. Revisamos tu historial de cotizaciones, calculamos escenarios de pensión y te acompañamos en trámites, por videollamada en todo México.»",
+        "Quita o mueve debajo del H1 la línea de eslogan «Tu tranquilidad comienza con información clara», para que el contenido abra con la definición y no con una frase genérica."
+      ]
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Ningún H2 es pregunta, pero la sección de preguntas frecuentes tiene 10 H3 con preguntas reales que un usuario haría, y casi todas se responden en la primera frase. Solo «¿Cuánto cuesta…?» responde de forma evasiva («El costo depende del tipo de asesoría»).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección visible de «Preguntas frecuentes sobre pensiones» con 10 preguntas y respuestas con datos útiles, pero la mayoría de las respuestas no son cortas: 7 de 10 tienen 4 o 5 frases (≈80 a 110 palabras) cuando la rúbrica pide 1 a 3. Además, la respuesta de precio solo remite a «Contáctanos».",
+      "mejoras": [
+        "Acorta cada respuesta a 1–3 frases (≈40–60 palabras) con la respuesta directa primero y deja el detalle para los artículos del blog. Ejemplo para «¿A qué edad puedo pensionarme por el IMSS?»: «Desde los 60 años por cesantía en edad avanzada o desde los 65 por vejez, si cumples las semanas cotizadas de tu régimen: 500 en Ley 73 y 875 en 2026 en Ley 97.»",
+        "Responde «¿Cuánto cuesta una asesoría?» con un dato verificable en vez de «Contáctanos»: el precio o rango de cada tipo de asesoría, por ejemplo «La consulta inicial cuesta MXN [monto] y dura [X] minutos; la asesoría integral cuesta desde MXN [monto].»"
+      ]
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 3 bloques JSON-LD válidos de schema.org en el HTML inicial (WebSite, LocalBusiness y FAQPage) y los datos coinciden con lo visible: teléfono +526643021832 = «+52 664 302 1832», correo contacto@mi-retiroseguro.com, dirección de Plaza Patria en Tijuana y Facebook RetiroSeguro.Mex. El FAQPage declara 10 preguntas y la página muestra exactamente 10 preguntas frecuentes. LocalBusiness es un tipo adecuado para un despacho con oficina física y atención previa cita; no hay precios ni horarios en la página que el schema pudiera contradecir.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML inicial trae el 100% del texto que ve el usuario (1660 de 1660 palabras) y el H1 ya está en el HTML crudo. Los encabezados H1, H2 y H3 (servicios por régimen, cómo ayudamos) y las primeras palabras del crudo («Asesoría en pensiones y seguridad social · Atención en línea para todo México…») coinciden con lo que se ve, así que un bot que no ejecuta JavaScript lee todo el contenido relevante.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 0,
+      "puntajeScript": 0,
+      "origen": "agente",
+      "justificacion": "El robots.txt prohíbe la raíz del sitio (Disallow: /) a GPTBot, ClaudeBot y Google-Extended; solo PerplexityBot está permitido, es decir 1 de los 4 bots de la rúbrica. El bloqueo es deliberado (Content-Signal: ai-train=no) y el sitio sí permite bots de búsqueda y de usuario como OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User y Perplexity, pero la rúbrica exige que no se bloquee a los cuatro. Existe un llms.txt en https://mi-retiroseguro.com/llms.txt, que se anota como bonus informativo y no sube el puntaje.",
+      "mejoras": [
+        "Cambia «Disallow: /» por «Allow: /» en los bloques de GPTBot, ClaudeBot y Google-Extended de robots.txt para que los cuatro bots de la rúbrica puedan acceder.",
+        "Si quieres seguir expresando tu preferencia de no entrenamiento, conserva la línea «Content-Signal: search=yes, ai-input=yes, ai-train=no» en esos bloques; es una señal de preferencia y no cierra el acceso como lo hace Disallow.",
+        "Revisa si el bloqueo a Google-Extended es lo que buscas: no afecta tu posicionamiento en Google Search, pero sí que Gemini use tu contenido."
+      ]
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Predominan los párrafos cortos (44 párrafos, promedio de 30 palabras, ninguno marcado como largo) y las secciones están bien separadas, una por tema, con H2 y H3 claros. El proceso de trabajo va en una lista numerada de 4 pasos y los regímenes en tarjetas. Lo único mejorable es que las respuestas de las preguntas frecuentes son bloques densos de 80 a 110 palabras, y que la comparación de requisitos entre Ley 73 y Ley 97 se prestaría a una tabla.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «Retiro Seguro» coincide en el title, el logotipo del encabezado, el pie (© 2026 Retiro Seguro) y el name de los nodos WebSite y LocalBusiness del schema. El teléfono (+52 664 302 1832 / +526643021832), el correo (contacto@mi-retiroseguro.com) y la dirección de Plaza Patria, Tijuana coinciden entre la página y el schema. La descripción del schema es coherente con la meta description, y el perfil de Facebook (RetiroSeguro.Mex) está enlazado en la sección de contacto y en el pie, y repetido en sameAs.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las afirmaciones importantes vienen con cifras, fechas y requisitos verificables, sobre todo en las preguntas frecuentes, y también hay datos de confianza (años de experiencia, certificación, dirección y teléfono). Las líneas de eslogan de la parte alta son genéricas, pero ocupan poco texto. Falta el dato comercial más buscado, que es el precio, y tampoco hay horarios de atención.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "La página dice que hay «un equipo de profesionistas con más de 10 años de experiencia» y personal certificado CONOCER EC0485, pero sin un solo nombre, foto ni cargo. No hay fecha de actualización visible ni dateModified (solo «© 2026»), no existe una página «Acerca de» propia (el enlace «Sobre Retiro Seguro» del pie salta a la sección «Respaldo profesional» de la misma página) y no hay testimonios ni reseñas. Las únicas referencias externas son un enlace al portal del IMSS para consultar semanas cotizadas y la ubicación en Maps. Hay señales, pero débiles y anónimas.",
+      "mejoras": [
+        "Crea una página «Quiénes somos» (/nosotros) y enlázala en el menú y el pie. Pon nombre, foto, cargo y años de experiencia de cada asesor, con su número de constancia CONOCER EC0485 enlazado al registro oficial, y sustituye «Sobre Retiro Seguro → #respaldo» por esa página.",
+        "Agrega testimonios reales con nombre (o iniciales), ciudad y tipo de trámite, con permiso del cliente, o enlaza las reseñas de Google Business o Facebook con su calificación. Marca con schema Review solo lo que sea verificable.",
+        "Muestra una fecha visible, por ejemplo «Última actualización: noviembre de 2026», junto a las preguntas frecuentes. Añade autor, datePublished y dateModified a los artículos del blog, y cita con enlace la Ley del Seguro Social o las páginas del IMSS que respaldan las cifras (875 semanas, 500 semanas, 52 semanas)."
+      ]
+    }
+  ],
+  "advertencias": []
+}

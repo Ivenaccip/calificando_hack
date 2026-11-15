@@ -87,6 +87,11 @@ export async function renderizar(url, { carpetaCapturas, timeoutMs = 45000 } = {
     const capturas = {};
     if (carpetaCapturas) {
       fs.mkdirSync(carpetaCapturas, { recursive: true });
+      // Volver arriba de verdad: con scroll-behavior suave, scrollTo(0,0) no es instantáneo y la captura salía a media página.
+      await page.addStyleTag({ content: 'html,body{scroll-behavior:auto !important}' }).catch(() => {});
+      await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
+      await page.waitForFunction(() => window.scrollY === 0, null, { timeout: 4000 }).catch(() => {});
+      await page.waitForTimeout(500);
       await page.screenshot({ path: `${carpetaCapturas}/movil-arriba.png` });
       capturas.arriba = 'movil-arriba.png';
       const alto = await page.evaluate(() => document.documentElement.scrollHeight);

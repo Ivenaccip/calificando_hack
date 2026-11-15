@@ -1,0 +1,215 @@
+{
+  "url": "https://hago.click/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 17,
+  "aeo": 16,
+  "total": 33,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 54 caracteres: «hago.click — Comunidad para colaborar en Latinoamérica». Incluye la marca y dice de qué trata el sitio (comunidad de colaboración en LatAm), y es coherente con el H1.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 151 caracteres (dentro de 140–160), explica qué es el sitio y cierra con una frase de invitación («Juntos las hacemos realidad.»). Están og:title, og:description y og:image (URL absoluta https) y además twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 claro («Las ideas hacen click. Colabora para hacerlas realidad.»), 11 H2 y 38 H3 sin saltos de nivel (no hay H4–H6). Los H3 son títulos reales de tarjetas, pasos y preguntas del FAQ bajo su H2; el menú y el pie no usan encabezados solo por estilo.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (una comunidad latinoamericana para colaborar) aparece en los tres lugares: el título dice «Comunidad para colaborar en Latinoamérica», el H1 «Colabora para hacerlas realidad» y el primer párrafo «hago.click es una comunidad latinoamericana para crecer y generar ingresos colaborando». Hay unas 2,400 palabras en el contenido principal, con secciones distintas y sin relleno tipo lorem ipsum; solo se repiten los avisos de «ejemplo ilustrativo».",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 por HTTPS sin redirecciones, no tiene noindex (ni meta robots ni X-Robots-Tag) y el canonical apunta a sí misma (https://hago.click/). El <html> declara lang=\"es\", que coincide con el contenido en español.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido, 15 URL) y el sitemap está declarado en el robots.txt. Los ejemplos son del mismo dominio y protocolo (https://hago.click/, /tengo-una-idea, /quiero-aportar, /piloto, /tema/...). El robots.txt permite todo a los rastreadores de búsqueda y solo bloquea bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended, etc.), no Googlebot ni rutas del sitio. Nota menor: Lighthouse marca «13 errors» en robots.txt porque no reconoce la directiva Content-Signal; no afecta al rastreo.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Las 17 imágenes tienen alt descriptivo y de buena calidad (por ejemplo: «Taburete fabricado con plástico reciclado y madera reutilizada, sobre un fondo cálido de estudio.»), sin alt vacíos ni imágenes pesadas (peso total 57 KB, ninguna > 300 KB). Lo único que falla es que Lighthouse marca uses-responsive-images con un ahorro estimado de 48 KiB en tres imágenes servidas a 768 px de ancho; es un detalle menor y queda cerca de 2.",
+      "mejoras": [
+        "Sirve las tres imágenes marcadas por Lighthouse (hero, «Emprendedora creativa…» y «Prototipo de sensor…») con un ancho cercano al que se muestra en móvil (por ejemplo ?width=600) o agrega srcset/sizes con variantes de 400, 600 y 768 px.",
+        "Haz que el hero use una variante AVIF de ~600 px para móvil en lugar de hero-night-team-v1-768.avif, para recuperar los ~15 KB que Lighthouse estima como ahorro."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Es una sola medición de Lighthouse móvil, que varía entre corridas y equipos. El rendimiento es 83 (cumple ≥ 80) y el CLS es 0.000 (cumple < 0.1), pero el LCP es 3.80 s y no llega a < 2.5 s, así que se cumplen dos de las tres condiciones y el puntaje es 1. El servidor responde rápido (100 ms), por lo que el retraso viene del lado del cliente.",
+      "mejoras": [
+        "Adelanta la descubierta de la imagen LCP (el hero): agrega <link rel=\"preload\" as=\"image\" fetchpriority=\"high\"> en el HTML inicial y asegúrate de que la imagen no tenga loading=\"lazy\" ni dependa de que arranque el JavaScript para pedirse.",
+        "Sirve el hero desde el mismo dominio (hoy se pide a darkorchid-donkey-829051.hostingersite.com), para evitar una conexión DNS/TLS extra antes del LCP.",
+        "Reduce el JavaScript que bloquea el primer pintado: divide o difiere el bundle jsx-runtime-98TrhzpB.js (22 KiB sin usar) y carga bajo demanda lo que no se ve al inicio, por ejemplo la animación del fondo."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y en las capturas el diseño se ve limpio: el menú hamburguesa está visible, no hay banner de cookies ni pop-up que tape la pantalla y los botones principales («Tengo una idea», «Quiero aportar») son grandes. Lo que queda a medias es la legibilidad: 16% del texto mide menos de 12 px (etiquetas en monoespaciada como «ESCENA ILUSTRATIVA CREADA CON IA», «Dos formas de empezar. Un mismo propósito.» y «Explora lo que podríamos crear juntos» se ven muy pequeñas en la captura) y hay enlaces de 15–16 px de alto. Solo vi los primeros ~3,000 px de la captura completa (el resto está recortado).",
+      "mejoras": [
+        "Sube a 12–13 px como mínimo las etiquetas pequeñas en monoespaciada («ESCENA ILUSTRATIVA CREADA CON IA», «EJEMPLOS · NO PROYECTOS REALES», «Dos formas de empezar…») y el texto de apoyo del hero.",
+        "Dale al menos 24 px de alto (idealmente 44 px) a los enlaces «Explora lo que podríamos crear juntos» y «Volver arriba ↑» con padding vertical, y separa el botón flotante de pausa de ese enlace para que no se encimen.",
+        "Revisa que el enlace «Saltar al contenido» solo se muestre al recibir foco con el teclado y no se encime con el logo en la parte superior."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 11 enlaces internos distintos (Tengo una idea, Quiero aportar, Temas, Precios, Acerca de, Contacto, etc.), se revisaron los 14 enlaces internos únicos y ninguno está roto ni quedó sin verificar. No hay anclas genéricas ni enlaces sin texto, Lighthouse aprueba «Links have descriptive text» y las 15 URLs son legibles (/tengo-una-idea, /quiero-aportar, /precios).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Justo después del H1, las dos primeras frases dicen qué es («una comunidad latinoamericana para crecer y generar ingresos colaborando»), para quién («Personas, emprendedores y negocios») y qué ofrece («comparten conocimientos, habilidades y recursos para desarrollar proyectos y ofrecer servicios a quienes van empezando»). Son 31 palabras en dos frases (45 en el párrafo completo), dentro del rango aceptable, y cierra con el dato de que el acceso inicial es sin costo.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay preguntas reales con respuesta en la primera frase: el H2 «¿Cómo se convierte una idea en un primer paso?» se responde con «Compartiendo qué quieres lograr, conectando conocimientos y recursos…», y en la sección de preguntas hay cinco H3 como «¿Cuánto cuesta participar o recibir apoyo?» (responde «El acceso inicial a la plataforma y al piloto es sin costo») y «¿Qué es hago.click y cómo puedo empezar?». El H2 «¿Dónde puede crecer lo que tienes en mente?» es más retórico y no se responde directo, pero no resta frente al resto. El script contó «Quién está detrás de hago.click» como pregunta, pero no lo es.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección visible de preguntas («5 respuestas para dar el primer paso», bajo el H2 «¿Qué necesito para empezar?») con cinco preguntas reales y su respuesta completa debajo, sin acordeón colapsado ni dependencia del schema. Cada respuesta mide unas 55–70 palabras; tres tienen 3 frases y dos (costos e ideas/inconformidades) llegan a 4 frases cortas, un exceso menor que no las vuelve largas ni incompletas. Ninguna se limita a «contáctanos».",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 3 bloques JSON-LD válidos de schema.org en el HTML inicial: WebSite, Organization y FAQPage (5 preguntas). Los tipos son adecuados para una comunidad en línea sin local físico, y los datos coinciden con la página: nombre «hago.click», correo contacto@hago.click, descripción igual a la visible, y las 5 preguntas del FAQPage corresponden a las 5 preguntas del acordeón visible. No hay precios, teléfono ni dirección en el schema que puedan contradecir el texto.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML inicial trae el 100% del texto que ve el usuario (2415 de 2415 palabras) y el H1 ya está en el HTML crudo. Los encabezados H1, H2 y H3 del HTML crudo coinciden con los de la página renderizada, así que título, secciones y respuestas del FAQ son legibles sin ejecutar JavaScript.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 0,
+      "puntajeScript": 0,
+      "origen": "agente",
+      "justificacion": "El robots.txt tiene `Disallow: /` explícito para GPTBot, ClaudeBot y Google-Extended, es decir, 3 de los 4 bots de la rúbrica; solo PerplexityBot está permitido. Es una decisión deliberada (el archivo declara `ai-train=no` y bloquea otros rastreadores de entrenamiento) y sí permite bots de búsqueda y de usuario como OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User y Perplexity-User, pero la rúbrica pide no bloquear los tres bots señalados. Bonus informativo: existe https://hago.click/llms.txt; no cambia el puntaje.",
+      "mejoras": [
+        "Cambia los bloques `User-agent: GPTBot`, `User-agent: ClaudeBot` y `User-agent: Google-Extended` de `Disallow: /` a `Allow: /`, para que la rúbrica los considere accesibles.",
+        "Si quieres seguir limitando el entrenamiento de modelos, mantén la línea `Content-Signal: search=yes, ai-input=yes, ai-train=no` en cada bloque en lugar de usar `Disallow`, ya que esa señal expresa la preferencia sin cerrar el acceso.",
+        "Conserva los permisos actuales de OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User y PerplexityBot, y deja el llms.txt como está."
+      ]
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Los párrafos son cortos (promedio 18 palabras y ninguno largo), hay 96 elementos de lista, 12 listas numeradas y pasos (01, 02, 03) donde corresponde, y cada tarjeta o sección trata un solo tema (un ejemplo, una forma de aportar, un tema). Un detalle menor es que varios encabezados salen pegados al extraerse el texto («ideaen», «quehacerlo», «podríanhacerse»), pero no afecta la estructura.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «hago.click» y la descripción son idénticos en title, og:title, encabezado, pie (© 2026 hago.click) y en los nodos WebSite y Organization del schema, y el correo contacto@hago.click coincide entre la página y el schema. Falta lo de las redes: la página no enlaza ningún perfil social y el único sameAs es un repositorio de GitHub (hago-click/sitioweb), que no es un perfil oficial de la marca y ni siquiera aparece enlazado en la página.",
+      "mejoras": [
+        "Crea o enlaza los perfiles oficiales de la marca (por ejemplo LinkedIn, Instagram o X de hago.click) en el pie de página, con rel=\"me\" o aria-label claros, para que se vean en la página.",
+        "Agrega esos mismos perfiles al arreglo sameAs del nodo Organization (y WebSite) y sustituye o complementa el repositorio de GitHub por el perfil de la organización «github.com/hago-click» solo si es una presencia oficial.",
+        "Añade <meta property=\"og:site_name\" content=\"hago.click\"> y completa el schema Organization con logo y contactPoint (email contacto@hago.click, availableLanguage es) para reforzar la identidad."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay algunos datos concretos (acceso inicial «sin costo», solicitud en /piloto con nombre, correo y rol, correo de contacto, responsable con nombre, «Información actualizada el 15 de noviembre de 2026») y ejemplos específicos (brownies, taburete de plástico reciclado, sensor de calidad del aire). Pero no hay cifras, precios, plazos ni fechas de lanzamiento, y gran parte del texto es aspiracional («El valor está en conectar», «Lo que aportas puede cambiar lo que sigue»). Además, los ejemplos son explícitamente hipotéticos, así que no sirven como casos verificables.",
+      "mejoras": [
+        "Añade cifras reales del piloto en el primer bloque o en las preguntas frecuentes, por ejemplo: «El piloto inicia con X participantes en [países/ciudades] y la solicitud se responde en X días hábiles», usando solo datos que ya estén definidos.",
+        "En «¿Cuánto cuesta participar o recibir apoyo?» incluye un ejemplo numérico de una asesoría real, por ejemplo: «Una asesoría de costos para un emprendimiento puede acordarse en un rango de MXN X a MXN Y por sesión de X minutos», o aclara que hoy no hay tarifas de referencia.",
+        "Sustituye al menos un ejemplo hipotético por un caso real con resultado medible (qué se hizo, cuánto tiempo tomó, qué se logró), o añade una fecha estimada del siguiente hito del piloto."
+      ]
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Tres de las cuatro señales están visibles: el pie tiene la sección «Quién está detrás de hago.click» con «Responsable: Luis Carlos Olivares Trinidad», la leyenda «Información actualizada el 15 de noviembre de 2026» y © 2026, y hay enlace «Acerca de» (/acerca-de) en nav y pie junto con Contacto, Privacidad y Términos. La señal que falta es la de testimonios o fuentes: no hay testimonios con nombre ni reseñas, y la propia página aclara que los casos son ficticios («no son testimonios ni resultados reales»). No pude abrir /acerca-de para revisar su contenido; el puntaje se basa en la página principal.",
+      "mejoras": []
+    }
+  ],
+  "advertencias": []
+}

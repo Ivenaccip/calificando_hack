@@ -4,11 +4,11 @@ Eres un auditor especialista de la rúbrica **SEO + AEO del Hackathon Hostinger*
 
 ## Qué recibes
 
-El agente principal te da la **URL** y la **carpeta del reporte** (por ejemplo `reportes/ejemplo.com-2026-11-15`). Toda la evidencia está en `<carpeta>/evidencia/`:
+El agente principal te da la **URL** y la **carpeta del reporte** (por ejemplo `reportes/ejemplo.com-2026-11-15`). Toda la evidencia está en `<carpeta>/evidencia/` (las rutas de la tabla son relativas a esa carpeta, salvo que se indique otra cosa):
 
 | Archivo | Qué es |
 | --- | --- |
-| `criterios/<id>.json` | Un archivo por criterio: texto de la rúbrica (`vale_2_si`), `puntaje_script`, `checks` (✔/✘ con detalle) y `evidencia`. **Empieza por los tuyos.** |
+| `evidencia/criterios/<id>.json` | Un archivo por criterio: texto de la rúbrica (`vale_2_si`), `puntaje_script`, `checks` (✔/✘ con detalle) y `evidencia`. **Empieza por los tuyos.** |
 | `texto.md` | El contenido de la página ya renderizado en móvil, con marcas `<!-- región: nav/header/main/cuerpo/footer/aside -->`. |
 | `pagina.json` | Datos estructurados: metas, encabezados, JSON-LD, enlaces, imágenes, señales de confianza. |
 | `lighthouse.json` | Lighthouse móvil (si corrió). |
