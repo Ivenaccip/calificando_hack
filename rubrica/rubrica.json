@@ -1,0 +1,168 @@
+{
+  "nombre": "Hackathon Hostinger: rúbrica SEO y AEO",
+  "fuente": "https://claude.ai/artifact/4yzQPvnHZhbddaFFGqpBxV",
+  "escala": {
+    "0": "no cumple",
+    "1": "cumple a medias",
+    "2": "cumple"
+  },
+  "areas": {
+    "seo": {
+      "titulo": "Rúbrica SEO: que Google encuentre y entienda la página",
+      "alcance": "Se revisa la página publicada: el HTML, la página ya cargada, el robots.txt, el sitemap y Lighthouse. Quedan fuera los backlinks, la autoridad del dominio y la posición en Google."
+    },
+    "aeo": {
+      "titulo": "Rúbrica AEO: que los buscadores con IA usen la página como respuesta",
+      "alcance": "Mide si ChatGPT, Perplexity o los resúmenes con IA de Google pueden leer la página y citarla."
+    }
+  },
+  "agentes": {
+    "auditor-seo-tecnico": "SEO 1, 2, 3, 5, 6 y 10 (HTML, metadatos, rastreo y enlaces)",
+    "auditor-rendimiento-movil": "SEO 7, 8 y 9 (imágenes, velocidad y móvil)",
+    "auditor-contenido": "SEO 4 y AEO 1, 2, 3, 7 y 9 (lo que dice la página y cómo está escrita)",
+    "auditor-aeo-tecnico": "AEO 4, 5 y 6 (datos estructurados, contenido sin JavaScript y bots de IA)",
+    "auditor-confianza": "AEO 8 y 10 (identidad y señales de confianza)"
+  },
+  "criterios": [
+    {
+      "id": "seo-1", "area": "seo", "numero": 1,
+      "nombre": "Título de la página",
+      "vale_2_si": "Hay un <title> único que describe la página e incluye el tema o la marca (50–60 caracteres aprox.)",
+      "como_se_revisa": "Script",
+      "agente": "auditor-seo-tecnico"
+    },
+    {
+      "id": "seo-2", "area": "seo", "numero": 2,
+      "nombre": "Descripción y vista al compartir",
+      "vale_2_si": "Hay meta description de 140–160 caracteres que invita a entrar, más og:title, og:description y og:image",
+      "como_se_revisa": "Script",
+      "agente": "auditor-seo-tecnico"
+    },
+    {
+      "id": "seo-3", "area": "seo", "numero": 3,
+      "nombre": "Estructura de encabezados",
+      "vale_2_si": "Un solo H1 claro, y después H2/H3 en orden lógico, sin saltos",
+      "como_se_revisa": "Script",
+      "agente": "auditor-seo-tecnico"
+    },
+    {
+      "id": "seo-4", "area": "seo", "numero": 4,
+      "nombre": "Tema claro y contenido suficiente",
+      "vale_2_si": "El tema aparece en el título, el H1 y el primer párrafo; hay unas 300 palabras útiles o más, sin relleno",
+      "como_se_revisa": "Agente",
+      "agente": "auditor-contenido"
+    },
+    {
+      "id": "seo-5", "area": "seo", "numero": 5,
+      "nombre": "Indexable",
+      "vale_2_si": "Sin noindex, con canonical correcto, HTTPS y atributo lang en <html>",
+      "como_se_revisa": "Script",
+      "agente": "auditor-seo-tecnico"
+    },
+    {
+      "id": "seo-6", "area": "seo", "numero": 6,
+      "nombre": "robots.txt y sitemap.xml",
+      "vale_2_si": "Existen los dos, el sitemap lista las páginas y el robots.txt no bloquea el sitio",
+      "como_se_revisa": "Script",
+      "agente": "auditor-seo-tecnico"
+    },
+    {
+      "id": "seo-7", "area": "seo", "numero": 7,
+      "nombre": "Imágenes",
+      "vale_2_si": "Las imágenes con contenido tienen alt descriptivo y no pesan de más",
+      "como_se_revisa": "Script + Lighthouse",
+      "agente": "auditor-rendimiento-movil"
+    },
+    {
+      "id": "seo-8", "area": "seo", "numero": 8,
+      "nombre": "Velocidad",
+      "vale_2_si": "En Lighthouse móvil: rendimiento de 80 o más, LCP menor a 2.5 s y CLS menor a 0.1",
+      "como_se_revisa": "Lighthouse",
+      "agente": "auditor-rendimiento-movil"
+    },
+    {
+      "id": "seo-9", "area": "seo", "numero": 9,
+      "nombre": "Móvil",
+      "vale_2_si": "Tiene meta viewport, se ve bien en el teléfono, el texto se lee y los botones se tocan fácil",
+      "como_se_revisa": "Lighthouse + captura móvil",
+      "agente": "auditor-rendimiento-movil"
+    },
+    {
+      "id": "seo-10", "area": "seo", "numero": 10,
+      "nombre": "Enlaces y URLs",
+      "vale_2_si": "El menú funciona, no hay enlaces internos rotos (404), los enlaces no dicen \"clic aquí\" y las URLs se pueden leer",
+      "como_se_revisa": "Script",
+      "agente": "auditor-seo-tecnico"
+    },
+    {
+      "id": "aeo-1", "area": "aeo", "numero": 1,
+      "nombre": "Respuesta directa arriba",
+      "vale_2_si": "En las primeras 1–2 frases queda claro qué es, para quién y qué ofrece (40–60 palabras aprox.)",
+      "como_se_revisa": "Agente",
+      "agente": "auditor-contenido"
+    },
+    {
+      "id": "aeo-2", "area": "aeo", "numero": 2,
+      "nombre": "Encabezados en forma de pregunta",
+      "vale_2_si": "Algunos H2 son preguntas reales del usuario (\"¿Cuánto cuesta…?\") con la respuesta justo debajo",
+      "como_se_revisa": "Agente",
+      "agente": "auditor-contenido"
+    },
+    {
+      "id": "aeo-3", "area": "aeo", "numero": 3,
+      "nombre": "Preguntas frecuentes",
+      "vale_2_si": "Hay una sección de FAQ visible con respuestas cortas y completas",
+      "como_se_revisa": "Agente",
+      "agente": "auditor-contenido"
+    },
+    {
+      "id": "aeo-4", "area": "aeo", "numero": 4,
+      "nombre": "Datos estructurados",
+      "vale_2_si": "Hay JSON-LD de schema.org válido y del tipo correcto (Organization, LocalBusiness, Product, Event, FAQPage…), y coincide con lo que se ve en la página",
+      "como_se_revisa": "Script",
+      "agente": "auditor-aeo-tecnico"
+    },
+    {
+      "id": "aeo-5", "area": "aeo", "numero": 5,
+      "nombre": "Contenido legible sin JavaScript",
+      "vale_2_si": "El texto principal ya viene en el HTML inicial, porque muchos bots de IA no ejecutan JavaScript",
+      "como_se_revisa": "Script: compara el HTML crudo con la página ya cargada",
+      "agente": "auditor-aeo-tecnico"
+    },
+    {
+      "id": "aeo-6", "area": "aeo", "numero": 6,
+      "nombre": "Acceso para bots de IA",
+      "vale_2_si": "El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended; un llms.txt suma como bonus, porque todavía no es un estándar",
+      "como_se_revisa": "Script",
+      "agente": "auditor-aeo-tecnico"
+    },
+    {
+      "id": "aeo-7", "area": "aeo", "numero": 7,
+      "nombre": "Formato fácil de extraer",
+      "vale_2_si": "Párrafos cortos, listas, tablas o pasos numerados, con un tema por sección",
+      "como_se_revisa": "Agente",
+      "agente": "auditor-contenido"
+    },
+    {
+      "id": "aeo-8", "area": "aeo", "numero": 8,
+      "nombre": "Identidad clara y consistente",
+      "vale_2_si": "El nombre, la descripción, la ubicación y el contacto son iguales en toda la página y en el schema, con enlaces a las redes oficiales",
+      "como_se_revisa": "Agente + script",
+      "agente": "auditor-confianza"
+    },
+    {
+      "id": "aeo-9", "area": "aeo", "numero": 9,
+      "nombre": "Datos concretos",
+      "vale_2_si": "Hay cifras, precios, horarios, fechas o ejemplos en lugar de frases genéricas tipo \"somos los mejores\"",
+      "como_se_revisa": "Agente",
+      "agente": "auditor-contenido"
+    },
+    {
+      "id": "aeo-10", "area": "aeo", "numero": 10,
+      "nombre": "Señales de confianza",
+      "vale_2_si": "Se ve quién está detrás (autor o equipo), cuándo se actualizó, una sección \"acerca de\" y fuentes o testimonios reales",
+      "como_se_revisa": "Agente",
+      "agente": "auditor-confianza"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "calificando-hack",
+  "version": "1.0.0",
+  "description": "Agentes que califican sitios web con la rúbrica SEO + AEO del Hackathon Hostinger",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "auditar": "node scripts/auditar.mjs",
+    "reporte": "node scripts/reporte.mjs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.0.0",
+    "playwright-core": "^1.48.0",
+    "robots-parser": "^3.0.1",
+    "undici": "^6.19.0"
+  }
+}

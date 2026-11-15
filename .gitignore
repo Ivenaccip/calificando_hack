@@ -1,0 +1,4 @@
+node_modules/
+# Cada auditoría genera evidencia pesada (capturas, lighthouse). Se conserva solo el reporte final.
+reportes/*/evidencia/
+reportes/*/puntajes/
