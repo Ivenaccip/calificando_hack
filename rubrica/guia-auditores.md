@@ -20,7 +20,7 @@ Lee solo lo que necesites; `texto.md` puede ser largo (léelo con `limit` si hac
 
 ## Cómo calificar
 
-- **2** = cumple todo lo que dice `vale_2_si`. **1** = cumple la idea principal pero falta una parte o está fuera de rango. **0** = no cumple, o casi no existe.
+- **2** = cumple todo lo que dice `vale_2_si`. **1** = **algún parámetro está a medias**: la idea principal se cumple, pero alguna parte del criterio está incompleta o fuera de rango. **0** = no cumple, o casi no existe.
 - Basa cada puntaje en **evidencia que viste** (números, citas textuales cortas, qué hay o falta). No supongas ni inventes datos del sitio.
 - Si el criterio ya trae `puntaje_script`, es un resultado **mecánico**. Confírmalo por defecto. Cámbialo solo si la evidencia muestra que el script se equivocó o no vio algo semántico (por ejemplo, un título que mide 55 caracteres pero dice "Home"). Si lo cambias, explica por qué en `ajuste_al_script`.
 - Sé parejo: la misma página debe recibir el mismo puntaje si te lo piden dos veces. Ante la duda entre dos valores, elige el que mejor describa lo que un usuario o un bot **realmente** encontraría.

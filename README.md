@@ -66,7 +66,7 @@ En `reportes/<sitio>-<fecha>/`:
 
 ## Cómo se traduce 0 / 1 / 2
 
-La rúbrica define cuándo un criterio **vale 2**; el 1 ("a medias") no lo define. Para que dos corridas sobre el mismo sitio den lo mismo, los scripts aplican una regla mecánica ([`scripts/lib/puntaje.mjs`](scripts/lib/puntaje.mjs)) sobre las verificaciones de cada criterio:
+La rúbrica define cuándo un criterio **vale 2**; el 1 ("a medias") no lo define. La definición que usa este proyecto: **1 = algún parámetro del criterio está a medias**. Para que dos corridas sobre el mismo sitio den lo mismo, los scripts aproximan eso con una regla mecánica ([`scripts/lib/puntaje.mjs`](scripts/lib/puntaje.mjs)) sobre las verificaciones de cada criterio:
 
 - todas pasan → **2**
 - falla una verificación *bloqueante* (por ejemplo, `noindex`, no hay H1, el robots.txt bloquea el sitio) → **0**
@@ -77,7 +77,7 @@ Excepciones con regla propia: **SEO 8** (las tres métricas = 2, al menos una = 
 
 Decisiones que tomé donde la rúbrica es ambigua:
 
-- **`llms.txt` (AEO 6)** es "bonus", pero la escala se topa en 2: se reporta, no cambia el puntaje.
+- **`llms.txt` (AEO 6)** es "bonus", pero la escala se topa en 2: se reporta, no cambia el puntaje (decisión confirmada).
 - Las imágenes con `alt=""` se tratan como decorativas, salvo las grandes (≥ 150 px), que se marcan como sospechosas para que el agente las revise.
 - Los enlaces que responden 401/403/429 o timeout se reportan como "sin verificar", no como rotos.
 
