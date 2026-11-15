@@ -25,11 +25,13 @@ const resumen = leer(path.join(carpeta, 'evidencia/resumen.json'));
 // ---- puntajes de los agentes ----
 const problemas = [];
 const deAgente = {}; // id -> { ...entrada, _agente }
+const agentesQueCorrieron = new Set(); // agentes que entregaron archivo (aunque omitieran criterios)
 const dirPuntajes = path.join(carpeta, 'puntajes');
 const archivos = fs.existsSync(dirPuntajes) ? fs.readdirSync(dirPuntajes).filter((f) => f.endsWith('.json')) : [];
 for (const f of archivos.sort((a, b) => fs.statSync(path.join(dirPuntajes, a)).mtimeMs - fs.statSync(path.join(dirPuntajes, b)).mtimeMs)) {
   let j;
   try { j = leer(path.join(dirPuntajes, f)); } catch (e) { problemas.push(`puntajes/${f} no es JSON válido: ${e.message}`); continue; }
+  agentesQueCorrieron.add(j.agente || f.replace(/\.json$/, ''));
   const lista = j.criterios || {};
   for (const [id, e] of Object.entries(lista)) {
     if (!rubrica.criterios.some((c) => c.id === id)) { problemas.push(`puntajes/${f}: "${id}" no existe en la rúbrica`); continue; }
@@ -43,15 +45,16 @@ for (const f of archivos.sort((a, b) => fs.statSync(path.join(dirPuntajes, a)).m
 const filas = rubrica.criterios.map((c) => {
   const script = leer(path.join(carpeta, `evidencia/criterios/${c.id}.json`));
   const ag = deAgente[c.id];
-  const final = ag ? ag.puntaje : script.puntaje_script;
-  const origen = ag ? (script.puntaje_script !== null && script.puntaje_script !== ag.puntaje ? 'agente (ajustó al script)' : 'agente') : script.puntaje_script !== null ? 'script' : null;
+  const omitido = !ag && agentesQueCorrieron.has(c.agente); // el agente lo dejó fuera a propósito (evidencia no válida)
+  const final = ag ? ag.puntaje : omitido ? null : script.puntaje_script;
+  const origen = omitido ? 'omitido por el agente' : ag ? (script.puntaje_script !== null && script.puntaje_script !== ag.puntaje ? 'agente (ajustó al script)' : 'agente') : script.puntaje_script !== null ? 'script' : null;
   if (ag && !String(ag.justificacion || '').trim()) problemas.push(`${c.id}: el agente no dejó justificación`);
   if (ag && ag.puntaje < 2 && !(ag.mejoras || []).length) problemas.push(`${c.id}: puntaje ${ag.puntaje} sin mejoras sugeridas`);
-  return { ...c, script, ag, final, origen, puntajeScript: script.puntaje_script };
+  return { ...c, script, ag, final, origen, omitido, puntajeScript: script.puntaje_script };
 });
 
 const faltantes = filas.filter((f) => f.final === null);
-for (const f of faltantes) problemas.push(`${f.id} sin calificar (${f.script.origen === 'agente' ? `lo esperaba de ${f.agente}` : f.script.nota})`);
+for (const f of faltantes) problemas.push(`${f.id} sin calificar (${f.omitido ? `${f.agente} lo dejó sin evaluar: la evidencia no permitía calificarlo (el puntaje automático del script, ${f.puntajeScript ?? 'n/d'}, no se usa)` : f.script.origen === 'agente' ? `lo esperaba de ${f.agente}` : f.script.nota})`);
 
 const suma = (area) => filas.filter((f) => f.area === area && f.final !== null).reduce((s, f) => s + f.final, 0);
 const evaluados = (area) => filas.filter((f) => f.area === area && f.final !== null).length;

@@ -7,8 +7,10 @@
 | Área | Puntos | Máximo | % |
 | --- | ---: | ---: | ---: |
 | SEO | **12** | 20 | 60% |
-| AEO | **7** | 20 | 35% |
-| **Total** | **19** | 40 | 48% |
+| AEO | **5** | 16 (de 20) | 31% |
+| **Total** | **17** | 36 (de 40) | 47% |
+
+⚠ **Calificación incompleta:** faltan aeo-5, aeo-6. Los totales solo suman lo evaluado.
 
 ## Rúbrica SEO: que Google encuentre y entienda la página
 
@@ -33,8 +35,8 @@
 | 2 | Encabezados en forma de pregunta | □□ 0/2 | Agente | agente |
 | 3 | Preguntas frecuentes | □□ 0/2 | Agente | agente |
 | 4 | Datos estructurados | □□ 0/2 | Script | agente |
-| 5 | Contenido legible sin JavaScript | □□ 0/2 | Script: compara el HTML crudo con la página ya cargada | script |
-| 6 | Acceso para bots de IA | ■■ 2/2 | Script | script |
+| 5 | Contenido legible sin JavaScript | n/e | Script: compara el HTML crudo con la página ya cargada | omitido por el agente |
+| 6 | Acceso para bots de IA | n/e | Script | omitido por el agente |
 | 7 | Formato fácil de extraer | ■■ 2/2 | Agente | agente |
 | 8 | Identidad clara y consistente | □□ 0/2 | Agente + script | agente |
 | 9 | Datos concretos | ■□ 1/2 | Agente | agente |
@@ -248,21 +250,18 @@ La página renderizada de github.com/delta007x-b2b/reto-ser-visible-con-las-ias 
 - Agrega la URL del sitio publicado en el campo Website de «About» del repositorio y en la primera línea del README, para que buscadores y asistentes lleguen a la página que sí trae el JSON-LD de Organization/FAQPage.
 - Valida el JSON-LD de index.html en validator.schema.org y confirma que name, url, logo, teléfono/dirección y las preguntas del FAQPage coincidan con el texto visible del sitio.
 
-#### AEO 5 · Contenido legible sin JavaScript: 0/2
+#### AEO 5 · Contenido legible sin JavaScript: sin evaluar
 *Vale 2 si:* El texto principal ya viene en el HTML inicial, porque muchos bots de IA no ejecutan JavaScript
 
 - ❌ El HTML inicial trae 12% del texto que ve el usuario (59 de 484 palabras)
 - ❌ El H1 aparece solo después de ejecutar JavaScript
 - ❌ 59 palabras de contenido sin JavaScript
 
-*Falta:*
-- El HTML inicial trae 12% del texto que ve el usuario (59 de 484 palabras)
-- El H1 aparece solo después de ejecutar JavaScript
-- 59 palabras de contenido sin JavaScript
-
 *Nota:* Regla: ≥ 80% = 2, 40–80% = 1, < 40% = 0.
 
-#### AEO 6 · Acceso para bots de IA: 2/2
+*No se pudo calificar.*
+
+#### AEO 6 · Acceso para bots de IA: sin evaluar
 *Vale 2 si:* El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended; un llms.txt suma como bonus, porque todavía no es un estándar
 
 - ✅ GPTBot permitido
@@ -271,6 +270,8 @@ La página renderizada de github.com/delta007x-b2b/reto-ser-visible-con-las-ias 
 - ✅ Google-Extended permitido
 
 *Nota:* El llms.txt se reporta como bonus informativo: no cambia el puntaje (la escala está topada en 2).
+
+*No se pudo calificar.*
 
 #### AEO 7 · Formato fácil de extraer: 2/2
 *Vale 2 si:* Párrafos cortos, listas, tablas o pasos numerados, con un tema por sección
@@ -344,20 +345,21 @@ Ordenado de lo que más puntos pierde (0) a lo que está a medias (1):
 2. **AEO 2 · Encabezados en forma de pregunta** (0/2): Convierte los H2 del README en preguntas con la respuesta en la primera frase, por ejemplo: «## ¿Qué hace B2BusinessTeam?» seguido de «Construye sistemas de adquisición de clientes con IA desde Quito, Ecuador.»
 3. **AEO 3 · Preguntas frecuentes** (0/2): Agrega al README una sección «## Preguntas frecuentes» con 3 a 5 preguntas y respuestas de 1 a 3 frases, por ejemplo: «¿Qué es B2BusinessTeam? Es una agencia de Quito, Ecuador, que construye sistemas de adquisición de clientes con IA.»
 4. **AEO 4 · Datos estructurados** (0/2): Evalúa la URL del sitio ya publicado en Hostinger (donde vive index.html) y no la página del repositorio en GitHub, porque el schema de esta URL no se puede modificar.
-5. **AEO 5 · Contenido legible sin JavaScript** (0/2): El HTML inicial trae 12% del texto que ve el usuario (59 de 484 palabras)
-6. **AEO 8 · Identidad clara y consistente** (0/2): Llena el cuadro About del repositorio con una descripción y el sitio web oficial, por ejemplo: «B2BusinessTeam, agencia de Quito, Ecuador, que construye sistemas de adquisición de clientes con IA», y agrega los topics.
-7. **SEO 2 · Descripción y vista al compartir** (1/2): Llena el campo About (Description) del repositorio con una frase de 100–140 caracteres que diga qué hace el proyecto, por ejemplo: «Reto Hostinger: cómo hacer que un sitio sea visible para buscadores y asistentes de IA (SEO + AEO)». GitHub usa ese texto en la meta description y en og:description.
-8. **SEO 3 · Estructura de encabezados** (1/2): Amplía el README con más secciones H2 y subsecciones H3 que describan el contenido, por ejemplo «Cómo se aplicó el SEO técnico» y «Cómo se aplicó el AEO» con H3 por criterio.
-9. **SEO 4 · Tema claro y contenido suficiente** (1/2): Llena la descripción del repositorio (campo About) con el tema, por ejemplo: «Sitio web de B2BusinessTeam, agencia de Quito, Ecuador, que construye sistemas de adquisición de clientes con IA». GitHub la usa en el título, la meta description y el primer bloque del contenido.
-10. **SEO 5 · Indexable** (1/2): Para controlar canonical y lang, publica el contenido en un sitio propio (por ejemplo con GitHub Pages) con <link rel="canonical" href="https://tu-dominio/"> y <html lang="es">.
-11. **SEO 8 · Velocidad** (1/2): Mide el sitio publicado en Hostinger (la URL del dominio, no el repositorio): el README dice que sirve HTML ya renderizado y fuentes propias, y ahí sí puedes llevar el rendimiento a 80 o más.
-12. **SEO 9 · Móvil** (1/2): Evalúa el sitio publicado en Hostinger en lugar del repositorio, porque ahí controlas el tamaño de los botones y enlaces.
-13. **AEO 1 · Respuesta directa arriba** (1/2): Abre el README con una respuesta de 40 a 60 palabras, por ejemplo: «B2BusinessTeam es una agencia de Quito, Ecuador, que construye sistemas de adquisición de clientes con IA para empresas B2B. Este repositorio contiene su sitio web estático, optimizado para SEO y AEO, para que buscadores y asistentes de IA lo encuentren y lo citen.» Ajusta el público a tu cliente real.
-14. **AEO 9 · Datos concretos** (1/2): Agrega al README datos verificables del servicio, con este formato: «Atendemos a N empresas B2B desde AAAA. Caso: [cliente] pasó de X a Y prospectos al mes en Z meses.» Usa tus cifras reales.
-15. **AEO 10 · Señales de confianza** (1/2): Agrega al README una sección «Quiénes somos» con los nombres y roles del equipo de B2BusinessTeam y un enlace a su perfil profesional (LinkedIn u otro).
+5. **AEO 8 · Identidad clara y consistente** (0/2): Llena el cuadro About del repositorio con una descripción y el sitio web oficial, por ejemplo: «B2BusinessTeam, agencia de Quito, Ecuador, que construye sistemas de adquisición de clientes con IA», y agrega los topics.
+6. **SEO 2 · Descripción y vista al compartir** (1/2): Llena el campo About (Description) del repositorio con una frase de 100–140 caracteres que diga qué hace el proyecto, por ejemplo: «Reto Hostinger: cómo hacer que un sitio sea visible para buscadores y asistentes de IA (SEO + AEO)». GitHub usa ese texto en la meta description y en og:description.
+7. **SEO 3 · Estructura de encabezados** (1/2): Amplía el README con más secciones H2 y subsecciones H3 que describan el contenido, por ejemplo «Cómo se aplicó el SEO técnico» y «Cómo se aplicó el AEO» con H3 por criterio.
+8. **SEO 4 · Tema claro y contenido suficiente** (1/2): Llena la descripción del repositorio (campo About) con el tema, por ejemplo: «Sitio web de B2BusinessTeam, agencia de Quito, Ecuador, que construye sistemas de adquisición de clientes con IA». GitHub la usa en el título, la meta description y el primer bloque del contenido.
+9. **SEO 5 · Indexable** (1/2): Para controlar canonical y lang, publica el contenido en un sitio propio (por ejemplo con GitHub Pages) con <link rel="canonical" href="https://tu-dominio/"> y <html lang="es">.
+10. **SEO 8 · Velocidad** (1/2): Mide el sitio publicado en Hostinger (la URL del dominio, no el repositorio): el README dice que sirve HTML ya renderizado y fuentes propias, y ahí sí puedes llevar el rendimiento a 80 o más.
+11. **SEO 9 · Móvil** (1/2): Evalúa el sitio publicado en Hostinger en lugar del repositorio, porque ahí controlas el tamaño de los botones y enlaces.
+12. **AEO 1 · Respuesta directa arriba** (1/2): Abre el README con una respuesta de 40 a 60 palabras, por ejemplo: «B2BusinessTeam es una agencia de Quito, Ecuador, que construye sistemas de adquisición de clientes con IA para empresas B2B. Este repositorio contiene su sitio web estático, optimizado para SEO y AEO, para que buscadores y asistentes de IA lo encuentren y lo citen.» Ajusta el público a tu cliente real.
+13. **AEO 9 · Datos concretos** (1/2): Agrega al README datos verificables del servicio, con este formato: «Atendemos a N empresas B2B desde AAAA. Caso: [cliente] pasó de X a Y prospectos al mes en Z meses.» Usa tus cifras reales.
+14. **AEO 10 · Señales de confianza** (1/2): Agrega al README una sección «Quiénes somos» con los nombres y roles del equipo de B2BusinessTeam y un enlace a su perfil profesional (LinkedIn u otro).
 
 ## Advertencias
 - El servidor respondió 403 al cliente simple.
+- aeo-5 sin calificar (auditor-aeo-tecnico lo dejó sin evaluar: la evidencia no permitía calificarlo (el puntaje automático del script, 0, no se usa))
+- aeo-6 sin calificar (auditor-aeo-tecnico lo dejó sin evaluar: la evidencia no permitía calificarlo (el puntaje automático del script, 2, no se usa))
 
 ## Cómo se calificó
 

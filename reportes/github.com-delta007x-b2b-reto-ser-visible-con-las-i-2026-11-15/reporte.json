@@ -1,11 +1,11 @@
 {
   "url": "https://github.com/delta007x-b2b/reto-ser-visible-con-las-ias",
   "fecha": "2026-11-15",
-  "completo": true,
+  "completo": false,
   "seo": 12,
-  "aeo": 7,
-  "total": 19,
-  "maximoEvaluado": 40,
+  "aeo": 5,
+  "total": 17,
+  "maximoEvaluado": 36,
   "criterios": [
     {
       "id": "seo-1",
@@ -174,18 +174,18 @@
     {
       "id": "aeo-5",
       "nombre": "Contenido legible sin JavaScript",
-      "puntaje": 0,
+      "puntaje": null,
       "puntajeScript": 0,
-      "origen": "script",
+      "origen": "omitido por el agente",
       "justificacion": null,
       "mejoras": []
     },
     {
       "id": "aeo-6",
       "nombre": "Acceso para bots de IA",
-      "puntaje": 2,
+      "puntaje": null,
       "puntajeScript": 2,
-      "origen": "script",
+      "origen": "omitido por el agente",
       "justificacion": null,
       "mejoras": []
     },
@@ -239,6 +239,8 @@
     }
   ],
   "advertencias": [
-    "El servidor respondió 403 al cliente simple."
+    "El servidor respondió 403 al cliente simple.",
+    "aeo-5 sin calificar (auditor-aeo-tecnico lo dejó sin evaluar: la evidencia no permitía calificarlo (el puntaje automático del script, 0, no se usa))",
+    "aeo-6 sin calificar (auditor-aeo-tecnico lo dejó sin evaluar: la evidencia no permitía calificarlo (el puntaje automático del script, 2, no se usa))"
   ]
 }
