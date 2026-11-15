@@ -64,6 +64,25 @@ En `reportes/<sitio>-<fecha>/`:
 | `evidencia/` | Todo lo que midió el script (un JSON por criterio, `texto.md`, capturas, Lighthouse). No se sube a git. |
 | `puntajes/` | El JSON de cada agente con su justificación. No se sube a git. |
 
+## Historial: `calificaciones.csv`
+
+Cada vez que se califica un sitio, `scripts/reporte.mjs` agrega **una fila** a [`calificaciones.csv`](calificaciones.csv) en la raíz del repo. Se abre directo en Excel o Google Sheets (UTF-8, separado por comas).
+
+| Columnas | Qué trae |
+| --- | --- |
+| `fecha`, `sitio`, `url` | Cuándo y qué se calificó. |
+| `seo`, `aeo`, `total`, `maximo_evaluado`, `completo` | Los totales (SEO /20, AEO /20, total /40). `completo = no` si algún criterio quedó sin evaluar. |
+| `SEO 1 Título de la página` … `AEO 10 Señales de confianza` | **El puntaje (0, 1 o 2) de cada uno de los 20 criterios.** Vacío = sin evaluar. |
+| `sin_evaluar`, `lighthouse_rendimiento` | Qué criterios no se pudieron calificar y el puntaje de rendimiento de Lighthouse. |
+| `reporte`, `carpeta`, `generado_en` | Dónde está el reporte detallado y cuándo se generó la fila. |
+
+Reglas:
+- Se va **acumulando**: cada sitio nuevo es una fila nueva.
+- Volver a calificar el **mismo sitio el mismo día actualiza su fila**, no la duplica (cambiando de día, se agrega otra y queda el historial).
+- Las columnas salen de `rubrica/rubrica.json`. Si cambias la rúbrica, las columnas viejas se conservan para no perder datos.
+- La justificación y las mejoras de cada criterio no van en el CSV: están en el `reporte.md` de la columna `reporte`.
+- Para guardarlo en otra ruta: `node scripts/reporte.mjs reportes/<sitio>-<fecha> --csv otra/ruta.csv`.
+
 ## Cómo se traduce 0 / 1 / 2
 
 La rúbrica define cuándo un criterio **vale 2**; el 1 ("a medias") no lo define. La definición que usa este proyecto: **1 = algún parámetro del criterio está a medias**. Para que dos corridas sobre el mismo sitio den lo mismo, los scripts aproximan eso con una regla mecánica ([`scripts/lib/puntaje.mjs`](scripts/lib/puntaje.mjs)) sobre las verificaciones de cada criterio:

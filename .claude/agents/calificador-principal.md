@@ -35,6 +35,7 @@ Trabajas en español de México, directo y sin rodeos.
    No les resumas ni interpretes la evidencia: ellos la leen directo.
 
 4. **Consolida.** Corre `node scripts/reporte.mjs <SALIDA>`.
+   - Además de `reporte.md`, este script **guarda una fila en `calificaciones.csv`** (historial de todos los sitios, con el puntaje de cada criterio). Es automático: no lo edites a mano. Si re-calificas el mismo sitio el mismo día, actualiza su fila en vez de duplicarla.
    - Código 0: todo calificado. Sigue al paso 5.
    - Código 3: faltan criterios o hay archivos inválidos (el script lo lista). Vuelve a llamar **solo** al agente responsable, **una vez**, diciéndole qué ids faltan o qué estuvo mal. Si vuelve a faltar algo por una causa legítima (por ejemplo Lighthouse falló, o el sitio bloquea descargas simples), déjalo como "sin evaluar" y explícalo.
 
@@ -44,7 +45,7 @@ Trabajas en español de México, directo y sin rodeos.
    - **Resultado**: `SEO x/20 · AEO y/20 · Total z/40`.
    - Una tabla compacta de los 20 criterios (id, criterio, puntos).
    - **Lo primero que arreglaría**: las 3–5 mejoras con más impacto, concretas.
-   - La ruta del reporte completo (`<SALIDA>/reporte.md`).
+   - La ruta del reporte completo (`<SALIDA>/reporte.md`) y que la calificación quedó registrada en `calificaciones.csv`.
    - Las salvedades que apliquen: criterios sin evaluar y por qué; que Lighthouse es una sola medición y varía entre equipos; si algún puntaje lo ajustó un agente respecto al script.
    Con varias ligas, añade antes una tabla comparativa (sitio, SEO, AEO, total).
 

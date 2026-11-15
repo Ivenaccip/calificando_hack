@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 // Une la evidencia del script con los puntajes de los agentes y arma el reporte final.
-//   node scripts/reporte.mjs reportes/<sitio>-<fecha>
+//   node scripts/reporte.mjs reportes/<sitio>-<fecha> [--csv ruta.csv]
+// Además deja una fila en calificaciones.csv (historial; volver a calificar el mismo sitio y fecha la actualiza).
 // Los totales se calculan aquí (no los calcula ningún modelo). Sale con código 3 si falta algún criterio.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { guardarCalificacion, columnaCriterio } from './lib/calificaciones.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const carpeta = process.argv[2] && path.resolve(RAIZ, process.argv[2]);
+const argv = process.argv.slice(2);
+const iCsv = argv.indexOf('--csv');
+const rutaCsv = path.resolve(RAIZ, iCsv >= 0 ? argv[iCsv + 1] : 'calificaciones.csv');
+const posicional = argv.find((a, i) => !a.startsWith('--') && argv[i - 1] !== '--csv');
+const carpeta = posicional && path.resolve(RAIZ, posicional);
 if (!carpeta || !fs.existsSync(path.join(carpeta, 'evidencia/resumen.json'))) {
   console.error('Uso: node scripts/reporte.mjs reportes/<sitio>-<fecha>   (primero corre scripts/auditar.mjs)');
   process.exit(1);
@@ -121,7 +127,24 @@ fs.writeFileSync(path.join(carpeta, 'reporte.json'), JSON.stringify({
   advertencias: adv,
 }, null, 2));
 
+// ---- historial en CSV: una fila por sitio, con el puntaje de cada criterio ----
+const filaCsv = {
+  fecha: resumen.fecha,
+  sitio: new URL(resumen.urlFinal).hostname.replace(/^www\./, ''),
+  url: resumen.urlFinal,
+  seo: tot.seo, aeo: tot.aeo, total: tot.seo + tot.aeo, maximo_evaluado: maxEval.seo + maxEval.aeo,
+  completo: completo ? 'sí' : 'no',
+  ...Object.fromEntries(filas.map((f) => [columnaCriterio(f), f.final ?? ''])),
+  sin_evaluar: faltantes.map((f) => f.id).join(' '),
+  lighthouse_rendimiento: resumen.lighthouse?.rendimiento ?? '',
+  reporte: path.relative(RAIZ, path.join(carpeta, 'reporte.md')),
+  carpeta: path.basename(carpeta),
+  generado_en: new Date().toISOString(),
+};
+const csv = guardarCalificacion(rutaCsv, rubrica, filaCsv);
+
 console.log(`SEO ${tot.seo}/${maxEval.seo}  ·  AEO ${tot.aeo}/${maxEval.aeo}  ·  TOTAL ${tot.seo + tot.aeo}/${maxEval.seo + maxEval.aeo}${completo ? '' : '  (INCOMPLETO)'}`);
 if (problemas.length) { console.log('\nProblemas:'); problemas.forEach((p) => console.log(` - ${p}`)); }
 console.log(`REPORTE=${path.relative(RAIZ, path.join(carpeta, 'reporte.md'))}`);
+console.log(`CSV=${path.relative(RAIZ, rutaCsv)} (fila ${csv.accion}; ${csv.filas} en total)`);
 process.exit(completo ? 0 : 3);
