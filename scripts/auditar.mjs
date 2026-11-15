@@ -121,7 +121,7 @@ fs.writeFileSync(ev('robots.txt'), robots.contenido ?? '(no existe robots.txt)')
 const meta = {
   url, urlFinal, fecha, generadoEn: new Date().toISOString(), duracionSegundos: Math.round((Date.now() - t0) / 1000),
   statusHttp: render.ok ? render.status : principal.status, htmlCrudoDescargado: Boolean(crudo), paginaRenderizada: render.ok,
-  lighthouse: lh?.ok ? { version: lh.version, ...lh.puntajes } : null, capturas: render.ok ? render.capturas : {}, advertencias,
+  lighthouse: lh?.ok ? { version: lh.version, chromeVersion: lh.chromeVersion, ...lh.puntajes, lcpMs: lh.metricas.lcpMs, cls: lh.metricas.cls, tbtMs: lh.metricas.tbtMs } : null, capturas: render.ok ? render.capturas : {}, advertencias,
 };
 fs.writeFileSync(ev('resumen.json'), JSON.stringify(meta, null, 2));
 

@@ -6,7 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { guardarCalificacion, columnaCriterio } from './lib/calificaciones.mjs';
+import { guardarCalificacion, columnaCriterio, columnasLighthouse, leerFilas, COLUMNAS_LIGHTHOUSE } from './lib/calificaciones.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -142,12 +142,21 @@ const filaBase = {
   ...Object.fromEntries(filas.map((f) => [columnaCriterio(f), f.final ?? ''])),
   sin_evaluar: faltantes.map((f) => f.id).join(' '),
   notas: adv.join(' | ').slice(0, 400),
-  lighthouse_rendimiento: resumen.lighthouse?.rendimiento ?? '',
+  ...Object.fromEntries(COLUMNAS_LIGHTHOUSE.map((c) => [c, ''])),
+  ...columnasLighthouse(resumen.lighthouse, 'entorno de la auditoría'),
   reporte: path.relative(RAIZ, path.join(carpeta, 'reporte.md')),
   carpeta: path.basename(carpeta),
   generado_en: new Date().toISOString(),
 };
-const csv = guardarCalificacion(rutaCsv, rubrica, (participantes.length ? participantes : ['']).map((participante) => ({ ...filaBase, participante })));
+// Si ya hay una medición de Lighthouse hecha con el Chrome de la persona ("local"), no se pisa con la del entorno.
+const previas = leerFilas(rutaCsv).filter((f) => f.carpeta === filaBase.carpeta);
+const filasNuevas = (participantes.length ? participantes : ['']).map((participante) => {
+  const fila = { ...filaBase, participante };
+  const previa = previas.find((f) => f.participante === participante);
+  if (previa?.lighthouse_chrome?.startsWith('local')) for (const c of COLUMNAS_LIGHTHOUSE) fila[c] = previa[c];
+  return fila;
+});
+const csv = guardarCalificacion(rutaCsv, rubrica, filasNuevas);
 
 console.log(`SEO ${tot.seo}/${maxEval.seo}  ·  AEO ${tot.aeo}/${maxEval.aeo}  ·  TOTAL ${tot.seo + tot.aeo}/${maxEval.seo + maxEval.aeo}${completo ? '' : '  (INCOMPLETO)'}`);
 if (problemas.length) { console.log('\nProblemas:'); problemas.forEach((p) => console.log(` - ${p}`)); }

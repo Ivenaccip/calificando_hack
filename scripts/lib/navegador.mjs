@@ -5,8 +5,8 @@ import { VIEWPORT_MOVIL, UMBRALES } from './config.mjs';
 
 const UA_MOVIL = 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36 CalificadorSEO-AEO/1.0';
 
-export function buscarChrome() {
-  for (const c of [process.env.CHROME_PATH, process.env.PUPPETEER_EXECUTABLE_PATH, process.env.CHROME_BIN]) {
+export function buscarChrome(preferida) {
+  for (const c of [preferida, process.env.CHROME_PATH, process.env.PUPPETEER_EXECUTABLE_PATH, process.env.CHROME_BIN]) {
     if (c && fs.existsSync(c)) return c;
   }
   try { const inst = chromeLauncher.Launcher.getInstallations(); if (inst.length) return inst[0]; } catch { /* sigue */ }

@@ -73,7 +73,8 @@ Cada vez que se califica un sitio, `scripts/reporte.mjs` agrega **una fila** a [
 | `fecha`, `participante`, `sitio`, `url` | Cuándo y qué se calificó, y quién envió la liga (si vino de un lote; vacío si la calificaste a mano). |
 | `seo`, `aeo`, `total`, `maximo_evaluado`, `completo` | Los totales (SEO /20, AEO /20, total /40). `completo = no` si algún criterio quedó sin evaluar. |
 | `SEO 1 Título de la página` … `AEO 10 Señales de confianza` | **El puntaje (0, 1 o 2) de cada uno de los 20 criterios.** Vacío = sin evaluar. |
-| `sin_evaluar`, `notas`, `lighthouse_rendimiento` | Qué criterios no se pudieron calificar, advertencias de la corrida (por ejemplo, "Lighthouse falló" o "no se pudo medir el sitio") y el puntaje de rendimiento de Lighthouse. |
+| `sin_evaluar`, `notas` | Qué criterios no se pudieron calificar y advertencias de la corrida (por ejemplo, "no se pudo medir el sitio"). |
+| `lighthouse_rendimiento`, `lighthouse_accesibilidad`, `lighthouse_mejores_practicas`, `lighthouse_seo`, `lighthouse_lcp_s`, `lighthouse_cls`, `lighthouse_tbt_ms`, `lighthouse_chrome`, `lighthouse_medido_en` | Las calificaciones de Lighthouse móvil (0–100), LCP, CLS y TBT, y con qué Chrome se midieron. **Son informativas: no suman a los 40 puntos.** |
 | `reporte`, `carpeta`, `generado_en` | Dónde está el reporte detallado y cuándo se generó la fila. |
 
 Reglas:
@@ -96,6 +97,21 @@ node scripts/lote.mjs ruta/al/formulario.csv                 # medir todas, una 
 `lote.mjs` detecta las columnas de nombre y liga por su encabezado, normaliza ligas sin `https://`, **deduplica** ligas repetidas y guarda quién envió cada una. Mide los sitios de uno en uno (Lighthouse necesita el equipo libre), se puede **reanudar** si se interrumpe (salta los ya medidos; `--forzar` los repite) y deja el avance en `reportes/lote.json`. Si un sitio no abre o tarda más de 8 minutos, deja su fila en `calificaciones.csv` con la nota del motivo.
 
 Esto solo mide. Para calificar con los especialistas, pídele al agente principal que califique los sitios ya medidos de `reportes/lote.json`; al terminar cada uno, `reporte.mjs` agrega sus filas al CSV.
+
+## Lighthouse con tu propio Chrome
+
+Lighthouse mide el rendimiento **de la máquina donde corre**: en un servidor compartido da números bajos y poco confiables. Para medir con tu Chrome y agregar las calificaciones al CSV:
+
+```bash
+npm install
+node scripts/lighthouse-csv.mjs --corridas 3
+```
+
+- Usa el Chrome que tengas instalado (o `--chrome "/ruta/a/chrome"` / `CHROME_PATH`) y toma la **mediana de 3 corridas** por sitio, que es mucho más estable que una sola.
+- Agrega las columnas `lighthouse_*` de cada sitio (todas las filas con esa liga). Se guarda tras cada sitio y se puede interrumpir y reanudar: salta los ya medidos con Chrome local (`--forzar` los repite, `--solo texto` mide solo las ligas que lo contengan).
+- Cierra otras aplicaciones pesadas mientras corre. Con 24 sitios y 3 corridas son unos 20–40 minutos.
+- Las medidas hechas con tu Chrome no se pisan al volver a consolidar un sitio con `reporte.mjs`.
+- Estas calificaciones son informativas. El criterio **SEO 8 (Velocidad)** de la rúbrica se calificó con la medición del entorno donde corrió la auditoría; si quieres recalificarlo con estos números, pídeselo al agente principal.
 
 ## Cómo se traduce 0 / 1 / 2
 
