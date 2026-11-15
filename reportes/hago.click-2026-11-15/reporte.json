@@ -67,10 +67,10 @@
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
-      "justificacion": "Las 17 imágenes tienen alt descriptivo y de buena calidad (por ejemplo: «Taburete fabricado con plástico reciclado y madera reutilizada, sobre un fondo cálido de estudio.»), sin alt vacíos ni imágenes pesadas (peso total 57 KB, ninguna > 300 KB). Lo único que falla es que Lighthouse marca uses-responsive-images con un ahorro estimado de 48 KiB en tres imágenes servidas a 768 px de ancho; es un detalle menor y queda cerca de 2.",
+      "justificacion": "Las 17 imágenes con contenido tienen alt descriptivo y específico de lo que se ve (por ejemplo: «Taburete fabricado con plástico reciclado y madera reutilizada, sobre un fondo cálido de estudio.»), no hay alt vacíos ni imágenes mayores a 300 KB, y el hero ya se sirve en AVIF. Lo que queda a medias es el tamaño con el que se sirven: Lighthouse marca uses-responsive-images (ahorro estimado de 48 KiB) en tres imágenes entregadas a 768 px de ancho. Es un detalle menor y queda cerca de 2.",
       "mejoras": [
-        "Sirve las tres imágenes marcadas por Lighthouse (hero, «Emprendedora creativa…» y «Prototipo de sensor…») con un ancho cercano al que se muestra en móvil (por ejemplo ?width=600) o agrega srcset/sizes con variantes de 400, 600 y 768 px.",
-        "Haz que el hero use una variante AVIF de ~600 px para móvil en lugar de hero-night-team-v1-768.avif, para recuperar los ~15 KB que Lighthouse estima como ahorro."
+        "Sirve las tres imágenes que marca Lighthouse («Emprendedora creativa…», «Prototipo de sensor…» y el hero «Tres personas colaboran en una lámpara…») con un ancho cercano al que se muestra en móvil, por ejemplo ?width=600 en las de images.hostinger.com, o agrega srcset/sizes con variantes de 400, 600 y 768 px.",
+        "Genera para el hero una variante AVIF de unos 600 px para móvil en lugar de hero-night-team-v1-768.avif, para recuperar los ~15 KB que Lighthouse estima como ahorro."
       ]
     },
     {
@@ -79,11 +79,11 @@
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
-      "justificacion": "Es una sola medición de Lighthouse móvil, que varía entre corridas y equipos. El rendimiento es 83 (cumple ≥ 80) y el CLS es 0.000 (cumple < 0.1), pero el LCP es 3.80 s y no llega a < 2.5 s, así que se cumplen dos de las tres condiciones y el puntaje es 1. El servidor responde rápido (100 ms), por lo que el retraso viene del lado del cliente.",
+      "justificacion": "Es una sola medición de Lighthouse móvil (12.8.2) y varía entre corridas y equipos. El rendimiento es 83 (cumple ≥ 80) y el CLS es 0.000 (cumple < 0.1), pero el LCP es 3.80 s y no llega a < 2.5 s: se cumplen dos de las tres condiciones, así que el puntaje es 1. El servidor responde rápido (100 ms) y Lighthouse marca la descubierta tardía del recurso del LCP, por lo que la demora viene del lado del cliente.",
       "mejoras": [
-        "Adelanta la descubierta de la imagen LCP (el hero): agrega <link rel=\"preload\" as=\"image\" fetchpriority=\"high\"> en el HTML inicial y asegúrate de que la imagen no tenga loading=\"lazy\" ni dependa de que arranque el JavaScript para pedirse.",
-        "Sirve el hero desde el mismo dominio (hoy se pide a darkorchid-donkey-829051.hostingersite.com), para evitar una conexión DNS/TLS extra antes del LCP.",
-        "Reduce el JavaScript que bloquea el primer pintado: divide o difiere el bundle jsx-runtime-98TrhzpB.js (22 KiB sin usar) y carga bajo demanda lo que no se ve al inicio, por ejemplo la animación del fondo."
+        "Adelanta la descarga de la imagen principal: agrega en el HTML inicial un <link rel='preload' as='image' fetchpriority='high'> para el hero (o fetchpriority='high' en su <img>), de modo que no dependa de que el JavaScript arranque para pedirse.",
+        "Sirve el hero desde hago.click en vez de darkorchid-donkey-829051.hostingersite.com, o agrega <link rel='preconnect'> a ese dominio, para quitar la conexión DNS/TLS extra antes del LCP.",
+        "Reduce el JavaScript inicial: divide o difiere jsx-runtime-98TrhzpB.js (22 KiB sin usar) y carga bajo demanda lo que no se ve al abrir la página, para acercar el FCP (2.25 s) y el LCP a menos de 2.5 s."
       ]
     },
     {
@@ -92,11 +92,11 @@
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
-      "justificacion": "Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y en las capturas el diseño se ve limpio: el menú hamburguesa está visible, no hay banner de cookies ni pop-up que tape la pantalla y los botones principales («Tengo una idea», «Quiero aportar») son grandes. Lo que queda a medias es la legibilidad: 16% del texto mide menos de 12 px (etiquetas en monoespaciada como «ESCENA ILUSTRATIVA CREADA CON IA», «Dos formas de empezar. Un mismo propósito.» y «Explora lo que podríamos crear juntos» se ven muy pequeñas en la captura) y hay enlaces de 15–16 px de alto. Solo vi los primeros ~3,000 px de la captura completa (el resto está recortado).",
+      "justificacion": "Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y las capturas se ven limpias: el menú hamburguesa está visible arriba a la derecha (~44 px), no hay banner de cookies ni pop-up, el título y el párrafo principal se leen sin zoom y los botones «Tengo una idea» y «Quiero aportar» son grandes. Lo que queda a medias es la legibilidad y algunos objetivos táctiles: 16% del texto mide menos de 12 px (se nota en «IDEAS LOCALES. POSIBILIDADES COMPARTIDAS.», «Dos formas de empezar. Un mismo propósito.» y «ESCENA ILUSTRATIVA CREADA CON IA») y hay dos enlaces de 15–16 px de alto. La captura completa solo llega a los primeros 3,000 px de una página mucho más larga, así que no pude revisar el resto.",
       "mejoras": [
-        "Sube a 12–13 px como mínimo las etiquetas pequeñas en monoespaciada («ESCENA ILUSTRATIVA CREADA CON IA», «EJEMPLOS · NO PROYECTOS REALES», «Dos formas de empezar…») y el texto de apoyo del hero.",
-        "Dale al menos 24 px de alto (idealmente 44 px) a los enlaces «Explora lo que podríamos crear juntos» y «Volver arriba ↑» con padding vertical, y separa el botón flotante de pausa de ese enlace para que no se encimen.",
-        "Revisa que el enlace «Saltar al contenido» solo se muestre al recibir foco con el teclado y no se encime con el logo en la parte superior."
+        "Sube a 12 px como mínimo (idealmente 13–14 px) las etiquetas pequeñas en monoespaciada («IDEAS LOCALES. POSIBILIDADES COMPARTIDAS.», «ESCENA ILUSTRATIVA CREADA CON IA», «EJEMPLO HIPOTÉTICO · Prototipo inicial», «APORTES POSIBLES») y el texto de apoyo «Dos formas de empezar. Un mismo propósito.».",
+        "Dale al menos 24 px de alto (idealmente 44 px) a los enlaces «Explora lo que podríamos crear juntos» y «Volver arriba ↑» con padding vertical, y deja espacio entre ellos y el control «Pausar fondo».",
+        "Mueve o reduce el botón flotante de pausa para que no tape la esquina de la imagen del hero y revisa que el círculo verde decorativo no quede encima del texto del párrafo principal."
       ]
     },
     {

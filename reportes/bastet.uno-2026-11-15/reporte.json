@@ -1,0 +1,212 @@
+{
+  "url": "https://bastet.uno/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 18,
+  "aeo": 17,
+  "total": 35,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 57 caracteres que une la marca con el tema: «Bastet · Compra, alquila o reserva una estadía en Bolivia». Describe qué hace el sitio (compra, alquiler, estadías) y dónde, y no es genérico.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 156 caracteres (dentro de 140–160) y está completa, no cortada. Abre con un verbo de acción («Encuentra casas, departamentos y habitaciones…»), nombra los tipos de operación y cierra con un respaldo de confianza («Inmuebles revisados por Bastet»). Están og:title, og:description y og:image, y la imagen es una URL absoluta.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 claro («Encuentra dónde vivir o dónde quedarte») y 15 H2 con 35 H3, sin saltos de nivel (0 H4–H6). Los H2 son secciones reales (Estadías por noche, Inmuebles en venta, En alquiler, Preguntas frecuentes…) y los H3 son los títulos de cada tarjeta o pregunta debajo de su H2. El menú y el pie no usan encabezados para dar estilo. Detalle menor: «Habitacion Temporal» y «Air BnB en Calacoto» se repiten como H3 en dos secciones seguidas (Estadías por noche y Estadías en La Paz).",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (plataforma para comprar, alquilar o reservar estadías en Bolivia) coincide en el título, el H1 y el primer párrafo visible, y el contenido principal pasa por mucho las 300 palabras útiles (el script cuenta 1,771 en total). Hay algo de repetición (las tarjetas de «Habitacion Temporal» y «Air BnB en Calacoto» aparecen dos veces), pero no es relleno notable.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "No hay noindex ni en meta robots ni en X-Robots-Tag. El canonical apunta a la misma URL (https://bastet.uno/), la página responde 200 sin redirecciones por HTTPS y <html lang=\"es\"> coincide con el contenido, que está en español.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido, 20 URL). El robots.txt permite todo el sitio y solo bloquea /admin/; además declara el sitemap. Las URL de ejemplo del sitemap son reales, del mismo dominio y con HTTPS, e incluyen la home.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Las 56 imágenes tienen alt (100%), ninguna pesa más de 300 KB y el total es de 310 KB. Pero la calidad del alt es irregular: las 18 imágenes de «Empresas que trabajan con nosotros» repiten el mismo alt «Hospeda a tu gente con nosotros», que no describe lo que muestran, y varias tarjetas de propiedades usan un alt genérico («Inmueble en venta en El Alto»). Además, Lighthouse marca uses-responsive-images (score 0.5) con 286 KiB de ahorro posible.",
+      "mejoras": [
+        "Da un alt distinto a cada una de las 18 imágenes de «Empresas que trabajan con nosotros», con el nombre de la empresa o lo que muestra (por ejemplo «Logo de [empresa]»), en lugar de repetir «Hospeda a tu gente con nosotros».",
+        "Sirve las fotos de testimonios (testi-09.jpg, testi-08.jpg, testi-04.jpg, testi-06.jpg) y hospeda-a-tu-gente.webp al tamaño con el que se muestran, usando srcset/sizes, y convierte los .jpg a WebP; Lighthouse estima 286 KiB de ahorro.",
+        "Haz más específico el alt de las tarjetas de propiedades que dicen solo «Inmueble en venta en [ciudad]», por ejemplo «Casa de dos pisos con jardín en venta en Cochabamba»."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Se confirma el puntaje del script: Lighthouse móvil da rendimiento 99 (mínimo 80), LCP de 1.93 s (máximo 2.5 s) y CLS de 0.000 (máximo 0.1); cumple las tres. Es una sola medición de Lighthouse, así que el resultado puede variar unos puntos entre corridas y equipos.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 2,
+      "origen": "agente (ajustó al script)",
+      "justificacion": "Tiene meta viewport correcto, no hay scroll horizontal y solo 1% del texto es menor a 12 px; el diseño se ve ordenado y legible en la captura. Pero en el encabezado móvil solo se ven el logo y «Instalar app», sin botón de menú visible (los enlaces de navegación existen en el DOM, pero no se ve cómo abrirlos), el banner de cookies ocupa cerca de una cuarta parte de la primera pantalla y roza el botón «Buscar», y hay objetivos táctiles pequeños («Ver todas» de 60×18 px, selects del buscador de 17 px de alto).",
+      "mejoras": [
+        "Agrega un botón de menú (hamburguesa) visible en el encabezado móvil, junto a «Instalar app», que abra Inicio, Propiedades, Estadías, Sé anfitrión y Acceder.",
+        "Aumenta el área táctil de los enlaces «Ver todas» (hoy 60×18 px) y de los campos del buscador a al menos 44 px de alto, con padding, sin cambiar el tamaño del texto.",
+        "Compacta el banner de cookies (por ejemplo, una barra más baja con los dos botones en una fila) para que no tape «Buscar» ni el inicio del contenido en la primera pantalla."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 11 enlaces internos distintos con textos descriptivos (por ejemplo «Propiedades en alquiler en Bolivia»). De los 40 enlaces internos revisados, 0 están rotos, 0 son genéricos tipo «clic aquí» y 0 URLs son poco legibles (por ejemplo /casas-en-venta/, /inmuebles-en-la-paz/). No hay enlaces sin verificar. Nota: el script probó 40 de 41 enlaces internos únicos (su límite), así que queda uno sin revisar; no cambia el resultado.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Justo bajo el H1, la primera frase dice qué es (plataforma inmobiliaria de Bolivia) y qué ofrece (compra, alquiler, anticrético y estadías por noche, con inmuebles revisados y contacto protegido). El bloque mide 44 palabras, dentro del rango, y la segunda frase aclara a quién se dirige (quien busca casas o departamentos y quiere contactar anunciantes en todo el país). El público queda implícito más que nombrado, por eso la confianza es media.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay 7 encabezados H3 que son preguntas reales de un usuario y cada uno se responde en la primera frase debajo, además de 3 H2 en forma de pregunta. Los H2 de las secciones de tarjetas (p. ej. «En alquiler», «Inmuebles en venta») son etiquetas, no preguntas, y el H2 «¿Cómo compro o reservo con tranquilidad?» se responde con tarjetas H3 en vez de una frase directa, pero el bloque de preguntas frecuentes cumple el criterio.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Existe una sección «Preguntas frecuentes» visible, con 7 preguntas en H3 y respuestas completas que casi siempre caben en 1–3 frases. Solo la de reservar una estadía llega a 4 frases (≈65 palabras), pero es un procedimiento completo y claro. El schema FAQPage está presente y además hay contenido visible que lo respalda.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El JSON-LD (3 bloques, todos con @context schema.org, sin errores de lectura y presentes en el HTML inicial) usa tipos adecuados para una inmobiliaria: Organization + RealEstateAgent (subtipo de LocalBusiness), WebSite y FAQPage. Los datos coinciden con lo visible: teléfono +59177666205, correo inmobiliaria@bastet.uno y dirección «Calle Yanacocha, Edif. Cristal, Piso 7, Of. 706, La Paz» son los mismos del pie de página, y las 7 preguntas del FAQPage son las 7 del acordeón visible. Queda margen de enriquecimiento (sameAs vacío, sin schema de los inmuebles listados), pero nada contradice la página.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "El HTML inicial trae 1,053 de 1,771 palabras (59%), así que cae en el rango de 40–80%. El H1 y la sección de confianza ya vienen sin JavaScript, pero el HTML crudo pasa del H1 directo a «Haz que tu espacio trabaje para ti»: los listados con nombre, ciudad y precio (Estadías por noche, Inmuebles en venta, En alquiler, En anticrético) solo aparecen tras renderizar con JavaScript. Es justo el contenido de oferta que un bot de IA sin JS no vería.",
+      "mejoras": [
+        "Genera en el servidor (SSR o HTML estático en el build) las tarjetas de «Estadías por noche», «Inmuebles en venta», «En alquiler» y «En anticrético», con título, ciudad y precio dentro del HTML inicial, en vez de cargarlas con JavaScript desde la base de datos.",
+        "Si no puedes hacer SSR de todo, incluye al menos las 3 a 4 propiedades destacadas de cada sección en el HTML y deja que JavaScript cargue el resto.",
+        "Agrega un JSON-LD ItemList con las propiedades destacadas (nombre, URL, precio) en el HTML inicial para que los bots sin JavaScript también vean la oferta."
+      ]
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt permite explícitamente GPTBot, ClaudeBot, Google-Extended, PerplexityBot (y también OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, CCBot y Applebot-Extended) con «Allow: /». La única restricción es «Disallow: /admin/» (panel de administración), que no es una sección de contenido. Además declara el sitemap y existe /llms.txt (bonus informativo, no suma puntaje).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Predominan los párrafos cortos (promedio de 17 palabras, solo 1 largo de 76) y cada sección trata un solo tema: estadías, venta, alquiler, anticrético, anfitriones, verificación, FAQ, servicio legal. Se usan listas donde corresponde (beneficios para anfitriones y servicios legales) y tarjetas con precio. No hay tablas ni pasos numerados, pero no hacen falta para el tipo de contenido.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre \"Bastet\" coincide en title, og:site_name y schema (Organization y WebSite), y el pie dice \"© 2026 Bastet Real State S.R.L.\". Teléfono (+59177666205 / +591 77666205), correo (inmobiliaria@bastet.uno) y dirección (Calle Yanacocha, Edif. Cristal, Piso 7, Of. 706, La Paz) son los mismos en el pie y en el schema, y la descripción de meta y schema es consistente. Falta lo de las redes: no hay un solo enlace a perfiles oficiales (solo un enlace de WhatsApp) y todos los `sameAs` del schema están vacíos.",
+      "mejoras": [
+        "Enlaza en el pie los perfiles oficiales de Bastet (Facebook, Instagram, TikTok o LinkedIn, los que existan) con URLs completas al perfil, no a la página principal de la red.",
+        "Agrega esos mismos perfiles al arreglo `sameAs` del nodo Organization/RealEstateAgent del JSON-LD.",
+        "Convierte `address` del schema en un objeto PostalAddress (streetAddress \"Calle Yanacocha, Edif. Cristal, Piso 7, Of. 706\", addressLocality \"La Paz\", addressCountry \"BO\") y corrige la errata \"Real State\" por la razón social correcta en el pie."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las afirmaciones clave vienen con cifras verificables: porcentajes de cobro, plazos en horas y días, precios en cada tarjeta y un caso real con número. Casi no hay frases vacías de tipo «somos los mejores». Observación: algunos precios de alquiler no indican el periodo (p. ej. «800 USD») y «Casa en Achumani» aparece en alquiler con «350.000 USD», que parece un error de captura; no cambia la nota, pero un buscador con IA podría citarlo mal.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Solo hay señales débiles. El © 2026 es el año vigente, y hay testimonios con nombre y foto (Susana Camacho: \"Casi compro un inmueble con 15 gravámenes…\"), pero sin ciudad, empresa ni calificación, y solo una cita se ve en el texto. No hay equipo ni autor con nombre, ni página \"Acerca de\" (solo la FAQ \"¿Qué es Bastet?\"), ni fuentes externas. Los \"hallazgos\" del script sobre \"por QR\", \"actualizado de Derechos Reales\" y los enlaces a empresas.html son falsos positivos del formulario de publicación.",
+      "mejoras": [
+        "Crea una página \"Acerca de Bastet\" (enlazada desde el nav y el pie) con historia, razón social, año de fundación, y los nombres, cargos y fotos de las personas del equipo o dirección.",
+        "Muestra una fecha visible de actualización (por ejemplo \"Inmuebles actualizados el 15 de noviembre de 2026\") y agrega `dateModified` en el JSON-LD de la página.",
+        "Completa cada testimonio con ciudad, tipo de operación y fecha, muestra las citas en texto visible y márcalos con schema Review. Sustituye las 18 imágenes idénticas de \"Empresas que trabajan con nosotros\" por logos reales con el nombre de cada empresa en el alt."
+      ]
+    }
+  ],
+  "advertencias": []
+}

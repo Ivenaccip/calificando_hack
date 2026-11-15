@@ -67,10 +67,10 @@
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
-      "justificacion": "Las 6 imágenes con contenido tienen alt descriptivo y específico (p. ej. «Blue-tiled domes of the New Cathedral in Cuenca»), el peso total es de solo 90 KB y no hay imágenes pesadas ni con alt vacío. Lo que queda a medias es el tamaño: Lighthouse marca uses-responsive-images (score 0.5) con un ahorro estimado de 105 KiB, porque las fotos de ciudad se sirven a 960 px de ancho para un espacio de unos 360 px en el teléfono.",
+      "justificacion": "Las 6 imágenes con contenido tienen alt descriptivo y coincide con lo que se ve en la captura (p. ej. «Blue-tiled domes of the New Cathedral in Cuenca» sobre las cúpulas azules), no hay alts vacíos y ninguna imagen supera los 90 KB (todas en AVIF). Queda a medias el tamaño: Lighthouse marca «Properly size images» con score 0.5 y un ahorro estimado de 105 KiB, porque las tarjetas de ciudad se sirven en versión de 960 px para un espacio de unos 358 px de ancho en el teléfono.",
       "mejoras": [
-        "Agrega srcset y sizes a las fotos de /assets/cities/ (guayaquil, cuenca, quito) con versiones AVIF de 480 y 640 px de ancho, y deja la de 960 px solo para pantallas grandes, para recuperar los ~105 KiB que marca Lighthouse.",
-        "Aplica el mismo srcset a la imagen de portada (fleet-1672.jpg) para que en el teléfono no se descargue la versión de 1672 px."
+        "Agrega srcset y sizes a las fotos de /assets/cities/ (cuenca, guayaquil, quito) con versiones AVIF de 480 y 720 px de ancho, por ejemplo sizes=\"calc(100vw - 32px)\" en móvil, y deja la de 960 px solo para pantallas anchas; así se recuperan los ~105 KiB que marca Lighthouse.",
+        "Recomprime los AVIF de las tarjetas (guayaquil-960 pesa 86.7 KB) con una calidad algo menor para acercarte al ahorro de ~184 KiB que estima «Improve image delivery»."
       ]
     },
     {
@@ -79,7 +79,7 @@
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
-      "justificacion": "Confirmo el 2 del script: Lighthouse móvil da rendimiento 96 (mínimo 80), LCP 1.73 s (máximo 2.5 s) y CLS 0.000 (máximo 0.1), así que cumple las tres métricas. Es una sola medición de Lighthouse; el resultado puede variar unos puntos entre corridas y equipos.",
+      "justificacion": "Confirmo el 2 del script: Lighthouse móvil da rendimiento 96 (mínimo 80), LCP 1.73 s (máximo 2.5 s) y CLS 0.000 (máximo 0.1), o sea que cumple las tres métricas. Es una sola medición de Lighthouse; el resultado puede variar unos puntos entre corridas y entre equipos.",
       "mejoras": []
     },
     {
@@ -88,7 +88,7 @@
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
-      "justificacion": "Confirmo el 2 del script. Tiene meta viewport correcto, no hay scroll horizontal y solo 2% del texto mide menos de 12 px. En las capturas el texto se lee sin zoom, las tarjetas de destino no se cortan ni se encimen, el encabezado muestra el menú hamburguesa y no hay banner de cookies ni pop-up que tape la pantalla. Solo 2 de 91 enlaces tocables miden menos de 24 px de alto (los teléfonos del pie, 22 px), un detalle menor.",
+      "justificacion": "Confirmo el 2 del script. Tiene meta viewport correcto, no hay scroll horizontal y solo 2% del texto mide menos de 12 px. En las capturas nuevas, que ya empiezan en el inicio de la página, el encabezado muestra logo, selector de idioma y botón de menú (hamburguesa) bien visibles; el título, el párrafo y el formulario se leen sin zoom, los campos y el botón «See prices» son grandes y fáciles de tocar, y las tarjetas de destino no se cortan ni se encimen. No hay banner de cookies ni pop-up que tape la pantalla. Detalle menor: al cargar, el botón flotante de WhatsApp tapa el final de una línea de texto de apoyo («…number of passen[gers]…»), y los dos teléfonos del pie miden 22 px de alto.",
       "mejoras": []
     },
     {

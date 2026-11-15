@@ -108,52 +108,52 @@ Existen robots.txt y sitemap.xml (ambos con 200). El robots.txt permite todo a `
 #### SEO 7 · Imágenes: 1/2
 *Vale 2 si:* Las imágenes con contenido tienen alt descriptivo y no pesan de más
 
-Las 2 imágenes con contenido tienen alt descriptivo ("Pareja disfrutando con tranquilidad una nueva etapa de vida", "Documentos y herramientas preparados para una asesoría de pensión") y el peso total es de solo 83 KB, sin imágenes > 300 KB. Lo que queda a medias es la entrega: Lighthouse marca uses-responsive-images (el logo PNG de 27 KB se sirve mucho más grande de lo que se muestra, ahorro de 26 KiB) y su insight de entrega de imágenes estima 60 KiB de ahorro en las 3 imágenes, todas PNG. El logo con alt="" es aceptable porque el enlace ya incluye el texto "Retiro Seguro".
+Las 2 imágenes con contenido tienen alt descriptivo («Pareja disfrutando con tranquilidad una nueva etapa de vida», «Documentos y herramientas preparados para una asesoría de pensión») y el peso total es de 83 KB, sin imágenes > 300 KB. Lo que queda a medias es la entrega: Lighthouse marca uses-responsive-images (el logo PNG de 27 KB se sirve mucho más grande de lo que se muestra, ahorro de 26 KiB) y su insight de entrega de imágenes estima 60 KiB de ahorro en las 3 imágenes, todas PNG. El logo con alt vacío es aceptable porque es decorativo y el texto «Retiro Seguro» ya está junto a él.
 
 *Evidencia:*
 - totalImagenes 4; conContenido 2; conAltValido 2; altVacioEnImagenesGrandes: []
 - pesoTotalImagenesKB 83; imagenesPesadas: []
 - Lighthouse uses-responsive-images: ahorro de 26 KiB en img.brand-logo (27,290 bytes)
-- Lighthouse image-delivery-insight: ahorro estimado de 60 KiB (logo, imagen del hero y imagen de documentos, todas .png)
-- La imagen de documentos ya usa loading="lazy" y la del hero no, lo cual es correcto
+- Lighthouse image-delivery-insight: ahorro estimado de 60 KiB (logo, imagen del hero de 37.7 KB y imagen de documentos de 19.7 KB, todas .png)
+- La imagen de documentos ya usa loading="lazy"; la del hero no, lo cual es correcto porque está en la primera pantalla
 
 *Cómo mejorarlo:*
-- Reexporta el logo (a30aa17e…png) al doble de su tamaño real en pantalla, o como SVG, para recuperar los ~26 KiB que Lighthouse marca como desperdicio.
-- Convierte la imagen del hero y la de documentos de PNG a WebP o AVIF, y añade srcset/sizes para que el teléfono descargue la versión de 390–768 px.
+- Reexporta el logo (a30aa17e…png) como SVG, o al doble de su tamaño real en pantalla, para recuperar los ~26 KiB que Lighthouse marca como desperdicio.
+- Convierte la imagen del hero y la de documentos de PNG a WebP o AVIF y compáralas contra los 22 KiB y 12 KiB de ahorro que estima Lighthouse.
 
 #### SEO 8 · Velocidad: 1/2
 *Vale 2 si:* En Lighthouse móvil: rendimiento de 80 o más, LCP menor a 2.5 s y CLS menor a 0.1
 
-Lighthouse móvil (una sola medición, que varía entre corridas y equipos): rendimiento 82 (cumple ≥ 80), CLS 0.000 (cumple < 0.1), pero LCP 4.20 s (no cumple < 2.5 s). Cumple 2 de 3 parámetros, así que confirmo el 1 del script. El servidor responde rápido (60 ms), por lo que el retraso viene del lado del navegador: el FCP ya es de 2.4 s y Lighthouse marca 2 recursos que bloquean el render.
+Lighthouse móvil (una sola medición, que varía entre corridas y equipos): rendimiento 82 (cumple ≥ 80), CLS 0.000 (cumple < 0.1), pero LCP 4.20 s (no cumple < 2.5 s). Cumple 2 de 3 parámetros, así que confirmo el 1 del script. El servidor responde rápido (60 ms), así que el retraso viene del lado del navegador: el FCP ya es de 2.4 s y Lighthouse marca 2 recursos que bloquean el render.
 
 *Evidencia:*
 - Rendimiento 82; LCP 4195 ms; CLS 0; FCP 2410 ms; TBT 0 ms; Speed Index 2987 ms
 - server-response-time: el documento raíz tardó 60 ms
 - render-blocking-resources: ahorro de 180 ms (CSS de Google Fonts y /assets/index-UWngDO63.css)
 - image-delivery-insight: ahorro estimado de 60 KiB en 3 imágenes PNG
+- lcp-discovery-insight pasa (score 1): la imagen del LCP no está oculta ni en carga diferida
 
 *Cómo mejorarlo:*
 - Elimina el bloqueo de render que marca Lighthouse: inserta en línea el CSS crítico de /assets/index-UWngDO63.css y carga las fuentes de Google (Manrope y Plus Jakarta Sans) con preconnect o autoalojadas, reduciendo los pesos cargados (hoy 5 de Manrope y 7 variantes de Plus Jakarta Sans).
-- Baja el LCP de 4.2 s a menos de 2.5 s: Lighthouse no detalla qué elemento es el LCP, pero lo probable es que sea la imagen o el titular del hero; convierte esa imagen a WebP/AVIF y añade fetchpriority="high".
-- Como el contenido se pinta con JavaScript (div#root), considera prerenderizar o generar estáticamente la portada para que el primer texto no espere al bundle; esto es una inferencia mía, no un dato directo de Lighthouse.
+- Baja el LCP de 4.2 s a menos de 2.5 s: el archivo de Lighthouse no identifica el elemento LCP, pero lo probable es la imagen o el titular del hero; convierte la imagen a WebP/AVIF y añade fetchpriority="high".
+- Como el contenido se pinta con JavaScript (div#root), considera prerenderizar la portada para que el primer texto no espere al bundle; es una inferencia mía, no un dato directo de Lighthouse.
 
 #### SEO 9 · Móvil: 1/2
 *Vale 2 si:* Tiene meta viewport, se ve bien en el teléfono, el texto se lee y los botones se tocan fácil
 
-Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y solo 5% del texto es menor a 12 px. En las capturas el diseño no se ve roto: el botón de menú (hamburguesa) está visible junto al logo, el texto del hero es blanco sobre fondo oscuro y se lee sin zoom, y no hay banner de cookies ni pop-up que tape la pantalla. Lo que queda a medias son los objetivos táctiles: 17 de 57 enlaces miden menos de 24 px de alto ("Conoce tus opciones" 21 px, "Solicitar asesoría por WhatsApp" 23 px) y el botón flotante de chat tapa parte de la flecha de la tarjeta 01 y queda pegado al borde de las tarjetas.
+Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y solo 4.8% del texto mide menos de 12 px. En las capturas el diseño no se ve roto: el botón de menú (hamburguesa) está visible junto al logo, el titular y el texto del hero son blancos sobre fondo oscuro y se leen sin zoom, las tarjetas de regímenes se apilan en una columna y no hay banner de cookies ni pop-up que tape la pantalla. Lo que queda a medias son los objetivos táctiles: 17 de 57 enlaces miden menos de 24 px de alto («Conoce tus opciones» 21 px, «Solicitar asesoría por WhatsApp» 23 px).
 
 *Evidencia:*
 - viewport="width=device-width, initial-scale=1"; desbordeHorizontalPx 0
 - 537 de 11,146 caracteres (4.8%) menores a 12 px
-- 17 de 57 botones/enlaces < 24 px: "Conoce tus opciones" (299×21), "Explorar el blog" (131×21), "Leer artículo" (112×21), "Solicitar asesoría por WhatsApp" (255×23)
-- Captura: el botón flotante de chat (círculo verde) cubre la flecha de "Conoce tus opciones" en la tarjeta de Pensiones IMSS Ley 73
-- Captura: en el hero, la tarjeta superpuesta "Una nueva etapa. Muchas razones para disfrutarla." queda a pocos píxeles del enlace de WhatsApp, con un fragmento de texto cortado ("ión") a su derecha
-- Límite de la revisión: movil-arriba.png empieza a media página (no muestra el encabezado), así que el encabezado y el hero los evalué con movil-completa.png, que se corta a 3000 px de alto; no vi las secciones inferiores
+- 17 de 57 botones/enlaces < 24 px: «Conoce tus opciones» (299×21), «Explorar el blog» (131×21), «Leer artículo» (112×21), «Solicitar asesoría por WhatsApp» (255×23)
+- movil-arriba.png: encabezado con logo y botón de menú visibles; hero legible; el botón principal «Planeemos tu retiro» es grande (~58 px de alto) y el botón flotante de chat queda a la derecha del enlace de WhatsApp sin tocarlo
+- movil-completa.png: sin desbordes ni texto encimado en las tarjetas de Ley 73, Ley 97 e ISSSTE; se alcanza a ver un fragmento «ión» junto a la tarjeta superpuesta del hero, posiblemente una animación capturada a medias, sin evidencia suficiente para penalizarlo
+- Límite de la revisión: movil-completa.png se corta a 3000 px de alto, así que no vi las secciones inferiores ni el pie de página; el botón flotante, al ser fijo, aparece en la captura completa solo en la posición de la primera pantalla
 
 *Cómo mejorarlo:*
-- Agranda el área táctil de los enlaces de texto ("Conoce tus opciones", "Explorar el blog", "Leer artículo", "Solicitar asesoría por WhatsApp") a al menos 44 px de alto con padding vertical, o haz clicable toda la tarjeta.
-- Reubica o reduce el botón flotante de chat para que no cubra las flechas de las tarjetas (por ejemplo, con un margen inferior mayor o un tamaño de ~48 px).
-- Separa la tarjeta superpuesta "Una nueva etapa…" del enlace de WhatsApp del hero con más espacio vertical, y revisa que no recorte el texto que queda detrás.
+- Agranda el área táctil de los enlaces de texto («Conoce tus opciones», «Explorar el blog», «Leer artículo», «Solicitar asesoría por WhatsApp») a al menos 44 px de alto con padding vertical, o haz clicable toda la tarjeta.
+- Sube el texto más pequeño (la barra superior y las etiquetas en mayúsculas como «ASESORÍA EN PENSIONES IMSS», de ~11 px) a 12–13 px para que el 4.8% de texto pequeño llegue a cero.
 
 #### SEO 10 · Enlaces y URLs: 2/2
 *Vale 2 si:* El menú funciona, no hay enlaces internos rotos (404), los enlaces no dicen "clic aquí" y las URLs se pueden leer
@@ -305,9 +305,9 @@ La página dice que hay «un equipo de profesionistas con más de 10 años de ex
 Ordenado de lo que más puntos pierde (0) a lo que está a medias (1):
 
 1. **AEO 6 · Acceso para bots de IA** (0/2): Cambia «Disallow: /» por «Allow: /» en los bloques de GPTBot, ClaudeBot y Google-Extended de robots.txt para que los cuatro bots de la rúbrica puedan acceder.
-2. **SEO 7 · Imágenes** (1/2): Reexporta el logo (a30aa17e…png) al doble de su tamaño real en pantalla, o como SVG, para recuperar los ~26 KiB que Lighthouse marca como desperdicio.
+2. **SEO 7 · Imágenes** (1/2): Reexporta el logo (a30aa17e…png) como SVG, o al doble de su tamaño real en pantalla, para recuperar los ~26 KiB que Lighthouse marca como desperdicio.
 3. **SEO 8 · Velocidad** (1/2): Elimina el bloqueo de render que marca Lighthouse: inserta en línea el CSS crítico de /assets/index-UWngDO63.css y carga las fuentes de Google (Manrope y Plus Jakarta Sans) con preconnect o autoalojadas, reduciendo los pesos cargados (hoy 5 de Manrope y 7 variantes de Plus Jakarta Sans).
-4. **SEO 9 · Móvil** (1/2): Agranda el área táctil de los enlaces de texto ("Conoce tus opciones", "Explorar el blog", "Leer artículo", "Solicitar asesoría por WhatsApp") a al menos 44 px de alto con padding vertical, o haz clicable toda la tarjeta.
+4. **SEO 9 · Móvil** (1/2): Agranda el área táctil de los enlaces de texto («Conoce tus opciones», «Explorar el blog», «Leer artículo», «Solicitar asesoría por WhatsApp») a al menos 44 px de alto con padding vertical, o haz clicable toda la tarjeta.
 5. **AEO 1 · Respuesta directa arriba** (1/2): Reescribe el párrafo bajo el H1 para que diga quién eres, para quién es y qué ofrece, por ejemplo: «Retiro Seguro es una asesoría independiente en pensiones con sede en Tijuana, para trabajadores afiliados al IMSS (Ley 73 y Ley 97) o al ISSSTE que quieren conocer sus alternativas de retiro. Revisamos tu historial de cotizaciones, calculamos escenarios de pensión y te acompañamos en trámites, por videollamada en todo México.»
 6. **AEO 3 · Preguntas frecuentes** (1/2): Acorta cada respuesta a 1–3 frases (≈40–60 palabras) con la respuesta directa primero y deja el detalle para los artículos del blog. Ejemplo para «¿A qué edad puedo pensionarme por el IMSS?»: «Desde los 60 años por cesantía en edad avanzada o desde los 65 por vejez, si cumples las semanas cotizadas de tu régimen: 500 en Ley 73 y 875 en 2026 en Ley 97.»
 7. **AEO 10 · Señales de confianza** (1/2): Crea una página «Quiénes somos» (/nosotros) y enlázala en el menú y el pie. Pon nombre, foto, cargo y años de experiencia de cada asesor, con su número de constancia CONOCER EC0485 enlazado al registro oficial, y sustituye «Sobre Retiro Seguro → #respaldo» por esa página.

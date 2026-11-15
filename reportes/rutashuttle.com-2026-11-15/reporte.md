@@ -108,22 +108,24 @@ Existen robots.txt (200) y sitemap.xml (válido, 72 URL). El robots.txt usa «Al
 #### SEO 7 · Imágenes: 1/2
 *Vale 2 si:* Las imágenes con contenido tienen alt descriptivo y no pesan de más
 
-Las 6 imágenes con contenido tienen alt descriptivo y específico (p. ej. «Blue-tiled domes of the New Cathedral in Cuenca»), el peso total es de solo 90 KB y no hay imágenes pesadas ni con alt vacío. Lo que queda a medias es el tamaño: Lighthouse marca uses-responsive-images (score 0.5) con un ahorro estimado de 105 KiB, porque las fotos de ciudad se sirven a 960 px de ancho para un espacio de unos 360 px en el teléfono.
+Las 6 imágenes con contenido tienen alt descriptivo y coincide con lo que se ve en la captura (p. ej. «Blue-tiled domes of the New Cathedral in Cuenca» sobre las cúpulas azules), no hay alts vacíos y ninguna imagen supera los 90 KB (todas en AVIF). Queda a medias el tamaño: Lighthouse marca «Properly size images» con score 0.5 y un ahorro estimado de 105 KiB, porque las tarjetas de ciudad se sirven en versión de 960 px para un espacio de unos 358 px de ancho en el teléfono.
 
 *Evidencia:*
 - 6 de 6 imágenes con contenido con alt válido; sinAlt y altVacioEnImagenesGrandes vacíos
-- Alt de la portada: «Ruta Shuttle fleet and drivers in front of a snow-capped volcano in the Ecuadorian Andes»
-- uses-responsive-images: ahorro estimado de 105 KiB (guayaquil-960.avif 45.5 KB, cuenca-960.avif 31.9 KB, quito-960.avif 30.2 KB)
-- Formatos modernos (AVIF), offscreen-images y uses-optimized-images en score 1
+- Alts de ejemplo: «Ruta Shuttle fleet and drivers in front of a snow-capped volcano in the Ecuadorian Andes»; «Malecón 2000 and its Ferris wheel on the Guayas River in Guayaquil»; «Independence Monument in Plaza Grande, Quito's historic center»
+- uses-responsive-images (score 0.5): ahorro de 105 KiB; guayaquil-960.avif 86.7 KB (ahorro 45.5), cuenca-960.avif 60.8 KB (31.9), quito-960.avif 57.6 KB (30.2)
+- image-delivery-insight (score 0.5): ahorro estimado de 184 KiB sumando las tres tarjetas y fleet-960.avif (la portada ya se sirve en AVIF de 960 px)
+- offscreen-images, uses-optimized-images y modern-image-formats en score 1; las fotos de ciudad llevan loading="lazy"
+- Nota: el script reporta 90 KB de peso total de imágenes, pero Lighthouse registra unos 259 KiB solo en los 4 AVIF grandes; no cambia el puntaje porque ninguna pasa de 300 KB
 
 *Cómo mejorarlo:*
-- Agrega srcset y sizes a las fotos de /assets/cities/ (guayaquil, cuenca, quito) con versiones AVIF de 480 y 640 px de ancho, y deja la de 960 px solo para pantallas grandes, para recuperar los ~105 KiB que marca Lighthouse.
-- Aplica el mismo srcset a la imagen de portada (fleet-1672.jpg) para que en el teléfono no se descargue la versión de 1672 px.
+- Agrega srcset y sizes a las fotos de /assets/cities/ (cuenca, guayaquil, quito) con versiones AVIF de 480 y 720 px de ancho, por ejemplo sizes="calc(100vw - 32px)" en móvil, y deja la de 960 px solo para pantallas anchas; así se recuperan los ~105 KiB que marca Lighthouse.
+- Recomprime los AVIF de las tarjetas (guayaquil-960 pesa 86.7 KB) con una calidad algo menor para acercarte al ahorro de ~184 KiB que estima «Improve image delivery».
 
 #### SEO 8 · Velocidad: 2/2
 *Vale 2 si:* En Lighthouse móvil: rendimiento de 80 o más, LCP menor a 2.5 s y CLS menor a 0.1
 
-Confirmo el 2 del script: Lighthouse móvil da rendimiento 96 (mínimo 80), LCP 1.73 s (máximo 2.5 s) y CLS 0.000 (máximo 0.1), así que cumple las tres métricas. Es una sola medición de Lighthouse; el resultado puede variar unos puntos entre corridas y equipos.
+Confirmo el 2 del script: Lighthouse móvil da rendimiento 96 (mínimo 80), LCP 1.73 s (máximo 2.5 s) y CLS 0.000 (máximo 0.1), o sea que cumple las tres métricas. Es una sola medición de Lighthouse; el resultado puede variar unos puntos entre corridas y entre equipos.
 
 *Evidencia:*
 - Rendimiento 96; LCP 1,725 ms; CLS 0
@@ -134,14 +136,15 @@ Confirmo el 2 del script: Lighthouse móvil da rendimiento 96 (mínimo 80), LCP 
 #### SEO 9 · Móvil: 2/2
 *Vale 2 si:* Tiene meta viewport, se ve bien en el teléfono, el texto se lee y los botones se tocan fácil
 
-Confirmo el 2 del script. Tiene meta viewport correcto, no hay scroll horizontal y solo 2% del texto mide menos de 12 px. En las capturas el texto se lee sin zoom, las tarjetas de destino no se cortan ni se encimen, el encabezado muestra el menú hamburguesa y no hay banner de cookies ni pop-up que tape la pantalla. Solo 2 de 91 enlaces tocables miden menos de 24 px de alto (los teléfonos del pie, 22 px), un detalle menor.
+Confirmo el 2 del script. Tiene meta viewport correcto, no hay scroll horizontal y solo 2% del texto mide menos de 12 px. En las capturas nuevas, que ya empiezan en el inicio de la página, el encabezado muestra logo, selector de idioma y botón de menú (hamburguesa) bien visibles; el título, el párrafo y el formulario se leen sin zoom, los campos y el botón «See prices» son grandes y fáciles de tocar, y las tarjetas de destino no se cortan ni se encimen. No hay banner de cookies ni pop-up que tape la pantalla. Detalle menor: al cargar, el botón flotante de WhatsApp tapa el final de una línea de texto de apoyo («…number of passen[gers]…»), y los dos teléfonos del pie miden 22 px de alto.
 
 *Evidencia:*
-- viewport="width=device-width, initial-scale=1, viewport-fit=cover"; desbordeHorizontalPx = 0
-- Captura completa: encabezado con logo, selector de idioma y botón de menú (hamburguesa) visibles; titulares y botón «See prices» grandes y legibles
-- Captura: el botón flotante de WhatsApp (abajo a la derecha) solo roza el borde de la tarjeta de Cuenca y no tapa texto importante
-- Enlaces de teléfono +593 98 084 0114 y +593 98 779 6896 miden 138×22 px (2 de 91 por debajo de 24 px)
-- Limitación de las capturas: movil-arriba.png empieza a media página (en «Only your group in the vehicle») y en movil-completa.png el encabezado fijo aparece a media altura sobre el campo «To» del formulario; lo interpreto como efecto de la captura, no como un defecto real. La captura completa está recortada a 3000 px de alto.
+- viewport="width=device-width, initial-scale=1, viewport-fit=cover"; desbordeHorizontalPx = 0; Lighthouse viewport score 1
+- movil-arriba.png: encabezado con logo «Ruta Shuttle», banderas de idioma y hamburguesa (≈44 px) visibles; título «Ecuador Transportation, Door to Door» en blanco sobre foto oscura, legible
+- Formulario «Find your ride»: selectores de ≈52 px de alto y botón naranja «See prices» de ≈54 px de alto, bien separados entre sí
+- El botón flotante verde de WhatsApp (≈52 px, abajo a la derecha) cubre la palabra «passengers» del texto de ayuda del formulario en la posición inicial; es texto secundario y se libera al hacer scroll
+- movil-completa.png (390×3000, solo los primeros 3000 px de la página): encabezado arriba, tarjetas de Cuenca, Guayaquil y Quito con foto, título y enlaces sin cortes ni textos encimados
+- Enlaces +593 98 084 0114 y +593 98 779 6896 miden 138×22 px (2 de 91 por debajo de 24 px); 1.5% del texto por debajo de 12 px
 
 #### SEO 10 · Enlaces y URLs: 2/2
 *Vale 2 si:* El menú funciona, no hay enlaces internos rotos (404), los enlaces no dicen "clic aquí" y las URLs se pueden leer
@@ -281,7 +284,7 @@ Solo hay dos señales claras: una sección «Acerca de» (enlace /about/ en men�
 
 Ordenado de lo que más puntos pierde (0) a lo que está a medias (1):
 
-1. **SEO 7 · Imágenes** (1/2): Agrega srcset y sizes a las fotos de /assets/cities/ (guayaquil, cuenca, quito) con versiones AVIF de 480 y 640 px de ancho, y deja la de 960 px solo para pantallas grandes, para recuperar los ~105 KiB que marca Lighthouse.
+1. **SEO 7 · Imágenes** (1/2): Agrega srcset y sizes a las fotos de /assets/cities/ (cuenca, guayaquil, quito) con versiones AVIF de 480 y 720 px de ancho, por ejemplo sizes="calc(100vw - 32px)" en móvil, y deja la de 960 px solo para pantallas anchas; así se recuperan los ~105 KiB que marca Lighthouse.
 2. **AEO 1 · Respuesta directa arriba** (1/2): Reescribe el párrafo bajo el H1 para nombrar al sitio, al público y la oferta en dos frases: "Ruta Shuttle is a private transportation company for travelers, families and groups in Ecuador, with airport transfers and door-to-door rides from Quito, Cuenca and Guayaquil from $20 per vehicle. Choose your route, see the price and book online in a few minutes."
 3. **AEO 10 · Señales de confianza** (1/2): Agrega a la home (por ejemplo, tras «Local drivers, from the Andes to the coast») 3 a 5 testimonios reales con nombre, país y ruta contratada, o una calificación con fuente, como «4.9/5 en Tripadvisor (N reseñas)» enlazada a la ficha; marca solo reseñas genuinas con Review/AggregateRating en el schema.
 

@@ -108,52 +108,54 @@ Existen robots.txt (200) y sitemap.xml (200, válido, 15 URL) y el sitemap está
 #### SEO 7 · Imágenes: 1/2
 *Vale 2 si:* Las imágenes con contenido tienen alt descriptivo y no pesan de más
 
-Las 17 imágenes tienen alt descriptivo y de buena calidad (por ejemplo: «Taburete fabricado con plástico reciclado y madera reutilizada, sobre un fondo cálido de estudio.»), sin alt vacíos ni imágenes pesadas (peso total 57 KB, ninguna > 300 KB). Lo único que falla es que Lighthouse marca uses-responsive-images con un ahorro estimado de 48 KiB en tres imágenes servidas a 768 px de ancho; es un detalle menor y queda cerca de 2.
+Las 17 imágenes con contenido tienen alt descriptivo y específico de lo que se ve (por ejemplo: «Taburete fabricado con plástico reciclado y madera reutilizada, sobre un fondo cálido de estudio.»), no hay alt vacíos ni imágenes mayores a 300 KB, y el hero ya se sirve en AVIF. Lo que queda a medias es el tamaño con el que se sirven: Lighthouse marca uses-responsive-images (ahorro estimado de 48 KiB) en tres imágenes entregadas a 768 px de ancho. Es un detalle menor y queda cerca de 2.
 
 *Evidencia:*
-- 17 de 17 imágenes con contenido tienen alt válido (100%); altVacioEnImagenesGrandes: []
-- imagenesPesadas: []; pesoTotalImagenesKB: 57
-- Lighthouse uses-responsive-images: score 0, ahorro estimado 48 KiB (imágenes de ~46–49 KB y ~33 KB con width=768)
-- uses-optimized-images, modern-image-formats y offscreen-images: score 1 (usa AVIF en la imagen principal)
+- 17 de 17 imágenes con contenido con alt válido (100%); altVacioEnImagenesGrandes: []; imagenesPesadas: []
+- Lighthouse uses-responsive-images: score 0, ahorro estimado de 48 KiB en tres imágenes con width=768 (de 33 a 49 KB cada una)
+- Lighthouse image-delivery-insight: score 0.5, ahorro estimado de 99 KiB en esas mismas tres imágenes
+- uses-optimized-images, modern-image-formats y offscreen-images: score 1; 16 de 17 imágenes con loading=lazy y el hero con loading=eager
+- El script reporta pesoTotalImagenesKB: 57, pero las tres imágenes que Lighthouse cargó suman unos 128 KB; el 57 probablemente subestima el total
 
 *Cómo mejorarlo:*
-- Sirve las tres imágenes marcadas por Lighthouse (hero, «Emprendedora creativa…» y «Prototipo de sensor…») con un ancho cercano al que se muestra en móvil (por ejemplo ?width=600) o agrega srcset/sizes con variantes de 400, 600 y 768 px.
-- Haz que el hero use una variante AVIF de ~600 px para móvil en lugar de hero-night-team-v1-768.avif, para recuperar los ~15 KB que Lighthouse estima como ahorro.
+- Sirve las tres imágenes que marca Lighthouse («Emprendedora creativa…», «Prototipo de sensor…» y el hero «Tres personas colaboran en una lámpara…») con un ancho cercano al que se muestra en móvil, por ejemplo ?width=600 en las de images.hostinger.com, o agrega srcset/sizes con variantes de 400, 600 y 768 px.
+- Genera para el hero una variante AVIF de unos 600 px para móvil en lugar de hero-night-team-v1-768.avif, para recuperar los ~15 KB que Lighthouse estima como ahorro.
 
 #### SEO 8 · Velocidad: 1/2
 *Vale 2 si:* En Lighthouse móvil: rendimiento de 80 o más, LCP menor a 2.5 s y CLS menor a 0.1
 
-Es una sola medición de Lighthouse móvil, que varía entre corridas y equipos. El rendimiento es 83 (cumple ≥ 80) y el CLS es 0.000 (cumple < 0.1), pero el LCP es 3.80 s y no llega a < 2.5 s, así que se cumplen dos de las tres condiciones y el puntaje es 1. El servidor responde rápido (100 ms), por lo que el retraso viene del lado del cliente.
+Es una sola medición de Lighthouse móvil (12.8.2) y varía entre corridas y equipos. El rendimiento es 83 (cumple ≥ 80) y el CLS es 0.000 (cumple < 0.1), pero el LCP es 3.80 s y no llega a < 2.5 s: se cumplen dos de las tres condiciones, así que el puntaje es 1. El servidor responde rápido (100 ms) y Lighthouse marca la descubierta tardía del recurso del LCP, por lo que la demora viene del lado del cliente.
 
 *Evidencia:*
-- Rendimiento 83, SEO 92 (Lighthouse 12.8.2, una sola corrida)
+- Rendimiento 83, SEO 92 (una sola corrida)
 - LCP 3,800 ms (máximo 2.5 s); FCP 2,253 ms; TBT 205 ms; Speed Index 2,593 ms
 - CLS 0.000
-- server-response-time: el documento raíz tardó 100 ms (score 1)
-- lcp-discovery-insight con score 0 (el recurso del LCP se descubre tarde); unused-javascript: ahorro de 22 KiB en jsx-runtime-98TrhzpB.js
-- Peso total de la página 429 KiB (score 1)
+- server-response-time: el documento raíz tardó 100 ms (score 1); render-blocking-resources: score 1
+- lcp-discovery-insight: score 0; unused-javascript: ahorro estimado de 22 KiB en jsx-runtime-98TrhzpB.js
+- El hero se pide a darkorchid-donkey-829051.hostingersite.com, un dominio distinto al de la página, con loading=eager; peso total de la página 429 KiB (score 1)
 
 *Cómo mejorarlo:*
-- Adelanta la descubierta de la imagen LCP (el hero): agrega <link rel="preload" as="image" fetchpriority="high"> en el HTML inicial y asegúrate de que la imagen no tenga loading="lazy" ni dependa de que arranque el JavaScript para pedirse.
-- Sirve el hero desde el mismo dominio (hoy se pide a darkorchid-donkey-829051.hostingersite.com), para evitar una conexión DNS/TLS extra antes del LCP.
-- Reduce el JavaScript que bloquea el primer pintado: divide o difiere el bundle jsx-runtime-98TrhzpB.js (22 KiB sin usar) y carga bajo demanda lo que no se ve al inicio, por ejemplo la animación del fondo.
+- Adelanta la descarga de la imagen principal: agrega en el HTML inicial un <link rel='preload' as='image' fetchpriority='high'> para el hero (o fetchpriority='high' en su <img>), de modo que no dependa de que el JavaScript arranque para pedirse.
+- Sirve el hero desde hago.click en vez de darkorchid-donkey-829051.hostingersite.com, o agrega <link rel='preconnect'> a ese dominio, para quitar la conexión DNS/TLS extra antes del LCP.
+- Reduce el JavaScript inicial: divide o difiere jsx-runtime-98TrhzpB.js (22 KiB sin usar) y carga bajo demanda lo que no se ve al abrir la página, para acercar el FCP (2.25 s) y el LCP a menos de 2.5 s.
 
 #### SEO 9 · Móvil: 1/2
 *Vale 2 si:* Tiene meta viewport, se ve bien en el teléfono, el texto se lee y los botones se tocan fácil
 
-Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y en las capturas el diseño se ve limpio: el menú hamburguesa está visible, no hay banner de cookies ni pop-up que tape la pantalla y los botones principales («Tengo una idea», «Quiero aportar») son grandes. Lo que queda a medias es la legibilidad: 16% del texto mide menos de 12 px (etiquetas en monoespaciada como «ESCENA ILUSTRATIVA CREADA CON IA», «Dos formas de empezar. Un mismo propósito.» y «Explora lo que podríamos crear juntos» se ven muy pequeñas en la captura) y hay enlaces de 15–16 px de alto. Solo vi los primeros ~3,000 px de la captura completa (el resto está recortado).
+Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y las capturas se ven limpias: el menú hamburguesa está visible arriba a la derecha (~44 px), no hay banner de cookies ni pop-up, el título y el párrafo principal se leen sin zoom y los botones «Tengo una idea» y «Quiero aportar» son grandes. Lo que queda a medias es la legibilidad y algunos objetivos táctiles: 16% del texto mide menos de 12 px (se nota en «IDEAS LOCALES. POSIBILIDADES COMPARTIDAS.», «Dos formas de empezar. Un mismo propósito.» y «ESCENA ILUSTRATIVA CREADA CON IA») y hay dos enlaces de 15–16 px de alto. La captura completa solo llega a los primeros 3,000 px de una página mucho más larga, así que no pude revisar el resto.
 
 *Evidencia:*
 - viewport="width=device-width, initial-scale=1"; desbordeHorizontalPx: 0
 - Texto pequeño: 2,343 de 14,771 caracteres (16%) menores a 12 px
 - Objetivos táctiles pequeños: «Explora lo que podríamos crear juntos» (181×16 px) y «Volver arriba ↑» (66×15 px); 2 de 66
-- Captura movil-arriba.png: botón flotante de pausa (≈40 px) encimado en la esquina inferior izquierda junto al enlace «Explora lo que podríamos crear juntos»
-- Captura movil-completa.png: hamburguesa visible en el encabezado, enlace «Saltar al contenido» visible y pegado al logo en la parte superior; sin cortes de contenido ni texto encimado en lo que alcancé a ver
+- movil-arriba.png: la captura sí empieza en el inicio de la página; hamburguesa y logo visibles, sin banner ni pop-up, sin contenido cortado
+- movil-arriba.png y movil-completa.png: botón flotante de pausa (~44 px) en la esquina inferior izquierda que cubre el borde de la imagen del hero, y un círculo verde decorativo sobre la palabra «acceso» del párrafo (sigue legible)
+- movil-completa.png mide 390×3000 px: solo cubre el hero y las primeras tarjetas de ejemplos (taburete y sensor de aire); sin cortes ni texto encimado en ese tramo
 
 *Cómo mejorarlo:*
-- Sube a 12–13 px como mínimo las etiquetas pequeñas en monoespaciada («ESCENA ILUSTRATIVA CREADA CON IA», «EJEMPLOS · NO PROYECTOS REALES», «Dos formas de empezar…») y el texto de apoyo del hero.
-- Dale al menos 24 px de alto (idealmente 44 px) a los enlaces «Explora lo que podríamos crear juntos» y «Volver arriba ↑» con padding vertical, y separa el botón flotante de pausa de ese enlace para que no se encimen.
-- Revisa que el enlace «Saltar al contenido» solo se muestre al recibir foco con el teclado y no se encime con el logo en la parte superior.
+- Sube a 12 px como mínimo (idealmente 13–14 px) las etiquetas pequeñas en monoespaciada («IDEAS LOCALES. POSIBILIDADES COMPARTIDAS.», «ESCENA ILUSTRATIVA CREADA CON IA», «EJEMPLO HIPOTÉTICO · Prototipo inicial», «APORTES POSIBLES») y el texto de apoyo «Dos formas de empezar. Un mismo propósito.».
+- Dale al menos 24 px de alto (idealmente 44 px) a los enlaces «Explora lo que podríamos crear juntos» y «Volver arriba ↑» con padding vertical, y deja espacio entre ellos y el control «Pausar fondo».
+- Mueve o reduce el botón flotante de pausa para que no tape la esquina de la imagen del hero y revisa que el círculo verde decorativo no quede encima del texto del párrafo principal.
 
 #### SEO 10 · Enlaces y URLs: 2/2
 *Vale 2 si:* El menú funciona, no hay enlaces internos rotos (404), los enlaces no dicen "clic aquí" y las URLs se pueden leer
@@ -299,9 +301,9 @@ Tres de las cuatro señales están visibles: el pie tiene la sección «Quién e
 Ordenado de lo que más puntos pierde (0) a lo que está a medias (1):
 
 1. **AEO 6 · Acceso para bots de IA** (0/2): Cambia los bloques `User-agent: GPTBot`, `User-agent: ClaudeBot` y `User-agent: Google-Extended` de `Disallow: /` a `Allow: /`, para que la rúbrica los considere accesibles.
-2. **SEO 7 · Imágenes** (1/2): Sirve las tres imágenes marcadas por Lighthouse (hero, «Emprendedora creativa…» y «Prototipo de sensor…») con un ancho cercano al que se muestra en móvil (por ejemplo ?width=600) o agrega srcset/sizes con variantes de 400, 600 y 768 px.
-3. **SEO 8 · Velocidad** (1/2): Adelanta la descubierta de la imagen LCP (el hero): agrega <link rel="preload" as="image" fetchpriority="high"> en el HTML inicial y asegúrate de que la imagen no tenga loading="lazy" ni dependa de que arranque el JavaScript para pedirse.
-4. **SEO 9 · Móvil** (1/2): Sube a 12–13 px como mínimo las etiquetas pequeñas en monoespaciada («ESCENA ILUSTRATIVA CREADA CON IA», «EJEMPLOS · NO PROYECTOS REALES», «Dos formas de empezar…») y el texto de apoyo del hero.
+2. **SEO 7 · Imágenes** (1/2): Sirve las tres imágenes que marca Lighthouse («Emprendedora creativa…», «Prototipo de sensor…» y el hero «Tres personas colaboran en una lámpara…») con un ancho cercano al que se muestra en móvil, por ejemplo ?width=600 en las de images.hostinger.com, o agrega srcset/sizes con variantes de 400, 600 y 768 px.
+3. **SEO 8 · Velocidad** (1/2): Adelanta la descarga de la imagen principal: agrega en el HTML inicial un <link rel='preload' as='image' fetchpriority='high'> para el hero (o fetchpriority='high' en su <img>), de modo que no dependa de que el JavaScript arranque para pedirse.
+4. **SEO 9 · Móvil** (1/2): Sube a 12 px como mínimo (idealmente 13–14 px) las etiquetas pequeñas en monoespaciada («IDEAS LOCALES. POSIBILIDADES COMPARTIDAS.», «ESCENA ILUSTRATIVA CREADA CON IA», «EJEMPLO HIPOTÉTICO · Prototipo inicial», «APORTES POSIBLES») y el texto de apoyo «Dos formas de empezar. Un mismo propósito.».
 5. **AEO 8 · Identidad clara y consistente** (1/2): Crea o enlaza los perfiles oficiales de la marca (por ejemplo LinkedIn, Instagram o X de hago.click) en el pie de página, con rel="me" o aria-label claros, para que se vean en la página.
 6. **AEO 9 · Datos concretos** (1/2): Añade cifras reales del piloto en el primer bloque o en las preguntas frecuentes, por ejemplo: «El piloto inicia con X participantes en [países/ciudades] y la solicitud se responde en X días hábiles», usando solo datos que ya estén definidos.
 

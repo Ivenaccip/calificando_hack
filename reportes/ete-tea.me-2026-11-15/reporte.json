@@ -1,0 +1,226 @@
+{
+  "url": "https://ete-tea.me/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 17,
+  "aeo": 14,
+  "total": 31,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title>, de 48 caracteres: «eté por tea human · Té artesanal de especialidad». Combina la marca con el tema (té artesanal de especialidad), no es genérico y describe de qué trata la página. Queda apenas debajo del rango ideal de 50–60, pero la rúbrica lo marca como aproximado.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 154 caracteres (dentro de 140–160) y invita a entrar: «Explora nuestra colección, reserva una cata y descubre el arte de hacer una pausa». Además están og:title, og:description y og:image (URL absoluta https) y twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay exactamente un H1 («eté por tea human») y 7 H2 con H3 anidados (29 en total, sin H4–H6) y sin saltos de nivel. El H1 es el nombre de la marca; el tema («TÉ ARTESANAL DE ESPECIALIDAD») queda en la línea de apoyo justo arriba, y los H2 («La filosofía del té.», «Un mapa del té.», «Experiencias y viajes.») ordenan bien el contenido. Detalle menor: el aviso de cookies aparece como un H2 más («También cuidamos tu privacidad.») al final de la lista, es decir, un encabezado usado por estilo.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (té de especialidad) es evidente en los tres lugares: título «Té artesanal de especialidad», H1 «eté por tea human» (con la palabra «tea», justo debajo del rótulo «TÉ ARTESANAL DE ESPECIALIDAD») y primer párrafo «Tés de origen seleccionados a mano». Hay unas 1,048 palabras en el contenido principal y, aun descontando precios y repeticiones del catálogo, quedan bastante más de 300 palabras útiles (filosofía, fichas de origen, B2B, contacto y seis respuestas de FAQ). No hay relleno notable.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página es indexable: responde 200 sin redirecciones, no hay meta robots ni X-Robots-Tag, el canonical apunta a sí misma (https://ete-tea.me/), usa HTTPS y declara lang=\"es-MX\", que coincide con el contenido en español. Lighthouse confirma que no está bloqueada para indexación.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido, 10 URL). El robots.txt permite todo a los buscadores con «User-agent: *» y «Allow: /», y declara el sitemap. Solo bloquea bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended, etc.), lo cual no afecta el rastreo ni el SEO. El sitemap lista páginas reales del mismo dominio y protocolo, incluida la home. Lighthouse marca «robots.txt is not valid (13 errors)», pero son las 13 líneas «Content-Signal», una directiva nueva que su validador no reconoce; los buscadores la ignoran sin problema.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Las 6 imágenes con contenido tienen alt descriptivo y específico (por ejemplo «Plantaciones de té en las montañas de Taiwán»), no hay alts vacíos en imágenes grandes y el peso total de imágenes es de solo 71 KB, sin ninguna arriba de 300 KB. Lo único que falla es que Lighthouse marca uses-responsive-images (score 0.5): una foto se sirve con ?width=768 y se podrían ahorrar unos 23 KiB en móvil. Es un caso límite: el criterio se cumple en lo esencial y el único punto pendiente es el tamaño de una imagen.",
+      "mejoras": [
+        "Sirve la foto «Manos preparando té de hoja suelta…» a un ancho acorde con su tamaño en móvil (cambia ?width=768 por ?width=580 aprox.) o agrega srcset/sizes con versiones de 400, 600 y 900 px para ahorrar los ~23 KiB que marca Lighthouse.",
+        "Aplica el mismo srcset/sizes al resto de las fotos de la página (hero, cata privada, plantaciones) para que ninguna se descargue más grande de lo que se muestra.",
+        "Haz más específico el alt «Cata privada en la boutique secreta», describiendo lo que se ve en la foto (por ejemplo, «Dos personas probando té en una mesa de la boutique»)."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Confirmo el puntaje del script: de las tres métricas solo CLS pasa (0.000 < 0.1). El rendimiento es 77 (mínimo 80) y el LCP es 4.85 s (máximo 2.5 s). Es una sola medición de Lighthouse móvil y puede variar entre corridas y equipos; aun así, el LCP queda muy por encima del umbral, mientras que el servidor responde rápido (190 ms) y TBT es 0.",
+      "mejoras": [
+        "Elimina los recursos que bloquean el render: incrusta el CSS crítico del primer pliegue y carga index-B0Nmbf0n.css de forma diferida, lo que Lighthouse estima en ~810 ms de ahorro.",
+        "Acelera la imagen principal del hero (primera imagen, sin lazy): agrega <link rel=\"preload\" as=\"image\"> con fetchpriority=\"high\", sirve una versión de ~800 px de ancho en móvil y considera WebP/AVIF en lugar de PNG.",
+        "Reduce el costo de las fuentes: agrega preconnect a fonts.googleapis.com y fonts.gstatic.com, o autoaloja las fuentes y carga solo los pesos que realmente usas de Cormorant Garamond, Manrope e Italianno."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Confirmo el puntaje del script. Tiene meta viewport correcto, no hay scroll horizontal y en la captura el diseño se ve limpio: logotipo, carrito y botón hamburguesa visibles, titular y botón «Explorar colección» legibles y sin encimarse. El banner de cookies ocupa cerca del 20% inferior de la primera pantalla pero es compacto, tiene tres botones grandes y no tapa el contenido principal. Los pendientes son medibles: 35% del texto mide menos de 12px y 15 de 49 elementos tocables miden menos de 24px.",
+      "mejoras": [
+        "Sube a 12px o más las etiquetas en mayúsculas y los textos secundarios (eyebrows como «TÉ ARTESANAL DE ESPECIALIDAD», «ORÍGENES», la etiqueta de tipo «Oolong» y «MXN» junto a los precios) para que se lean sin hacer zoom.",
+        "Dale al enlace «DESCUBRE EL RITUAL ↓» (hoy 13 px de alto) y al botón «Abrir menú» (hoy 23 px de ancho) un área tocable de al menos 44×44 px con padding, sin cambiar su aspecto.",
+        "Haz que los puntos del mapa de orígenes tengan un área de toque mínima de 24×24 px (idealmente 44) o que no sean interactivos; si es solo decorativo, márcalos con aria-hidden y pointer-events: none."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 8 enlaces internos distintos y los 3 enlaces internos únicos que no son anclas (/shop, /reservaciones, /cart) respondieron sin errores; no hay rotos ni enlaces sin verificar. No hay anclas genéricas («clic aquí», «leer más») y Lighthouse aprueba «Links have descriptive text» y «Links are crawlable». Las URLs son cortas y legibles (/shop, /reservaciones, /galeria). Observaciones menores: el enlace del carrito solo tiene el contador «0» como texto, y no pude comprobar con la evidencia que existan los destinos de las anclas (#filosofia, #origenes, #galeria, #contacto), aunque las secciones aparecen en la página.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Abre con un eslogan («El arte de hacer una pausa») y la segunda frase solo dice de forma vaga «Tés de origen seleccionados a mano, para reconectar contigo en cada taza». Se intuye qué vende, pero no queda claro para quién es ni qué ofrece en concreto (orígenes, tienda, catas, precios); eso solo aparece en la meta description, no en el cuerpo.",
+      "mejoras": [
+        "Reemplaza el primer párrafo bajo el H1 por una definición directa de ~50 palabras, por ejemplo: «eté por tea human es una tienda de tés de especialidad de China, Taiwán y Latinoamérica, con boutique en la Ciudad de México. Es para quienes disfrutan el té de hoja suelta y para restaurantes, hoteles y cafeterías. Ofrece 21 tés desde $158 MXP (20 g), catas privadas y viajes a orígenes.»",
+        "Deja el eslogan «El arte de hacer una pausa» como segunda línea o como subtítulo, después de la definición."
+      ]
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Ningún H2 es pregunta (el H2 de la sección es «Lo que más nos preguntan.»), pero hay seis H3 que son preguntas reales de un usuario y cada una se responde en la primera frase justo debajo. Cumple el criterio, que acepta H2/H3.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección visible «PREGUNTAS FRECUENTES / Lo que más nos preguntan.» con 6 preguntas, cada una con respuesta completa de 1 a 3 frases. El script no detectó encabezado ni sección FAQ (encabezadoFaq: null), pero el texto renderizado sí la muestra; no depende de schema (schemaFaq: false).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 1,
+      "puntajeScript": 2,
+      "origen": "agente (ajustó al script)",
+      "justificacion": "Hay 2 bloques JSON-LD válidos (WebSite y Organization, ambos con @context schema.org), están en el HTML inicial y el name «eté por tea human» coincide con la página. Pero el schema es mínimo: en la evidencia solo aparece el name y sameAs viene vacío, y no cubre lo que la página sí muestra: 6 preguntas frecuentes visibles (schemaFaq: false), 21 tés con precios en MXN, teléfono +52 5521057503, horario lun–sáb 9:00–18:00 y ubicación en Condesa, CDMX.",
+      "mejoras": [
+        "Agrega un bloque FAQPage con las 6 preguntas y respuestas que ya se ven en la página (por ejemplo «¿Qué métodos de pago aceptan?»), con el mismo texto visible.",
+        "Agrega Product con Offer (o un ItemList de Product) para los tés de la colección, con priceCurrency «MXN» y los precios de 20g, 50g y 100g tal como se muestran.",
+        "Completa el Organization con url, logo, sameAs (perfiles de Instagram u otras redes), contactPoint con telephone «+52 5521057503» y horario lun–sáb 9:00–18:00. Si quieres que se lea como negocio local, usa Store o LocalBusiness con addressLocality «Ciudad de México»."
+      ]
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML inicial trae 1028 de 1048 palabras del texto renderizado (98%), muy por encima del 80% que pide la escala. El H1 y los H2/H3 con los nombres de los tés ya vienen en el HTML crudo, así que un bot que no ejecuta JavaScript lee lo importante.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 1,
+      "puntajeScript": 0,
+      "origen": "agente (ajustó al script)",
+      "justificacion": "El robots.txt bloquea con «Disallow: /» a GPTBot, ClaudeBot y Google-Extended; solo PerplexityBot de los 4 de la rúbrica queda permitido. Sin embargo, el bloqueo es selectivo y deliberado: los bots de búsqueda y de asistentes (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User) tienen «Allow: /» y la señal «Content-Signal: ai-train=no» declara la política. Por eso el sitio sigue siendo accesible para respuestas de IA, pero no cumple lo que pide el 2. Existe un llms.txt (bonus informativo, no suma puntaje).",
+      "mejoras": [
+        "Si quieres aparecer en respuestas de ChatGPT, Claude y Gemini, cambia «Disallow: /» por «Allow: /» para GPTBot, ClaudeBot y Google-Extended, y conserva «Content-Signal: ai-train=no» para expresar tu postura sobre entrenamiento.",
+        "Si prefieres mantener el bloqueo de entrenamiento, déjalo documentado como decisión, sabiendo que la rúbrica lo cuenta como acceso incompleto y que Google-Extended no afecta tu posicionamiento en Google Search."
+      ]
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Los párrafos son cortos (29 párrafos, promedio de 17 palabras, ninguno largo) y cada sección trata un solo tema, pero la página no usa ninguna lista, tabla ni lista numerada (0 ítems, 0 filas). El catálogo de 21 tés con tres precios cada uno aparece como fichas con precios pegados («20g$375 MXP») y los procesos de compra y reserva están en prosa, no como pasos. Además, «Experiencias y viajes» solo tiene títulos y pies de foto, sin texto explicativo.",
+      "mejoras": [
+        "Presenta el catálogo como tabla con columnas «Té | Tipo | Origen | 20 g | 50 g | 100 g» (o como lista con un precio por línea) en lugar de «20g$375 MXP50g$935 MXP…» pegados.",
+        "Convierte el proceso de compra en pasos numerados: «1. Elige tu té. 2. Elige 20, 50 o 100 g. 3. Paga con tarjeta o transferencia.»",
+        "Agrega 1–2 frases bajo «Catas y eventos privados» y «Viajes a orígenes del té» que expliquen qué incluyen, para quién son y cómo reservar."
+      ]
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre es idéntico en <title>, H1, pie (© 2026 eté por tea human) y en el schema (WebSite y Organization: «eté por tea human»), y el teléfono +52 5521057503 coincide con el enlace de WhatsApp. Pero el schema no repite ningún dato de contacto, ubicación ni descripción, y `sameAs` está vacío aunque la página enlaza Instagram y Facebook de la marca.",
+      "mejoras": [
+        "Completa el nodo Organization del JSON-LD con `telephone` («+52 55 2105 7503»), `email`, `description` (la misma de la meta description), `logo`, `url` y `address` (PostalAddress con addressLocality «Ciudad de México» y colonia Condesa, aunque la dirección exacta siga siendo privada).",
+        "Agrega `sameAs` con los perfiles que ya enlazas en el pie: [\"https://instagram.com/ete.teahuman\", \"https://facebook.com/eteteahuman\"].",
+        "Publica un correo de contacto visible (mailto:) y añade la meta `og:site_name` con «eté por tea human» para reforzar el nombre de marca."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Casi todas las afirmaciones importantes traen datos verificables: precios por presentación para 21 tés, región y nivel de oxidación de cada uno, horario de atención, años de experiencia y certificación con año. Las frases poéticas de la sección de filosofía son pocas y no sustituyen los datos.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay señales, pero todas débiles. Se nombra a la sommelier («Tea Human», con certificación TBRS 2025 y 5+ años de experiencia, solo en una respuesta del FAQ) y la sección «La filosofía del té» hace de acerca de, pero sin página propia, sin foto ni nombre completo. La única señal de actualización es «© 2026», y no hay testimonios, reseñas ni fuentes externas con enlace.",
+      "mejoras": [
+        "Añade una sección o página «Acerca de» con el nombre completo de la sommelier, su foto, trayectoria y un enlace verificable a su certificación TBRS 2025; marca a la persona con schema Person (`founder`/`employee` de la Organization).",
+        "Incluye 3 o más testimonios o reseñas reales con nombre, negocio o foto y calificación (por ejemplo de los restaurantes o cafeterías que ya atienden en el B2B) y márcalos con Review/AggregateRating.",
+        "Muestra una fecha de actualización visible en el catálogo (por ejemplo «Precios actualizados: noviembre 2026») y agrega `dateModified` en el JSON-LD; enlaza también páginas de privacidad y términos."
+      ]
+    }
+  ],
+  "advertencias": []
+}
