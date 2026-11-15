@@ -7,8 +7,14 @@ const pareceHtml = (r) => /text\/html/i.test(r.headers?.['content-type'] || '') 
 export async function revisarRobots(origen, urlPagina) {
   const r = await obtener(`${origen}/robots.txt`, { timeoutMs: 15000 });
   const existe = Boolean(r.ok && r.status === 200 && r.texto.trim() && !pareceHtml(r));
-  const info = { url: `${origen}/robots.txt`, existe, status: r.status ?? null, error: r.error, contenido: existe ? r.texto.slice(0, 3000) : null, sitemaps: [] };
-  if (!existe) return { ...info, bloqueaTodoElSitio: false, bloqueaLaPagina: false, bots: Object.fromEntries([...BOTS_IA, ...BOTS_IA_EXTRA].map((b) => [b, { bloqueado: false, motivo: 'robots.txt no existe (todo permitido)' }])) };
+  // Ausente de verdad (404/410, o 200 vacío/HTML) ≠ inaccesible (403, 5xx, timeout): en el segundo caso no se sabe qué dice.
+  const ausente = Boolean(r.ok && (r.status === 404 || r.status === 410 || (r.status === 200 && (!r.texto.trim() || pareceHtml(r)))));
+  const inaccesible = !existe && !ausente;
+  const info = { url: `${origen}/robots.txt`, existe, inaccesible, status: r.status ?? null, error: r.error, contenido: existe ? r.texto.slice(0, 3000) : null, sitemaps: [] };
+  if (!existe) {
+    const motivo = inaccesible ? `robots.txt inaccesible (${r.status ? `HTTP ${r.status}` : r.error}): no se pudo comprobar` : 'robots.txt no existe (todo permitido)';
+    return { ...info, bloqueaTodoElSitio: false, bloqueaLaPagina: false, bots: Object.fromEntries([...BOTS_IA, ...BOTS_IA_EXTRA].map((b) => [b, { bloqueado: false, indeterminado: inaccesible, motivo }])) };
+  }
   const robots = robotsParser(info.url, r.texto);
   const bloqueado = (ua, u = `${origen}/`) => robots.isAllowed(u, ua) === false;
   return {

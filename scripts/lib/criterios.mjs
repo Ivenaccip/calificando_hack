@@ -95,6 +95,7 @@ function seo5(ctx) {
 
 function seo6(ctx) {
   const { robots, sitemap } = ctx;
+  if (robots.inaccesible) return noEvaluable(`el robots.txt no se pudo leer (${robots.status ? `HTTP ${robots.status}` : robots.error}); el sitio puede estar bloqueando al medidor, no se asume que no exista`, { robots: { url: robots.url, status: robots.status, error: robots.error } });
   const checks = [
     check('robotsExiste', robots.existe, robots.existe ? 'robots.txt encontrado' : `No hay robots.txt (${robots.error || `status ${robots.status}`})`),
     check('robotsNoBloquea', !robots.bloqueaTodoElSitio && !robots.bloqueaLaPagina, robots.bloqueaTodoElSitio ? 'robots.txt bloquea todo el sitio' : robots.bloqueaLaPagina ? 'robots.txt bloquea esta página' : 'No bloquea el sitio', { bloqueante: true }),
@@ -246,6 +247,7 @@ function aeo5(ctx) {
 
 function aeo6(ctx) {
   const { robots, llms } = ctx;
+  if (robots.inaccesible) return noEvaluable(`el robots.txt no se pudo leer (${robots.status ? `HTTP ${robots.status}` : robots.error}); no se sabe si bloquea a los bots de IA`, { robots: { url: robots.url, status: robots.status, error: robots.error } });
   const checks = BOTS_IA.map((b) => check(b, !robots.bots[b].bloqueado, robots.bots[b].bloqueado ? `${b} está bloqueado en robots.txt` : `${b} permitido`));
   const extras = Object.fromEntries(Object.entries(robots.bots).filter(([k]) => !BOTS_IA.includes(k)).map(([k, v]) => [k, v.bloqueado ? 'bloqueado' : 'permitido']));
   return resultado(puntuar(checks), checks, { robotsTxtExiste: robots.existe, botsDeLaRubrica: Object.fromEntries(BOTS_IA.map((b) => [b, robots.bots[b].bloqueado ? 'bloqueado' : 'permitido'])), otrosBots: extras, llmsTxt: llms, bonusLlmsTxt: llms.existe }, 'El llms.txt se reporta como bonus informativo: no cambia el puntaje (la escala está topada en 2).');

@@ -1,0 +1,199 @@
+{
+  "url": "https://chipchoppetshop.com/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 19,
+  "aeo": 19,
+  "total": 38,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 58 caracteres: «Chip Chop Pet Shop | Tienda de mascotas en Quito con envío». Incluye la marca, el tipo de negocio y la ciudad, y es coherente con el H1 («Tienda de mascotas en Quito: Chip Chop Pet Shop»). No es genérico.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 151 caracteres (dentro de 140–160) y es concreta: «Alimento, snacks y accesorios para perros y gatos en Quito. Compra en línea, paga con Deuna y retira en tienda o recibe en Norte, Centro, Sur y Valles.» Dice qué se vende, dónde y cómo comprar. Están og:title, og:description y og:image, y la imagen es una URL absoluta; también hay twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 («Tienda de mascotas en Quito: Chip Chop Pet Shop») que dice de qué trata la página. Siguen 10 H2 y 6 H3 sin saltos de nivel (los H3 cuelgan del H2 «Preguntas frecuentes»). Los encabezados marcan secciones reales, no se usan para dar estilo al menú, al pie ni a las tarjetas de producto.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (tienda de mascotas en Quito) aparece en los tres lugares: título «Chip Chop Pet Shop | Tienda de mascotas en Quito con envío», H1 «Tienda de mascotas en Quito: Chip Chop Pet Shop» y primer párrafo «Chip Chop Pet Shop es una tienda de mascotas en Quito…». El script cuenta 1,125 palabras en el contenido principal; aun descontando las tarjetas de producto repetidas, quedan unas 600 de texto útil (compra, envíos, ubicación, FAQ), muy por encima de 300.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 en HTTPS, sin redirecciones. La meta robots es «index, follow» y no hay X-Robots-Tag. El canonical apunta a la propia URL (https://chipchoppetshop.com/) y el <html> declara lang=\"es-EC\", que coincide con el contenido en español de Ecuador.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido) con 97 URL del mismo dominio y protocolo, entre ellas la home, /productos/, /perros/, /gatos/ y fichas de producto. El robots.txt permite todo el sitio (Allow: /) y solo bloquea rutas privadas de la tienda: /panel/, /checkout/, /pedido/ y /carrito/. Declara el sitemap.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "El alt es muy bueno: las 21 imágenes con contenido lo tienen y describen el producto con presentación y tamaño (p. ej. «NutraPro Adultos, Razas medianas y grandes, Funda 2 kg»); los dos alt vacíos son el isotipo y la mascota Caramelo, decorativos y pequeños. No hay imágenes pesadas (223 KB en total, ~13 KB por foto en WebP), pero Lighthouse marca uses-responsive-images con ahorro estimado de 88 KiB porque se sirven las versiones de 400 px a tarjetas más chicas. Es un detalle menor en peso absoluto, pero es el único parámetro a medias.",
+      "mejoras": [
+        "Agrega srcset y sizes a las fotos de producto para que el teléfono descargue la variante -160 en las tarjetas pequeñas y la -400 solo cuando el espacio la necesite (el sitio ya genera ambos tamaños).",
+        "Revisa las tarjetas marcadas por Lighthouse (Felix sabor Salmón, Carnitas Snack de Carne XL, NutraPro Adultos, Shampoo antipulgas con Fipronil) y sirve imágenes del tamaño real con el que se muestran."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Se confirma el puntaje del script: en Lighthouse móvil el rendimiento es 98 (≥ 80), el LCP es 1.74 s (< 2.5 s) y el CLS es 0.000 (< 0.1). Es una sola medición, así que los números pueden variar unos puntos entre corridas y entre equipos o redes.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport (width=device-width, initial-scale=1) y las capturas móviles confirman al script: nada cortado ni encimado, sin banner de cookies ni pop-up que tape la pantalla, y el encabezado trae botón «Menú» con texto y carrito bien visibles, además de una barra inferior fija (Inicio, Productos, Carrito, WhatsApp). El texto es grande y se lee sin zoom, y los botones («Ver productos y precios», «Pedir por WhatsApp», «Agregar al carrito») son anchos y están bien separados. Solo 1 de 90 objetivos táctiles mide menos de 24 px de alto (el enlace de teléfono, 22 px), un detalle menor. La captura completa está recortada a 3000 px, así que no vi el pie de página; ahí aplican las métricas del script.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 9 enlaces internos (Productos, Cómo comprar, Envíos, Seguros, Preguntas frecuentes, Quiénes somos, Blog, Carrito). Se revisaron los 24 enlaces internos únicos y ninguno está roto; no hay enlaces sin verificar. No hay anclas genéricas ni enlaces sin texto (Lighthouse link-text: 1). Las URLs son legibles (/como-comprar/, /envios/, /perros/).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las dos primeras frases (38 palabras, dentro del rango) dicen qué es («una tienda de mascotas en Quito, en Serapio Japerabi y Miguel Pontón, abierta todos los días de 8:00 a 22:00»), qué ofrece («alimento, snacks y accesorios») y para quién («para perros, gatos, conejos y peces»). La tercera frase añade cómo se compra, sin relleno ni eslóganes antes.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "7 de los 10 H2 son preguntas reales y la mayoría se responde en la primera frase. Por ejemplo, «¿Hacen envíos a domicilio en Quito?» abre con «Sí. Enviamos a Quito Norte, Centro, Sur y a los Valles…», y «¿Cómo compro en línea y pago con Deuna?» baja directo a 5 pasos numerados. Solo «¿Qué consejos te da Caramelo?» queda débil, porque únicamente remite al blog.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección «Preguntas frecuentes» visible, con 6 preguntas en H3 y respuestas completas de 1 a 3 frases cada una. Se renderiza como texto plano (no solo en el schema), y las respuestas dan datos reales (dirección, horario, mascotas, pago, envío), no un «contáctanos». La captura móvil se corta a los 3000 px y no llega al FAQ, así que la visibilidad se confirma con texto.md.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 2 bloques JSON-LD válidos con @context schema.org, presentes en el HTML inicial, con tres nodos: PetStore (subtipo de LocalBusiness, adecuado para una tienda física con venta en línea), WebSite y FAQPage con 6 preguntas. Los datos coinciden con lo visible: teléfono +593995252457 (página: 099 525 2457), dirección «Serapio Japerabi y Miguel Pontón, Quito, 170504» y las 6 preguntas del FAQ son las mismas que se ven en la sección «Preguntas frecuentes».",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML inicial trae 1123 de las 1125 palabras de la página renderizada (100%). El H1 y todos los H2 (Black Friday, categorías, productos destacados, FAQ, envíos) ya vienen en el HTML crudo, y el primer texto es la descripción de la tienda con dirección y horario, así que un bot sin JavaScript lee lo que importa.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt tiene bloques explícitos con «Allow: /» para GPTBot, ClaudeBot, PerplexityBot y Google-Extended (también para OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, Perplexity-User, Applebot-Extended y Bingbot). Solo se excluyen /panel/, /checkout/, /pedido/ y /carrito/, rutas privadas o transaccionales que no son contenido a indexar; ninguna sección clave queda bloqueada. El archivo parece escrito a mano por el sitio, sin secciones de Cloudflare ni directivas Content-Signal. Además existe un llms.txt (bonus informativo, no cambia el puntaje) con descripción, dirección, horario y contacto.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Los párrafos son cortos (promedio de 21 palabras, ninguno largo) y hay listas (40 ítems), pasos numerados para comprar y secciones de un solo tema, con unas 70 palabras por sección. Las tarjetas de producto salen pegadas en la extracción («Alimento húmedoWhiskas… $1.00Agregar al carrito»), pero en la captura se ven como tarjetas separadas y la prosa va en oraciones completas.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre \"Chip Chop Pet Shop\" es igual en title, og:site_name, H1, pie (© 2026) y en los dos nodos de schema (PetStore y WebSite). El teléfono (099 525 2457 / +593 99 525 2457) y la dirección (Serapio Japerabi y Miguel Pontón, 170504 Quito) coinciden entre página y schema una vez normalizados, y el pie enlaza a Instagram (@chipchop_uio) y al perfil de Google, ambos repetidos en sameAs.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Casi todas las afirmaciones traen datos verificables: dirección y código postal (170504), horario «8:00 a 22:00», precios desde $1.00, «83 productos» con conteo por categoría, tamaños (2 kg, 85 g) y una promoción con fecha y hora límite («hasta el viernes 27 de noviembre a las 23:59»). No hay frases vacías del tipo «somos los mejores». El único dato que falta es el costo del envío, que solo se describe como «depende de la distancia».",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay dos señales claras: una sección \"acerca de\" (enlace \"Quiénes somos\" a /nosotros/ en el menú y el pie, más el bloque \"¿Quién está detrás de Chip Chop?\") y una fecha visible (\"Información actualizada el 15 de noviembre de 2026\" y \"Página actualizada el 15 de noviembre de 2026\" en el pie). La señal de \"quién\" es débil: dice \"negocio familiar\" y \"la misma familia\", pero sin nombres ni fotos. No hay testimonios, reseñas ni fuentes citadas con enlace, así que solo se cumplen 2 de 4 señales con claridad.",
+      "mejoras": [
+        "Nombra a quienes atienden la tienda en el bloque \"¿Quién está detrás de Chip Chop?\" y en /nosotros/, con nombre, rol y foto (por ejemplo: «Atendido por [nombre], dueño, y [nombre], atención al cliente»), y añade un nodo Organization o Person con founder/employee en el schema.",
+        "Agrega una sección de reseñas reales con nombre o inicial, barrio y fecha, o muestra la calificación y el número de reseñas del perfil de Google con enlace directo. Solo añade AggregateRating o Review al schema si coinciden con lo visible.",
+        "Respalda los consejos de Caramelo (alimentación, antiparasitarios) con enlaces a fuentes verificables, como un veterinario con nombre o una guía oficial. Marca la fecha con <time datetime> o dateModified en el schema para que sea legible por máquina y refleje cambios reales, no la fecha del día."
+      ]
+    }
+  ],
+  "advertencias": []
+}
