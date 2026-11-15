@@ -3,8 +3,8 @@
   "fecha": "2026-11-15",
   "completo": true,
   "seo": 17,
-  "aeo": 14,
-  "total": 31,
+  "aeo": 13,
+  "total": 30,
   "maximoEvaluado": 40,
   "criterios": [
     {
@@ -145,11 +145,11 @@
       "puntaje": 1,
       "puntajeScript": 2,
       "origen": "agente (ajustó al script)",
-      "justificacion": "Hay 2 bloques JSON-LD válidos (WebSite y Organization, ambos con @context schema.org), están en el HTML inicial y el name «eté por tea human» coincide con la página. Pero el schema es mínimo: en la evidencia solo aparece el name y sameAs viene vacío, y no cubre lo que la página sí muestra: 6 preguntas frecuentes visibles (schemaFaq: false), 21 tés con precios en MXN, teléfono +52 5521057503, horario lun–sáb 9:00–18:00 y ubicación en Condesa, CDMX.",
+      "justificacion": "Hay 2 bloques JSON-LD válidos (WebSite y Organization, con @context schema.org), están en el HTML inicial y el name «eté por tea human» coincide con la página, sin contradecirla. Pero el schema es mínimo: la evidencia solo muestra name y sameAs vacío, y no representa lo que la página sí muestra: 6 preguntas frecuentes visibles (schemaFaq: false), 21 tés con precios en MXN, teléfono, horario y ubicación en Condesa, CDMX.",
       "mejoras": [
         "Agrega un bloque FAQPage con las 6 preguntas y respuestas que ya se ven en la página (por ejemplo «¿Qué métodos de pago aceptan?»), con el mismo texto visible.",
         "Agrega Product con Offer (o un ItemList de Product) para los tés de la colección, con priceCurrency «MXN» y los precios de 20g, 50g y 100g tal como se muestran.",
-        "Completa el Organization con url, logo, sameAs (perfiles de Instagram u otras redes), contactPoint con telephone «+52 5521057503» y horario lun–sáb 9:00–18:00. Si quieres que se lea como negocio local, usa Store o LocalBusiness con addressLocality «Ciudad de México»."
+        "Completa el Organization con url, logo, sameAs (https://instagram.com/ete.teahuman y https://facebook.com/eteteahuman), contactPoint con telephone «+52 5521057503» y horario lun–sáb 9:00–18:00; si quieres que se lea como negocio local, usa Store o LocalBusiness con addressLocality «Ciudad de México»."
       ]
     },
     {
@@ -158,19 +158,20 @@
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
-      "justificacion": "El HTML inicial trae 1028 de 1048 palabras del texto renderizado (98%), muy por encima del 80% que pide la escala. El H1 y los H2/H3 con los nombres de los tés ya vienen en el HTML crudo, así que un bot que no ejecuta JavaScript lee lo importante.",
+      "justificacion": "El HTML inicial trae 1028 de 1048 palabras del texto renderizado (98%), por encima del 80% que pide la escala. El H1 y los H2/H3 con los nombres de los tés ya vienen en el HTML crudo, así que un bot que no ejecuta JavaScript lee lo importante.",
       "mejoras": []
     },
     {
       "id": "aeo-6",
       "nombre": "Acceso para bots de IA",
-      "puntaje": 1,
+      "puntaje": 0,
       "puntajeScript": 0,
-      "origen": "agente (ajustó al script)",
-      "justificacion": "El robots.txt bloquea con «Disallow: /» a GPTBot, ClaudeBot y Google-Extended; solo PerplexityBot de los 4 de la rúbrica queda permitido. Sin embargo, el bloqueo es selectivo y deliberado: los bots de búsqueda y de asistentes (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User) tienen «Allow: /» y la señal «Content-Signal: ai-train=no» declara la política. Por eso el sitio sigue siendo accesible para respuestas de IA, pero no cumple lo que pide el 2. Existe un llms.txt (bonus informativo, no suma puntaje).",
+      "origen": "agente",
+      "justificacion": "El robots.txt bloquea con «Disallow: /» a GPTBot, ClaudeBot y Google-Extended; solo PerplexityBot, de los 4 que nombra la rúbrica, queda permitido. Aunque el bloqueo parece intencional (solo contra entrenamiento, con «Content-Signal: ai-train=no») y otros bots de IA tienen «Allow: /», la rúbrica cuenta como bloqueado a cualquiera de los 4, así que se mantiene el 0 del script. El archivo tiene el formato típico de un robots.txt administrado por una plataforma (directivas Content-Signal, como las que genera Cloudflare), por lo que el bloqueo podría venir de un ajuste de la plataforma y no de una edición manual. Existe un llms.txt (bonus informativo, no suma puntaje).",
       "mejoras": [
-        "Si quieres aparecer en respuestas de ChatGPT, Claude y Gemini, cambia «Disallow: /» por «Allow: /» para GPTBot, ClaudeBot y Google-Extended, y conserva «Content-Signal: ai-train=no» para expresar tu postura sobre entrenamiento.",
-        "Si prefieres mantener el bloqueo de entrenamiento, déjalo documentado como decisión, sabiendo que la rúbrica lo cuenta como acceso incompleto y que Google-Extended no afecta tu posicionamiento en Google Search."
+        "Cambia «Disallow: /» por «Allow: /» para GPTBot, ClaudeBot y Google-Extended. Puedes conservar «Content-Signal: ai-train=no» para expresar tu postura sobre entrenamiento.",
+        "Si el robots.txt lo genera tu plataforma o CDN (por ejemplo, Cloudflare con la opción de bloquear bots de IA o el robots.txt administrado), desactiva ese ajuste en el panel; editar el archivo a mano puede no bastar porque la plataforma lo sobrescribe.",
+        "Si decides mantener el bloqueo de entrenamiento, documéntalo como decisión: la rúbrica lo cuenta como acceso incompleto, aunque Google-Extended no afecta tu posicionamiento en Google Search."
       ]
     },
     {

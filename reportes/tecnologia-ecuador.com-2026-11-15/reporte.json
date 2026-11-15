@@ -1,0 +1,212 @@
+{
+  "url": "https://tecnologia-ecuador.com/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 16,
+  "aeo": 19,
+  "total": 35,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 50 caracteres: «Tienda de tecnología en Quito | TECNOLOGIA ECUADOR». Dice qué es el sitio (tienda de tecnología), dónde (Quito) y la marca, y coincide con el tema del H1 («Todo en tecnología, con entrega inmediata»). No es genérico.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 151 caracteres, enumera las categorías, da beneficios (entrega inmediata, garantía local, envíos a todo Ecuador) y cierra con llamada a la acción («¡Compra hoy!»). Están og:title, og:description y og:image, y esta última es una URL absoluta con https. Además declara twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 1,
+      "puntajeScript": 2,
+      "origen": "agente (ajustó al script)",
+      "justificacion": "Hay un solo H1 claro y sin saltos de nivel, y las secciones principales tienen H2 descriptivos en forma de pregunta. Pero cerca de la mitad de los encabezados (unos 21 de 42) son nombres de producto de las tarjetas y títulos de widgets del pie, no estructura. Las tarjetas de producto aparecen como H2 en dos bloques (los de «¿Qué productos llegaron últimamente?» y «¿Qué equipos de seguridad ofrecemos…?»), al mismo nivel que la sección que las contiene, y como H3 en el bloque de «listos para entrega inmediata». Además «Botón de Pánico SOS WiFi Tuya» se repite como H2 y como H3.",
+      "mejoras": [
+        "Baja los nombres de producto de los bloques «¿Qué productos llegaron últimamente?» y «¿Qué equipos de seguridad ofrecemos…?» de H2 a H3, para que cuelguen de su sección y sean consistentes con el bloque de «entrega inmediata». En WooCommerce se cambia en la plantilla del loop de productos o con el ajuste de nivel de encabezado del bloque.",
+        "Deja H2 solo para las secciones (categorías, novedades, envíos, marcas, FAQ, local) y quita el encabezado de las tarjetas repetidas, por ejemplo «Botón de Pánico SOS WiFi Tuya», que sale dos veces en la misma página.",
+        "Cambia los títulos del pie («Menú», «Contactos», «Sociales», «Suscríbete a nuestra newsletter») a <p> o <div> con estilo, o a un nivel que no compita con la estructura del contenido."
+      ]
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (tienda de tecnología en Quito) coincide en el título, el H1 y el primer párrafo. El script cuenta 1,025 palabras en el contenido principal; aun descartando los listados de productos, quedan unas 450-500 palabras útiles (cómo comprar, envíos, horarios, garantías, preguntas frecuentes, quiénes somos). No hay relleno ni texto de plantilla.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 en https sin redirecciones. No tiene noindex: la meta robots es «index, follow, max-image-preview:large…» y no hay X-Robots-Tag. El canonical apunta a la misma URL y <html lang=\"es\"> coincide con el contenido, que está en español.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt responde 200 y no bloquea el sitio: solo restringe rutas técnicas (wp-admin, logs y descargas privadas de WooCommerce, ?add-to-cart=), y el bloque de Yoast deja «Disallow:» vacío para todos. Declara https://tecnologia-ecuador.com/sitemap_index.xml, que es válido y lista 624 URLs en la muestra, con el mismo dominio y protocolo, e incluye la portada.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Los alt son buenos: las 18 imágenes con contenido tienen alt descriptivo (por ejemplo «Cámara IP Domo 720p HD Interior Nocturna», «Batería Dell XPS 15 69KF2»), no hay alt vacíos en imágenes grandes y el peso total es bajo (219 KB, ninguna imagen > 300 KB). Lo que falta es el tamaño de entrega: Lighthouse marca uses-responsive-images (el logo pesa 37,970 bytes y se puede ahorrar ~35 KiB) y su insight de entrega de imágenes estima 114 KiB de ahorro, porque las miniaturas de producto se sirven en 600x600 cuando se muestran más pequeñas.",
+      "mejoras": [
+        "Re-exporta el logo (logo-tecnologia-ecuador-claro.webp) al tamaño real con el que se muestra en el encabezado (aprox. 2x de su ancho en pantalla) para ahorrar ~35 KiB.",
+        "Sirve las miniaturas de producto con srcset/sizes y usa el tamaño de 300x300 en móvil en lugar de las versiones 600x600 (por ejemplo, t-T220208-0-600x600.webp) donde la tarjeta se ve a menos de 300 px.",
+        "Convierte sirena-inalambrica-exterior-433-mhz-wifi-110db.jpg a WebP para ser consistente con el resto de las imágenes."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Se confirma el puntaje del script: rendimiento 95 (cumple ≥ 80) y CLS 0.000 (cumple < 0.1), pero el LCP es 2.65 s, apenas arriba del límite de 2.5 s. Es una sola medición de Lighthouse móvil y puede variar entre corridas y equipos; el LCP está tan cerca del umbral que otra corrida podría quedar de uno u otro lado.",
+      "mejoras": [
+        "Elimina o difiere los recursos que bloquean el render: carga jquery.min.js con defer y entrega el CSS de woocommerce.css de forma crítica/en línea para ganar ~350 ms de FCP y LCP.",
+        "Reduce el peso de las imágenes de la parte superior de la página (logo de 37 KB y miniaturas 600x600) con tamaños responsivos para acercar el LCP por debajo de 2.5 s.",
+        "Mide de nuevo con varias corridas tras los cambios para confirmar que el LCP queda de forma estable bajo 2.5 s."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 2,
+      "origen": "agente (ajustó al script)",
+      "justificacion": "Tiene meta viewport correcto, no hay scroll horizontal, solo 2% del texto es menor a 12 px y el texto del hero se lee bien sin zoom, con menú de hamburguesa y carrito visibles. Pero en la captura de arriba el botón flotante verde de WhatsApp se encima sobre el botón «Hablar con un asesor» y tapa la última palabra («asesor»), por lo que ese CTA principal no se toca ni se lee completo en la primera pantalla. Además, el ícono de búsqueda del encabezado casi no se distingue (oscuro sobre fondo oscuro).",
+      "mejoras": [
+        "Evita que el botón flotante de WhatsApp tape contenido: súbelo/muévelo (por ejemplo, redúcelo a solo ícono o déjalo más abajo en la esquina) o agrega margen inferior al hero para que «Hablar con un asesor» quede completo y tocable en 390 px.",
+        "Aumenta el contraste del ícono de búsqueda del encabezado (hoy casi invisible sobre el fondo oscuro) y dale un área táctil de al menos 44x44 px.",
+        "Revisa que el botón «Submenú de Categorías» (10x10 px) tenga un área táctil de al menos 24-44 px dentro del menú móvil."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 24 enlaces internos distintos (Tienda y las categorías principales). De 40 enlaces internos probados no hay ninguno roto, ninguno en sinVerificar, ninguno genérico ni sin texto. Solo 1 de 79 URLs internas es larga, pero legible: el slug está en palabras. Aviso: el script probó 40 de 78 enlaces internos únicos (su límite), así que los otros 38 no están verificados.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El primer párrafo del contenido responde en 47 palabras qué es (\"la tienda de tecnología de Torres de Almagro, en Quito\"), para quién (\"hogares y negocios\") y qué ofrece (cámaras, audio y video, fotografía, medición y repuestos, con entrega inmediata, garantía local y envíos a todo Ecuador). Los bloques previos son solo \"Saltar al contenido\" y una etiqueta de 5 palabras, sin eslóganes vacíos.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay 8 H2 y 6 H3 en forma de pregunta real, y varios se responden de inmediato debajo: \"¿Cuánto cuesta el envío y cuándo llega mi pedido?\" abre con una tabla con $5,00 y 2 días laborables; \"¿Qué marcas manejamos?\" responde \"Trabajamos con marcas como HP, Lenovo, Dell…\"; \"¿Cómo comprar…?\" abre con pasos numerados. Algunas preguntas de las secciones de producto (\"¿Qué productos llegaron últimamente?\") son más de marketing, pero sobran preguntas bien respondidas.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección visible \"Preguntas frecuentes\" con 6 preguntas (envíos, tiempo de entrega, formas de pago, garantía, cambios, horario). Cada respuesta es completa y mide de 1 a 3 frases, con datos concretos. El texto está como H3 más párrafo en el contenido principal, no solo en el schema FAQPage. Ninguna respuesta se limita a \"contáctanos\".",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 2 bloques de JSON-LD válidos con contexto schema.org, presentes en el HTML inicial, con los tipos que corresponden a una tienda local con comercio electrónico: Organization, Store/LocalBusiness, WebSite, WebPage, BreadcrumbList y FAQPage. Los datos coinciden con la página: teléfono +593995815371 frente a «099 581 5371», dirección «Torres de Almagro, Av. Colón y Diego de Almagro, Local 1, Quito» y las 6 preguntas del FAQPage frente a las 6 visibles en la sección «Preguntas frecuentes». Observaciones menores que no contradicen la página: la URL del nodo Store usa «www.» mientras que la página y el resto del schema usan el dominio sin «www», y el Facebook que se ve en la página no aparece en sameAs.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML crudo trae 1020 de las 1025 palabras de la página renderizada (100%). El H1 «Todo en tecnología, con entrega inmediata», los H2 de secciones y los nombres de productos ya están en el HTML inicial, igual que las preguntas frecuentes. Todo el contenido que importa se lee sin ejecutar JavaScript.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended: solo tiene reglas para User-agent: * que cierran rutas técnicas (wc-logs, woocommerce_transient_files, woocommerce_uploads, ?add-to-cart=, /wp-admin/) y un bloque de Yoast con «Disallow:» vacío, por lo que el resto del sitio queda abierto. No hay reglas por bot, ni Content-Signal, ni bloque administrado por Cloudflare; el archivo lo generan WordPress, WooCommerce y Yoast SEO. Además existe un llms.txt (bonus informativo, no cambia el puntaje), pero sus enlaces apuntan a blueviolet-starling-201612.hostingersite.com, un dominio temporal, y no a tecnologia-ecuador.com.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Predominan los párrafos cortos (promedio de 17 palabras, ninguno largo). Hay una lista numerada de 4 pasos para comprar, dos tablas (envíos y horario) y una FAQ con un tema por pregunta. Cada sección trata un solo asunto. Como detalle menor, las categorías y las marcas salen pegadas en una sola línea (\"HPLenovoDellAsus…\") y los nombres de producto usan H2, pero son listados de tienda y no afectan lo importante.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «TECNOLOGIA ECUADOR» es idéntico en <title>, og:site_name, pie (© 2026), logo y en el name de WebSite, Organization y LocalBusiness. La dirección («Torres de Almagro, Av. Colón y Diego de Almagro, Local 1, Quito») y el teléfono (099 581 5371 en la página, +593995815371 en el schema, mismo número) coinciden, y hay enlaces a Instagram, Facebook (perfil con id real) y WhatsApp. Detalles menores que no contradicen la identidad: el LocalBusiness usa la URL con www, sameAs solo incluye Instagram (falta Facebook) y no hay correo en la página ni en el schema.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las afirmaciones clave traen datos verificables: costos de envío ($5,00 y $11,82 con IVA), umbral de envío gratis ($50), tiempos (2 días laborables, 30 en Galápagos), garantía (3 y 6 meses), plazo de cambios (5 días hábiles), horario (9:00 a 18:00), dirección, teléfono y precios por producto. No hay frases tipo \"somos los mejores\".",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay dos señales claras: la fecha de actualización («Última actualización de esta página: 15/11/2026», dateModified 2026-11-15, © 2026) y la sección «acerca de» (enlace «Nosotros»/«Quiénes somos» a /about/ y el bloque «¿Quién está detrás de TECNOLOGIA ECUADOR?»). El equipo se menciona pero sin nombres («Nuestro equipo atiende en el local y por WhatsApp»), y no hay testimonios, reseñas con calificación ni fuentes citadas: citas = 0, schemaReview = false. Es una señal débil y otra ausente, por eso queda en 1.",
+      "mejoras": [
+        "Agrega testimonios reales con nombre y ciudad (o empresa/foto), o enlaza las reseñas de Google Maps del local con su calificación; marca con Review/AggregateRating solo reseñas verdaderas y visibles en la página.",
+        "Nombra a quien está detrás: en /about/ y en el bloque «¿Quién está detrás de TECNOLOGIA ECUADOR?» pon el nombre del responsable o del equipo de ventas con foto y rol, y refléjalo en el schema (founder o employee en el Organization).",
+        "Cita fuentes verificables con enlace, por ejemplo la página de garantía del fabricante, la ficha de la marca o tu perfil de Google Business, y agrega datos legales del negocio (razón social o RUC) en el pie."
+      ]
+    }
+  ],
+  "advertencias": []
+}

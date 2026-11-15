@@ -1,0 +1,195 @@
+{
+  "url": "https://somosgreenia.com/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 19,
+  "aeo": 20,
+  "total": 39,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 59 caracteres que dice de qué trata la página y lleva la marca: «Aprende a usar la IA con criterio, sin jerga · somosgreenia». No es genérico y es coherente con el H1 y el contenido (educación en IA con criterio).",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 154 caracteres (dentro de 140–160), abre con un verbo de acción y promete beneficio concreto: «mejores resultados, menos riesgos y menos energía y agua. Recursos gratuitos y curso desde Bogotá». Están og:title, og:description y og:image, y la imagen es una URL absoluta; además hay twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 («¿Listo para usar la IA sin que te use a ti?»), 7 H2 y 11 H3 sin saltos de nivel; los H3 cuelgan de su H2 (dos tarjetas bajo «¿Por dónde empezar?» y las preguntas bajo «Preguntas frecuentes»). El H1 es más un gancho que una descripción literal, pero menciona la IA y el párrafo siguiente aclara el tema. Detalle menor: el último H3 de la lista, «Tu guía para usar la IA con criterio.», no aparece en el contenido visible y parece un eslogan con etiqueta de encabezado.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (usar la IA con criterio) es evidente en el título, el H1 y el primer párrafo, y el contenido principal tiene unas 687 palabras útiles sin relleno ni texto repetido. El H1 es una pregunta tipo gancho y no dice \"con criterio\", pero \"usar la IA\" coincide con el título y el párrafo que sigue lo aclara de inmediato.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 sin redirecciones, sin noindex en meta ni en X-Robots-Tag, con canonical a sí misma (https://somosgreenia.com/), HTTPS y lang=\"es\", que coincide con el idioma real del contenido (español). Lighthouse marca superado «Page isn't blocked from indexing» y «canonical».",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido, 15 URL del mismo dominio y protocolo, incluida la home) y el robots.txt lo declara. No bloquea el sitio: permite «/» y solo excluye /estandar, /api/ y /reenviar-codigo, que son rutas técnicas. Lighthouse reporta «1 error» en robots.txt, casi seguro por la directiva «Content-Signal», que su analizador no reconoce; los rastreadores la ignoran sin afectar el resto de las reglas.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página no tiene imágenes con contenido (pagina.json trae 'imagenes': [] y las hojas/gota de la sección verde en la captura son gráficos decorativos), por lo que no hay alt que evaluar ni fotos que pesen de más. El peso total de imágenes es de 91 KB, ninguna supera 300 KB y Lighthouse no marca problemas de formato, tamaño responsivo ni carga diferida.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Se confirma el puntaje del script: en Lighthouse móvil el rendimiento es 99 (mínimo 80), el LCP es 1.83 s (máximo 2.5 s) y el CLS es 0.000 (máximo 0.1), así que cumple las tres métricas. Es una sola medición de Lighthouse y puede variar entre corridas y equipos, pero el margen en las tres es amplio.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport (width=device-width, initial-scale=1), no hay scroll horizontal y 0% del texto es menor a 12px. En las capturas el diseño se ve ordenado, sin contenido cortado ni encimado y sin banner o pop-up que tape la pantalla; el menú no usa hamburguesa sino que muestra los cinco enlaces en dos filas. Lo que queda a medias son los objetivos táctiles: 15 de 32 enlaces miden menos de 24 px de alto (los del menú miden 17 px, como «Inicio», «Blog» o «Sobre Nosotros») y en la captura están separados por poco espacio vertical.",
+      "mejoras": [
+        "Agrega padding vertical a los enlaces del menú («Inicio», «Recursos Gratuitos», «Blog», «Certifícate con Nosotros», «Sobre Nosotros») y al enlace de Instagram para que midan al menos 24 px de alto, idealmente 44 px, con separación entre filas.",
+        "Aumenta el contraste del titular del héroe sobre la foto (por ejemplo, una capa oscura semitransparente detrás del texto o un tono dorado más oscuro) para que «¿Listo para usar la IA sin que te use a ti?» se lea sin esfuerzo."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 5 enlaces internos descriptivos (Recursos Gratuitos, Blog, Certifícate con Nosotros, Sobre Nosotros), se repite en el pie y el script revisó los 12 enlaces internos únicos sin hallar rotos ni pendientes de verificar. No hay anclas genéricas («clic aquí», «leer más») ni enlaces sin texto, y las 13 URLs internas son legibles (p. ej. /recursos-gratuitos, /sobre-nosotros). Lighthouse aprueba «link-text» y «crawlable-anchors».",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El primer párrafo, justo debajo del H1, responde las tres cosas en 48 palabras: qué es (\"marca educativa de Bogotá\"), para quién (\"personas y equipos sin formación técnica\") y qué ofrece (enseña a usar la IA con criterio, cuatro herramientas gratis y el curso). Las dos primeras frases (36 palabras) ya dicen qué es y para quién, y la tercera concreta la oferta.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay 2 H2 y 8 H3 en forma de pregunta real, y casi todos se responden en la primera frase justo debajo. Por ejemplo, el H2 \"¿Cuánta energía y agua gasta una consulta a la IA?\" empieza con \"Poco por consulta, mucho en la suma\" y da las cifras. Solo \"¿Por dónde empezar?\" responde con dos tarjetas (Gratis / Curso) y no con una frase, pero no baja el conjunto.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección visible \"Preguntas frecuentes\" con 8 preguntas, todas con respuestas completas de 1–3 frases (sin acordeón colapsado: no hay marcas ▸ ni details/summary). Las respuestas son específicas (precio, dispositivos, certificado, independencia) y ninguna se limita a \"contáctanos\". Además existe FAQPage en el schema, pero la calificación se basa en la sección visible.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 2 bloques JSON-LD válidos con @context schema.org y 5 tipos (Organization, WebSite, WebPage, Course, FAQPage), todos presentes en el HTML inicial. Los tipos son adecuados para una marca educativa con un curso de pago y una sección de preguntas frecuentes, y los datos coinciden con lo visible: teléfono +57 319 532 9245, correo hola@somosgreenia.com, Bogotá, precio del curso 49900 (en la página «$49.900 COP · pago único») y 8 preguntas en el FAQPage frente a 8 preguntas visibles bajo «Preguntas frecuentes».",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML crudo trae 687 de 687 palabras (100%) del texto renderizado, incluido el H1 «¿Listo para usar la IA sin que te use a ti?», la descripción de la marca y el precio del curso. Los 19 encabezados del HTML crudo coinciden con los de la página renderizada y el JSON-LD (5 nodos) también está en el HTML inicial, así que un bot sin JavaScript ve todo lo que importa.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended: solo hay un grupo «User-agent: *» con «Allow: /» y tres Disallow (/estandar, /api/, /reenviar-codigo), que no tocan el contenido público ni la página del curso (/curso-estandar-ia no empieza con /estandar). Incluye la línea «Content-Signal: search=yes, ai-input=yes, ai-train=no», que usa la sintaxis de señales de contenido (la promueve Cloudflare): es una preferencia declarada de no usar el contenido para entrenamiento, no una regla Disallow, así que no cuenta como bloqueo de acceso. No hay marcas de un bloque administrado por una plataforma (sin comentarios tipo «BEGIN Cloudflare Managed content» ni Disallow por bot), por lo que el archivo parece escrito por el propio sitio. Además existe /llms.txt (bonus informativo, no sube el puntaje).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Predominan párrafos cortos (18 párrafos, promedio 25 palabras, ninguno largo), hay listas donde corresponde (cifras de la huella, recursos gratuitos) y cada sección trata un solo tema, con encabezados claros. Los detalles menores son fragmentos decorativos como \"01\", \"Gratis\" o \"Descúbrelo ↓\", y que las tarjetas de cifras se leen pegadas (\"0,24–0,34 WhEnergía de…\"). No hay tablas, pero las cifras caben bien en una lista.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «somosgreenia» es el mismo en <title>, og:site_name, pie (© 2026 somosgreenia) y en el name de Organization y WebSite. El contacto coincide entre página y schema (hola@somosgreenia.com y +57 319 532 9245, la versión +573195329245 es solo el formato del enlace tel:), y la ubicación «Bogotá, Colombia» del pie corresponde a «Bogotá, CO» del schema. Las redes (Instagram @somos.greenia, LinkedIn, Substack) están enlazadas en el pie y repetidas en sameAs. Al ser un negocio en línea, no se exige dirección física.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las afirmaciones importantes vienen con datos verificables: precio, rangos de energía y agua con equivalencias, número de recursos, fuentes con año y fecha de actualización. Las únicas frases genéricas son los lemas cortos de las tarjetas (\"Claridad, no jerga\", \"Responsabilidad sin freno\"), que son una parte mínima del contenido.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay tres señales claras: se nombra a quien opera el sitio («somosgreenia la opera Oscar Daniel Hurtado Suárez desde Bogotá»), se ve la fecha de actualización («Actualizado el 15 de noviembre de 2026», con <time> y dateModified 2026-11-15) y existe «Sobre Nosotros» en el menú y el pie, además de las FAQ «¿Qué es somosgreenia?» y «¿Quién está detrás…?». La cuarta señal es parcial: se citan fuentes por nombre y año (Google, OpenAI, MIT Technology Review) pero sin enlace, y no hay testimonios ni reseñas. Para llegar a una señal sólida en fuentes, conviene enlazarlas y añadir testimonios con nombre; la fecha coincide con el día de la auditoría, así que no se pudo confirmar que sea una fecha editorial real y no una generada automáticamente.",
+      "mejoras": []
+    }
+  ],
+  "advertencias": []
+}

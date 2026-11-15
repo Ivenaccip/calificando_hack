@@ -7,8 +7,8 @@
 | Área | Puntos | Máximo | % |
 | --- | ---: | ---: | ---: |
 | SEO | **17** | 20 | 85% |
-| AEO | **14** | 20 | 70% |
-| **Total** | **31** | 40 | 78% |
+| AEO | **13** | 20 | 65% |
+| **Total** | **30** | 40 | 75% |
 
 ## Rúbrica SEO: que Google encuentre y entienda la página
 
@@ -34,7 +34,7 @@
 | 3 | Preguntas frecuentes | ■■ 2/2 | Agente | agente |
 | 4 | Datos estructurados | ■□ 1/2 | Script | agente (ajustó al script) |
 | 5 | Contenido legible sin JavaScript | ■■ 2/2 | Script: compara el HTML crudo con la página ya cargada | agente |
-| 6 | Acceso para bots de IA | ■□ 1/2 | Script | agente (ajustó al script) |
+| 6 | Acceso para bots de IA | □□ 0/2 | Script | agente |
 | 7 | Formato fácil de extraer | ■□ 1/2 | Agente | agente |
 | 8 | Identidad clara y consistente | ■□ 1/2 | Agente + script | agente |
 | 9 | Datos concretos | ■■ 2/2 | Agente | agente |
@@ -210,27 +210,27 @@ Hay una sección visible «PREGUNTAS FRECUENTES / Lo que más nos preguntan.» c
 #### AEO 4 · Datos estructurados: 1/2
 *Vale 2 si:* Hay JSON-LD de schema.org válido y del tipo correcto (Organization, LocalBusiness, Product, Event, FAQPage…), y coincide con lo que se ve en la página
 
-Hay 2 bloques JSON-LD válidos (WebSite y Organization, ambos con @context schema.org), están en el HTML inicial y el name «eté por tea human» coincide con la página. Pero el schema es mínimo: en la evidencia solo aparece el name y sameAs viene vacío, y no cubre lo que la página sí muestra: 6 preguntas frecuentes visibles (schemaFaq: false), 21 tés con precios en MXN, teléfono +52 5521057503, horario lun–sáb 9:00–18:00 y ubicación en Condesa, CDMX.
+Hay 2 bloques JSON-LD válidos (WebSite y Organization, con @context schema.org), están en el HTML inicial y el name «eté por tea human» coincide con la página, sin contradecirla. Pero el schema es mínimo: la evidencia solo muestra name y sameAs vacío, y no representa lo que la página sí muestra: 6 preguntas frecuentes visibles (schemaFaq: false), 21 tés con precios en MXN, teléfono, horario y ubicación en Condesa, CDMX.
 
 *El script dio 2/2; el agente lo ajustó a 1/2. El script dio 2 porque solo verifica que haya JSON-LD válido, de un tipo útil y con el name visible. Bajo a 1 porque el schema es mínimo (name, sameAs vacío) y omite el FAQ visible, los productos con precio y los datos de contacto que sí están en la página.*
 
 *Evidencia:*
 - Tipos detectados: WebSite, Organization; invalidos: []
-- nodos: name «eté por tea human», sameAs: [] en ambos
-- pagina.json: schemaFaq false, con 6 preguntas en H3 dentro de «Lo que más nos preguntan.»
-- texto.md: 21 productos con precios por 20g, 50g y 100g (p. ej. «20g$375 MXP»), sin Product/Offer en el schema
-- texto.md: «Atendemos de lunes a sábado, 9:00 a.m. a 6:00 p.m.» y «+52 5521057503» no aparecen en el schema
-- No hay HTML crudo en la evidencia: no pude revisar si el Organization trae url, logo o contactPoint; solo vi name y sameAs
+- nodos: name «eté por tea human», sameAs: [] en ambos, aunque el pie enlaza Instagram y Facebook
+- pagina.json identidad: telefonosSchema [], enSchema (ubicación) [], descripciones.schema []
+- pagina.json: schemaFaq false, con 6 preguntas en H3 bajo «Lo que más nos preguntan.»
+- texto.md: 21 productos con precios por 20g, 50g y 100g (p. ej. «20g$375 MXP») sin Product/Offer en el schema
+- texto.md: «Atendemos de lunes a sábado, 9:00 a.m. a 6:00 p.m.» y «+52 5521057503» no están en el schema
 
 *Cómo mejorarlo:*
 - Agrega un bloque FAQPage con las 6 preguntas y respuestas que ya se ven en la página (por ejemplo «¿Qué métodos de pago aceptan?»), con el mismo texto visible.
 - Agrega Product con Offer (o un ItemList de Product) para los tés de la colección, con priceCurrency «MXN» y los precios de 20g, 50g y 100g tal como se muestran.
-- Completa el Organization con url, logo, sameAs (perfiles de Instagram u otras redes), contactPoint con telephone «+52 5521057503» y horario lun–sáb 9:00–18:00. Si quieres que se lea como negocio local, usa Store o LocalBusiness con addressLocality «Ciudad de México».
+- Completa el Organization con url, logo, sameAs (https://instagram.com/ete.teahuman y https://facebook.com/eteteahuman), contactPoint con telephone «+52 5521057503» y horario lun–sáb 9:00–18:00; si quieres que se lea como negocio local, usa Store o LocalBusiness con addressLocality «Ciudad de México».
 
 #### AEO 5 · Contenido legible sin JavaScript: 2/2
 *Vale 2 si:* El texto principal ya viene en el HTML inicial, porque muchos bots de IA no ejecutan JavaScript
 
-El HTML inicial trae 1028 de 1048 palabras del texto renderizado (98%), muy por encima del 80% que pide la escala. El H1 y los H2/H3 con los nombres de los tés ya vienen en el HTML crudo, así que un bot que no ejecuta JavaScript lee lo importante.
+El HTML inicial trae 1028 de 1048 palabras del texto renderizado (98%), por encima del 80% que pide la escala. El H1 y los H2/H3 con los nombres de los tés ya vienen en el HTML crudo, así que un bot que no ejecuta JavaScript lee lo importante.
 
 *Evidencia:*
 - palabrasHtmlCrudo 1028 vs palabrasRenderizado 1048 (proporción 0.98)
@@ -238,25 +238,23 @@ El HTML inicial trae 1028 de 1048 palabras del texto renderizado (98%), muy por 
 - primerasPalabrasCrudo: «TÉ ARTESANAL DE ESPECIALIDAD», «eté por tea human»
 - Check h1EnHtmlInicial: ok
 
-#### AEO 6 · Acceso para bots de IA: 1/2
+#### AEO 6 · Acceso para bots de IA: 0/2
 *Vale 2 si:* El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended; un llms.txt suma como bonus, porque todavía no es un estándar
 
-El robots.txt bloquea con «Disallow: /» a GPTBot, ClaudeBot y Google-Extended; solo PerplexityBot de los 4 de la rúbrica queda permitido. Sin embargo, el bloqueo es selectivo y deliberado: los bots de búsqueda y de asistentes (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User) tienen «Allow: /» y la señal «Content-Signal: ai-train=no» declara la política. Por eso el sitio sigue siendo accesible para respuestas de IA, pero no cumple lo que pide el 2. Existe un llms.txt (bonus informativo, no suma puntaje).
-
-*El script dio 0/2; el agente lo ajustó a 1/2. El script dio 0 porque 3 de los 4 bots de la rúbrica están bloqueados. Subo a 1 porque el robots.txt permite explícitamente a los bots de búsqueda y de asistentes (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot): el contenido sigue siendo accesible para respuestas de IA y solo se bloquean los rastreadores de entrenamiento.*
+El robots.txt bloquea con «Disallow: /» a GPTBot, ClaudeBot y Google-Extended; solo PerplexityBot, de los 4 que nombra la rúbrica, queda permitido. Aunque el bloqueo parece intencional (solo contra entrenamiento, con «Content-Signal: ai-train=no») y otros bots de IA tienen «Allow: /», la rúbrica cuenta como bloqueado a cualquiera de los 4, así que se mantiene el 0 del script. El archivo tiene el formato típico de un robots.txt administrado por una plataforma (directivas Content-Signal, como las que genera Cloudflare), por lo que el bloqueo podría venir de un ajuste de la plataforma y no de una edición manual. Existe un llms.txt (bonus informativo, no suma puntaje).
 
 *Evidencia:*
 - robots.txt: «User-agent: GPTBot / Disallow: /», «ClaudeBot / Disallow: /», «Google-Extended / Disallow: /»
-- robots.txt: PerplexityBot, OAI-SearchBot, ChatGPT-User, Claude-SearchBot y Claude-User con «Allow: /» y «Content-Signal: search=yes, ai-input=yes, ai-train=no»
+- robots.txt: PerplexityBot permitido con «Allow: /» y «Content-Signal: search=yes, ai-input=yes, ai-train=no»
+- Otros bots de IA permitidos (no cuentan para la rúbrica): OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, Perplexity-User
 - También bloqueados: Applebot-Extended, meta-externalagent, Amazonbot, Bytespider
 - llms.txt existe en https://ete-tea.me/llms.txt (bonus informativo)
 - Sitemap declarado: https://ete-tea.me/sitemap.xml
 
 *Cómo mejorarlo:*
-- Si quieres aparecer en respuestas de ChatGPT, Claude y Gemini, cambia «Disallow: /» por «Allow: /» para GPTBot, ClaudeBot y Google-Extended, y conserva «Content-Signal: ai-train=no» para expresar tu postura sobre entrenamiento.
-- Si prefieres mantener el bloqueo de entrenamiento, déjalo documentado como decisión, sabiendo que la rúbrica lo cuenta como acceso incompleto y que Google-Extended no afecta tu posicionamiento en Google Search.
-
-*Nota:* El llms.txt se reporta como bonus informativo: no cambia el puntaje (la escala está topada en 2).
+- Cambia «Disallow: /» por «Allow: /» para GPTBot, ClaudeBot y Google-Extended. Puedes conservar «Content-Signal: ai-train=no» para expresar tu postura sobre entrenamiento.
+- Si el robots.txt lo genera tu plataforma o CDN (por ejemplo, Cloudflare con la opción de bloquear bots de IA o el robots.txt administrado), desactiva ese ajuste en el panel; editar el archivo a mano puede no bastar porque la plataforma lo sobrescribe.
+- Si decides mantener el bloqueo de entrenamiento, documéntalo como decisión: la rúbrica lo cuenta como acceso incompleto, aunque Google-Extended no afecta tu posicionamiento en Google Search.
 
 #### AEO 7 · Formato fácil de extraer: 1/2
 *Vale 2 si:* Párrafos cortos, listas, tablas o pasos numerados, con un tema por sección
@@ -324,12 +322,12 @@ Hay señales, pero todas débiles. Se nombra a la sommelier («Tea Human», con 
 
 Ordenado de lo que más puntos pierde (0) a lo que está a medias (1):
 
-1. **SEO 7 · Imágenes** (1/2): Sirve la foto «Manos preparando té de hoja suelta…» a un ancho acorde con su tamaño en móvil (cambia ?width=768 por ?width=580 aprox.) o agrega srcset/sizes con versiones de 400, 600 y 900 px para ahorrar los ~23 KiB que marca Lighthouse.
-2. **SEO 8 · Velocidad** (1/2): Elimina los recursos que bloquean el render: incrusta el CSS crítico del primer pliegue y carga index-B0Nmbf0n.css de forma diferida, lo que Lighthouse estima en ~810 ms de ahorro.
-3. **SEO 9 · Móvil** (1/2): Sube a 12px o más las etiquetas en mayúsculas y los textos secundarios (eyebrows como «TÉ ARTESANAL DE ESPECIALIDAD», «ORÍGENES», la etiqueta de tipo «Oolong» y «MXN» junto a los precios) para que se lean sin hacer zoom.
-4. **AEO 1 · Respuesta directa arriba** (1/2): Reemplaza el primer párrafo bajo el H1 por una definición directa de ~50 palabras, por ejemplo: «eté por tea human es una tienda de tés de especialidad de China, Taiwán y Latinoamérica, con boutique en la Ciudad de México. Es para quienes disfrutan el té de hoja suelta y para restaurantes, hoteles y cafeterías. Ofrece 21 tés desde $158 MXP (20 g), catas privadas y viajes a orígenes.»
-5. **AEO 4 · Datos estructurados** (1/2): Agrega un bloque FAQPage con las 6 preguntas y respuestas que ya se ven en la página (por ejemplo «¿Qué métodos de pago aceptan?»), con el mismo texto visible.
-6. **AEO 6 · Acceso para bots de IA** (1/2): Si quieres aparecer en respuestas de ChatGPT, Claude y Gemini, cambia «Disallow: /» por «Allow: /» para GPTBot, ClaudeBot y Google-Extended, y conserva «Content-Signal: ai-train=no» para expresar tu postura sobre entrenamiento.
+1. **AEO 6 · Acceso para bots de IA** (0/2): Cambia «Disallow: /» por «Allow: /» para GPTBot, ClaudeBot y Google-Extended. Puedes conservar «Content-Signal: ai-train=no» para expresar tu postura sobre entrenamiento.
+2. **SEO 7 · Imágenes** (1/2): Sirve la foto «Manos preparando té de hoja suelta…» a un ancho acorde con su tamaño en móvil (cambia ?width=768 por ?width=580 aprox.) o agrega srcset/sizes con versiones de 400, 600 y 900 px para ahorrar los ~23 KiB que marca Lighthouse.
+3. **SEO 8 · Velocidad** (1/2): Elimina los recursos que bloquean el render: incrusta el CSS crítico del primer pliegue y carga index-B0Nmbf0n.css de forma diferida, lo que Lighthouse estima en ~810 ms de ahorro.
+4. **SEO 9 · Móvil** (1/2): Sube a 12px o más las etiquetas en mayúsculas y los textos secundarios (eyebrows como «TÉ ARTESANAL DE ESPECIALIDAD», «ORÍGENES», la etiqueta de tipo «Oolong» y «MXN» junto a los precios) para que se lean sin hacer zoom.
+5. **AEO 1 · Respuesta directa arriba** (1/2): Reemplaza el primer párrafo bajo el H1 por una definición directa de ~50 palabras, por ejemplo: «eté por tea human es una tienda de tés de especialidad de China, Taiwán y Latinoamérica, con boutique en la Ciudad de México. Es para quienes disfrutan el té de hoja suelta y para restaurantes, hoteles y cafeterías. Ofrece 21 tés desde $158 MXP (20 g), catas privadas y viajes a orígenes.»
+6. **AEO 4 · Datos estructurados** (1/2): Agrega un bloque FAQPage con las 6 preguntas y respuestas que ya se ven en la página (por ejemplo «¿Qué métodos de pago aceptan?»), con el mismo texto visible.
 7. **AEO 7 · Formato fácil de extraer** (1/2): Presenta el catálogo como tabla con columnas «Té | Tipo | Origen | 20 g | 50 g | 100 g» (o como lista con un precio por línea) en lugar de «20g$375 MXP50g$935 MXP…» pegados.
 8. **AEO 8 · Identidad clara y consistente** (1/2): Completa el nodo Organization del JSON-LD con `telephone` («+52 55 2105 7503»), `email`, `description` (la misma de la meta description), `logo`, `url` y `address` (PostalAddress con addressLocality «Ciudad de México» y colonia Condesa, aunque la dirección exacta siga siendo privada).
 9. **AEO 10 · Señales de confianza** (1/2): Añade una sección o página «Acerca de» con el nombre completo de la sommelier, su foto, trayectoria y un enlace verificable a su certificación TBRS 2025; marca a la persona con schema Person (`founder`/`employee` de la Organization).

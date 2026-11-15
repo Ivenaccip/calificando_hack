@@ -1,0 +1,227 @@
+{
+  "url": "https://snow-hawk-358190.hostingersite.com/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 15,
+  "aeo": 15,
+  "total": 30,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 1,
+      "origen": "agente (ajustó al script)",
+      "justificacion": "Hay un solo <title> de 51 caracteres, «MAF Seguros en Veracruz: vida, auto, hogar y ahorro», que incluye la marca (MAF), el tema (seguros), la zona (Veracruz) y las líneas que ofrece. Describe bien esta página. El check fallido del script solo compara contra el H1 (un eslogan) y contra el subdominio de prueba, no contra la marca real.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 145 caracteres (dentro de 140–160), explica qué hace MAF y cierra con una llamada a la acción («Escríbenos por WhatsApp»). Están og:title, og:description y og:image, y la imagen es una URL absoluta https. También hay twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay exactamente un H1 y la jerarquía baja sin saltos: 12 H2 y 20 H3, sin H4–H6. Los encabezados se usan como estructura real (secciones de seguros, pasos, preguntas frecuentes agrupadas bajo H2 temáticos) y no aparecen en menú ni pie solo por estilo. El H1 es un eslogan («Protege lo que más importa.») y no nombra «seguros», pero el título, el encabezado «Agencia de seguros» y el texto inmediato dejan claro el tema.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (seguros en Veracruz) está claro en el título «MAF Seguros en Veracruz: vida, auto, hogar y ahorro», pero el H1 «Protege lo que más importa» no nombra ni seguros ni Veracruz, y el primer párrafo de texto («Tu familia. Tu hogar. Tu futuro. En MAF te acompañamos a elegir la protección…») tampoco dice «seguro». El script cuenta 1,085 palabras, pero parte es relleno: «Conoce tus opciones» se repite 7 veces y hay ~10 marcas sin resolver como «[FALTA DATO: dirección]» y «[EDITAR]».",
+      "mejoras": [
+        "Incluye el tema en el H1, por ejemplo: «Seguros de vida, auto y hogar en Veracruz: protege lo que más importa», y corrige el espacio faltante entre «que» y «más» en el marcado.",
+        "Haz que el primer párrafo visible diga qué es el sitio: «MAF es una agencia de seguros en Veracruz que asesora a familias y negocios para contratar seguros de vida, auto, hogar, gastos médicos y ahorro, con asesoría sin compromiso.»",
+        "Elimina o completa todas las marcas «[FALTA DATO]», «[EDITAR]» y «[DATOS DE LICENCIA]», y cambia los siete enlaces «Conoce tus opciones» por textos distintos como «Ver seguro de vida» o «Ver seguro de auto»."
+      ]
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 por HTTPS sin redirecciones, no tiene noindex ni en meta robots ni en X-Robots-Tag, el canonical apunta a sí misma y <html lang=\"es\"> coincide con el contenido en español. Ojo: el bloqueo a Googlebot en robots.txt se califica en seo-6, no aquí.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 0,
+      "puntajeScript": 0,
+      "origen": "agente",
+      "justificacion": "El robots.txt existe, pero tiene «User-agent: Googlebot / Disallow: /», es decir, le prohíbe a Google rastrear todo el sitio; solo los demás bots quedan con «Allow: /». Para el buscador principal es equivalente a un bloqueo total. El sitemap.xml sí existe y es válido (12 URLs, mismo dominio y protocolo, incluye la home), pero robots.txt no lo declara con una línea Sitemap.",
+      "mejoras": [
+        "Elimina el bloque «User-agent: Googlebot / Disallow: /» del robots.txt; hoy impide que Google rastree y muestre el sitio.",
+        "Deja el archivo así: «User-agent: *\\nAllow: /\\n\\nSitemap: https://snow-hawk-358190.hostingersite.com/sitemap.xml» (usa el dominio definitivo si lo cambian).",
+        "Después de publicar el cambio, vuelve a enviar el sitemap en Google Search Console y revisa que la home salga como «rastreable»."
+      ]
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página tiene 2 imágenes con contenido y ambas traen alt descriptivo que dice lo que se ve (p. ej. «Padre e hija construyendo una pequeña casa de juguete, cuidando juntos el hogar y el futuro familiar»). Pesan unos 35 KB cada una (68 KB en total) y Lighthouse no marca formato, tamaño ni carga diferida; solo sugiere un ahorro menor de 29 KiB en la entrega de imágenes.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Es una sola medición de Lighthouse móvil, y puede variar entre corridas y equipos. El rendimiento es 86 (≥ 80) y el CLS es 0.000 (< 0.1), pero el LCP es 3.79 s, por encima del límite de 2.5 s. Se cumplen dos de tres parámetros, así que la regla del script (1) se confirma. El FCP de 2.34 s sugiere que el contenido tarda en pintarse desde el inicio.",
+      "mejoras": [
+        "Quita del camino crítico los recursos que bloquean el render: carga las fuentes de Google (Lato y Lora) con preconnect y font-display: swap, o alójalas en tu propio dominio, y pon en línea el CSS crítico de index-Bcmy4e_o.css (22 KB).",
+        "Prioriza la imagen principal (hero con la familia): agrégale fetchpriority=\"high\" y un <link rel=\"preload\" as=\"image\"> para que se descargue antes de que cargue el JS, y confirma que no tenga loading=\"lazy\".",
+        "Reduce el costo de arranque de la página: sirve el hero en WebP/AVIF a su tamaño real (Lighthouse estima 29 KiB de ahorro en imágenes) y divide o recorta el JS inicial (entry.client y jsx-runtime suman cerca de 83 KB) para que el LCP baje de 2.5 s."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport correcto, no hay scroll horizontal, el menú hamburguesa se ve arriba a la derecha y no hay banner de cookies ni pop-up que tape la pantalla. Los botones principales del hero son grandes y fáciles de tocar. Pero el 26% del texto mide menos de 12 px y 22 de 44 enlaces/botones miden menos de 24 px de alto (los «Conoce tus opciones» de las tarjetas miden 19 px). En la captura, las etiquetas «Atención cercana» y «Asesoría sin compromiso» sobre la foto se leen con dificultad.",
+      "mejoras": [
+        "Aumenta el área táctil de los enlaces «Conoce tus opciones» de las 7 tarjetas a un mínimo de 44 px de alto (con padding o haciendo que toda la tarjeta sea el enlace), ya que hoy miden 19 px.",
+        "Sube a 12 px o más las leyendas pequeñas (las de pie de tarjeta y las etiquetas «Atención cercana» y «Asesoría sin compromiso» sobre la foto) y dales contraste, por ejemplo con un fondo sólido o un degradado detrás del texto.",
+        "Revisa el fragmento de texto decorativo («ce») que aparece cortado y encimado sobre la foto del hero en móvil: ocúltalo en pantallas angostas o reubícalo para que no choque con las etiquetas."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 6 enlaces internos funcionales (anclas a secciones y la página /negocios-y-empresas). Se revisaron 8 enlaces internos y 0 están rotos; no hay enlaces sin verificar. Las URLs son legibles (/seguros/vida, /seguros/gastos-medicos). Solo hay 1 ancla genérica («Ver»), y las 7 tarjetas que dicen «Conoce tus opciones» se compensan porque el pie enlaza las mismas URLs con texto descriptivo («Seguro de vida», «Seguro de hogar»…).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las primeras frases son más eslogan que definición: «Tu familia. Tu hogar. Tu futuro. En MAF te acompañamos a elegir la protección que necesitas…». Se intuye el para quién (familia) y algo de lo que ofrece (acompañamiento para elegir protección), pero nunca dice que MAF es una agencia de seguros ni en qué lugar opera. Esa definición clara llega mucho más abajo: «Somos MAF · Agencia de seguros…».",
+      "mejoras": [
+        "Sustituye o antepón al párrafo del hero esta definición (31 palabras): «MAF es una agencia de seguros en Veracruz que asesora a familias y negocios para contratar seguros de vida, auto, hogar, gastos médicos y ahorro, con asesoría sin compromiso.»",
+        "Deja «Tu familia. Tu hogar. Tu futuro.» como línea secundaria debajo de esa definición, no como apertura."
+      ]
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "La sección de preguntas frecuentes tiene 10 encabezados H3 que son preguntas reales de un usuario, y varias se responden en la primera frase justo debajo. El script marcó como pregunta «Quiénes somos y cómo trabajamos» y «Cómo cotizar», pero no lo son; los dos H2 con signos de interrogación del inicio son un selector y una invitación, no preguntas con respuesta. Aun así hay bastante más de 3 preguntas bien respondidas. Dos respuestas (precio y zonas) quedan vacías por marcas de plantilla sin completar.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección «Preguntas frecuentes» visible, con 10 preguntas agrupadas por tema y respuestas cortas de 1–2 frases (no depende de schema: no hay FAQPage). Pero la mitad de las respuestas está incompleta porque conserva marcas de plantilla sin resolver, y el criterio pide que cada respuesta sea completa. Nota: el contenido está en un acordeón (details/summary); la captura completa se corta antes de esa sección, así que no pude confirmar si carga abierto o cerrado.",
+      "mejoras": [
+        "Completa o elimina las cinco respuestas con marcas. Ejemplo para cotizar: «Escríbenos por WhatsApp y te pediremos nombre, edad y código postal para vida y gastos médicos; marca, modelo y año del auto para seguro de auto; y dirección y tipo de vivienda para seguro de hogar.»",
+        "Responde «¿En qué zonas atienden y cuál es su horario?» con datos reales, por ejemplo: «Atendemos en [ciudades de Veracruz] de lunes a viernes de [hora] a [hora]», y publica el mismo horario en la sección de contacto.",
+        "Agrega a la respuesta del precio un ejemplo orientativo real (por ejemplo, el rango de prima anual de un auto o casa típicos) o, si no se puede, dilo sin marcas: «Cotizamos sin costo en menos de 24 horas.»"
+      ]
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 2 bloques JSON-LD válidos con @context schema.org, presentes en el HTML inicial: un WebSite (\"MAF · Agencia de seguros\") y una Organization (\"MAF\", con descripción y sameAs a Facebook). Organization es un tipo aceptable para una agencia de seguros, el nombre aparece en la página y la descripción (vida, automóvil, hogar y ahorro) no contradice el contenido. Matices que no bajan el puntaje: un tipo más específico como InsuranceAgency/LocalBusiness describiría mejor a un negocio local en Veracruz, y la sección de preguntas frecuentes visible no tiene FAQPage. La página aún muestra dirección, teléfono y horario como [FALTA DATO], así que el schema no los puede incluir; tampoco pude verificar url, logo ni contactPoint porque la evidencia no los lista.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML crudo trae el 100% del texto renderizado (1085 de 1085 palabras) y el H1 \"Protege lo que más importa.\" ya viene en el HTML inicial junto con los H2 y los H3 de cada seguro. Lo que importa (propuesta de valor, seguros ofrecidos, preguntas frecuentes) es legible sin JavaScript. El \"quemás\" en el H1 es solo un salto de línea sin espacio en la extracción, no falta de contenido.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt tiene solo 6 líneas: bloquea a Googlebot (\"Disallow: /\") y deja \"User-agent: * / Allow: /\" para todos los demás. GPTBot, ClaudeBot y PerplexityBot caen en la regla comodín y están permitidos; Google-Extended es un token distinto de Googlebot, no tiene grupo propio y también cae en el comodín, así que ninguno de los cuatro bots de la rúbrica está bloqueado. Advertencia importante: Googlebot sí está bloqueado por completo, por lo que Google no puede rastrear el sitio y, en la práctica, Google-Extended no tendría qué leer; eso afecta sobre todo a la indexación (SEO), no a los cuatro bots de esta rúbrica. El archivo no tiene comentarios, Content-Signal ni marcas de Cloudflare; no se puede confirmar si lo administra el hosting (posible regla por defecto de un dominio temporal de Hostinger, sin verificar). No existe llms.txt (solo bonus informativo, no cambia el puntaje).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El contenido está bien estructurado para extraerse: 42 párrafos con promedio de 17 palabras y ninguno largo, tarjetas de producto de una sola idea, un proceso en 3 pasos numerados (01 «Nos cuentas tu historia», 02 «Exploramos tus opciones», 03 «Tú eliges con confianza»), una lista de 3 viñetas y una FAQ agrupada por tema con respuesta corta bajo cada pregunta. Cada sección trata un solo tema. Detalle menor: algunos encabezados se extraen sin espacio («Detrás de cada seguro,hay una historia.La tuya…»).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre y la descripción son consistentes: «MAF · Agencia de seguros» aparece en el ©, el nombre del WebSite en el schema y el texto de la página, y «MAF» en la Organization (variación de formato normal). Pero no hay ningún dato de contacto ni de ubicación: ni teléfono, ni correo, ni dirección, ni en la página ni en el schema, y la sección «Quiénes somos y dónde estamos» muestra marcadores sin llenar.",
+      "mejoras": [
+        "Reemplaza los marcadores «[FALTA DATO: …]» por datos reales (dirección o zonas de atención, horario y número de WhatsApp) y publícalos en la sección «Quiénes somos y dónde estamos» y en el pie.",
+        "Añade al schema Organization (o InsuranceAgency) los campos telephone, email, address o areaServed y url, con los mismos valores que muestra la página. Unifica el name con «MAF · Agencia de seguros» en WebSite y Organization.",
+        "Enlaza un perfil de marca oficial (página de Facebook de MAF, más Instagram, Google Business Profile o LinkedIn si existen), repítelo en sameAs y agrega og:site_name con el nombre del negocio. Haz que los botones de WhatsApp usen https://wa.me/<número>."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay contenido concreto y útil (los siete ramos, qué cubre cada tipo de cobertura de auto, cómo funcionan deducible y coaseguro, que las preexistentes suelen tener periodos de espera, que huracán e inundación suelen ser coberturas adicionales), pero no hay una sola cifra verificable: 0 precios, 0 horarios, 0 fechas, 0 porcentajes. Los únicos números son los índices «01»–«07». Todo lo que sería dato duro aparece como marca sin completar, y el resto del texto es marketing genérico.",
+      "mejoras": [
+        "Publica horario y zonas reales en la sección «Quiénes somos y dónde estamos», por ejemplo: «Lunes a viernes de 9:00 a 18:00 h · Atendemos Xalapa, Veracruz y Boca del Río», ajustado a los datos verdaderos del negocio.",
+        "Añade un ejemplo numérico en «¿Cuánto cuesta un seguro de auto o de hogar en Veracruz?», como «Un seguro de auto de cobertura amplia para un sedán de 3 años puede costar desde $X al año», con una cifra que MAF pueda respaldar.",
+        "Sustituye frases como «Atención cercana» por hechos medibles: años de experiencia, número de familias atendidas, tiempo de respuesta por WhatsApp o aseguradoras con las que trabaja, y el número de cédula CNSF."
+      ]
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Solo hay señales débiles: existe una sección «Sobre MAF» (con ancla #sobre-maf en el menú) y un © 2026, pero no se nombra a ninguna persona o equipo, no hay fecha de actualización explícita, ni testimonios, ni reseñas, ni fuentes con enlace. Además el texto público conserva marcadores sin completar («[FALTA DATO]», «[DATOS DE LICENCIA]», «[EDITAR]»), lo que resta credibilidad.",
+      "mejoras": [
+        "Nombra a la persona o al equipo en «Sobre MAF» (nombre completo, foto, años de experiencia) y publica el número real de cédula de agente en lugar de «[DATOS DE LICENCIA]», con enlace a la consulta oficial de la CNSF.",
+        "Agrega 2 o 3 testimonios verificables con nombre, ciudad o foto (o reseñas de Google con calificación y enlace) y márcalos con schema Review/AggregateRating si son reales.",
+        "Muestra una fecha visible tipo «Última actualización: noviembre 2026» y añade dateModified en el schema. Cita con enlace las fuentes regulatorias que mencionas (CNSF, CONDUSEF) y publica aviso de privacidad."
+      ]
+    }
+  ],
+  "advertencias": []
+}

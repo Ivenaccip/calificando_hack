@@ -1,0 +1,211 @@
+{
+  "url": "https://ynomix.com/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 18,
+  "aeo": 16,
+  "total": 34,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 53 caracteres que dice de qué trata la página y lleva la marca al inicio: «YnomiX: herramientas digitales para manejar tu dinero». No es genérico y es coherente con el H1.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 155 caracteres (dentro de 140–160) e invita a entrar: nombra los tres productos, ofrece «Prueba Qadrax 15 días gratis» y menciona los precios. Existen og:title, og:description y og:image, esta última con URL absoluta (https://images.hostinger.com/...png), y hay twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un único H1 descriptivo («YnomiX: herramientas para entender y manejar tu dinero»), 9 H2 y 13 H3 sin saltos de nivel. Los H3 son estructura real (los 5 productos bajo «Una herramienta para cada parte de tu dinero» y las 8 preguntas del FAQ), no estilo de menú o pie. Detalle menor: el texto extraído de dos H2 sale pegado («paracada», «herramienta.Conoce»), probablemente por un salto de línea sin espacio.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (herramientas para manejar el dinero) coincide en el título, el H1 y el párrafo bajo el H1. El contenido principal tiene unas 977 palabras, muy por encima de 300, y casi todas aportan información (precios, funciones, preguntas). Hay cierta repetición entre tarjetas, tabla y preguntas (por ejemplo, el calendario de InfoX), pero cada bloque cumple un propósito distinto y no es relleno.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 sin redirecciones, no tiene meta robots ni X-Robots-Tag (sin noindex), el canonical apunta a sí misma (https://ynomix.com/), usa HTTPS y declara lang=\"es\", que coincide con el contenido en español.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido, 10 URL, mismo dominio y HTTPS que incluye la home y /qadrax, /addix, /infox, /convertix). El robots.txt permite todo a User-agent: * (Allow: /) y declara el sitemap; solo bloquea con Disallow: / a bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended, etc.), no a buscadores. Lighthouse marca «robots.txt is not valid, 13 errors», que corresponde a las 13 líneas Content-Signal (directiva nueva que Lighthouse no reconoce); no afecta el rastreo, por eso no baja el puntaje.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página no tiene imágenes con contenido: pagina.json trae \"imagenes\": [], Lighthouse marca image-alt como no aplicable y el peso de imágenes es 0 KB. En las capturas móviles solo se ven íconos, tipografía y tarjetas hechas con CSS, así que no hay fotos ni ilustraciones informativas que necesiten alt ni que pesen de más. No se castiga por no aplicar.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Se confirma el puntaje del script: rendimiento 92 (≥ 80) y CLS 0.000 (< 0.1) cumplen, pero el LCP es de 2.73 s y supera el límite de 2.5 s, así que cumple dos de tres umbrales y queda en 1. Es una sola medición de Lighthouse y puede variar entre corridas y equipos; el LCP está cerca del umbral, por lo que una segunda corrida podría quedar por debajo o por encima. FCP, LCP y Speed Index coinciden en 2,730 ms, lo que apunta a que el primer pintado espera a recursos que bloquean el render, no al servidor (respuesta de 110 ms).",
+      "mejoras": [
+        "Quita el bloqueo del render: incrusta en el HTML el CSS crítico de la parte superior de la página y carga el resto de index-CCKhlJz9.css de forma diferida; así se recuperan hasta ~740 ms y el LCP baja de 2.5 s.",
+        "Evita que la hoja de Google Fonts (Public Sans 400/700) bloquee el pintado: agrega <link rel=\"preconnect\"> a fonts.googleapis.com y fonts.gstatic.com, o mejor aloja la fuente en tu propio dominio con font-display: swap y precarga el archivo del peso 700 que usa el título.",
+        "Reduce el JavaScript sin usar (~26 KiB de entry.client): divide el código por ruta o carga de forma diferida los componentes que no se ven al abrir la página."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Se confirma el 1 del script. Hay meta viewport correcto (width=device-width, initial-scale=1), sin scroll horizontal (0 px de desborde), y en movil-arriba.png el diseño se ve limpio: sin contenido cortado ni encimado, sin banner de cookies ni pop-up, y el menú son cinco enlaces visibles que caben en dos líneas, así que no necesita hamburguesa. Lo que lo deja a medias es la legibilidad y el tamaño táctil: 13% del texto (786 de 6,182 caracteres) mide menos de 12 px y dos enlaces son demasiado bajos. En la captura se aprecian chicos la línea «Herramientas independientes. Un propósito en común.», las etiquetas de las cifras y las etiquetas de las tarjetas («Gratis», «Desde USD 15»). La captura completa solo muestra los primeros 3,000 px, así que el pie de página no se alcanzó a ver.",
+      "mejoras": [
+        "Sube a 12 px o más (idealmente 13–14 px) el texto secundario: la línea «Herramientas independientes. Un propósito en común.», las etiquetas bajo las cifras («Para probar Qadrax gratis», «Herramientas para tu dinero») y las insignias de las tarjetas («Gratis», «Prueba 15 días»).",
+        "Dale más área táctil a «Volver arriba ↑» (hoy 15 px de alto) y al enlace «Hablemos de lo que necesitas» (22 px): agrega padding vertical para llegar al menos a 44×44 px, o 24 px como mínimo.",
+        "Separa un poco más los enlaces del menú superior («Blog», «Acerca de y contacto») para evitar toques accidentales entre vecinos."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 7 enlaces internos (Productos, Precios, Preguntas frecuentes, Blog, Acerca de y contacto, Lista de espera). Se revisaron los 8 enlaces internos únicos y ninguno está roto ni quedó sin verificar. No hay anclas genéricas ni enlaces sin texto: los botones dicen cosas como «Anotarme en la lista de Qadrax» o «Consultar los reportes de InfoX». Las URLs son legibles (/qadrax, /addix, /blog, /acerca-de).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El H1 dice qué es (\"herramientas para entender y manejar tu dinero\") y el párrafo siguiente enumera lo que ofrece (Qadrax, AddiX, InfoX, dos gratuitas), en 25 palabras. Pero abre con un eslogan (\"Tu dinero, con perspectiva.\") y el público solo aparece como etiqueta suelta sobre el H1 (\"Para ti. Para tu grupo. Para tu familia.\"). La frase completa que dice qué es y para quién (\"plataforma... de personas, grupos y familias\") está mucho más abajo, en el H2 \"¿Qué es YnomiX?\".",
+      "mejoras": [
+        "Reemplaza el párrafo bajo el H1 por una definición de dos frases, por ejemplo: «YnomiX es una plataforma de herramientas digitales para personas, grupos y familias que quieren entender y manejar su dinero. Incluye Qadrax (registro del uso del dinero, con prueba de 15 días), AddiX (seguimiento de ahorros e inversiones) e InfoX (resumen de noticias financieras los martes y viernes); ConvertiX y DigiMoneY son gratis.»",
+        "Quita \"Tu dinero, con perspectiva.\" de la primera línea del párrafo o pásala al eyebrow, para que la primera frase ya diga qué es y para quién."
+      ]
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay 4 H2 y 8 H3 en forma de pregunta real, y cada uno se responde de inmediato en el párrafo siguiente, con datos directos. Por ejemplo, \"¿Cuánto cuesta Qadrax?\" se contesta en la primera frase con los dos precios.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "La FAQ es visible en la página (bajo el H2 \"Las dudas, sobre la mesa.\", enlazada como \"Preguntas frecuentes\" en el menú) con 8 preguntas. Casi todas las respuestas son completas y de 1 a 3 frases, con datos concretos. El script no la detectó porque no usa un encabezado con la palabra FAQ ni acordeón, pero es contenido visible, no solo schema. Detalle menor: el subtítulo dice \"Seis respuestas\" y hay ocho.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 3 bloques JSON-LD válidos con @context schema.org, en el HTML inicial: WebSite, Organization y FAQPage. Organization es el tipo adecuado para una plataforma de productos digitales, y los datos coinciden con lo visible: nombre «YnomiX», correo soporte@ynomix.com y ciudad Bogotá (aparecen en el pie y en la sección «Quién está detrás»). El FAQPage declara 8 preguntas y la página muestra 8 preguntas numeradas 01–08 en su sección de dudas. Quedan pendientes mejoras opcionales: la dirección es solo texto («Bogotá, CO»), no hay logo y los precios de Qadrax y AddiX (USD 25/39 y USD 15/25) no están marcados como Product/Offer, pero nada del schema contradice la página.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML crudo trae el 100% del texto renderizado (977 de 977 palabras). El H1 «YnomiX: herramientas para entender y manejar tu dinero», los H2/H3 de las cinco herramientas y el H2 de precios ya vienen en el HTML inicial, así que un bot sin JavaScript ve la oferta, los precios y las preguntas frecuentes. Confirmo el puntaje del script.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 0,
+      "puntajeScript": 0,
+      "origen": "agente",
+      "justificacion": "El robots.txt tiene «Disallow: /» para GPTBot, ClaudeBot y Google-Extended, tres de los cuatro bots de la rúbrica; solo PerplexityBot está permitido. Según la regla de la rúbrica, basta con que uno de ellos esté bloqueado para que no cumpla, aunque el bloqueo parezca intencional y solo busque frenar el entrenamiento (cada bloque permitido lleva «Content-Signal: ... ai-train=no»). El archivo parece administrado por una plataforma (formato de Cloudflare con Content-Signal): permite a los bots de búsqueda y de usuario (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User), pero eso no sube el puntaje. Existe un llms.txt en https://ynomix.com/llms.txt, mencionado solo como bonus informativo sin efecto en el puntaje.",
+      "mejoras": [
+        "Elimina los bloques «Disallow: /» de GPTBot, ClaudeBot y Google-Extended, o cámbialos por «Allow: /», para que los cuatro bots de la rúbrica queden permitidos.",
+        "Como el robots.txt parece generado por Cloudflare (Content-Signal), cambia la configuración de bloqueo de rastreadores de IA / «robots.txt administrado» en el panel de Cloudflare en lugar de editar el archivo a mano, porque la plataforma puede volver a sobrescribirlo.",
+        "Si quieres seguir expresando que no autorizas el entrenamiento, deja la señal «ai-train=no» en el bloque de «User-agent: *» y no uses «Disallow: /» contra estos bots."
+      ]
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Predominan los párrafos cortos (33 párrafos, promedio de 20 palabras, ninguno largo) y cada sección trata un solo tema. Los precios están en una tabla y las herramientas en tarjetas con su propio H3. Observación menor: en el texto lineal, la etiqueta de precio de cada tarjeta (\"Desde USD 15\", \"Incluido en Qadrax\") queda después del CTA de la tarjeta anterior, aunque visualmente se ve bien en la captura.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «YnomiX» coincide en el título, el H1, el pie de página y el name de los dos nodos del schema (WebSite y Organization). La descripción es idéntica en meta, og y schema; el correo soporte@ynomix.com y la ubicación (pie: «Bogotá, Colombia»; schema: «Bogotá, CO») coinciden. Hay enlaces a YouTube (@ynomix) y X (YnomiX) en el pie, y ambos se repiten en el sameAs de Organization.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las afirmaciones importantes vienen con datos verificables: 4 precios en USD por plazo, prueba de 15 días, 2 reportes semanales (martes y viernes), respuesta en máximo 48 horas, detalle de dónde se guardan los datos. Los eslóganes (\"Tu dinero, con perspectiva\") son pocos. Los puntos débiles son ConvertiX y DigiMoneY, que se describen sin una sola función concreta, y que no hay ejemplos de uso ni un reporte de muestra.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Se cumplen 2 de las 4 señales: se ve quién está detrás (sección «Quién está detrás» con «Carlos Mijangos, Bogotá, Colombia») y hay una sección «Acerca de» (enlace «Acerca de y contacto» a /acerca-de en el menú y el pie). Faltan la fecha de actualización (sin time, dateModified ni © con año) y los testimonios o fuentes verificables (0 citas, 0 reseñas, 0 enlaces externos de respaldo). El script marcó autor y equipo como ausentes, pero el texto sí nombra a la persona.",
+      "mejoras": [
+        "Añade una fecha visible de actualización en la página (por ejemplo «Actualizado: noviembre de 2026» cerca del pie) y agrega dateModified al schema de WebSite; también puedes escribir «© 2026 YnomiX · Carlos Mijangos» en el pie.",
+        "Refuerza la señal de autor: agrega una foto de Carlos Mijangos, un enlace a su perfil profesional (por ejemplo LinkedIn) y un nodo Person en el JSON-LD con name, jobTitle y sameAs, conectado a Organization como founder.",
+        "Suma pruebas verificables: testimonios de usuarios de la prueba o lista de espera con nombre (o iniciales y ciudad) y herramienta usada, o enlaces a fuentes externas que respalden las afirmaciones, como la política de datos de Google Drive que se menciona en la FAQ."
+      ]
+    }
+  ],
+  "advertencias": []
+}

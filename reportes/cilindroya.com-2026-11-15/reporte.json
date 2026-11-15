@@ -1,0 +1,206 @@
+{
+  "url": "https://cilindroya.com/hogar/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 18,
+  "aeo": 17,
+  "total": 35,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un único <title> de 50 caracteres: «CilindroYa · Gas a domicilio en Imbabura por $3,60». Incluye la marca, el servicio y la zona, así que describe de qué trata esta página y no es genérico.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 144 caracteres (dentro de 140–160) y invita a actuar: «Pide tu cilindro de gas de 15 kg desde el celular… por $3,60… Pagas al recibir». Están og:title, og:description y og:image, y la imagen es una URL absoluta; además hay twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 claro («Gas a domicilio en Imbabura por $3,60») y 12 H2 con 7 H3 sin saltos de nivel (no hay H4–H6). Los encabezados funcionan como estructura de contenido (pasos, precio, zonas, FAQ, contacto) y no como estilo de menú o pie.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (gas a domicilio en Imbabura a $3,60) coincide en el título «CilindroYa · Gas a domicilio en Imbabura por $3,60», en el H1 «Gas a domicilio en Imbabura por $3,60» y en el primer párrafo («CilindroYa es la plataforma de entrega de gas doméstico a domicilio…»). El contenido principal tiene unas 1,376 palabras con información variada (pasos, precios, zonas, servicios, 8 preguntas frecuentes); el desglose del precio se repite en varios bloques, pero cada vez responde una pregunta distinta, así que no es relleno.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "No hay noindex (meta robots y X-Robots-Tag en null) y el canonical apunta a sí misma (https://cilindroya.com/hogar/). El sitio sirve por HTTPS y declara lang=\"es-EC\", coherente con el contenido en español. La raíz (/) redirige con 301 a /hogar/, que es la URL canónica.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido, 18 URL), el sitemap está declarado en robots.txt y lista páginas reales del mismo dominio y protocolo, incluida /hogar/. El robots.txt permite todo el sitio y solo bloquea /pwa/ y /marketing/, que no son páginas de contenido enlazadas en el menú.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Las 10 imágenes con contenido tienen alt descriptivo y específico (por ejemplo «Repartidor bajando un cilindro azul del camión»), no hay alt vacío en imágenes grandes y el peso total es de solo 88 KB sin ninguna imagen > 300 KB. Lo que falta es el dimensionado: Lighthouse marca uses-responsive-images porque cili_render_saluda.webp (86.5 KB) se sirve más grande de lo que se muestra (ahorro estimado de 54 KiB) y su insight de entrega de imágenes suma 112 KiB de ahorro en 4 archivos. Los tres alt=\"\" corresponden a cili_avatar.webp, un avatar pequeño del widget de chat, y son aceptables como decorativos.",
+      "mejoras": [
+        "Exporta cili_render_saluda.webp al tamaño real con que se muestra en móvil (aprox. 390 px de ancho, y 780 px para pantallas 2x) y ofrécela con srcset/sizes; Lighthouse estima que se ahorran unos 54 KiB.",
+        "Redimensiona también cili_asoma.webp, cili_avatar.webp y cili_cara.webp a las dimensiones con que se pintan; el insight de entrega de imágenes calcula 112 KiB de ahorro en total."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Confirmo el puntaje del script: rendimiento 92 (cumple ≥ 80) y CLS 0.001 (cumple < 0.1), pero LCP de 3.19 s (no cumple < 2.5 s), así que se cumplen dos de tres métricas. Es una sola medición de Lighthouse móvil y puede variar entre corridas y equipos, pero el LCP queda a 0.7 s del umbral. El servidor responde rápido (100 ms), no hay recursos que bloqueen el render ni JS sin usar, y el FCP es de 1.19 s; la demora está entre el primer pintado y el elemento más grande, probablemente la imagen principal de Cili (la más pesada y sobredimensionada según Lighthouse), aunque el reporte no identifica el nodo LCP.",
+      "mejoras": [
+        "Reduce la imagen principal cili_render_saluda.webp al tamaño que realmente se pinta en móvil (hoy ahorra ~54 KiB) y verifica que tenga fetchpriority=\"high\" y que no se cargue con lazy, para bajar el LCP de 3.19 s a menos de 2.5 s.",
+        "Pospón la carga de los videos cili_explica.webm y cili_habla.webm y del widget de chat de Cili hasta después del primer pintado o la primera interacción, para que no compitan por ancho de banda con el elemento LCP."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal (0 px) y en la captura móvil el diseño se ve limpio: el texto es legible sin zoom, los botones principales («PEDIR GAS», «PEDIR CILINDRO · $3,60», «HABLAR CON CILI») son grandes y están bien separados, y el formulario de pedido ocupa todo el ancho. Solo 3 de 68 objetivos táctiles miden menos de 24 px (enlaces de 20 px de alto bajo el formulario) y 4% del texto es menor a 12 px. Detalles menores que vi y que no rompen la experiencia: el widget flotante «Habla con Cili» y su globo tapan parte de la mascota y del marcador «3», y en el encabezado no vi botón de menú (solo logo y «Pedir gas»), aunque la navegación existe en el DOM. La captura completa está cortada a 3,000 px, así que no pude revisar la parte baja ni el pie.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 4 enlaces internos (inicio, Distribuidores, Guías, Pedir gas) y se revisaron 13 enlaces internos únicos con 0 rotos y 0 sin verificar. No hay anclas genéricas ni enlaces sin texto, y las 14 URLs internas son legibles (p. ej. /gas-a-domicilio/ibarra/).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las dos primeras frases del H1 responden las tres cosas en 57 palabras: qué es («plataforma de entrega de gas doméstico a domicilio»), para quién (hogares de «Ibarra, Otavalo, Antonio Ante y Cotacachi») y qué ofrece («cilindro de 15 kg cuesta $3,60 en total… pagas al recibir en efectivo o DeUna, todos los días de 06:30 a 19:30»). La respuesta llega sin eslóganes previos; solo antecede una línea corta con la misma información.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay varios H2 que son preguntas reales de un usuario y con la respuesta justo debajo: «¿Cuánto cuesta el cilindro de gas a domicilio? $3,60 en tu puerta.» (la primera frase da el desglose $1,65 + $1,85 + $0,10), «¿Dónde operamos y a qué barrios llegamos en Imbabura?» (primera frase: «Operamos todos los días de 06:30 a 19:30 en Ibarra, Otavalo, Antonio Ante y Cotacachi») y «¿Cómo pedir tu cilindro de gas en 4 pasos?» (los 4 pasos numerados). «¿Qué servicios ofrecemos…?» también se responde con la lista de precios. Dentro del bloque del precio aparece el aviso «Por ahora no hay distribuidores disponibles en tu zona», que contradice el mensaje del sitio, pero no quita que la respuesta esté arriba.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección de FAQ visible bajo el H2 «¿Tienes preguntas frecuentes antes de pedir?» con 8 preguntas en formato de acordeón, y cada respuesta es completa y corta (1–2 frases). Ejemplos: «Alrededor de 15 a 20 minutos desde que el repartidor acepta tu pedido…» y «No. CilindroYa funciona en el navegador de tu celular.». También existe FAQPage en el schema, pero la calificación se basa en la sección visible.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un bloque JSON-LD válido con @context schema.org y los tipos WebSite, LocalBusiness, Service y FAQPage, que son adecuados para un negocio local de entrega de gas con FAQ visible. Los datos coinciden con la página: teléfono +593993052744 = «099 305 2744», precio $3.60 = «$3,60» desglosado igual ($1,65 + $1,85 + $0,10) y las 8 preguntas del FAQPage corresponden a las 8 preguntas visibles. Está en el HTML inicial, así que los bots sin JavaScript lo ven.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML inicial trae 1239 de 1376 palabras del render (90%, por encima del 80%). El H1 «Gas a domicilio en Imbabura por $3,60», los H2/H3 de los 4 pasos y las primeras palabras del crudo con el precio, el horario y la forma de pago ya vienen sin ejecutar JavaScript.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt tiene bloques explícitos con «Allow: /» para GPTBot, ClaudeBot, PerplexityBot y Google-Extended (más OAI-SearchBot), y ninguno queda bloqueado. Solo se restringen /pwa/ y /marketing/ (igual que para todos los bots), que no son las páginas de contenido ni de pedido, y ninguno de los enlaces de la página apunta ahí. El archivo parece escrito a mano (comentario «Buscadores con IA: bienvenidos»), sin señales de que lo administre Cloudflare ni de Content-Signal. Bonus informativo: existe https://cilindroya.com/llms.txt, que no cambia el puntaje.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Predominan los párrafos cortos (63 párrafos, promedio de 16 palabras, ninguno largo) y hay una lista numerada de 4 pasos, listas con viñetas (15 ítems en total) y un bloque de servicios con precio por línea. Cada sección trata un solo tema (pasos, precio, cobertura, distribuidores, servicios, FAQ), con ≈81 palabras por sección.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «CilindroYa» es idéntico en og:site_name, title, texto de la página y el `name` del schema (WebSite y LocalBusiness). El teléfono coincide al normalizarlo (099 305 2744 = +593993052744) y la ubicación (Ibarra, Imbabura) coincide entre el pie y el schema. Falta lo importante para ser verificable: no hay ningún perfil de red social, `sameAs` está vacío en los cuatro nodos y no hay correo.",
+      "mejoras": [
+        "Crea y enlaza en el pie los perfiles oficiales de la marca (por ejemplo Facebook e Instagram de CilindroYa) y agrégalos al arreglo `sameAs` del nodo LocalBusiness y del WebSite.",
+        "Agrega un correo de contacto visible en el pie (por ejemplo hola@cilindroya.com) y repítelo como `email` en el schema LocalBusiness.",
+        "Añade al pie un © con el nombre y el año («© 2026 CilindroYa · Ibarra, Imbabura, Ecuador») y completa `address` en el schema con `PostalAddress` (addressLocality, addressRegion, addressCountry) y `areaServed` con los cuatro cantones."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Casi todas las afirmaciones traen datos verificables: precio desglosado ($1,65 + $1,85 + $0,10 = $3,60), peso del cilindro (15 kg), horario (06:30 a 19:30), tiempo de llegada (15 a 20 minutos), otros precios ($12,00 la válvula, $22,50 el cilindro industrial de 45 kg) y cantones y parroquias concretos. No se detectaron frases genéricas tipo «somos los mejores».",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 0,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "La página no dice quién está detrás de CilindroYa: no hay autor, equipo ni razón social (solo la mascota «Cili»), no hay sección ni enlace «acerca de», no hay fecha de actualización ni testimonios o reseñas. Solo hay indicios débiles: el año «2026» suelto en el pie, sin ©, y menciones sin enlace a ARCH y Vepagas, que no cuentan como fuentes verificables.",
+      "mejoras": [
+        "Crea una página «Quiénes somos» (por ejemplo /nosotros/) con la razón social o responsable, los nombres y roles del equipo fundador, la ciudad y un contacto, y enlázala desde el menú y el pie.",
+        "Muestra la fecha de actualización de forma visible, por ejemplo «Precios y horarios actualizados el 15 de noviembre de 2026» con <time datetime>, y añade `dateModified` al schema; cambia el pie a «© 2026 CilindroYa».",
+        "Publica testimonios verificables (nombre, barrio o cantón, calificación) o reseñas con fuente, y enlaza las fuentes oficiales que respaldan tus datos, como el tarifario de la ARCH y la página de Vepagas, con `rel=\"noopener\"`."
+      ]
+    }
+  ],
+  "advertencias": []
+}

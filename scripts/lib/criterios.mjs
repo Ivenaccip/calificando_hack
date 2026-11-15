@@ -1,4 +1,4 @@
-import { UMBRALES, TIPOS_SCHEMA_RELEVANTES, BOTS_IA } from './config.mjs';
+import { UMBRALES, TIPOS_SCHEMA_AUXILIARES, BOTS_IA } from './config.mjs';
 import { puntuar, check } from './puntaje.mjs';
 import { esAnclaGenerica, terminosFrecuentes, sinAcentos, palabras } from './pagina.mjs';
 
@@ -20,13 +20,16 @@ function seo1(p) {
   const marca = sinWww(new URL(p.url).hostname).split('.')[0];
   const toks = (s) => new Set(sinAcentos(s).match(/[a-z0-9]{4,}/g) || []);
   const comunes = [...toks(t)].filter((w) => toks(h1).has(w));
+  // "Áurea Seguros" ↔ aureaseguros.com: se compara sin espacios ni acentos, y también por palabras del título dentro del dominio.
+  const plano = (x) => sinAcentos(x).replace(/[^a-z0-9]/g, '');
+  const marcaEnTitulo = plano(t).includes(plano(marca)) || [...toks(t)].some((w) => plano(marca).includes(w));
   const generico = /^(home|inicio|index|untitled|sin t[ií]tulo|document|p[aá]gina principal|bienvenid[oa]|welcome|nueva p[aá]gina)$/i.test(t.trim());
   const checks = [
     check('existe', t.length > 0, t ? `Hay título: "${t}"` : 'No hay <title>', { bloqueante: true }),
     check('unico', p.titulos.length === 1, `${p.titulos.length} etiqueta(s) <title>`),
     check('longitud', enRango(t.length, U.titulo), `${t.length} caracteres (rango ${U.titulo.min}–${U.titulo.max})`),
     check('noGenerico', t.length > 0 && !generico, generico ? 'El título es genérico' : 'No es un título genérico'),
-    check('incluyeTemaOMarca', sinAcentos(t).includes(marca) || comunes.length > 0, comunes.length ? `Comparte términos con el H1: ${comunes.slice(0, 4).join(', ')}` : `No coincide con el H1 ni con la marca (${marca})`),
+    check('incluyeTemaOMarca', marcaEnTitulo || comunes.length > 0, comunes.length ? `Comparte términos con el H1: ${comunes.slice(0, 4).join(', ')}` : marcaEnTitulo ? `Incluye la marca (${marca})` : `No coincide con el H1 ni con la marca (${marca})`),
   ];
   return resultado(puntuar(checks), checks, { titulos: p.titulos, longitud: t.length, h1 });
 }
@@ -210,7 +213,7 @@ function aeo4(ctx) {
   const { pagina: p, crudo } = ctx;
   const ld = p.jsonld;
   const tipos = [...new Set(ld.nodos.flatMap((n) => n.tipos))];
-  const relevantes = tipos.filter((t) => TIPOS_SCHEMA_RELEVANTES.includes(t));
+  const relevantes = tipos.filter((t) => !TIPOS_SCHEMA_AUXILIARES.includes(t));
   const textoPagina = sinAcentos([p.titulos[0], ...p.bloques.map((b) => b.texto)].join(' '));
   const nombres = ld.nodos.map((n) => n.name).filter(Boolean);
   const coinciden = nombres.filter((n) => textoPagina.includes(sinAcentos(n)));

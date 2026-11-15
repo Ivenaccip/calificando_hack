@@ -24,9 +24,10 @@ export const BOTS_IA_EXTRA = ['OAI-SearchBot', 'ChatGPT-User', 'anthropic-ai', '
 
 export const VIEWPORT_MOVIL = { width: 390, height: 844 };
 
-export const TIPOS_SCHEMA_RELEVANTES = [
-  'Organization', 'LocalBusiness', 'Corporation', 'NGO', 'EducationalOrganization', 'Store', 'Restaurant', 'Hotel',
-  'MedicalBusiness', 'ProfessionalService', 'FinancialService', 'FoodEstablishment', 'HealthAndBeautyBusiness',
-  'Product', 'Service', 'Offer', 'Event', 'FAQPage', 'QAPage', 'HowTo', 'Article', 'NewsArticle', 'BlogPosting',
-  'Person', 'Course', 'SoftwareApplication', 'WebApplication', 'MobileApplication', 'Recipe', 'JobPosting', 'RealEstateListing',
+// Tipos de schema.org que NO describen por sí solos de qué trata el sitio (son estructura o piezas sueltas).
+// Cualquier otro tipo (LocalBusiness y sus subtipos como MedicalClinic o InsuranceAgency, Product, Event, Article…) cuenta como relevante.
+export const TIPOS_SCHEMA_AUXILIARES = [
+  'WebSite', 'WebPage', 'BreadcrumbList', 'ListItem', 'ItemList', 'ImageObject', 'SearchAction', 'ReadAction', 'EntryPoint',
+  'SiteNavigationElement', 'WPHeader', 'WPFooter', 'WPSideBar', 'CollectionPage', 'Thing', 'PostalAddress', 'ContactPoint',
+  'GeoCoordinates', 'OpeningHoursSpecification', 'Rating', 'AggregateRating', 'Review', 'Question', 'Answer',
 ];

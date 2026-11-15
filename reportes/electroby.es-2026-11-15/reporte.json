@@ -1,0 +1,203 @@
+{
+  "url": "https://electroby.es/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 19,
+  "aeo": 18,
+  "total": 37,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 51 caracteres: «Instalaciones LED y eléctricas en Quito | ELECTROBY». Dice el servicio, la ciudad y la marca, y es coherente con el H1; no es genérico.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 150 caracteres (dentro de 140–160), nombra servicio, zonas y garantía, y cierra con una llamada a la acción: «Cotiza por Telegram». Están og:title, og:description y og:image; la imagen es una URL absoluta (https://electroby.es/wp-content/uploads/2026/11/01-hero-instalacion.jpg) con ancho, alto y texto alternativo, y también hay twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 que dice de qué trata la página. La jerarquía es H1, H2 (8), H3 (22) y H4 (22) sin saltos de nivel. Los H4 son los servicios dentro de cada categoría H3 y los H3 de la sección de preguntas frecuentes son las preguntas; es estructura real, no estilo. No hay encabezados en el menú ni en el pie.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (instalaciones LED y eléctricas en Quito) coincide en el título, el H1 y el primer párrafo real del contenido: «Instalamos iluminación LED, tableros, mantenimiento, domótica y seguridad eléctrica… en Quito». El contenido principal tiene unas 1,300 palabras con servicios, pasos, cobertura y preguntas frecuentes; hay cierta repetición de cobertura y horario, pero no es relleno.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página es indexable: la meta robots dice «index, follow…», no hay X-Robots-Tag y el canonical apunta a sí misma (https://electroby.es/). Responde 200 sin redirecciones, usa HTTPS y declara lang=\"es\", que coincide con el idioma del contenido.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt existe (200), permite todo el sitio y solo bloquea /wp-admin/, /wp-login.php, /?s= y /search/, además de declarar el sitemap. El sitemap_index.xml responde 200 y es válido; las 20 URLs de la muestra están en https://electroby.es (mismo dominio y protocolo) e incluyen la portada. Detalle menor: en el sitemap aparece /hello-world/, la entrada de ejemplo de WordPress.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "El alt es bueno: las 10 imágenes con contenido lo tienen y describen lo que se ve (por ejemplo «Electricista probando un tablero eléctrico residencial con multímetro» o «Cámaras de seguridad CCTV instaladas en una pared»), sin alt vacío en imágenes grandes. El peso total es moderado (322 KB, ninguna imagen > 300 KB), pero Lighthouse marca la imagen principal como sobredimensionada (uses-responsive-images, ahorro estimado de 215 KiB sobre 251 KB) y sin formato moderno (modern-image-formats, 164 KiB), así que el parámetro de peso queda a medias.",
+      "mejoras": [
+        "Sirve 01-hero-instalacion.jpg con srcset/sizes (por ejemplo 390, 780 y 1200 px de ancho) para que el teléfono no descargue la versión grande; Lighthouse estima ahorrar unos 215 KiB.",
+        "Convierte el hero JPG y el logo PNG (electroby-logo-horizontal-768x128.png) a WebP o AVIF, o el logo a SVG, para recuperar cerca de 164 KiB."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Se confirma el puntaje del script: Lighthouse móvil da rendimiento 97 (mínimo 80), LCP 2.12 s (máximo 2.5 s) y CLS 0.000 (máximo 0.1); TBT es 0 ms y la respuesta del servidor tardó 360 ms. Es una sola medición, así que puede variar entre corridas y equipos; el LCP tiene solo unos 0.4 s de margen. Lo único marcado es eliminar recursos que bloquean el render (ahorro estimado de 350 ms).",
+      "mejoras": []
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport (width=device-width, initial-scale=1), no hay scroll horizontal y solo el 0.4% del texto es menor a 12px. En movil-arriba.png el encabezado, el menú hamburguesa (arriba a la derecha), el texto del hero y los dos botones grandes («Cotizar por Telegram» y «Llamar ahora») se ven completos, sin encimar ni cortar, y no hay banner de cookies ni pop-up que tape la pantalla. La captura completa (recortada a 3000 px) muestra tarjetas, formulario y secciones bien apiladas en una columna. Detalle menor: dos enlaces de lista miden 21 px de alto («2. Iluminación Residencial», «4. Seguridad Eléctrica Residencial»), aunque son anchos y fáciles de tocar.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 5 enlaces internos (Inicio, Servicios, Galería, FAQ, Contacto, más el botón «Cotizar por Telegram»). De 9 enlaces internos revisados, 0 están rotos y ninguno quedó sin verificar. Las anclas son descriptivas («Ver servicio de iluminación LED», «2. Iluminación Residencial») y no hay «clic aquí» ni «leer más». Las URLs son slugs legibles como /servicios-electricos-residenciales/. Observación menor: el encabezado trae un enlace «Cart», en inglés, que apunta a la portada.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "La primera frase del contenido dice qué hace (instalación de iluminación LED, tableros, domótica y seguridad eléctrica), para quién (hogares, locales e industrias) y dónde (Quito, Cumbayá, Tumbaco, Sangolquí, Valle de los Chillos). La segunda frase añade cómo trabajan y la garantía. Son 44 palabras, dentro del rango, y el bloque aparece justo debajo del H1.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Los H2 «Por qué elegir ELECTROBY» y «Cómo trabajamos» no son preguntas reales (el script los marcó por la palabra interrogativa). Aun así, el H2 «Preguntas frecuentes» contiene 10 H3 que sí son preguntas reales de un usuario, y cada una se responde en la primera frase justo debajo. Un par de respuestas son parcialmente evasivas (precio y costo de la visita se remiten a la cotización), pero la mayoría es directa.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección «Preguntas frecuentes» visible en el texto de la página (no solo en el schema), con 10 preguntas y respuestas de 1–2 frases cada una, completas y autocontenidas. Ninguna se limita a «contáctanos».",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 2 bloques JSON-LD válidos con @context schema.org, presentes en el HTML inicial. El tipo es adecuado para un negocio de servicios: Organization + Electrician (subtipo de LocalBusiness), más WebSite, WebPage y un FAQPage con 10 preguntas que coincide con las 10 preguntas visibles en la página. Teléfono (+593997631506 vs 0997631506 en la página) y correo coinciden con el contenido visible, y el address «Quito, EC» no contradice el aviso «Sin local físico; servicio a domicilio». Detalles menores que no restan: el nodo Article es poco natural para una página de inicio de servicios, y el address es texto simple, no un PostalAddress.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML crudo trae 1324 palabras frente a 1321 de la página renderizada (100%). El H1 «Instalaciones LED y eléctricas en Quito para hogares y empresas», los H2/H3/H4 de servicios y los textos de oferta ya están en el HTML inicial, así que un bot que no ejecuta JavaScript ve el contenido que importa (servicios, cobertura, garantía, FAQ y datos de contacto).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt permite explícitamente a los cuatro bots de la rúbrica: GPTBot, ClaudeBot, PerplexityBot y Google-Extended tienen cada uno su grupo con «Allow: /» y sin ningún Disallow. Las únicas restricciones están en «User-agent: *» (/wp-admin/, /wp-login.php, /?s=, /search/) y no afectan al contenido útil. El archivo no parece administrado por una plataforma: no hay directivas Content-Signal ni bloques gestionados de Cloudflare; parece una configuración manual en WordPress, con Sitemap https://electroby.es/sitemap_index.xml. Además existe llms.txt (https://electroby.es/llms.txt), que se menciona como bonus informativo sin subir el puntaje.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Los párrafos son cortos (promedio 13 palabras, ninguno largo), hay un proceso en 4 pasos numerados, viñetas de contacto y un esquema claro H2/H3/H4 con un servicio por encabezado. Cada sección trata un solo tema (servicios, galería, ventajas, proceso, cobertura, FAQ, contacto).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «ELECTROBY» es idéntico en title, og:site_name, encabezado, © 2026 y en el schema (Organization/WebSite). La descripción, el teléfono (0997631506 = +593997631506) y el correo (byron92m.bot@gmail.com) coinciden entre página y schema, y la ubicación es coherente («sin local físico» en la página, «Quito, EC» en el schema). Lo que falta son redes oficiales: el único perfil enlazado en la página es un bot de Telegram con nombre de persona (t.me/ByronMartinezBot) y el segundo sameAs es un enlace corto opaco (share.google/...) que no aparece en la página.",
+      "mejoras": [
+        "Enlaza en el pie y en el sameAs los perfiles oficiales de la marca (Facebook, Instagram, ficha de Google Business Profile o Google Maps) con la URL completa y estable en lugar del acortador share.google.",
+        "Cambia el address del schema a un PostalAddress (addressLocality «Quito», addressRegion «Pichincha», addressCountry «EC») y agrega areaServed con Cumbayá, Tumbaco, Sangolquí y Valle de los Chillos para reflejar el servicio a domicilio.",
+        "Aclara en la página que el bot de Telegram lo opera ELECTROBY (por ejemplo, «Telegram oficial de ELECTROBY») y, si es posible, crea un canal o handle con el nombre de la marca para que coincida con el nombre del negocio."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "La página sustenta sus afirmaciones con datos operativos verificables: garantía de 15 días, respuesta en 2 horas, atención 24/7, horario lunes a viernes de 9am a 5pm, localidades nombradas, formas de pago, teléfono y una fecha (1 de febrero de 2027). Casi no hay frases vacías tipo «somos los mejores». Su punto débil es que no muestra ningún precio, tarifa ni caso real (la galería son fotos de referencia de Pexels).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "De las cuatro señales solo dos son claras: la fecha de actualización («Última actualización: 14 de noviembre de 2026», dateModified 2026-11-14 y © 2026) y un enlace «Acerca de ELECTROBY» a /nosotros/ en el pie. No se ve quién está detrás (el autor del schema es la propia Organization, sin persona ni equipo con nombre) y no hay testimonios, reseñas ni fuentes citadas con enlace. Con 2 de 4 señales, y las otras dos ausentes, corresponde 1.",
+      "mejoras": [
+        "Muestra en la portada y en /nosotros/ a la persona o equipo con nombre, rol, años de experiencia y credenciales o registro profesional (por ejemplo, «Byron Martínez, electricista, X años de experiencia en Quito»), con foto real, y refléjalo en el schema como Person (author/founder).",
+        "Agrega al menos 3 testimonios verificables con nombre, sector de Quito y tipo de trabajo, o enlaza tus reseñas de Google con calificación, y marca el schema con Review/AggregateRating solo si son reales.",
+        "Sustituye las fotos de stock de Pexels por fotos de trabajos propios con ubicación y fecha, y cita con enlace las fuentes normativas que respaldas (por ejemplo, la norma técnica o la empresa distribuidora que mencionas en los trámites)."
+      ]
+    }
+  ],
+  "advertencias": []
+}

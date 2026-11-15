@@ -1,0 +1,322 @@
+# Calificación SEO + AEO: https://negocioeficiente.com/
+
+> Rúbrica: Hackathon Hostinger: rúbrica SEO y AEO. Auditado el 2026-11-15. Lighthouse móvil 12.8.2: rendimiento 86.
+
+## Resultado
+
+| Área | Puntos | Máximo | % |
+| --- | ---: | ---: | ---: |
+| SEO | **16** | 20 | 80% |
+| AEO | **15** | 20 | 75% |
+| **Total** | **31** | 40 | 78% |
+
+## Rúbrica SEO: que Google encuentre y entienda la página
+
+| # | Criterio | Puntos | Cómo se revisa | Calificó |
+| ---: | --- | :---: | --- | --- |
+| 1 | Título de la página | ■□ 1/2 | Script | agente |
+| 2 | Descripción y vista al compartir | ■□ 1/2 | Script | agente |
+| 3 | Estructura de encabezados | ■■ 2/2 | Script | agente |
+| 4 | Tema claro y contenido suficiente | ■■ 2/2 | Agente | agente |
+| 5 | Indexable | ■■ 2/2 | Script | agente |
+| 6 | robots.txt y sitemap.xml | ■■ 2/2 | Script | agente |
+| 7 | Imágenes | ■■ 2/2 | Script + Lighthouse | agente |
+| 8 | Velocidad | ■□ 1/2 | Lighthouse | agente |
+| 9 | Móvil | ■□ 1/2 | Lighthouse + captura móvil | agente |
+| 10 | Enlaces y URLs | ■■ 2/2 | Script | agente |
+
+## Rúbrica AEO: que los buscadores con IA usen la página como respuesta
+
+| # | Criterio | Puntos | Cómo se revisa | Calificó |
+| ---: | --- | :---: | --- | --- |
+| 1 | Respuesta directa arriba | ■□ 1/2 | Agente | agente |
+| 2 | Encabezados en forma de pregunta | ■■ 2/2 | Agente | agente |
+| 3 | Preguntas frecuentes | ■■ 2/2 | Agente | agente |
+| 4 | Datos estructurados | ■■ 2/2 | Script | agente |
+| 5 | Contenido legible sin JavaScript | ■■ 2/2 | Script: compara el HTML crudo con la página ya cargada | agente |
+| 6 | Acceso para bots de IA | □□ 0/2 | Script | agente |
+| 7 | Formato fácil de extraer | ■■ 2/2 | Agente | agente |
+| 8 | Identidad clara y consistente | ■□ 1/2 | Agente + script | agente |
+| 9 | Datos concretos | ■■ 2/2 | Agente | agente |
+| 10 | Señales de confianza | ■□ 1/2 | Agente | agente |
+
+## Detalle por criterio
+
+### SEO
+
+#### SEO 1 · Título de la página: 1/2
+*Vale 2 si:* Hay un <title> único que describe la página e incluye el tema o la marca (50–60 caracteres aprox.)
+
+Hay un solo <title> y sí describe la página: tema (IA para micro y pequeñas empresas), lugar (Querétaro) y marca (Negocio Eficiente). Pero mide 84 caracteres, muy por encima de los 50–60 aproximados, y Google lo cortaría en los resultados antes de mostrar la marca.
+
+*Evidencia:*
+- Título: «Implementación de IA para micro y pequeñas empresas en Querétaro | Negocio Eficiente»
+- Longitud: 84 caracteres (rango esperado 45–65)
+- 1 etiqueta <title>; no es genérico
+
+*Cómo mejorarlo:*
+- Acorta el título a ≤ 60 caracteres sin perder tema ni marca, por ejemplo: «IA para pequeñas empresas en Querétaro | Negocio Eficiente» (58 caracteres).
+- Deja la marca al final y el tema principal al inicio, para que el recorte no la deje fuera.
+
+#### SEO 2 · Descripción y vista al compartir: 1/2
+*Vale 2 si:* Hay meta description de 140–160 caracteres que invita a entrar, más og:title, og:description y og:image
+
+La meta description existe, es clara y cierra con una invitación («Llamada de diagnóstico gratis»); además están og:title, og:description, og:image (URL absoluta .png) y twitter:card summary_large_image. El problema es la longitud: 178 caracteres, por encima del rango de 140–160, así que se cortaría en el buscador.
+
+*Evidencia:*
+- Meta description: 178 caracteres (rango 140–160)
+- og:image: https://images.hostinger.com/.../8c3dd01d-7af0-4cd3-aa47-7bef0ca2379e.png (absoluta)
+- og:title y og:description presentes; twitterCard: summary_large_image
+
+*Cómo mejorarlo:*
+- Recorta la meta description a 140–160 caracteres, por ejemplo: «Implementamos IA en administración, facturas, inventario y documentos de tu pyme. Bajío, CDMX y en línea. Agenda tu llamada de diagnóstico gratis.» (unos 146 caracteres).
+- Acorta también og:title (hoy repite el título de 84 caracteres) para que la tarjeta al compartir no se corte.
+
+#### SEO 3 · Estructura de encabezados: 2/2
+*Vale 2 si:* Un solo H1 claro, y después H2/H3 en orden lógico, sin saltos
+
+Hay exactamente un H1 que dice de qué trata la página («La IA que le quita trabajo repetitivo a tu negocio, no solo la que vende.»), 11 H2 y 30 H3 en orden lógico, sin saltos de nivel. Los H3 se usan como estructura real (problemas, áreas, pasos del proceso, paquetes y 15 preguntas del FAQ), no como adorno de menú o pie. Detalle menor: algunos H2 salen sin espacio donde hay salto de línea («tehace», «procesoque»), lo que puede pegar palabras al extraer el texto.
+
+*Evidencia:*
+- Resumen: H1=1, H2=11, H3=30, H4–H6=0; saltos: ninguno
+- H1: «La IA que le quita trabajo repetitivo a tu negocio, no solo la que vende.»
+- H2 con palabras pegadas: «IA donde sí tehace falta.», «Del pendiente a un procesoque tu equipo puede usar.»
+
+#### SEO 4 · Tema claro y contenido suficiente: 2/2
+*Vale 2 si:* El tema aparece en el título, el H1 y el primer párrafo; hay unas 300 palabras útiles o más, sin relleno
+
+El tema (IA y automatización para pequeños negocios) se entiende en el título, el H1 y el primer párrafo, aunque con palabras distintas en cada uno. El contenido principal tiene unas 1,900 palabras útiles (servicios, proceso, precios, casos, 15 preguntas frecuentes) sin lorem ipsum ni texto repetido.
+
+*Evidencia:*
+- Título: "Implementación de IA para micro y pequeñas empresas en Querétaro | Negocio Eficiente"
+- H1: "La IA que le quita trabajo repetitivo a tu negocio, no solo la que vende."
+- Primer párrafo: "Automatizamos administración, inventario, documentos y atención con las herramientas que ya usas."
+- Etiqueta justo arriba del H1: "IA práctica para pequeños negocios"
+- palabrasContenido: 1905 (umbral 300)
+
+#### SEO 5 · Indexable: 2/2
+*Vale 2 si:* Sin noindex, con canonical correcto, HTTPS y atributo lang en <html>
+
+La página responde 200 sin redirecciones, sin noindex (ni en meta ni en X-Robots-Tag), con canonical que apunta a sí misma, en HTTPS y con lang="es-MX", que coincide con el contenido en español.
+
+*Evidencia:*
+- statusHttp 200; metaRobots: null; xRobotsTag: null
+- Canonical: https://negocioeficiente.com/ (igual a la URL final)
+- lang="es-MX"; protocolo https
+
+#### SEO 6 · robots.txt y sitemap.xml: 2/2
+*Vale 2 si:* Existen los dos, el sitemap lista las páginas y el robots.txt no bloquea el sitio
+
+Existen robots.txt y sitemap.xml (declarado en robots.txt, responde 200 y es válido). El sitemap lista 12 URL reales del mismo dominio y protocolo, incluida la home. El robots.txt permite el rastreo general (User-agent: * con Allow: /) y solo bloquea bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended, etc.), lo que no afecta la indexación en buscadores.
+
+*Evidencia:*
+- robots.txt 200: «User-agent: * ... Allow: /»; «Sitemap: https://negocioeficiente.com/sitemap.xml»
+- Sitemap: 12 URL, incluye la página; ejemplos: /blog, /servicios/operacion, /servicios/equipo, /aviso-de-privacidad
+- Disallow: / solo para GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, meta-externalagent, Amazonbot y Bytespider
+
+#### SEO 7 · Imágenes: 2/2
+*Vale 2 si:* Las imágenes con contenido tienen alt descriptivo y no pesan de más
+
+Las 7 imágenes con contenido tienen alt descriptivo y específico (por ejemplo «Manos organizando facturas junto a una laptop sobre un escritorio de madera»), sin nombres de archivo ni listas de palabras clave, y no hay imágenes grandes con alt vacío. Lighthouse no marca problemas de formato, tamaño ni carga diferida y las 7 usan loading="lazy". Salvedad: el script reporta 0 KB de imágenes porque, al estar debajo del primer pantallazo y cargarse en diferido, Lighthouse no las descargó; por eso el peso real no quedó medido.
+
+*Evidencia:*
+- 7 de 7 imágenes con alt válido; sinAlt: [] y altVacioEnImagenesGrandes: []
+- Alt de ejemplo: «Retrato profesional de Miguel F. Favila, fundador de Negocio Eficiente»
+- Lighthouse: uses-optimized-images, modern-image-formats, uses-responsive-images y offscreen-images con score 1
+- 6 de las 7 imágenes son .png (images.hostinger.com); pesoTotalImagenesKB = 0 porque no se descargaron en la medición
+
+#### SEO 8 · Velocidad: 1/2
+*Vale 2 si:* En Lighthouse móvil: rendimiento de 80 o más, LCP menor a 2.5 s y CLS menor a 0.1
+
+Confirmo el puntaje del script: Lighthouse móvil da rendimiento 86 (cumple ≥ 80) y CLS 0.000 (cumple < 0.1), pero el LCP es 3.80 s (no cumple < 2.5 s), así que cumple 2 de 3. Es una sola medición y puede variar entre corridas y equipos. El servidor responde rápido (documento raíz en 40 ms) y TBT es 0, así que el retraso viene de lo que bloquea el pintado: Lighthouse marca CSS bloqueante (hoja de Google Fonts e index-B52ON9Ig.css, ahorro estimado de 230 ms) y FCP ya es 2.4 s; además la página descarga dos archivos de Fraunces (~82 KB y ~68 KB) y uno de Inter (~49 KB) antes de poder mostrar el título. En la captura el primer pantallazo es solo texto, sin imagen, por lo que el elemento LCP probablemente es el encabezado (inferencia mía; Lighthouse no detalló el nodo).
+
+*Evidencia:*
+- Rendimiento 86, SEO 92, LCP 3796 ms, FCP 2416 ms, CLS 0, TBT 0 ms
+- render-blocking-resources: score 0, ahorro estimado de 230 ms (fonts.googleapis.com CSS e index-B52ON9Ig.css)
+- server-response-time: 40 ms; total-byte-weight: 362 KiB
+- Fuentes: Fraunces 81.9 KB + 67.6 KB, Inter 49 KB; JS principal entry.client 55.7 KB
+
+*Cómo mejorarlo:*
+- Elimina el bloqueo de render de las fuentes: sirve Fraunces e Inter desde tu propio dominio con <link rel="preload" as="font"> y font-display: swap, en lugar de depender de la hoja CSS de fonts.googleapis.com.
+- Reduce el peso de tipografías: deja solo los pesos y estilos que se usan arriba del pliegue (la URL pide Fraunces en 5 variantes e Inter en 4 pesos) para bajar los ~200 KB de fuentes.
+- Inserta en el HTML el CSS crítico del primer pantallazo y carga index-B52ON9Ig.css sin bloquear, con la meta de llevar el LCP del título principal por debajo de 2.5 s.
+
+#### SEO 9 · Móvil: 1/2
+*Vale 2 si:* Tiene meta viewport, se ve bien en el teléfono, el texto se lee y los botones se tocan fácil
+
+Tiene meta viewport correcta (width=device-width, initial-scale=1) y, en la captura de 390 px, el diseño se ve limpio: logo, botón «Agenda tu diagnóstico» y menú hamburguesa visibles, titular grande, botones principales de ancho completo y sin scroll horizontal ni banner de cookies que tape la pantalla. Lo que falla es lo fino: 19% del texto mide menos de 12 px (líneas como «Llamada de diagnóstico gratuita…», «Tu negocio ya tiene las herramientas» y el rótulo «IA PRÁCTICA PARA PEQUEÑOS NEGOCIOS» se ven diminutas) y 17 de 55 enlaces/controles miden menos de 24 px de alto. El botón flotante de WhatsApp además queda encima del enlace «Menos vueltas. Más negocio.» al fondo del primer pantallazo. Solo pude ver los primeros 3000 px de la captura completa; el pie de página y los controles pequeños los evalué por las métricas.
+
+*Evidencia:*
+- Viewport: width=device-width, initial-scale=1; desbordeHorizontalPx = 0
+- Texto: 2202 de 11842 caracteres (19%) por debajo de 12 px
+- Objetivos táctiles pequeños (17 de 55): «Menos vueltas. Más negocio.» 151×15 px, «WhatsApp: 55 4851 4751» 340×20, «info@negocioeficiente.com» 340×20, «Aviso de privacidad» 93×17, input de 16×16
+- Captura arriba: hamburguesa visible, CTA principal de ancho completo y bien legible; botón flotante de WhatsApp tapa parcialmente el enlace de la parte baja
+
+*Cómo mejorarlo:*
+- Sube a 12–14 px (mínimo) las líneas secundarias: la nota «Llamada de diagnóstico gratuita Reuniones virtuales o en tus instalaciones», «Tu negocio ya tiene las herramientas…» y el rótulo «IA PRÁCTICA PARA PEQUEÑOS NEGOCIOS».
+- Agrega padding a los enlaces de contacto y del pie («WhatsApp: 55 4851 4751», «info@negocioeficiente.com», «Aviso de privacidad», «Menos vueltas. Más negocio.») para que midan al menos 44 px de alto y estén separados entre sí.
+- Haz que el checkbox de 16×16 px y el input de 22 px de ancho sean tocables con su etiqueta completa (label clicable) y deja margen inferior para que el botón flotante de WhatsApp no cubra el enlace «Menos vueltas. Más negocio.».
+
+#### SEO 10 · Enlaces y URLs: 2/2
+*Vale 2 si:* El menú funciona, no hay enlaces internos rotos (404), los enlaces no dicen "clic aquí" y las URLs se pueden leer
+
+El menú está presente (en móvil aparece el botón de hamburguesa y el CTA «Agenda tu diagnóstico») con 7 enlaces internos. Se revisaron los 4 enlaces internos únicos (/blog, /servicios/operacion, /servicios/equipo, /aviso-de-privacidad) y ninguno está roto; no hay enlaces sin verificar. Las URLs son cortas y legibles y el script no halló anclas tipo «clic aquí». Detalle menor: los dos botones de las tarjetas dicen «Ver esta área» y apuntan a destinos distintos, un texto poco descriptivo fuera de contexto, aunque el menú sí usa «Operación» y «Equipo» para esas mismas páginas.
+
+*Evidencia:*
+- 0 rotos de 4 enlaces internos revisados; sinVerificar: []
+- URLs: /blog, /servicios/operacion, /servicios/equipo, /aviso-de-privacidad (0 poco legibles)
+- Dos enlaces «Ver esta área» → /servicios/operacion y /servicios/equipo
+
+### AEO
+
+#### AEO 1 · Respuesta directa arriba: 1/2
+*Vale 2 si:* En las primeras 1–2 frases queda claro qué es, para quién y qué ofrece (40–60 palabras aprox.)
+
+El primer párrafo dice qué hace ("Automatizamos administración, inventario, documentos y atención"), pero no dice quién es ni para quién es: "IA" y "pequeños negocios" solo aparecen en la etiqueta y el H1, no en las dos primeras frases. Además mide 24 palabras y la segunda frase es una aclaración negativa ("Sin necesidad de cambiar de sistema automáticamente…") en lugar de una oferta.
+
+*Evidencia:*
+- "Automatizamos administración, inventario, documentos y atención con las herramientas que ya usas. Sin necesidad de cambiar de sistema automáticamente y sin depender de nosotros."
+- El H1 es un lema: "La IA que le quita trabajo repetitivo a tu negocio, no solo la que vende."
+- El precio y la oferta concreta (llamada gratis, diagnóstico de 487 USD) no aparecen arriba
+
+*Cómo mejorarlo:*
+- Reescribe el primer párrafo así: "Negocio Eficiente implementa inteligencia artificial en micro y pequeños negocios de México para automatizar administración, facturas, inventario y atención a clientes con las herramientas que ya usan, como Excel, WhatsApp y Google Workspace. Empieza con una llamada de diagnóstico gratuita." (≈45 palabras, responde qué es, para quién y qué ofrece).
+- Corrige la frase "Sin necesidad de cambiar de sistema automáticamente", que se lee confusa, por "No necesitas cambiar de sistema ni depender de nosotros" y muévela a una segunda línea de apoyo.
+
+#### AEO 2 · Encabezados en forma de pregunta: 2/2
+*Vale 2 si:* Algunos H2 son preguntas reales del usuario ("¿Cuánto cuesta…?") con la respuesta justo debajo
+
+Los H2 son lemas, no preguntas, pero la sección de preguntas frecuentes tiene 15 H3 con preguntas reales y la respuesta empieza justo debajo, casi siempre con "Sí." / "No." o el dato directo. Cumple el criterio de 2–3 preguntas (H2/H3) con respuesta inmediata, incluida la de precio.
+
+*Evidencia:*
+- H3: "¿Cuánto cuesta implementar inteligencia artificial en una pyme de México?" → "La llamada de diagnóstico es gratis; la etapa de diagnóstico para implementar IA cuesta 487 USD para negocios de 1 a 5 empleados y 997 USD para negocios de 6 a 30…"
+- H3: "¿Pueden organizar mis facturas XML del SAT sin que tenga que cambiar de contador?" → "Sí. Organizamos tus facturas XML en una hoja de cálculo…"
+- H3: "¿Tengo que comprar software nuevo para automatizar mi negocio?" → "No necesariamente. Trabajamos con Google Workspace, Excel, WhatsApp y correo…"
+- El único H2 con forma de pregunta ("¿Qué quieres resolver en tu negocio?") encabeza un formulario, no una respuesta
+
+#### AEO 3 · Preguntas frecuentes: 2/2
+*Vale 2 si:* Hay una sección de FAQ visible con respuestas cortas y completas
+
+Hay una sección visible titulada "08 / Preguntas frecuentes" con 15 preguntas, cada una con una respuesta de 1 a 3 frases y completa (precio, tiempos, modalidad, seguridad de datos, horario y contacto). El HTML las marca como acordeón (15 elementos details/summary), por lo que las preguntas se ven y las respuestas están en el DOM; no depende solo del schema FAQPage.
+
+*Evidencia:*
+- Encabezado de sección: "08 / Preguntas frecuentes"
+- 15 preguntas en H3 con respuesta debajo, por ejemplo "¿Cómo puedo agendar el diagnóstico gratuito?" → "Escríbenos por WhatsApp al 55 4851 4751, a info@negocioeficiente.com o llena el formulario… Atendemos de lunes a viernes de 10:00 a 19:00…"
+- Respuestas cortas y cerradas: "No. Entregamos todo documentado y capacitamos a tu equipo para que use y mantenga los procesos sin depender de nosotros."
+- detailsSummary: 15; schemaFaq: true
+
+#### AEO 4 · Datos estructurados: 2/2
+*Vale 2 si:* Hay JSON-LD de schema.org válido y del tipo correcto (Organization, LocalBusiness, Product, Event, FAQPage…), y coincide con lo que se ve en la página
+
+Hay 3 bloques JSON-LD válidos de schema.org en el HTML inicial: WebSite, ProfessionalService (subtipo de LocalBusiness, adecuado para un servicio de consultoría) y FAQPage. Los datos coinciden con lo visible: teléfono +52 55 4851 4751 y correo info@negocioeficiente.com son los mismos del formulario y el pie, y el FAQPage declara 15 preguntas, las mismas 15 que se ven en la sección de preguntas frecuentes. El schema no repite los precios (487 y 997 USD), por lo que no hay contradicción. En el resumen de evidencia solo aparecen name, url, description, telephone, email y sameAs, así que no pude confirmar si el ProfessionalService trae logo, areaServed u horario; omitir la dirección es coherente porque el sitio dice «No tenemos oficina abierta al público».
+
+*Evidencia:*
+- 3 bloques JSON-LD, 0 inválidos, @context https://schema.org
+- Tipos: WebSite, ProfessionalService, FAQPage; en el HTML crudo (estaEnHtmlCrudo ok)
+- telephone «+52 55 4851 4751» = WhatsApp «55 4851 4751» en la página; email = info@negocioeficiente.com
+- FAQPage con 15 preguntas = 15 elementos details/summary visibles
+- name «Negocio Eficiente» aparece en título, logo y pie
+
+#### AEO 5 · Contenido legible sin JavaScript: 2/2
+*Vale 2 si:* El texto principal ya viene en el HTML inicial, porque muchos bots de IA no ejecutan JavaScript
+
+El HTML inicial trae el 100% del texto renderizado (1905 de 1905 palabras) y el H1 ya está en el HTML crudo. Los encabezados del crudo (H1 «La IA que le quita trabajo repetitivo a tu negocio, no solo la que vende.», H2 y H3 de problemas y servicios) y las primeras palabras confirman que el contenido que importa llega sin ejecutar JavaScript. No hay motivo para ajustar el resultado del script.
+
+*Evidencia:*
+- palabrasHtmlCrudo 1905 / palabrasRenderizado 1905 (proporción 1)
+- H1 en el HTML crudo: «La IA que le quita trabajo repetitivo a tu negocio, no solo la que vende.»
+- Primeras palabras del crudo: «Saltar al contenido», «IA práctica para pequeños negocios»
+
+#### AEO 6 · Acceso para bots de IA: 0/2
+*Vale 2 si:* El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended; un llms.txt suma como bonus, porque todavía no es un estándar
+
+El robots.txt tiene «Disallow: /» para GPTBot, ClaudeBot y Google-Extended, tres de los cuatro bots de la rúbrica; solo PerplexityBot está permitido. Por la regla acordada, un bloqueo cuenta aunque parezca intencional (aquí aparece junto a «Content-Signal: ai-train=no»). Los bots de búsqueda y de consulta del usuario sí están permitidos (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, Perplexity-User), pero eso no cambia el puntaje. El archivo usa líneas Content-Signal y una lista de bots con Allow individual, formato típico de un robots.txt administrado por una plataforma como Cloudflare, aunque no puedo confirmar quién lo genera. Bonus informativo: existe https://negocioeficiente.com/llms.txt, que no sube el puntaje.
+
+*Evidencia:*
+- User-agent: GPTBot → Disallow: /
+- User-agent: ClaudeBot → Disallow: /
+- User-agent: Google-Extended → Disallow: /
+- User-agent: PerplexityBot → Allow: / (con Content-Signal: search=yes, ai-input=yes, ai-train=no)
+- También bloqueados fuera de la rúbrica: Applebot-Extended, meta-externalagent, Amazonbot, Bytespider
+- llms.txt existe (bonus, no suma)
+
+*Cómo mejorarlo:*
+- Cambia las reglas de GPTBot, ClaudeBot y Google-Extended de «Disallow: /» a «Allow: /» (o elimina esos tres bloques) para que dejen de contar como bloqueados.
+- Si el robots.txt lo genera una plataforma (Cloudflare con Content-Signal), desactiva ahí la opción administrada que bloquea a los rastreadores de entrenamiento de IA, o sobrescribe el archivo con tus propias reglas; si no, el bloqueo volverá a aparecer.
+- Conserva el Sitemap y el llms.txt actuales, que ya están bien.
+
+#### AEO 7 · Formato fácil de extraer: 2/2
+*Vale 2 si:* Párrafos cortos, listas, tablas o pasos numerados, con un tema por sección
+
+Predominan los párrafos cortos (promedio de 22 palabras, ninguno largo) y hay listas con viñetas en las áreas de servicio y los paquetes, y pasos numerados en "Cómo trabajamos". Cada sección trata un solo tema (problema, servicios, proceso, precios, para quién, casos, preguntas frecuentes). Un detalle menor: algunos H2 pierden el espacio entre líneas, como "tehace falta" o "piesen tu negocio", lo que puede confundir a un extractor.
+
+*Evidencia:*
+- parrafos: 61, promedioPalabrasPorParrafo: 22, parrafosLargos: 0
+- itemsDeLista: 23, listasNumeradas: 2
+- Pasos numerados: "Diagnóstico → Plan → Implementación → Entrega y capacitación"
+- Paquetes con viñetas: "Revisión de tus procesos y herramientas", "Identificación de oportunidades de mejora", "Recomendaciones priorizadas"
+
+#### AEO 8 · Identidad clara y consistente: 1/2
+*Vale 2 si:* El nombre, la descripción, la ubicación y el contacto son iguales en toda la página y en el schema, con enlaces a las redes oficiales
+
+El nombre ("Negocio Eficiente" en title y schema), la descripción y el contacto coinciden entre página y schema: el teléfono 55 4851 4751 equivale a "+52 55 4851 4751" y el correo info@negocioeficiente.com es el mismo. Pero la única red social enlazada y repetida en sameAs es facebook.com/liderpreneurs, que es la agencia anterior del fundador y no un perfil de Negocio Eficiente, y el schema no declara ubicación ni zona de servicio aunque la página sí las describe.
+
+*Evidencia:*
+- Nombres: title "... | Negocio Eficiente"; schema ProfessionalService name "Negocio Eficiente"; WebSite name "negocioeficiente.com"; pie "© negocioeficiente.com"; og:site_name ausente
+- Teléfono: página "55 4851 4751" / schema "+52 55 4851 4751" (coinciden al normalizar); correo idéntico (los correos con texto pegado como "4751info@negocioeficiente.comlunes" son un artefacto de extracción, no de la página)
+- Redes: solo Facebook "liderpreneurs" (pie y sameAs) más un enlace de Google Maps en sameAs; no hay LinkedIn, Instagram ni YouTube de la marca. La propia página presenta a Liderpreneurs como otra empresa del fundador
+- Ubicación: schema sin address ni areaServed; la página dice "nuestra base está en Querétaro", "No tenemos oficina abierta al público" y lista 10 ciudades de atención presencial. Es un negocio híbrido sin oficina pública, así que no se penaliza la falta de dirección postal
+- Descripción: meta/og "Implementamos inteligencia artificial en la administración, facturas..." y schema "Implementación de inteligencia artificial en los procesos diarios de micro y pequeñas empresas" dicen lo mismo
+
+*Cómo mejorarlo:*
+- Enlaza en el pie y en el sameAs de ProfessionalService perfiles propios de "Negocio Eficiente" (LinkedIn de empresa, Instagram o Facebook) y el LinkedIn de Miguel F. Favila; el Facebook actual (liderpreneurs) corresponde a otra marca y confunde la identidad.
+- Agrega al schema ProfessionalService areaServed (Querétaro, Bajío, Ciudad de México) y address con addressLocality "Santiago de Querétaro" y addressCountry "MX", para que la ubicación del texto de la página también esté en el schema.
+- Unifica el nombre: cambia el name del WebSite de "negocioeficiente.com" a "Negocio Eficiente", agrega <meta property="og:site_name" content="Negocio Eficiente"> y escribe el pie como "© 2026 Negocio Eficiente".
+
+#### AEO 9 · Datos concretos: 2/2
+*Vale 2 si:* Hay cifras, precios, horarios, fechas o ejemplos en lugar de frases genéricas tipo "somos los mejores"
+
+Las afirmaciones importantes traen datos verificables: precios por tamaño de negocio, horario y teléfono, años y fundaciones del fundador, casos con nombre y una cifra de resultado. Las frases genéricas existen pero son pocas y están en lemas, no en el contenido que explica la oferta.
+
+*Evidencia:*
+- Precios: "487 USD" (1 a 5 empleados) y "997 USD" (6 a 30 empleados), más impuestos en México
+- Horario y contacto: "Lunes a viernes, de 10:00 a 19:00", "55 4851 4751"
+- Casos con nombre: "Luelmo Contadores", "Avalarq", "Liderpreneurs"; resultado: "al menos 30% más eficientes en costo"
+- Trayectoria con fechas: "Lleva 19 años emprendiendo en digital", "En 2008 fundó dinerocapital.com y en 2013 Liderpreneurs.com"
+- Ejemplos concretos: "facturas XML del SAT", "recordatorio de cobranza sobre una hoja que ya existe"
+
+#### AEO 10 · Señales de confianza: 1/2
+*Vale 2 si:* Se ve quién está detrás (autor o equipo), cuándo se actualizó, una sección "acerca de" y fuentes o testimonios reales
+
+Hay dos señales claras: se ve quién está detrás (sección "06 / Sobre mí" con Miguel F. Favila, foto, trayectoria y títulos) y existe una sección tipo "acerca de". Faltan la fecha de actualización (sin dateModified, <time> ni año en el ©) y pruebas verificables: los casos nombran empresas pero no hay testimonios con voz, calificaciones ni enlaces a fuentes. El resultado del script sobre "Equipo" es un falso positivo, porque ese enlace va a un área de servicios.
+
+*Evidencia:*
+- Quién: "### Miguel F. Favila ... Ingeniero Industrial y de Sistemas por el Tec de Monterrey y auditor y asesor de calidad en ISO 9001..." con foto (alt "Retrato profesional de Miguel F. Favila, fundador de Negocio Eficiente") y "Lleva 19 años emprendiendo en digital"
+- Acerca de: bloque "06 / Sobre mí — Detrás de negocioeficiente" en la página principal; no hay página /acerca propia, y el enlace "Equipo" del menú lleva a /servicios/equipo (área "Conocimiento y equipo"), no a las personas
+- Fecha: autor.meta, time, dateModified y texto de actualización todos null; el pie dice "© negocioeficiente.com" sin año
+- Testimonios/fuentes: testimonios.citas 0, schemaReview false, fuentesExternas 0. Solo menciona "casos autorizados de Luelmo Contadores, Avalarq y Liderpreneurs" y "al menos 30% más eficientes en costo" sin enlaces, citas con nombre ni método de medición
+- Falso positivo del script: autor.textoPor "por WhatsApp\nLlamada" no es un autor
+
+*Cómo mejorarlo:*
+- Muestra una fecha de actualización visible (por ejemplo "Actualizado: noviembre 2026") y un pie con año, "© 2026 Negocio Eficiente"; agrega dateModified en el schema de la página.
+- Convierte los casos en pruebas verificables: añade una cita corta con nombre y cargo de alguien de Luelmo Contadores o Avalarq (con su permiso), enlaza a su sitio o a un caso detallado, y explica cómo se midió el "30% más eficientes en costo".
+- Refuerza la identidad del autor: agrega un schema Person para Miguel F. Favila (jobTitle, worksFor, sameAs con su LinkedIn) y enlaza el menú "Equipo" a la sección "Sobre mí" o crea una página /acerca.
+
+## Qué arreglar primero
+
+Ordenado de lo que más puntos pierde (0) a lo que está a medias (1):
+
+1. **AEO 6 · Acceso para bots de IA** (0/2): Cambia las reglas de GPTBot, ClaudeBot y Google-Extended de «Disallow: /» a «Allow: /» (o elimina esos tres bloques) para que dejen de contar como bloqueados.
+2. **SEO 1 · Título de la página** (1/2): Acorta el título a ≤ 60 caracteres sin perder tema ni marca, por ejemplo: «IA para pequeñas empresas en Querétaro | Negocio Eficiente» (58 caracteres).
+3. **SEO 2 · Descripción y vista al compartir** (1/2): Recorta la meta description a 140–160 caracteres, por ejemplo: «Implementamos IA en administración, facturas, inventario y documentos de tu pyme. Bajío, CDMX y en línea. Agenda tu llamada de diagnóstico gratis.» (unos 146 caracteres).
+4. **SEO 8 · Velocidad** (1/2): Elimina el bloqueo de render de las fuentes: sirve Fraunces e Inter desde tu propio dominio con <link rel="preload" as="font"> y font-display: swap, en lugar de depender de la hoja CSS de fonts.googleapis.com.
+5. **SEO 9 · Móvil** (1/2): Sube a 12–14 px (mínimo) las líneas secundarias: la nota «Llamada de diagnóstico gratuita Reuniones virtuales o en tus instalaciones», «Tu negocio ya tiene las herramientas…» y el rótulo «IA PRÁCTICA PARA PEQUEÑOS NEGOCIOS».
+6. **AEO 1 · Respuesta directa arriba** (1/2): Reescribe el primer párrafo así: "Negocio Eficiente implementa inteligencia artificial en micro y pequeños negocios de México para automatizar administración, facturas, inventario y atención a clientes con las herramientas que ya usan, como Excel, WhatsApp y Google Workspace. Empieza con una llamada de diagnóstico gratuita." (≈45 palabras, responde qué es, para quién y qué ofrece).
+7. **AEO 8 · Identidad clara y consistente** (1/2): Enlaza en el pie y en el sameAs de ProfessionalService perfiles propios de "Negocio Eficiente" (LinkedIn de empresa, Instagram o Facebook) y el LinkedIn de Miguel F. Favila; el Facebook actual (liderpreneurs) corresponde a otra marca y confunde la identidad.
+8. **AEO 10 · Señales de confianza** (1/2): Muestra una fecha de actualización visible (por ejemplo "Actualizado: noviembre 2026") y un pie con año, "© 2026 Negocio Eficiente"; agrega dateModified en el schema de la página.
+
+## Cómo se calificó
+
+Cada criterio vale 0 (no cumple), 1 (cumple a medias) o 2 (cumple). Un script midió lo medible (HTML, robots.txt, sitemap, enlaces, JSON-LD, Lighthouse móvil, captura móvil); cinco agentes especialistas revisaron la evidencia, juzgaron lo que requiere criterio y propusieron mejoras. Los totales los suma código, no un modelo. Evidencia completa en `evidencia/`.
+
+Limitaciones: Lighthouse es una sola medición y varía entre corridas y entre equipos; no se miden backlinks ni autoridad de dominio ni posición en Google.

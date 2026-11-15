@@ -1,0 +1,239 @@
+{
+  "url": "https://gisselaquezada.com/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 16,
+  "aeo": 9,
+  "total": 25,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 54 caracteres que une la marca (Gissela Quezada) con el tema (claridad, propósito y transformación). Describe bien a quién pertenece la página y de qué trata, y coincide con el mensaje del H1 y de la página; no es genérico.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 143 caracteres (dentro de 140–160), abre con un verbo de acción (\"Encuentra libros, mentorías y formación…\") y nombra beneficios concretos (claridad financiera, crecimiento personal, bienestar emocional). Están og:title, og:description y og:image, y la imagen es una URL absoluta con https.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo H1 que dice de qué trata la página (relación con el dinero y negocios con propósito), seguido de 5 H2 y 5 H3 sin saltos de nivel. Los H3 son las fichas de producto reales (Claridad financiera, Mentoría, etc.), así que sí son estructura y no solo estilo. Detalles menores: el H2 del pie (\"Gissela Quezada\") y el del aviso de cookies (\"Tu privacidad importa\") no aportan a la estructura del contenido, y el H1/H2 se dividen con salto de línea (se extrae como \"dinero.Construye\"), lo cual es solo un efecto visual.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (finanzas personales, mentorías y desarrollo personal con Gissela Quezada) se entiende, pero el nombre y el tema no coinciden en los tres lugares: el título dice \"Gissela Quezada | Claridad, propósito y transformación\", el H1 habla de \"tu relación con el dinero\" sin nombrar a Gissela, y el primer texto que lee un bot es el aviso de plantilla \"Creado con Hostinger\". Hay 260 palabras en el contenido principal, pero parte es relleno de interfaz (\"Descubrir ↗\" x5, \"Un espacio para crecer ↗\" x4), así que las palabras útiles quedan por debajo de 300.",
+      "mejoras": [
+        "Quita o desactiva el banner \"Creado con Hostinger. Personaliza esta plantilla con IA Builder\" para que el primer texto del contenido sea el de Gissela, no el de la plantilla.",
+        "Haz que el primer párrafo bajo el H1 diga el tema y el nombre, por ejemplo: «Gissela Quezada ofrece mentorías, talleres, conferencias y un libro de claridad financiera para personas que quieren ordenar su relación con el dinero y construir negocios con propósito.»",
+        "Agrega al menos 100 palabras útiles (qué incluye cada mentoría o taller, duración, formato, a quién va dirigido) y sustituye los textos repetidos \"Un espacio para crecer ↗\" por descripciones de una frase de cada producto."
+      ]
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 en HTTPS, sin redirecciones, sin noindex (ni en meta robots ni en X-Robots-Tag), con canonical a sí misma y lang=\"es\", que coincide con el contenido en español.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt y sitemap.xml (200, válido). El robots.txt permite todo a los buscadores (User-agent: * con Allow: /) y declara el sitemap; solo bloquea bots de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended, etc.), lo que no afecta la indexación en buscadores. El sitemap lista 11 URLs reales del mismo dominio y protocolo, e incluye la página de inicio.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Las 2 imágenes con contenido tienen alt y pesan poco (61 KB en total, ninguna > 300 KB), pero Lighthouse marca «Properly size images» (puntaje 0.5, ahorro estimado de 44 KiB: la portada img_0990.jpg se sirve mucho más grande de lo que se muestra). Además, el alt «Claridad financiera» solo repite el título del producto y el alt de la foto principal («Un momento de reflexión y escritura en un espacio cálido») no coincide con lo que se ve en la captura: una mujer de pie con saco blanco junto a una silla.",
+      "mejoras": [
+        "Sirve las imágenes al tamaño con que se muestran en móvil (unos 390–780 px de ancho) con srcset/sizes o redimensionando el archivo; img_0990.jpg (39 KB) es la que más ahorra, unos 36 KB.",
+        "Cambia el alt de la imagen del libro por una descripción de lo que se ve, por ejemplo: «Portada del libro Claridad financiera de Gissela Quezada».",
+        "Ajusta el alt de la foto principal para que describa la imagen real, por ejemplo: «Gissela Quezada de pie, con saco blanco, junto a una silla en un espacio luminoso»."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Confirmo el puntaje del script: rendimiento 91 (≥ 80 ✔) y CLS 0.000 (< 0.1 ✔), pero el LCP es 2.80 s, por encima del límite de 2.5 s. Es una sola medición de Lighthouse móvil y puede variar entre corridas y equipos. FCP, LCP y Speed Index son iguales (2.8 s), y Lighthouse señala como causa los recursos que bloquean el render (ahorro estimado de 760 ms); el servidor responde rápido (150 ms) y el peso total es bajo (292 KiB).",
+      "mejoras": [
+        "Elimina o difiere los recursos que bloquean el render (CSS y la hoja de Google Fonts de Cormorant Garamond); Lighthouse estima 760 ms de ahorro, suficiente para bajar el LCP de 2.8 s a menos de 2.5 s.",
+        "Precarga (preload) las 2 fuentes woff2 de Cormorant Garamond (38 KB y 24 KB) y usa font-display: swap para que el título principal se pinte sin esperar a la fuente.",
+        "Carga el JavaScript del cliente (entry.client, 56 KB) con defer o en división de código para que no retrase la primera pintura."
+      ]
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport correcto y no hay scroll horizontal; el título principal y los párrafos se leen bien. Pero la captura confirma al script: el banner de cookies queda cortado por la barra fija «Creado con Hostinger… Usar plantilla» y entre ambos tapan cerca de un tercio de la primera pantalla; el menú no tiene botón hamburguesa, sino 6 enlaces en dos líneas apretadas; 37% del texto mide menos de 12 px y 8 de 34 enlaces miden menos de 24 px de alto (los del menú, 17 px).",
+      "mejoras": [
+        "Convierte el menú en móvil en un botón de hamburguesa, o aumenta el relleno de cada enlace (Inicio, Sobre Gissela, Historias, Tienda, Dónde nos encuentran, Contacto) hasta unos 44 px de alto con separación entre ellos.",
+        "Sube a 12–14 px como mínimo las etiquetas pequeñas en mayúsculas y los textos secundarios (hoy 37% del texto está por debajo de 12 px).",
+        "Reduce la altura del banner de cookies y haz que no quede cortado por la barra «Creado con Hostinger… Usar plantilla»; quita o minimiza esa barra para que no cubra el borde inferior de la pantalla."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 7 enlaces internos (Inicio, Sobre Gissela, Historias, Tienda, Dónde nos encuentran, Contacto, carrito) y los 11 enlaces internos revisados responden bien, sin rotos ni pendientes de verificar. No hay anclas genéricas tipo \"clic aquí\"; las fichas de producto incluyen el nombre del producto en el ancla. Las URLs son legibles (p. ej. /producto/mentoria-de-claridad-personal). Detalle menor: el enlace del carrito solo muestra \"0\" como texto.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Lo primero que aparece es el banner de plantilla, y luego eslóganes: \"Transforma tu relación con el dinero. Construye negocios con propósito.\" y \"Una nueva perspectiva sobre tus finanzas, tus decisiones y el futuro que deseas construir.\" La respuesta real (qué ofrece) llega más abajo: \"Libros, mentorías y experiencias de formación para acompañarte a reconocer dónde estás...\". Los botones \"Conoce mis mentorías\" y \"Descubre mi libro\" dan una pista de la oferta, pero nunca se dice con claridad para quién es.",
+      "mejoras": [
+        "Quita el banner de plantilla y abre el contenido con una definición directa: «Gissela Quezada es mentora de claridad financiera y desarrollo personal. Ofrece mentorías individuales, talleres, conferencias y un libro para personas y emprendedoras que quieren tomar mejores decisiones con su dinero.»",
+        "Sube al primer párrafo la frase \"Libros, mentorías y experiencias de formación...\" y añade el público al que va dirigido, en lugar del eslogan \"Una nueva perspectiva sobre tus finanzas...\"."
+      ]
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 0,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Ningún encabezado es una pregunta. Los H2 son eslóganes (\"No se trata de tener todas las respuestas. Se trata de empezar.\", \"Herramientas para tu siguiente capítulo\", \"Tu siguiente paso comienza aquí.\") y los H3 solo son nombres de productos.",
+      "mejoras": [
+        "Cambia \"Herramientas para tu siguiente capítulo\" por «¿Qué mentorías, talleres y libros ofrece Gissela Quezada?» y responde justo debajo: «Gissela ofrece un libro, mentorías individuales, talleres, conferencias y un programa de desarrollo integral, desde $24 hasta $290.»",
+        "Agrega un H2 «¿Cuánto cuestan las mentorías y talleres?» con una respuesta de una frase, por ejemplo: «La mentoría de claridad personal cuesta $120, el taller de transformación emocional $65 y la conferencia $45.»",
+        "Agrega un H2 «¿Para quién es la mentoría de claridad personal?» con la respuesta en la primera frase."
+      ]
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 0,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "No hay sección de preguntas frecuentes visible: ni encabezado de FAQ, ni acordeón, ni `details/summary`, ni schema FAQPage. La frase \"Si tienes preguntas o quieres conocer más sobre las propuestas, estaremos encantados de escucharte\" es solo una invitación a escribir, no una FAQ.",
+      "mejoras": [
+        "Agrega antes de \"Tu siguiente paso comienza aquí\" una sección visible «Preguntas frecuentes» con al menos 3 preguntas y respuestas de 1–3 frases, por ejemplo: «¿Las mentorías son en línea o presenciales?», «¿Cuánto dura la mentoría de claridad personal?» y «¿Cómo compro el libro \"Claridad financiera\"?».",
+        "Responde cada pregunta con datos concretos (modalidad, duración, precio en $120 / $65 / $24, forma de pago) y no con «escríbenos»."
+      ]
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay 2 bloques JSON-LD válidos con @context schema.org (WebSite y Person), presentes en el HTML inicial. Person es un tipo adecuado para un sitio de marca personal, y el name «Gissela Quezada» coincide con el título, el footer y el copyright visibles. No hay datos que contradigan la página (el schema no declara precios, teléfono ni dirección). El schema es mínimo: la evidencia solo muestra name y un sameAs vacío, y no hay Product/Offer para los 5 productos con precio ($24 a $290) que se ven en la página; eso es un área de mejora, pero no incumple el criterio.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML inicial trae 249 de 260 palabras (96%) del texto que ve el usuario, por encima del umbral de 80%. El H1 y los H2/H3 (incluidos los 5 títulos de producto) ya vienen en el HTML crudo, así que un bot que no ejecuta JavaScript lee la oferta completa.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 0,
+      "puntajeScript": 0,
+      "origen": "agente",
+      "justificacion": "El robots.txt bloquea con «Disallow: /» a 3 de los 4 bots de la rúbrica: GPTBot, ClaudeBot y Google-Extended. Solo PerplexityBot está permitido. Según la regla de la rúbrica, basta con que uno esté bloqueado para que cuente como bloqueado, aunque el bloqueo parezca intencional y orientado solo al entrenamiento (las líneas «Content-Signal: ... ai-train=no» lo sugieren). El archivo parece administrado por una plataforma (formato Content-Signal, típico del robots.txt administrado de Cloudflare). Se permiten otros bots de IA como OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User y Perplexity-User, pero eso no compensa el bloqueo de los de la rúbrica. No existe llms.txt (sin bonus).",
+      "mejoras": [
+        "Quita los bloques «User-agent: GPTBot», «User-agent: ClaudeBot» y «User-agent: Google-Extended» con «Disallow: /», o cámbialos por «Allow: /», para que los tres bots puedan leer el sitio.",
+        "Como el robots.txt parece generado por una plataforma (Content-Signal, estilo Cloudflare), desactiva ahí la opción que bloquea a los bots de entrenamiento de IA, o desactiva el robots.txt administrado y publica el tuyo; si no, la plataforma volverá a escribir los bloqueos.",
+        "Opcional: publica un /llms.txt en la raíz con un resumen del sitio y enlaces a la tienda y a «Sobre Gissela»; es solo un bonus informativo y no sube el puntaje."
+      ]
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "La estructura es limpia: 8 secciones, párrafos muy cortos (promedio 11 palabras, ninguno largo) y un solo tema por sección. Pero casi no hay texto explicativo que se pueda extraer: no hay listas, tablas ni pasos, y los cinco productos son tarjetas con solo nombre y precio, sin descripción. Gran parte son eslóganes y etiquetas de interfaz en fragmentos.",
+      "mejoras": [
+        "Presenta los productos como una tabla o lista con nombre, qué incluye y precio, por ejemplo: «Mentoría de claridad personal | sesiones individuales para ordenar tus finanzas | $120».",
+        "Añade bajo cada H3 una frase completa que describa el producto en lugar de \"Un espacio para crecer ↗\".",
+        "Si hay un proceso para empezar (agendar, pagar, recibir acceso), preséntalo como pasos numerados de 1 a 3."
+      ]
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre es consistente: «Gissela Quezada» aparece igual en el título, og:title, el encabezado, el pie (© 2026 Gissela Quezada) y en los dos nodos de schema (WebSite y Person), y la meta description coincide con og:description. Pero la identidad queda incompleta: no hay teléfono, correo ni dirección en la página ni en el schema, no hay enlaces a redes sociales y ningún nodo de schema trae sameAs.",
+      "mejoras": [
+        "Agrega a los nodos Person y WebSite un arreglo sameAs con las URLs reales de los perfiles oficiales de Gissela (por ejemplo Instagram, LinkedIn, YouTube) y enlaza esos mismos perfiles con íconos en el pie de página.",
+        "Muestra un correo (y teléfono o WhatsApp, si aplica) en el pie de página y repítelo en el schema con email o contactPoint, con el mismo formato en ambos lugares.",
+        "Completa el schema Person con description (igual que la meta description), url, image y jobTitle, y añade la meta og:site_name con «Gissela Quezada».",
+        "Indica la ubicación o el alcance de la marca en el pie, por ejemplo «Ciudad, País» o «Mentorías en línea para toda Latinoamérica», y ponlo también en el schema (address o areaServed)."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay cinco precios concretos ($24.00, $65.00, $290.00, $45.00, $120.00), que es un dato útil. Sin embargo, no indican moneda ni qué incluye cada producto, y el resto del texto es genérico y emocional (\"Un camino propio, a tu ritmo\", \"vivir con mayor consciencia\"). No hay fechas, horarios, duración, resultados, testimonios ni casos.",
+      "mejoras": [
+        "Indica la moneda y qué incluye cada precio, por ejemplo: «Mentoría de claridad personal: 4 sesiones de 60 minutos por Zoom, USD $120».",
+        "Agrega datos verificables de Gissela: años de experiencia, número de personas acompañadas, título del libro y año de publicación, o una breve historia de caso con resultado.",
+        "Si hay talleres o conferencias próximas, publica fecha, hora y lugar o plataforma."
+      ]
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Se intuye quién está detrás porque la marca es la persona (nombre en el encabezado y en el pie, nodo Person en el schema, foto), y hay un enlace «Sobre Gissela» en el menú y en el pie. La fecha se limita a «© 2026». No hay ni un solo testimonio, reseña, cita ni fuente externa con enlace, y la portada no presenta ninguna biografía ni credenciales.",
+      "mejoras": [
+        "Añade en la portada un bloque breve de presentación («Quién es Gissela») con foto, 2 o 3 líneas de trayectoria y credenciales verificables, enlazado a /sobre-gissela, y amplía el nodo Person con jobTitle, description y knowsAbout.",
+        "Publica testimonios reales con nombre, foto y ciudad o empresa (o reseñas con calificación y fuente) en la portada, y márcalos con schema Review o AggregateRating; si ya existen en /historias, resume 2 o 3 en la portada con enlace.",
+        "Muestra una fecha visible de actualización (por ejemplo «Actualizado: noviembre 2026») o agrega dateModified en el schema, y cita con enlace medios, entrevistas o fuentes externas que respalden su trabajo y su libro."
+      ]
+    }
+  ],
+  "advertencias": []
+}

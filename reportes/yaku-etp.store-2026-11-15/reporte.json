@@ -1,0 +1,202 @@
+{
+  "url": "https://yaku-etp.store/",
+  "fecha": "2026-11-15",
+  "completo": true,
+  "seo": 18,
+  "aeo": 19,
+  "total": 37,
+  "maximoEvaluado": 40,
+  "criterios": [
+    {
+      "id": "seo-1",
+      "nombre": "Título de la página",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un solo <title> de 56 caracteres: «Yaku ETP | Evapotranspiración para riego en Cusco y Perú». Incluye la marca y el tema real de la página, y coincide con el H1, así que no es genérico.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-2",
+      "nombre": "Descripción y vista al compartir",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La meta description mide 150 caracteres (dentro de 140–160) y invita a entrar: «Calcula gratis la ET₀ con NASA POWER y FAO 56, reproduce el caso de K’ayra en Cusco o solicita un análisis climático…». Tiene beneficio claro (gratis) y llamadas a la acción. Están og:title, og:description y og:image, y esta última es una URL absoluta; además hay twitter:card summary_large_image.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-3",
+      "nombre": "Estructura de encabezados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay exactamente un H1 que dice de qué trata la página («Evapotranspiración para estudios de riego en Cusco y Perú»), 9 H2 y 17 H3 sin saltos de nivel (0 H4–H6). Los H3 son preguntas de las FAQ y tarjetas de servicio, es decir, subtemas reales de su H2 y no encabezados usados solo por estilo.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-4",
+      "nombre": "Tema claro y contenido suficiente",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El tema (evapotranspiración para riego en Cusco y Perú) está en el título, en el H1 y en el primer párrafo de texto real: \"Yaku ETP es una calculadora gratuita de evapotranspiración de referencia para ingenieros de riego... en Cusco y otras zonas del Perú\". El contenido principal tiene unas 1,223 palabras útiles (casos, pasos, FAQ), muy por encima de 300, sin relleno ni texto de plantilla.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-5",
+      "nombre": "Indexable",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "La página responde 200 en https, sin redirecciones, sin noindex en meta robots ni en X-Robots-Tag. El canonical apunta a sí misma (https://yaku-etp.store/) y <html lang=\"es\"> coincide con el contenido, que está en español.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-6",
+      "nombre": "robots.txt y sitemap.xml",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Existen robots.txt y sitemap.xml (ambos con 200). El robots.txt permite todo (Allow: /) y solo bloquea /api/ y /solicitud (ruta del formulario, sin valor para buscadores), y declara el sitemap. El sitemap lista 12 URLs reales, todas en https://yaku-etp.store (mismo dominio y protocolo), incluida la portada.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-7",
+      "nombre": "Imágenes",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Las 4 imágenes con contenido tienen alt descriptivo y de calidad (por ejemplo, «Río y campos de cultivo entre las laderas del Valle Sagrado de Cusco»), todas están en WebP y el peso total es de 225 KB, sin ninguna mayor a 300 KB. Lo único fuera de rango es que Lighthouse marca uses-responsive-images en vista-kayra.webp (41.7 KB, ahorro estimado de 19 KiB) porque se sirve más grande de lo que se muestra en el teléfono. Es una falla menor, pero el parámetro «no pesan de más» queda a medias.",
+      "mejoras": [
+        "Sirve «recursos/vista-kayra.webp» con un tamaño acorde al que se muestra en móvil (por ejemplo, una variante de unos 390–780 px de ancho) y declara varias versiones con srcset y sizes; con eso se recuperan unos 19 KiB.",
+        "Aplica el mismo srcset/sizes a las imágenes «ingenieria-540», «agricultura-540» e «investigacion-540» para que ninguna se descargue más grande de lo necesario en pantallas pequeñas."
+      ]
+    },
+    {
+      "id": "seo-8",
+      "nombre": "Velocidad",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Se confirma el puntaje del script: Lighthouse móvil da rendimiento 100 (mínimo 80), LCP de 1.50 s (máximo 2.5 s) y CLS de 0.000 (máximo 0.1). Es una sola medición, así que puede variar unos puntos entre corridas y entre equipos, pero el margen es amplio en las tres métricas. Lighthouse no marcó causas pendientes: respuesta del servidor de 160 ms, sin recursos que bloqueen el render, sin JavaScript sin usar y 172 KiB de carga total.",
+      "mejoras": []
+    },
+    {
+      "id": "seo-9",
+      "nombre": "Móvil",
+      "puntaje": 1,
+      "puntajeScript": 1,
+      "origen": "agente",
+      "justificacion": "Tiene meta viewport correcto (width=device-width, initial-scale=1), no hay scroll horizontal y casi todo el texto es legible (solo 1% bajo 12 px). En las capturas móviles el diseño se ve limpio: sin contenido cortado ni encimado, sin banner de cookies ni pop-up, y el menú es de tres enlaces visibles (Guía, Servicios, Estudio de K’ayra), así que no necesita hamburguesa. Lo que queda a medias son los objetivos táctiles: 16 de 65 enlaces miden menos de 24 px de alto, y en la captura se ve que son los enlaces de texto del menú superior y los enlaces secundarios, que quedan chicos y juntos frente a los botones grandes de «Calculadora» y «Abrir la calculadora».",
+      "mejoras": [
+        "Dale a los enlaces del menú superior («Guía», «Servicios», «Estudio de K’ayra») un área táctil de al menos 44 px de alto con padding vertical, y separa un poco más cada enlace.",
+        "Aumenta el área táctil de los enlaces secundarios «Ver el caso de K’ayra», «Ver datos diarios», «Abrir reproductor ligero» y «Descargar video en HD» a un mínimo de 24 px (idealmente 44 px) con padding o min-height, sin cambiar su tamaño de letra."
+      ]
+    },
+    {
+      "id": "seo-10",
+      "nombre": "Enlaces y URLs",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El menú tiene 15 enlaces internos distintos y los 12 enlaces internos únicos revisados respondieron bien (0 rotos, 0 sin verificar). Las anclas son descriptivas (p. ej. «Cálculo de ET₀ · Valles interandinos de Cusco») y las URLs se leen bien (/evapotranspiracion/valles-cusco, /informes-climaticos/peru). Único detalle menor: seis botones dicen «Explorar», pero están en una tabla Servicio/Ubicación y Lighthouse no marcó ningún enlace sin texto descriptivo.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-1",
+      "nombre": "Respuesta directa arriba",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las dos primeras frases tras el H1 dicen qué es (calculadora gratuita de ET₀), para quién (ingenieros de riego, consultores e investigadores en Cusco y Perú) y qué ofrece (calcular la ET₀ diaria con NASA POWER y FAO 56, revisar cobertura y descargar resultados). Son 50 palabras, dentro del rango ideal.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-2",
+      "nombre": "Encabezados en forma de pregunta",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Dos H2 son preguntas reales con respuesta inmediata: \"¿Cómo varió la ET₀ en K'ayra?\" (\"En los 31 días con datos... 3,11 mm/día en promedio\") y \"¿Cómo se calcula la ET₀?\" (pasos numerados que empiezan con \"Selecciona el lugar\"). Además hay muchos H3 en forma de pregunta (\"¿Cuánta agua necesita el cultivo?\", \"¿Qué periodo exige más agua?\") cuya primera frase responde.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-3",
+      "nombre": "Preguntas frecuentes",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Hay una sección \"Preguntas frecuentes\" con 10 preguntas en H3, y cada respuesta es completa y corta (1–3 frases), por ejemplo: \"La ET₀ estima el agua que perdería una superficie de pasto de referencia bien regada, expresada en milímetros por día.\" Las respuestas están en el texto renderizado de la página (no solo en el schema FAQPage). No pude confirmar visualmente si los elementos están colapsados, porque la captura completa llega solo a ~3000 px y no alcanza la FAQ; aun colapsada sería una FAQ visible para el usuario.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-4",
+      "nombre": "Datos estructurados",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "Hay un bloque JSON-LD válido con @context schema.org, presente en el HTML inicial, con tipos adecuados para un sitio que es una calculadora web con un servicio de análisis a cargo de una persona: Person, WebApplication, Service, VideoObject y FAQPage. Lo que declara coincide con lo visible: el FAQPage trae 10 preguntas y la página muestra 10 preguntas en H3; el video «Tu primera consulta en K’ayra» y el servicio «Análisis climático para estudios de riego» aparecen en el texto; dateModified 2026-11-15 coincide con «Actualizado el 15 de noviembre de 2026». No hay precios, teléfono ni dirección ni en el schema ni en la página (el servicio es digital), así que no hay contradicciones. Matiz menor: no se ve un nodo Organization/WebSite, pero el Person como responsable es razonable para un proyecto individual.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-5",
+      "nombre": "Contenido legible sin JavaScript",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El HTML crudo trae 1223 de 1223 palabras (100%) del contenido renderizado, incluido el H1 «Evapotranspiración para estudios de riego en Cusco y Perú», los H2 de cada sección y las 10 preguntas frecuentes con sus respuestas. Lo importante (descripción de la herramienta, pasos del caso K’ayra, cifras como 3,11 mm/día y 96,37 mm, FAQ) está en el texto inicial. La cantidad de texto (1223 palabras) es suficiente, así que el 100% es significativo.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-6",
+      "nombre": "Acceso para bots de IA",
+      "puntaje": 2,
+      "puntajeScript": 2,
+      "origen": "agente",
+      "justificacion": "El robots.txt solo tiene un grupo «User-Agent: *» con «Allow: /» y dos Disallow (/api/ y /solicitud); no menciona a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended, por lo que los cuatro bots de la rúbrica quedan permitidos, igual que OAI-SearchBot, ChatGPT-User, CCBot y los demás que revisó el script. Los dos Disallow cubren una API y el formulario de solicitud, no secciones de contenido, y el robots.txt no parece administrado por una plataforma (no hay bloque de Cloudflare ni directivas Content-Signal), sino escrito a mano e incluye el Sitemap. Además existe /llms.txt (bonus informativo, no cambia el puntaje).",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-7",
+      "nombre": "Formato fácil de extraer",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Los párrafos son cortos (40 párrafos, promedio de 21 palabras, ninguno largo) y el contenido usa 4 listas numeradas de pasos (\"Prueba el caso paso a paso\", \"¿Cómo se calcula la ET₀?\"). Cada sección trata un solo tema (caso K'ayra, tutorial, método, formulario, FAQ, servicios, ubicación). No hay tablas en el texto, pero los datos diarios están enlazados aparte y no hacen falta aquí.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-8",
+      "nombre": "Identidad clara y consistente",
+      "puntaje": 1,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "El nombre «Yaku ETP» es consistente en title, og:site_name, encabezado, pie y el schema WebApplication; la descripción de meta, og y schema también coincide, y «Freddy Lezama» aparece igual en el texto, el pie y el nodo Person. Pero no hay ningún dato de contacto directo (0 teléfonos, 0 correos, solo un formulario), el schema no declara ubicación ni contacto (Cusco, Perú solo está en el texto), y la única red es el perfil personal de GitHub (https://github.com/flezama-hue), sin perfiles de la marca.",
+      "mejoras": [
+        "Publica un correo de contacto (por ejemplo contacto@yaku-etp.store) en el pie y en la sección «Ubicación y responsable del proyecto», y decláralo en el schema con un ContactPoint (email) que coincida exacto con el visible.",
+        "Agrega un nodo Organization (o WebSite) con name «Yaku ETP», url, founder apuntando a https://yaku-etp.store/#responsable, address con addressLocality «Cusco» y addressCountry «PE» (o areaServed «PE»), para que la ubicación del texto también esté en el schema.",
+        "Crea y enlaza al menos un perfil oficial de la marca (por ejemplo LinkedIn o el canal de video donde publiques el tutorial de K’ayra) desde el pie, y añádelo a sameAs junto al GitHub."
+      ]
+    },
+    {
+      "id": "aeo-9",
+      "nombre": "Datos concretos",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Las afirmaciones clave vienen con cifras y fechas verificables: media de 3,11 mm/día, acumulado de 96,37 mm, 31 de 31 días válidos, periodo de enero de 2024, límite de 366 días por consulta y fecha de actualización. No hay frases genéricas tipo \"somos los mejores\"; incluso aclara limitaciones (\"La validación... está pendiente\"). No hay precios, pero el servicio se presenta como gratuito.",
+      "mejoras": []
+    },
+    {
+      "id": "aeo-10",
+      "nombre": "Señales de confianza",
+      "puntaje": 2,
+      "puntajeScript": null,
+      "origen": "agente",
+      "justificacion": "Cumple tres de las cuatro señales de forma visible y verificable. Quién está detrás: Freddy Lezama aparece con nombre, perfil de GitHub enlazado y nodo Person en el schema. Actualización: «Actualizado el 15 de noviembre de 2026.» con <time> y dateModified 2026-11-15. Fuentes: 7 enlaces externos reales (NASA POWER, FAO 56, OpenStreetMap, historias de OpenET) y el estudio de K’ayra publica coordenadas y serie de 31 días. La sección «Ubicación y responsable del proyecto» hace de «acerca de», aunque sin página propia. No hay testimonios ni reseñas.",
+      "mejoras": []
+    }
+  ],
+  "advertencias": []
+}
