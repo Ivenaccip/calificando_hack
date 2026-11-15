@@ -42,9 +42,9 @@ export const columnaCriterio = (c) => `${c.area.toUpperCase()} ${c.numero} ${c.n
 /** Columnas del CSV, derivadas de la rúbrica para que sigan a `rubrica.json` si cambia. */
 export function cabeceraCsv(rubrica) {
   return [
-    'fecha', 'sitio', 'url', 'seo', 'aeo', 'total', 'maximo_evaluado', 'completo',
+    'fecha', 'participante', 'sitio', 'url', 'seo', 'aeo', 'total', 'maximo_evaluado', 'completo',
     ...rubrica.criterios.map(columnaCriterio),
-    'sin_evaluar', 'lighthouse_rendimiento', 'reporte', 'carpeta', 'generado_en',
+    'sin_evaluar', 'notas', 'lighthouse_rendimiento', 'reporte', 'carpeta', 'generado_en',
   ];
 }
 
@@ -71,16 +71,19 @@ export function crearSiNoExiste(ruta, rubrica) {
 }
 
 /**
- * Agrega la fila, o la reemplaza si ya existe una con el mismo `carpeta`
- * (mismo sitio y misma fecha: volver a calificar no duplica). Conserva columnas viejas
- * si la rúbrica cambió, para no perder datos.
+ * Guarda las filas de UN sitio (una por participante que envió esa liga). Si ya había filas de ese
+ * mismo sitio y fecha (`carpeta`), las reemplaza en su lugar: volver a calificar no duplica.
+ * Conserva columnas viejas si la rúbrica cambió, para no perder datos.
  */
-export function guardarCalificacion(ruta, rubrica, fila) {
+export function guardarCalificacion(ruta, rubrica, nuevas) {
+  const filasNuevas = [].concat(nuevas);
+  const carpeta = filasNuevas[0].carpeta;
   const cabecera = cabeceraCsv(rubrica);
   const previo = leerExistente(ruta);
   const cabFinal = [...cabecera, ...previo.cabecera.filter((c) => !cabecera.includes(c))];
-  const i = previo.filas.findIndex((f) => f.carpeta === fila.carpeta);
-  if (i >= 0) previo.filas[i] = fila; else previo.filas.push(fila);
-  escribirAtomico(ruta, serializar(cabFinal, previo.filas));
-  return { accion: i >= 0 ? 'actualizada' : 'agregada', filas: previo.filas.length };
+  const i = previo.filas.findIndex((f) => f.carpeta === carpeta);
+  const resto = previo.filas.filter((f) => f.carpeta !== carpeta);
+  resto.splice(i >= 0 ? i : resto.length, 0, ...filasNuevas);
+  escribirAtomico(ruta, serializar(cabFinal, resto));
+  return { accion: i >= 0 ? 'actualizada' : 'agregada', filas: resto.length, agregadas: filasNuevas.length };
 }

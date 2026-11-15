@@ -128,7 +128,9 @@ fs.writeFileSync(path.join(carpeta, 'reporte.json'), JSON.stringify({
 }, null, 2));
 
 // ---- historial en CSV: una fila por sitio, con el puntaje de cada criterio ----
-const filaCsv = {
+const archivoPart = path.join(carpeta, 'participantes.json'); // lo escribe scripts/lote.mjs
+const participantes = fs.existsSync(archivoPart) ? (leer(archivoPart).participantes || []).filter(Boolean) : [];
+const filaBase = {
   fecha: resumen.fecha,
   sitio: new URL(resumen.urlFinal).hostname.replace(/^www\./, ''),
   url: resumen.urlFinal,
@@ -136,15 +138,16 @@ const filaCsv = {
   completo: completo ? 'sí' : 'no',
   ...Object.fromEntries(filas.map((f) => [columnaCriterio(f), f.final ?? ''])),
   sin_evaluar: faltantes.map((f) => f.id).join(' '),
+  notas: adv.join(' | ').slice(0, 400),
   lighthouse_rendimiento: resumen.lighthouse?.rendimiento ?? '',
   reporte: path.relative(RAIZ, path.join(carpeta, 'reporte.md')),
   carpeta: path.basename(carpeta),
   generado_en: new Date().toISOString(),
 };
-const csv = guardarCalificacion(rutaCsv, rubrica, filaCsv);
+const csv = guardarCalificacion(rutaCsv, rubrica, (participantes.length ? participantes : ['']).map((participante) => ({ ...filaBase, participante })));
 
 console.log(`SEO ${tot.seo}/${maxEval.seo}  ·  AEO ${tot.aeo}/${maxEval.aeo}  ·  TOTAL ${tot.seo + tot.aeo}/${maxEval.seo + maxEval.aeo}${completo ? '' : '  (INCOMPLETO)'}`);
 if (problemas.length) { console.log('\nProblemas:'); problemas.forEach((p) => console.log(` - ${p}`)); }
 console.log(`REPORTE=${path.relative(RAIZ, path.join(carpeta, 'reporte.md'))}`);
-console.log(`CSV=${path.relative(RAIZ, rutaCsv)} (fila ${csv.accion}; ${csv.filas} en total)`);
+console.log(`CSV=${path.relative(RAIZ, rutaCsv)} (${csv.agregadas} fila(s) ${csv.accion}; ${csv.filas} en total)`);
 process.exit(completo ? 0 : 3);

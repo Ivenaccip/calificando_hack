@@ -70,18 +70,32 @@ Cada vez que se califica un sitio, `scripts/reporte.mjs` agrega **una fila** a [
 
 | Columnas | Qué trae |
 | --- | --- |
-| `fecha`, `sitio`, `url` | Cuándo y qué se calificó. |
+| `fecha`, `participante`, `sitio`, `url` | Cuándo y qué se calificó, y quién envió la liga (si vino de un lote; vacío si la calificaste a mano). |
 | `seo`, `aeo`, `total`, `maximo_evaluado`, `completo` | Los totales (SEO /20, AEO /20, total /40). `completo = no` si algún criterio quedó sin evaluar. |
 | `SEO 1 Título de la página` … `AEO 10 Señales de confianza` | **El puntaje (0, 1 o 2) de cada uno de los 20 criterios.** Vacío = sin evaluar. |
-| `sin_evaluar`, `lighthouse_rendimiento` | Qué criterios no se pudieron calificar y el puntaje de rendimiento de Lighthouse. |
+| `sin_evaluar`, `notas`, `lighthouse_rendimiento` | Qué criterios no se pudieron calificar, advertencias de la corrida (por ejemplo, "Lighthouse falló" o "no se pudo medir el sitio") y el puntaje de rendimiento de Lighthouse. |
 | `reporte`, `carpeta`, `generado_en` | Dónde está el reporte detallado y cuándo se generó la fila. |
 
 Reglas:
 - Se va **acumulando**: cada sitio nuevo es una fila nueva.
-- Volver a calificar el **mismo sitio el mismo día actualiza su fila**, no la duplica (cambiando de día, se agrega otra y queda el historial).
+- Volver a calificar el **mismo sitio el mismo día actualiza sus filas**, no las duplica (cambiando de día, se agregan otras y queda el historial).
+- Si varias personas enviaron la misma liga, el sitio se califica **una vez** y la nota se copia en una fila por persona.
 - Las columnas salen de `rubrica/rubrica.json`. Si cambias la rúbrica, las columnas viejas se conservan para no perder datos.
 - La justificación y las mejoras de cada criterio no van en el CSV: están en el `reporte.md` de la columna `reporte`.
 - Para guardarlo en otra ruta: `node scripts/reporte.mjs reportes/<sitio>-<fecha> --csv otra/ruta.csv`.
+
+## Calificar un lote desde el CSV del formulario
+
+Si tienes la exportación de un formulario con **nombre** y **liga del proyecto** (por ejemplo, las entregas de un hackathon):
+
+```bash
+node scripts/lote.mjs ruta/al/formulario.csv --solo-listar   # ver qué ligas distintas detectó
+node scripts/lote.mjs ruta/al/formulario.csv                 # medir todas, una por una
+```
+
+`lote.mjs` detecta las columnas de nombre y liga por su encabezado, normaliza ligas sin `https://`, **deduplica** ligas repetidas y guarda quién envió cada una. Mide los sitios de uno en uno (Lighthouse necesita el equipo libre), se puede **reanudar** si se interrumpe (salta los ya medidos; `--forzar` los repite) y deja el avance en `reportes/lote.json`. Si un sitio no abre o tarda más de 8 minutos, deja su fila en `calificaciones.csv` con la nota del motivo.
+
+Esto solo mide. Para calificar con los especialistas, pídele al agente principal que califique los sitios ya medidos de `reportes/lote.json`; al terminar cada uno, `reporte.mjs` agrega sus filas al CSV.
 
 ## Cómo se traduce 0 / 1 / 2
 

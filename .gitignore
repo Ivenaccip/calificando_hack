@@ -2,3 +2,7 @@ node_modules/
 # Cada auditoría genera evidencia pesada (capturas, lighthouse). Se conserva solo el reporte final.
 reportes/*/evidencia/
 reportes/*/puntajes/
+# Quién envió cada liga, avance del lote y bitácoras locales (los nombres ya van en calificaciones.csv)
+reportes/lote.json
+reportes/*/participantes.json
+reportes/*/auditar.log
