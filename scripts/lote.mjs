@@ -43,7 +43,8 @@ for (const fila of datos) {
   const k = claveSitio(url);
   if (!sitios.has(k)) sitios.set(k, { url, carpeta: `${slugDe(url)}-${fecha}`, participantes: [] });
   const s = sitios.get(k);
-  if (nombre && !s.participantes.includes(nombre)) s.participantes.push(nombre);
+  const clave = sinAcentos(nombre).replace(/\s+/g, ' ').trim(); // "Domínguez" y "Dominguez", o un espacio doble, son la misma persona
+  if (nombre && !s.participantes.some((p) => sinAcentos(p).replace(/\s+/g, ' ').trim() === clave)) s.participantes.push(nombre.replace(/\s+/g, ' ').trim());
 }
 const lista = [...sitios.values()];
 console.log(`Envíos: ${datos.length} · ligas distintas: ${lista.length} · inválidas: ${invalidas.length}`);

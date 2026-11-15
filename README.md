@@ -61,6 +61,7 @@ En `reportes/<sitio>-<fecha>/`:
 | --- | --- |
 | `reporte.md` | Resultado, tabla de 20 criterios, detalle con evidencia, **qué arreglar primero** y advertencias. |
 | `reporte.json` | Lo mismo en datos. |
+| `../resumen-por-participante.md` | Un solo documento con **lo que falló en cada proyecto** (y cómo arreglarlo), más el ranking y las fallas más comunes. Se genera con `node scripts/resumen.mjs` a partir del CSV y de cada `reporte.json`; no usa ningún modelo, así que siempre coincide con las notas. |
 | `evidencia/` | Todo lo que midió el script (un JSON por criterio, `texto.md`, capturas, Lighthouse). No se sube a git. |
 | `puntajes/` | El JSON de cada agente con su justificación. No se sube a git. |
 
