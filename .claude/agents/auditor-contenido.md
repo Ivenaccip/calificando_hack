@@ -43,6 +43,11 @@ Cuenta solo el **contenido principal** (regiones `main` y `cuerpo`); el menú, e
 - **1**: algunos datos concretos, pero conviven con muchas frases genéricas.
 - **0**: casi todo es genérico ("calidad", "líderes", "soluciones a tu medida") sin un solo dato.
 
+### Reglas de desempate (mandan si hay duda)
+
+- Cuando dudes entre dos puntajes, aplica al pie de la letra las definiciones de 2, 1 y 0 de cada criterio y di en la justificación qué condición se cumple o cuál falta.
+- Las `mejoras` son reescrituras o adiciones concretas para esta página (por ejemplo: «Abre con: "…"»), no consejos generales.
+
 ## Cómo trabajar
 
 1. Lee la guía común, `texto.md` y tus seis archivos de criterio.

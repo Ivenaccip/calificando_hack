@@ -33,14 +33,16 @@ liga ─► calificador-principal
           │
           ├─ 1. scripts/auditar.mjs   mide (Node + Chrome + Lighthouse) ─► reportes/<sitio>-<fecha>/evidencia/
           │
-          ├─ 2. cinco especialistas EN PARALELO leen la evidencia y califican sus criterios
-          │        auditor-seo-tecnico         SEO 1 2 3 5 6 10   título, metas, encabezados, indexable, robots/sitemap, enlaces
-          │        auditor-rendimiento-movil   SEO 7 8 9          imágenes, velocidad, móvil (ve la captura)
-          │        auditor-contenido           SEO 4 · AEO 1 2 3 7 9   lee el texto: tema, respuesta directa, preguntas, FAQ, formato, datos
-          │        auditor-aeo-tecnico         AEO 4 5 6          JSON-LD, contenido sin JavaScript, bots de IA
-          │        auditor-confianza           AEO 8 10           identidad consistente, señales de confianza
+          ├─ 2. scripts/especialistas.mjs   cinco especialistas EN PARALELO, un mensaje cada uno ─► puntajes/
+          │        auditor-seo-tecnico         Sonnet  SEO 1 2 3 5 6 10   título, metas, encabezados, indexable, robots/sitemap, enlaces
+          │        auditor-rendimiento-movil   Sonnet  SEO 7 8 9          imágenes, velocidad, móvil (ve las capturas)
+          │        auditor-aeo-tecnico         Sonnet  AEO 4 5 6          JSON-LD, contenido sin JavaScript, bots de IA
+          │        auditor-contenido           Haiku   SEO 4 · AEO 1 2 3 7 9   lee el texto: tema, respuesta directa, preguntas, FAQ, formato, datos
+          │        auditor-confianza           Haiku   AEO 8 10           identidad consistente, señales de confianza (ve el pie de página)
           │
-          └─ 3. scripts/reporte.mjs   une todo, SUMA en código y escribe reporte.md
+          ├─ 3. scripts/reporte.mjs   une todo, SUMA en código y escribe reporte.md
+          │
+          └─ 4. scripts/pdf.mjs       genera reporte.pdf, el entregable
 ```
 
 Qué mide el script (`scripts/auditar.mjs`):
@@ -51,7 +53,24 @@ Qué mide el script (`scripts/auditar.mjs`):
 - JSON-LD: validez, tipos y si coincide con la página.
 - Hasta 40 enlaces internos probados en busca de 404; anclas genéricas ("clic aquí"); URLs legibles.
 - Imágenes: `alt`, peso real descargado y auditorías de Lighthouse.
-- **Lighthouse móvil** (rendimiento, LCP, CLS) y **capturas de un teléfono virtual** (390 px) con métricas de scroll horizontal, texto pequeño y botones diminutos.
+- **Lighthouse móvil** (rendimiento, LCP, CLS) y **capturas de un teléfono virtual** (390 px: primera pantalla, página completa y pie de página) con métricas de scroll horizontal, texto pequeño y botones diminutos.
+
+### Los especialistas: un mensaje cada uno, sin herramientas
+
+`scripts/especialistas.mjs` le arma a cada especialista su evidencia (lo que midió el script para sus criterios, el texto de la página y las capturas que necesita) y se la manda en **un solo mensaje**. El especialista contesta sus puntajes en un formato fijo; el script valida que vengan todos los criterios, reintenta una vez si falta alguno y escribe `puntajes/<especialista>.json`.
+
+- **No tienen herramientas**: no leen ni escriben archivos y no usan la red. El contenido del sitio no puede hacer que toquen nada.
+- **Modelos**: Sonnet para los tres técnicos (12 criterios) y Haiku para contenido y confianza (8 criterios). Lo define la línea `model:` de cada archivo en `.claude/agents/`.
+- **Reglas**: la sección "Tus criterios" de cada `.claude/agents/auditor-*.md` (con sus reglas de desempate) y `rubrica/guia-auditores.md`.
+- **Costo y tiempo**: unos **$0.10 USD** y medio minuto por sitio. El script imprime el costo real de cada corrida y lo deja en `costos.json`. Cada llamada tiene un tope de gasto (`--tope-usd`, $0.30 por defecto).
+
+```bash
+node scripts/especialistas.mjs reportes/<sitio>-<fecha>                      # los cinco
+node scripts/especialistas.mjs reportes/<sitio>-<fecha> --solo contenido      # repetir uno
+node scripts/especialistas.mjs reportes/<sitio>-<fecha> --modelo sonnet       # forzar un modelo para todos
+```
+
+Los cinco también existen como subagentes de Claude Code (con `Read` y `Write`). El agente principal los usa solo para **revisiones puntuales** de un criterio dudoso.
 
 ## Qué te entrega
 
@@ -64,7 +83,8 @@ En `reportes/<sitio>-<fecha>/`:
 | `reporte.json` | Lo mismo en datos. |
 | `../resumen-por-participante.md` | Un solo documento con **lo que falló en cada proyecto** (y cómo arreglarlo), más el ranking y las fallas más comunes. Se genera con `node scripts/resumen.mjs` a partir del CSV y de cada `reporte.json`; no usa ningún modelo, así que siempre coincide con las notas. |
 | `evidencia/` | Todo lo que midió el script (un JSON por criterio, `texto.md`, capturas, Lighthouse). No se sube a git. |
-| `puntajes/` | El JSON de cada agente con su justificación. No se sube a git. |
+| `puntajes/` | El JSON de cada especialista con su justificación. No se sube a git. |
+| `costos.json` | Cuánto costó cada especialista en la última corrida (modelo, tokens, dólares). No se sube a git. |
 
 ## Historial: `calificaciones.csv`
 
@@ -98,7 +118,7 @@ node scripts/lote.mjs ruta/al/formulario.csv                 # medir todas, una 
 
 `lote.mjs` detecta las columnas de nombre y liga por su encabezado, normaliza ligas sin `https://`, **deduplica** ligas repetidas y guarda quién envió cada una. Mide los sitios de uno en uno (Lighthouse necesita el equipo libre), se puede **reanudar** si se interrumpe (salta los ya medidos; `--forzar` los repite) y deja el avance en `reportes/lote.json`. Si un sitio no abre o tarda más de 8 minutos, deja su fila en `calificaciones.csv` con la nota del motivo.
 
-Esto solo mide. Para calificar con los especialistas, pídele al agente principal que califique los sitios ya medidos de `reportes/lote.json`; al terminar cada uno, `reporte.mjs` agrega sus filas al CSV.
+Esto solo mide. Para calificar, corre `node scripts/especialistas.mjs` y `node scripts/reporte.mjs` en cada carpeta medida, o pídele al agente principal que califique los sitios de `reportes/lote.json`; al terminar cada uno, `reporte.mjs` agrega sus filas al CSV.
 
 ## Lighthouse con tu propio Chrome
 
@@ -148,7 +168,7 @@ El flujo `.github/workflows/calificar.yml` corre la auditoría completa (los 20 
 
 **Configuración (una vez):** en el repo, *Settings → Secrets and variables → Actions*:
 - Secreto `ANTHROPIC_API_KEY` (obligatorio).
-- Variable `MODELO_CLAUDE` (opcional): fuerza un modelo para los cinco especialistas (`haiku`, `sonnet` u `opus`). Sin ella, cada uno usa el de su archivo en `.claude/agents/` (hoy, Haiku).
+- Variable `MODELO_CLAUDE` (opcional): fuerza un modelo para los cinco especialistas (`haiku`, `sonnet` u `opus`). Sin ella, cada uno usa el de su archivo en `.claude/agents/` (Sonnet los técnicos, Haiku contenido y confianza).
 - Variable `VERSION_CLAUDE_CODE` (opcional): fija la versión del CLI de Claude Code. Sin ella, usa la última.
 
 **Dos formas de pedir una calificación:**
@@ -158,15 +178,14 @@ El flujo `.github/workflows/calificar.yml` corre la auditoría completa (los 20 
 **Cómo funciona:**
 - `scripts/ci/solicitud.mjs` valida la liga y rechaza IPs, puertos raros y dominios que apuntan a redes internas.
 - `scripts/auditar.mjs` mide.
-- `scripts/ci/especialistas.sh` corre los cinco especialistas en paralelo con `claude -p --agent <nombre>`: las mismas instrucciones de `.claude/agents/`, sin orquestador.
+- `scripts/especialistas.mjs` corre los cinco especialistas en paralelo, un mensaje cada uno y sin herramientas (el mismo script que usa el agente principal).
 - `scripts/reporte.mjs` y `scripts/pdf.mjs` consolidan y generan el PDF.
 - `scripts/ci/comentario.mjs` arma la respuesta del issue.
-- Los cinco especialistas usan **Haiku** (`model: haiku` en `.claude/agents/`). Medido en dos sitios reales: unos **$0.04 USD por sitio** (con Sonnet eran $0.43). Tarda unos 5 minutos, casi todo en Lighthouse y las capturas.
+- Cada calificación cuesta unos **$0.10 USD** de API y tarda unos 5 minutos, casi todo en instalar, Lighthouse y las capturas. Cada llamada tiene un tope de gasto de $0.30.
 
 **Seguridad:**
 - El contenido de los sitios no es confiable.
-- Los especialistas solo tienen `Read`, `Write`, `Glob` y `Grep`: sin terminal ni red.
-- No pueden leer archivos del sistema (`/proc`, `/etc`, temporales del servidor) ni escribir fuera de su carpeta.
+- Los especialistas no tienen ninguna herramienta: no leen ni escriben archivos, no tienen terminal ni red. Solo devuelven sus puntajes, y el script los valida antes de guardarlos.
 - La API key solo existe en el paso de los especialistas.
 - Si la key aparece en cualquier resultado, no se publica nada.
 - El servidor bloquea la red de metadatos (169.254.0.0/16).
@@ -179,17 +198,21 @@ El flujo `.github/workflows/calificar.yml` corre la auditoría completa (los 20 
 
 - Cambiar el texto o el orden de un criterio: `rubrica/rubrica.json`.
 - Cambiar umbrales: `scripts/lib/config.mjs`.
-- Cambiar cómo razona un especialista: `.claude/agents/<nombre>.md`.
+- Cambiar cómo razona un especialista o qué modelo usa: `.claude/agents/<nombre>.md` (sección "Tus criterios" y línea `model:`).
 - Instrucciones comunes a todos: `rubrica/guia-auditores.md`.
 - Después de cualquiera de los tres cambios anteriores, regenera la página pública con `node scripts/build-artefacto.mjs`.
 
-## Usar solo los scripts (sin agentes)
+## Usar solo los scripts (sin el agente principal)
 
 ```bash
 npm install
-node scripts/auditar.mjs https://minegocio.com          # evidencia + puntajes automáticos
-node scripts/reporte.mjs reportes/minegocio.com-AAAA-MM-DD
+node scripts/auditar.mjs https://minegocio.com                    # evidencia + puntajes automáticos
+node scripts/especialistas.mjs reportes/minegocio.com-AAAA-MM-DD   # los cinco especialistas (necesita Claude Code con sesión o ANTHROPIC_API_KEY)
+node scripts/reporte.mjs reportes/minegocio.com-AAAA-MM-DD        # reporte.md, reporte.json y fila en calificaciones.csv
+node scripts/pdf.mjs reportes/minegocio.com-AAAA-MM-DD            # reporte.pdf
 ```
+
+Sin el paso de los especialistas, el reporte sale solo con los 12 criterios que mide el script.
 
 Opciones de `auditar.mjs`: `--sin-lighthouse` (rápido, deja SEO 8 sin evaluar), `--sin-enlaces`, `--salida <carpeta>`.
 

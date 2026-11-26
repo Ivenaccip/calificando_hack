@@ -9,3 +9,6 @@ reportes/*/auditar.log
 
 # PDF generados (se regeneran con scripts/pdf.mjs)
 reportes/*/reporte.pdf
+
+# Costos de los especialistas por corrida (se regenera con scripts/especialistas.mjs)
+reportes/*/costos.json

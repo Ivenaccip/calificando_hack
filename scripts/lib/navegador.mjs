@@ -98,6 +98,17 @@ export async function renderizar(url, { carpetaCapturas, timeoutMs = 45000 } = {
       if (alto > VIEWPORT_MOVIL.height * 1.3) {
         await page.screenshot({ path: `${carpetaCapturas}/movil-completa.png`, fullPage: true, clip: { x: 0, y: 0, width: VIEWPORT_MOVIL.width, height: Math.min(alto, 3000) } });
         capturas.completa = 'movil-completa.png';
+        // Pie de página real (la captura completa se corta a 3000 px): ahí suelen estar el contacto, el © y lo legal.
+        try {
+          await page.evaluate(() => window.scrollTo({ top: document.documentElement.scrollHeight, left: 0, behavior: 'instant' }));
+          await page.waitForTimeout(600);
+          await page.screenshot({ path: `${carpetaCapturas}/movil-pie.png` });
+          capturas.pie = 'movil-pie.png';
+        } catch { /* sin captura del pie: los especialistas trabajan sin ella */ }
+      }
+      // Si la página cabe en una pantalla no hay "completa" ni "pie": que no queden capturas viejas de otra corrida.
+      for (const [clave, archivo] of [['completa', 'movil-completa.png'], ['pie', 'movil-pie.png']]) {
+        if (!capturas[clave]) fs.rmSync(`${carpetaCapturas}/${archivo}`, { force: true });
       }
     }
     const html = await page.content();

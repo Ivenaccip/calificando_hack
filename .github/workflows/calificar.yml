@@ -140,15 +140,17 @@ jobs:
           if [ "$codigo" -ne 0 ] || [ -z "$salida" ]; then echo "::error::auditar.mjs terminó con código $codigo"; exit 1; fi
           echo "estado=medido" >> "$GITHUB_OUTPUT"
 
-      - name: Cinco especialistas en paralelo
+      - name: Cinco especialistas en paralelo (un mensaje cada uno, sin herramientas)
         if: steps.medir.outputs.estado == 'medido'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MODELO_CLAUDE: ${{ vars.MODELO_CLAUDE }}
           SALIDA: ${{ steps.medir.outputs.salida }}
-        run: bash scripts/ci/especialistas.sh "$URL" "$SALIDA"
+        run: |
+          node scripts/especialistas.mjs "$SALIDA" | tee "$RUNNER_TEMP/especialistas.log"
+          { echo '<details><summary>Especialistas y costo</summary>'; echo; echo '```'; cat "$RUNNER_TEMP/especialistas.log"; echo '```'; echo; echo '</details>'; echo; } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Verificar que los agentes solo escribieron sus puntajes
+      - name: Verificar que nada cambió fuera de la carpeta del reporte
         if: steps.medir.outputs.estado == 'medido'
         env:
           SALIDA: ${{ steps.medir.outputs.salida }}

@@ -5,45 +5,20 @@
 //   node scripts/build-artefacto.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { RAIZ, cargarEquipo, bloqueDesempate } from './lib/agentes.mjs';
 
-const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const leer = (r) => fs.readFileSync(path.join(RAIZ, r), 'utf8');
-const rubrica = JSON.parse(leer('rubrica/rubrica.json'));
-
-const seccion = (md, titulo) => {
-  const m = md.match(new RegExp(`^## ${titulo}[^\\n]*\\n([\\s\\S]*?)(?=^## |(?![\\s\\S]))`, 'm'));
-  return m ? m[1].trim() : '';
-};
-const guia = leer('rubrica/guia-auditores.md');
-const ROLES = {
-  'auditor-seo-tecnico': 'el auditor de SEO técnico',
-  'auditor-rendimiento-movil': 'el auditor de rendimiento y experiencia móvil',
-  'auditor-contenido': 'el auditor de contenido',
-  'auditor-aeo-tecnico': 'el auditor técnico de AEO',
-  'auditor-confianza': 'el auditor de identidad y confianza',
-};
-const TITULOS = {
-  'auditor-seo-tecnico': 'SEO técnico', 'auditor-rendimiento-movil': 'Rendimiento y móvil', 'auditor-contenido': 'Contenido',
-  'auditor-aeo-tecnico': 'AEO técnico', 'auditor-confianza': 'Identidad y confianza',
-};
-
-const agentes = {};
-for (const [nombre, rol] of Object.entries(ROLES)) {
-  const md = leer(`.claude/agents/${nombre}.md`);
-  const calibracion = seccion(md, 'Tus criterios');
-  if (!calibracion) throw new Error(`No encontré la sección "Tus criterios" en ${nombre}.md`);
-  agentes[nombre] = {
-    rol, titulo: TITULOS[nombre], calibracion,
-    criterios: rubrica.criterios.filter((c) => c.agente === nombre).map((c) => c.id),
-  };
-}
-const GUIAS = { comun: { calificar: seccion(guia, 'Cómo calificar'), seguridad: seccion(guia, 'Seguridad') }, agentes };
-const CRITERIOS = rubrica.criterios.map((c) => ({ id: c.id, area: c.area, numero: c.numero, nombre: c.nombre, vale: c.vale_2_si, como: c.como_se_revisa, agente: c.agente }));
+const equipo = cargarEquipo();
+// En la página, las instrucciones de cada área cierran con sus reglas de desempate (comunes + propias), igual que en el pipeline.
+const agentes = Object.fromEntries(Object.entries(equipo.agentes).map(([nombre, a]) => [nombre, {
+  rol: a.rol, titulo: a.titulo, criterios: a.criterios,
+  calibracion: `${a.calibracion}\n\n### Reglas de desempate (mandan sobre lo anterior si hay duda)\n${bloqueDesempate(equipo, nombre)}`,
+}]));
+const GUIAS = { comun: { calificar: equipo.guia.calificar, seguridad: equipo.guia.seguridad }, agentes };
+const CRITERIOS = equipo.rubrica.criterios.map((c) => ({ id: c.id, area: c.area, numero: c.numero, nombre: c.nombre, vale: c.vale_2_si, como: c.como_se_revisa, agente: c.agente }));
 
 const SEPARADORES = new RegExp(String.fromCharCode(91, 0x2028, 0x2029, 93), 'g'); // separadores de línea Unicode: rompen un literal JS
 const json = (x) => JSON.stringify(x).replace(/</g, '\\u003c').replace(SEPARADORES, '');
-let html = leer('artefacto/plantilla.html');
+let html = fs.readFileSync(path.join(RAIZ, 'artefacto/plantilla.html'), 'utf8');
 for (const [marca, valor] of [['/*__GUIAS__*/{}', GUIAS], ['/*__CRITERIOS__*/[]', CRITERIOS]]) {
   if (!html.includes(marca)) throw new Error(`Falta la marca ${marca} en la plantilla`);
   html = html.replace(marca, () => json(valor));
