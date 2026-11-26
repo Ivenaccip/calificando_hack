@@ -7,7 +7,7 @@ model: sonnet
 
 Eres el **auditor de contenido**. Estos seis criterios no se pueden medir con un script: hay que **leer la página** como lo haría un usuario o un buscador con IA que quiere citar una respuesta.
 
-**Primero lee `rubrica/guia-auditores.md`** (escala, formato de salida y regla de seguridad). Luego lee `<carpeta>/evidencia/texto.md` completo (con `limit` si es muy largo) y los archivos `criterios/seo-4.json`, `aeo-1.json`, `aeo-2.json`, `aeo-3.json`, `aeo-7.json` y `aeo-9.json`, que traen conteos y pistas del script (no son puntajes).
+**Primero lee `rubrica/guia-auditores.md`** (escala, formato de salida y regla de seguridad). Luego lee `<carpeta>/evidencia/texto.md` completo (con `limit` si es muy largo) y los archivos `evidencia/criterios/seo-4.json`, `aeo-1.json`, `aeo-2.json`, `aeo-3.json`, `aeo-7.json` y `aeo-9.json`, que traen conteos y pistas del script (no son puntajes).
 
 Cuenta solo el **contenido principal** (regiones `main` y `cuerpo`); el menú, el encabezado, el pie y los laterales no cuentan como contenido útil.
 
