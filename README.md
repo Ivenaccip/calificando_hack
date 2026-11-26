@@ -142,6 +142,39 @@ Decisiones que tomé donde la rúbrica es ambigua:
 - Los cinco agentes corren en paralelo con la sesión de Claude de quien visita la página. El PDF se arma en el navegador y no pasa por ningún servidor propio.
 - La auditoría completa a partir de solo la liga (capturas del teléfono, Lighthouse propio, enlaces rotos, HTML renderizado vs. crudo) sigue viviendo en el pipeline de arriba.
 
+## Calificar desde GitHub (Actions), sin abrir Claude Code
+
+El flujo `.github/workflows/calificar.yml` corre la auditoría completa (los 20 criterios, con Chrome, Lighthouse móvil y capturas reales) en un servidor de GitHub y entrega el PDF.
+
+**Configuración (una vez):** en el repo, *Settings → Secrets and variables → Actions*:
+- Secreto `ANTHROPIC_API_KEY` (obligatorio).
+- Variable `MODELO_CLAUDE` (opcional): fuerza un modelo para los cinco especialistas. Sin ella, cada uno usa el de su archivo en `.claude/agents/`.
+- Variable `VERSION_CLAUDE_CODE` (opcional): fija la versión del CLI de Claude Code. Sin ella, usa la última.
+
+**Dos formas de pedir una calificación:**
+1. **A mano:** *Actions → Calificar sitio → Run workflow*, con la liga y un nombre opcional. El PDF queda como archivo descargable de la ejecución (30 días) y el reporte se ve en el resumen.
+2. **Con un issue** del formulario *Calificar mi sitio*. Si lo abre alguien con acceso al repo, corre de inmediato. Si lo abre cualquier otra persona, el bot contesta que está en espera y corre cuando un organizador le pone la etiqueta `aprobado`. Al terminar comenta la calificación, lo primero que arreglaría y la liga al PDF, y le pone la etiqueta `calificado`.
+
+**Cómo funciona:**
+- `scripts/ci/solicitud.mjs` valida la liga y rechaza IPs, puertos raros y dominios que apuntan a redes internas.
+- `scripts/auditar.mjs` mide.
+- `scripts/ci/especialistas.sh` corre los cinco especialistas en paralelo con `claude -p --agent <nombre>`: las mismas instrucciones de `.claude/agents/`, sin orquestador.
+- `scripts/reporte.mjs` y `scripts/pdf.mjs` consolidan y generan el PDF.
+- `scripts/ci/comentario.mjs` arma la respuesta del issue.
+- Cada calificación consume unos 200 mil tokens y tarda unos 5 minutos.
+
+**Seguridad:**
+- El contenido de los sitios no es confiable.
+- Los especialistas solo tienen `Read`, `Write`, `Glob` y `Grep`: sin terminal ni red.
+- No pueden leer archivos del sistema (`/proc`, `/etc`, temporales del servidor) ni escribir fuera de su carpeta.
+- La API key solo existe en el paso de los especialistas.
+- Si la key aparece en cualquier resultado, no se publica nada.
+- El servidor bloquea la red de metadatos (169.254.0.0/16).
+- El texto que llega al comentario del issue se escapa: no puede meter ligas, imágenes ni menciones.
+- Pon un límite de gasto a la API key en la consola de Anthropic.
+
+**Lo que no hace (todavía):** no guarda la fila en `calificaciones.csv` del repo. El historial de esas calificaciones vive en los `reporte.json` de cada ejecución.
+
 ## Ajustar la rúbrica
 
 - Cambiar el texto o el orden de un criterio: `rubrica/rubrica.json`.

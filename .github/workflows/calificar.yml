@@ -1,0 +1,244 @@
+# Califica un sitio con la rúbrica SEO + AEO completa (los 20 criterios, con Chrome y Lighthouse reales)
+# y entrega el PDF. Dos formas de pedirlo:
+#   1. A mano: Actions → "Calificar sitio" → Run workflow (liga y nombre opcional).
+#   2. Con un issue del formulario "Calificar mi sitio". Si lo abre alguien del repo corre de inmediato;
+#      si lo abre cualquier otra persona, espera a que un organizador le ponga la etiqueta "aprobado".
+# Necesita el secreto ANTHROPIC_API_KEY. Opcional: la variable MODELO_CLAUDE para forzar un modelo.
+name: Calificar sitio
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Liga del sitio a calificar
+        required: true
+      nombre:
+        description: Nombre para la portada del PDF (opcional)
+        required: false
+        default: ''
+  issues:
+    types: [opened, labeled]
+
+permissions: {}
+
+jobs:
+  solicitud:
+    name: Leer la solicitud
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' && contains(github.event.issue.body, '### Liga de tu sitio') &&
+        (github.event.action == 'opened' || (github.event.action == 'labeled' && github.event.label.name == 'aprobado')))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      ok: ${{ steps.leer.outputs.ok }}
+      url: ${{ steps.leer.outputs.url }}
+      nombre: ${{ steps.leer.outputs.nombre }}
+      motivo: ${{ steps.leer.outputs.motivo }}
+      confiable: ${{ steps.leer.outputs.confiable }}
+      numero: ${{ steps.leer.outputs.numero }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: leer
+        name: Validar liga y nombre
+        env:
+          SOLICITUD_URL: ${{ inputs.url }}
+          SOLICITUD_NOMBRE: ${{ inputs.nombre }}
+        run: node scripts/ci/solicitud.mjs
+
+  avisar:
+    name: Avisar en el issue
+    needs: solicitud
+    if: >-
+      github.event_name == 'issues' &&
+      (needs.solicitud.outputs.ok != 'true' || needs.solicitud.outputs.confiable != 'true')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Comentar
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          NUMERO: ${{ github.event.issue.number }}
+          ESTADO: ${{ needs.solicitud.outputs.ok != 'true' && 'invalida' || 'en-espera' }}
+          MOTIVO: ${{ needs.solicitud.outputs.motivo }}
+        run: |
+          node scripts/ci/comentario.mjs > "$RUNNER_TEMP/comentario.md"
+          gh issue comment "$NUMERO" --body-file "$RUNNER_TEMP/comentario.md"
+
+  calificar:
+    name: Calificar
+    needs: solicitud
+    if: needs.solicitud.outputs.ok == 'true' && needs.solicitud.outputs.confiable == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Una calificación a la vez por issue (o por ejecución manual).
+    concurrency:
+      group: calificar-${{ github.event.issue.number || github.run_id }}
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    env:
+      URL: ${{ needs.solicitud.outputs.url }}
+      NOMBRE: ${{ needs.solicitud.outputs.nombre }}
+      CHROME_PATH: /usr/bin/google-chrome
+    outputs:
+      estado: ${{ steps.final.outputs.estado }}
+      motivo: ${{ steps.medir.outputs.motivo }}
+      artefacto: ${{ steps.subir.outputs.artifact-url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Instalar dependencias y Claude Code
+        env:
+          VERSION_CLAUDE_CODE: ${{ vars.VERSION_CLAUDE_CODE || 'latest' }}
+        run: |
+          npm ci --no-audit --no-fund
+          npm install -g "@anthropic-ai/claude-code@$VERSION_CLAUDE_CODE"
+          claude --version
+          "$CHROME_PATH" --version || true
+      - name: Bloquear el servicio de metadatos del servidor
+        # Ningún sitio calificado (ni una redirección) debe poder asomarse a la red interna del servidor de GitHub.
+        run: sudo iptables -I OUTPUT -d 169.254.0.0/16 -j REJECT || true
+
+      - id: medir
+        name: Medir (HTML, Lighthouse móvil, capturas, robots, sitemap, enlaces)
+        run: |
+          set +e
+          node scripts/auditar.mjs "$URL" 2>&1 | tee "$RUNNER_TEMP/auditar.log"
+          codigo=${PIPESTATUS[0]}
+          set -e
+          salida=$(grep -o '^SALIDA=.*' "$RUNNER_TEMP/auditar.log" | tail -1 | cut -d= -f2- || true)
+          echo "salida=$salida" >> "$GITHUB_OUTPUT"
+          if [ "$codigo" -eq 2 ]; then
+            motivo=$(grep -v '^[[:space:]]*$' "$RUNNER_TEMP/auditar.log" | tail -3 | tr '\n' ' ' | cut -c1-300)
+            echo "estado=no-abre" >> "$GITHUB_OUTPUT"
+            echo "motivo=$motivo" >> "$GITHUB_OUTPUT"
+            echo "### No se pudo abrir $URL" >> "$GITHUB_STEP_SUMMARY"
+            echo "$motivo" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [ "$codigo" -ne 0 ] || [ -z "$salida" ]; then echo "::error::auditar.mjs terminó con código $codigo"; exit 1; fi
+          echo "estado=medido" >> "$GITHUB_OUTPUT"
+
+      - name: Cinco especialistas en paralelo
+        if: steps.medir.outputs.estado == 'medido'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODELO_CLAUDE: ${{ vars.MODELO_CLAUDE }}
+          SALIDA: ${{ steps.medir.outputs.salida }}
+        run: bash scripts/ci/especialistas.sh "$URL" "$SALIDA"
+
+      - name: Verificar que los agentes solo escribieron sus puntajes
+        if: steps.medir.outputs.estado == 'medido'
+        env:
+          SALIDA: ${{ steps.medir.outputs.salida }}
+        run: |
+          fuera=$(git status --porcelain --untracked-files=all | sed 's/^...//' | grep -v "^$SALIDA/" || true)
+          if [ -n "$fuera" ]; then echo "::error::Cambios fuera de la carpeta del reporte:"; echo "$fuera"; exit 1; fi
+
+      - name: Consolidar el reporte
+        if: steps.medir.outputs.estado == 'medido'
+        env:
+          SALIDA: ${{ steps.medir.outputs.salida }}
+        run: |
+          set +e
+          node scripts/reporte.mjs "$SALIDA"
+          codigo=$?
+          set -e
+          if [ "$codigo" -eq 3 ]; then echo "::warning::Calificación incompleta: hay criterios sin evaluar."; elif [ "$codigo" -ne 0 ]; then exit "$codigo"; fi
+
+      - name: Revisar que la API key no aparezca en ningún resultado
+        if: steps.medir.outputs.estado == 'medido'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SALIDA: ${{ steps.medir.outputs.salida }}
+        run: |
+          if [ -n "$ANTHROPIC_API_KEY" ] && grep -rqF -- "$ANTHROPIC_API_KEY" "$SALIDA"; then echo "::error::La API key apareció en los resultados. No se publica nada."; exit 1; fi
+          if grep -rqE 'sk-ant-[A-Za-z0-9_-]{16,}' "$SALIDA/puntajes" "$SALIDA"/reporte.*; then echo "::error::Apareció algo con forma de API key en los resultados. No se publica nada."; exit 1; fi
+
+      - name: Generar el PDF
+        if: steps.medir.outputs.estado == 'medido'
+        env:
+          SALIDA: ${{ steps.medir.outputs.salida }}
+        run: |
+          if [ -n "$NOMBRE" ]; then node scripts/pdf.mjs "$SALIDA" --para "$NOMBRE"; else node scripts/pdf.mjs "$SALIDA"; fi
+          cat "$SALIDA/reporte.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - id: subir
+        name: Guardar PDF y reporte
+        if: steps.medir.outputs.estado == 'medido'
+        uses: actions/upload-artifact@v4
+        with:
+          name: calificacion-${{ github.run_id }}
+          path: |
+            ${{ steps.medir.outputs.salida }}/reporte.pdf
+            ${{ steps.medir.outputs.salida }}/reporte.md
+            ${{ steps.medir.outputs.salida }}/reporte.json
+          retention-days: 30
+          if-no-files-found: error
+
+      - id: final
+        name: Estado final
+        env:
+          MEDIDO: ${{ steps.medir.outputs.estado }}
+        run: echo "estado=$([ "$MEDIDO" = medido ] && echo calificado || echo "$MEDIDO")" >> "$GITHUB_OUTPUT"
+
+  responder:
+    name: Responder en el issue
+    needs: [solicitud, calificar]
+    if: >-
+      always() && github.event_name == 'issues' &&
+      needs.solicitud.outputs.ok == 'true' && needs.solicitud.outputs.confiable == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        if: needs.calificar.outputs.estado == 'calificado'
+        with:
+          name: calificacion-${{ github.run_id }}
+          path: resultado
+      - name: Comentar resultado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          NUMERO: ${{ github.event.issue.number }}
+          ESTADO: ${{ needs.calificar.result == 'success' && needs.calificar.outputs.estado || 'error' }}
+          MOTIVO: ${{ needs.calificar.outputs.motivo }}
+          CARPETA: resultado
+          ARTEFACTO_URL: ${{ needs.calificar.outputs.artefacto }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          node scripts/ci/comentario.mjs > "$RUNNER_TEMP/comentario.md"
+          gh issue comment "$NUMERO" --body-file "$RUNNER_TEMP/comentario.md"
+          if [ "$ESTADO" = calificado ]; then
+            gh label create calificado --color 0E8A16 --description "Ya tiene su calificación" --force >/dev/null 2>&1 || true
+            gh issue edit "$NUMERO" --add-label calificado || true
+          fi

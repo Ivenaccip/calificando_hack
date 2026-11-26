@@ -1,0 +1,27 @@
+name: Calificar mi sitio
+description: Califica tu sitio con la rúbrica SEO + AEO del Hackathon Hostinger (40 puntos) y recibe tu PDF.
+title: "Calificar: "
+labels: ["calificar"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cinco agentes revisan tu sitio con los 20 criterios de la rúbrica (título, encabezados, velocidad en el teléfono, datos estructurados, acceso para bots de IA y más) y te dejan aquí tu calificación con un PDF de mejoras concretas.
+
+        Tarda unos 5 minutos una vez aprobada la solicitud. Este repositorio es público: lo que escribas aquí lo puede ver cualquiera.
+  - type: input
+    id: url
+    attributes:
+      label: Liga de tu sitio
+      description: La dirección completa de la página que quieres calificar.
+      placeholder: https://tusitio.com
+    validations:
+      required: true
+  - type: input
+    id: nombre
+    attributes:
+      label: Tu nombre (para la portada del PDF)
+      description: Opcional.
+      placeholder: Ana López
+    validations:
+      required: false
