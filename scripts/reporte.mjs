@@ -124,15 +124,22 @@ L.push('', '## Cómo se calificó', '',
   '', 'Limitaciones: Lighthouse es una sola medición y varía entre corridas y entre equipos; no se miden backlinks ni autoridad de dominio ni posición en Google.');
 fs.writeFileSync(path.join(carpeta, 'reporte.md'), `${L.join('\n')}\n`);
 
+const archivoPart = path.join(carpeta, 'participantes.json'); // lo escribe scripts/lote.mjs
+const participantes = fs.existsSync(archivoPart) ? (leer(archivoPart).participantes || []).filter(Boolean) : [];
 fs.writeFileSync(path.join(carpeta, 'reporte.json'), JSON.stringify({
   url: resumen.urlFinal, fecha: resumen.fecha, completo, seo: tot.seo, aeo: tot.aeo, total: tot.seo + tot.aeo, maximoEvaluado: maxEval.seo + maxEval.aeo,
-  criterios: filas.map((f) => ({ id: f.id, nombre: f.nombre, puntaje: f.final, puntajeScript: f.puntajeScript, origen: f.origen, justificacion: f.ag?.justificacion ?? null, mejoras: f.ag?.mejoras ?? [] })),
+  participantes,
+  lighthouse: resumen.lighthouse ?? null,
+  criterios: filas.map((f) => ({
+    id: f.id, area: f.area, numero: f.numero, nombre: f.nombre, valeDosSi: f.vale_2_si, comoSeRevisa: f.como_se_revisa,
+    puntaje: f.final, puntajeScript: f.puntajeScript, origen: f.origen,
+    justificacion: f.ag?.justificacion ?? null, evidencia: f.ag?.evidencia ?? [], mejoras: f.ag?.mejoras ?? [],
+    confianza: f.ag?.confianza ?? null, ajusteAlScript: f.ag?.ajuste_al_script ?? null,
+  })),
   advertencias: adv,
 }, null, 2));
 
 // ---- historial en CSV: una fila por sitio, con el puntaje de cada criterio ----
-const archivoPart = path.join(carpeta, 'participantes.json'); // lo escribe scripts/lote.mjs
-const participantes = fs.existsSync(archivoPart) ? (leer(archivoPart).participantes || []).filter(Boolean) : [];
 const filaBase = {
   fecha: resumen.fecha,
   sitio: new URL(resumen.urlFinal).hostname.replace(/^www\./, ''),

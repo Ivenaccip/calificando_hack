@@ -10,7 +10,8 @@
   "scripts": {
     "auditar": "node scripts/auditar.mjs",
     "reporte": "node scripts/reporte.mjs",
-    "lighthouse": "node scripts/lighthouse-csv.mjs"
+    "lighthouse": "node scripts/lighthouse-csv.mjs",
+    "pdf": "node scripts/pdf.mjs"
   },
   "dependencies": {
     "cheerio": "^1.0.0",

@@ -6,196 +6,447 @@
   "aeo": 18,
   "total": 37,
   "maximoEvaluado": 40,
+  "participantes": [
+    "Javier Vallejo"
+  ],
+  "lighthouse": {
+    "version": "12.8.2",
+    "rendimiento": 96,
+    "seo": 92
+  },
   "criterios": [
     {
       "id": "seo-1",
+      "area": "seo",
+      "numero": 1,
       "nombre": "Título de la página",
+      "valeDosSi": "Hay un <title> único que describe la página e incluye el tema o la marca (50–60 caracteres aprox.)",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Hay un solo <title> de 57 caracteres: «Ecuador Transportation & Private Transfers | Ruta Shuttle». Dice de qué trata la página (transporte privado en Ecuador), incluye la marca y coincide con el H1 («Ecuador Transportation, Door to Door»). No es genérico.",
-      "mejoras": []
+      "evidencia": [
+        "<title>: Ecuador Transportation & Private Transfers | Ruta Shuttle (57 caracteres, 1 etiqueta)",
+        "H1: Ecuador Transportation, Door to Door"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-2",
+      "area": "seo",
+      "numero": 2,
       "nombre": "Descripción y vista al compartir",
+      "valeDosSi": "Hay meta description de 140–160 caracteres que invita a entrar, más og:title, og:description y og:image",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "La meta description invita a entrar: nombra el servicio y las ciudades (Quito, Cuenca, Guayaquil) y cierra con una llamada a la acción («See prices and book online.»). Mide 137 caracteres, 3 menos que el rango 140–160 de la rúbrica, una diferencia que no afecta cómo se muestra en buscadores y que cae dentro de la tolerancia del script. Están og:title, og:description y og:image, esta última con URL absoluta (https://rutashuttle.com/assets/og-image.jpg), más twitter:card summary_large_image.",
-      "mejoras": []
+      "evidencia": [
+        "meta description (137 caracteres): Private transportation in Ecuador: airport transfers and door-to-door rides from Quito, Cuenca and Guayaquil. See prices and book online.",
+        "og:image: https://rutashuttle.com/assets/og-image.jpg (absoluta)",
+        "og:title y og:description presentes; twitter:card = summary_large_image"
+      ],
+      "mejoras": [],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-3",
+      "area": "seo",
+      "numero": 3,
       "nombre": "Estructura de encabezados",
+      "valeDosSi": "Un solo H1 claro, y después H2/H3 en orden lógico, sin saltos",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Hay un solo H1 claro («Ecuador Transportation, Door to Door»), 14 H2 y 30 H3, sin saltos de nivel ni H4–H6. Los encabezados son estructura real de contenido: H2 de secciones («Where does your trip start?», «A vehicle for every group size», «Good to know before you ride»), H3 de ciudades, pasos, rutas, vehículos y preguntas del FAQ. No se usan para menú ni pie.",
-      "mejoras": []
+      "evidencia": [
+        "Resumen: h1=1, h2=14, h3=30, h4–h6=0; saltos: []",
+        "H2 «Good to know before you ride» con 11 H3 en forma de pregunta (FAQ)",
+        "H2 «A vehicle for every group size» con H3 Sedan, SUV, Van, Large van, Minibus or bus"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-4",
+      "area": "seo",
+      "numero": 4,
       "nombre": "Tema claro y contenido suficiente",
+      "valeDosSi": "El tema aparece en el título, el H1 y el primer párrafo; hay unas 300 palabras útiles o más, sin relleno",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "El tema (transporte privado en Ecuador) es evidente y coincide en el título, el H1 y el párrafo que sigue al H1. El contenido principal tiene ~1,184 palabras útiles (rutas, precios, vehículos, FAQ), muy por encima de 300, sin relleno ni texto repetido.",
-      "mejoras": []
+      "evidencia": [
+        "Título: \"Ecuador Transportation & Private Transfers | Ruta Shuttle\"",
+        "H1: \"Ecuador Transportation, Door to Door\"",
+        "Primer párrafo real: \"Private rides between airports, cities and beaches with local drivers who know every curve of the road.\"",
+        "~1,184 palabras en el contenido principal"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": "El script tomó como primer párrafo el texto alternativo de la imagen del hero (16 palabras). El primer párrafo real es el que va justo después del H1, y sí se alinea con el tema. No cambia el puntaje, solo corrige la lectura."
     },
     {
       "id": "seo-5",
+      "area": "seo",
+      "numero": 5,
       "nombre": "Indexable",
+      "valeDosSi": "Sin noindex, con canonical correcto, HTTPS y atributo lang en <html>",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Sin noindex: la meta robots dice «index, follow, max-image-preview:large, max-snippet:-1» y no hay X-Robots-Tag. El canonical apunta a la misma URL final (https://rutashuttle.com/). El sitio responde por HTTPS con 200 y la versión www hace un solo 301 a la versión sin www, coherente con el canonical. El <html lang=\"en\"> coincide con el idioma del contenido, que está en inglés.",
-      "mejoras": []
+      "evidencia": [
+        "metaRobots: index, follow, max-image-preview:large, max-snippet:-1; xRobotsTag: null",
+        "canonical: https://rutashuttle.com/ (= URL final)",
+        "https://www.rutashuttle.com/ → 301 → https://rutashuttle.com/ → 200",
+        "lang=\"en\" y contenido en inglés"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-6",
+      "area": "seo",
+      "numero": 6,
       "nombre": "robots.txt y sitemap.xml",
+      "valeDosSi": "Existen los dos, el sitemap lista las páginas y el robots.txt no bloquea el sitio",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Existen robots.txt (200) y sitemap.xml (válido, 72 URL). El robots.txt usa «Allow: /» para todos los agentes, incluidos los bots de IA y buscadores, no bloquea ninguna ruta y declara el sitemap. El sitemap lista páginas reales del mismo dominio y protocolo (https://rutashuttle.com/, /es/, /cuenca/, /es/cuenca/, /guayaquil/) e incluye la página auditada.",
-      "mejoras": []
+      "evidencia": [
+        "robots.txt: User-agent: * / Allow: / ; Sitemap: https://rutashuttle.com/sitemap.xml",
+        "sitemap.xml: 72 URL, incluye https://rutashuttle.com/ y versiones /es/",
+        "bloqueaTodoElSitio: false"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-7",
+      "area": "seo",
+      "numero": 7,
       "nombre": "Imágenes",
+      "valeDosSi": "Las imágenes con contenido tienen alt descriptivo y no pesan de más",
+      "comoSeRevisa": "Script + Lighthouse",
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
       "justificacion": "Las 6 imágenes con contenido tienen alt descriptivo y coincide con lo que se ve en la captura (p. ej. «Blue-tiled domes of the New Cathedral in Cuenca» sobre las cúpulas azules), no hay alts vacíos y ninguna imagen supera los 90 KB (todas en AVIF). Queda a medias el tamaño: Lighthouse marca «Properly size images» con score 0.5 y un ahorro estimado de 105 KiB, porque las tarjetas de ciudad se sirven en versión de 960 px para un espacio de unos 358 px de ancho en el teléfono.",
+      "evidencia": [
+        "6 de 6 imágenes con contenido con alt válido; sinAlt y altVacioEnImagenesGrandes vacíos",
+        "Alts de ejemplo: «Ruta Shuttle fleet and drivers in front of a snow-capped volcano in the Ecuadorian Andes»; «Malecón 2000 and its Ferris wheel on the Guayas River in Guayaquil»; «Independence Monument in Plaza Grande, Quito's historic center»",
+        "uses-responsive-images (score 0.5): ahorro de 105 KiB; guayaquil-960.avif 86.7 KB (ahorro 45.5), cuenca-960.avif 60.8 KB (31.9), quito-960.avif 57.6 KB (30.2)",
+        "image-delivery-insight (score 0.5): ahorro estimado de 184 KiB sumando las tres tarjetas y fleet-960.avif (la portada ya se sirve en AVIF de 960 px)",
+        "offscreen-images, uses-optimized-images y modern-image-formats en score 1; las fotos de ciudad llevan loading=\"lazy\"",
+        "Nota: el script reporta 90 KB de peso total de imágenes, pero Lighthouse registra unos 259 KiB solo en los 4 AVIF grandes; no cambia el puntaje porque ninguna pasa de 300 KB"
+      ],
       "mejoras": [
         "Agrega srcset y sizes a las fotos de /assets/cities/ (cuenca, guayaquil, quito) con versiones AVIF de 480 y 720 px de ancho, por ejemplo sizes=\"calc(100vw - 32px)\" en móvil, y deja la de 960 px solo para pantallas anchas; así se recuperan los ~105 KiB que marca Lighthouse.",
         "Recomprime los AVIF de las tarjetas (guayaquil-960 pesa 86.7 KB) con una calidad algo menor para acercarte al ahorro de ~184 KiB que estima «Improve image delivery»."
-      ]
+      ],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-8",
+      "area": "seo",
+      "numero": 8,
       "nombre": "Velocidad",
+      "valeDosSi": "En Lighthouse móvil: rendimiento de 80 o más, LCP menor a 2.5 s y CLS menor a 0.1",
+      "comoSeRevisa": "Lighthouse",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Confirmo el 2 del script: Lighthouse móvil da rendimiento 96 (mínimo 80), LCP 1.73 s (máximo 2.5 s) y CLS 0.000 (máximo 0.1), o sea que cumple las tres métricas. Es una sola medición de Lighthouse; el resultado puede variar unos puntos entre corridas y entre equipos.",
-      "mejoras": []
+      "evidencia": [
+        "Rendimiento 96; LCP 1,725 ms; CLS 0",
+        "FCP 1.27 s, Speed Index 1.49 s, TBT 200 ms",
+        "Respuesta del servidor: el documento raíz tardó 60 ms",
+        "Peso total de la página: 370 KiB; render-blocking-resources y unused-javascript sin hallazgos (score 1)"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-9",
+      "area": "seo",
+      "numero": 9,
       "nombre": "Móvil",
+      "valeDosSi": "Tiene meta viewport, se ve bien en el teléfono, el texto se lee y los botones se tocan fácil",
+      "comoSeRevisa": "Lighthouse + captura móvil",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Confirmo el 2 del script. Tiene meta viewport correcto, no hay scroll horizontal y solo 2% del texto mide menos de 12 px. En las capturas nuevas, que ya empiezan en el inicio de la página, el encabezado muestra logo, selector de idioma y botón de menú (hamburguesa) bien visibles; el título, el párrafo y el formulario se leen sin zoom, los campos y el botón «See prices» son grandes y fáciles de tocar, y las tarjetas de destino no se cortan ni se encimen. No hay banner de cookies ni pop-up que tape la pantalla. Detalle menor: al cargar, el botón flotante de WhatsApp tapa el final de una línea de texto de apoyo («…number of passen[gers]…»), y los dos teléfonos del pie miden 22 px de alto.",
-      "mejoras": []
+      "evidencia": [
+        "viewport=\"width=device-width, initial-scale=1, viewport-fit=cover\"; desbordeHorizontalPx = 0; Lighthouse viewport score 1",
+        "movil-arriba.png: encabezado con logo «Ruta Shuttle», banderas de idioma y hamburguesa (≈44 px) visibles; título «Ecuador Transportation, Door to Door» en blanco sobre foto oscura, legible",
+        "Formulario «Find your ride»: selectores de ≈52 px de alto y botón naranja «See prices» de ≈54 px de alto, bien separados entre sí",
+        "El botón flotante verde de WhatsApp (≈52 px, abajo a la derecha) cubre la palabra «passengers» del texto de ayuda del formulario en la posición inicial; es texto secundario y se libera al hacer scroll",
+        "movil-completa.png (390×3000, solo los primeros 3000 px de la página): encabezado arriba, tarjetas de Cuenca, Guayaquil y Quito con foto, título y enlaces sin cortes ni textos encimados",
+        "Enlaces +593 98 084 0114 y +593 98 779 6896 miden 138×22 px (2 de 91 por debajo de 24 px); 1.5% del texto por debajo de 12 px"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-10",
+      "area": "seo",
+      "numero": 10,
       "nombre": "Enlaces y URLs",
+      "valeDosSi": "El menú funciona, no hay enlaces internos rotos (404), los enlaces no dicen \"clic aquí\" y las URLs se pueden leer",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "El menú tiene 8 enlaces internos funcionales (Quito, Cuenca, Guayaquil, Vehicles, About us, Contact, ESP). El script revisó los 23 enlaces internos únicos de la página (cobertura completa) y no encontró rotos ni enlaces sin verificar. No hay anclas genéricas («clic aquí», «leer más») ni enlaces sin texto, y Lighthouse confirma «Links have descriptive text» con score 1. Las URLs son legibles (/quito/, /cuenca/, /about/, /contact/, /es/).",
-      "mejoras": []
+      "evidencia": [
+        "0 rotos de 23 enlaces internos revisados; sinVerificar: []",
+        "0 enlaces genéricos, 0 sin texto; 0 de 24 URLs poco legibles",
+        "Menú: Quito → /quito/, Cuenca → /cuenca/, Guayaquil → /guayaquil/, About us → /about/, Contact → /contact/"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-1",
+      "area": "aeo",
+      "numero": 1,
       "nombre": "Respuesta directa arriba",
+      "valeDosSi": "En las primeras 1–2 frases queda claro qué es, para quién y qué ofrece (40–60 palabras aprox.)",
+      "comoSeRevisa": "Agente",
       "puntaje": 1,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Las dos primeras frases (29 palabras, dentro del rango aceptable) dicen qué se ofrece (viajes privados entre aeropuertos, ciudades y playas, con choferes locales, precio visible y reserva en minutos), y \"Ecuador\" aparece en el H1. Pero no dicen quién es Ruta Shuttle ni para quién es (viajeros, familias, grupos); esa identidad solo se aclara mucho más abajo, en \"About us\".",
+      "evidencia": [
+        "\"Private rides between airports, cities and beaches with local drivers who know every curve of the road. Choose your route, see the price and book in a few minutes.\"",
+        "El \"para quién\" y \"qué es\" (\"Ecuadorian tourist transport company\") aparecen hasta la sección About us"
+      ],
       "mejoras": [
         "Reescribe el párrafo bajo el H1 para nombrar al sitio, al público y la oferta en dos frases: \"Ruta Shuttle is a private transportation company for travelers, families and groups in Ecuador, with airport transfers and door-to-door rides from Quito, Cuenca and Guayaquil from $20 per vehicle. Choose your route, see the price and book online in a few minutes.\"",
         "Mantén \"local drivers\" y el precio por vehículo en la primera frase; quita la imagen de ejemplo de curvas del camino, que no ayuda a una respuesta citable."
-      ]
+      ],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-2",
+      "area": "aeo",
+      "numero": 2,
       "nombre": "Encabezados en forma de pregunta",
+      "valeDosSi": "Algunos H2 son preguntas reales del usuario (\"¿Cuánto cuesta…?\") con la respuesta justo debajo",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "La sección \"Good to know before you ride\" tiene 11 H3 que son preguntas reales de usuario, y cada una se responde en la primera frase justo debajo (por ejemplo \"Always private.\", \"No, the price is per vehicle.\"). Los H2 propios (\"Where does your trip start?\") son más de navegación, pero los H3 bastan para cumplir el criterio.",
-      "mejoras": []
+      "evidencia": [
+        "H3: \"Is the price per person?\" → \"No, the price is per vehicle.\"",
+        "H3: \"How much does a private transfer cost?\" → \"Prices are per vehicle in US dollars and start at $20 for the Cuenca airport transfer...\"",
+        "H3: \"What is the cancellation policy?\" → \"Cancel for free up to 24 hours before pickup.\"",
+        "13 encabezados en forma de pregunta en total"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-3",
+      "area": "aeo",
+      "numero": 3,
       "nombre": "Preguntas frecuentes",
+      "valeDosSi": "Hay una sección de FAQ visible con respuestas cortas y completas",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Hay una sección de FAQ con etiqueta \"FAQ\", H2 \"Good to know before you ride\" y 11 preguntas con su respuesta en el texto de la página (acordeón details/summary). Todas las respuestas son completas y de 1 a 3 frases. El FAQPage del schema coincide con lo visible, así que no es un schema sin contenido. El script no la detectó porque el H2 no dice \"FAQ\".",
-      "mejoras": []
+      "evidencia": [
+        "Etiqueta \"FAQ\" y H2 \"Good to know before you ride\"",
+        "11 preguntas (details/summary), por ejemplo \"How do I pay?\" y \"What if my flight is late?\"",
+        "\"Send us your flight number and we follow it. Your driver adjusts the pickup time, no extra charge for normal delays.\"",
+        "Ninguna respuesta se limita a \"contáctanos\""
+      ],
+      "mejoras": [],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-4",
+      "area": "aeo",
+      "numero": 4,
       "nombre": "Datos estructurados",
+      "valeDosSi": "Hay JSON-LD de schema.org válido y del tipo correcto (Organization, LocalBusiness, Product, Event, FAQPage…), y coincide con lo que se ve en la página",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "El HTML inicial trae un bloque JSON-LD válido con @context schema.org y tres nodos: LocalBusiness, WebSite y FAQPage. El tipo es adecuado para una empresa de transporte turístico con oficina física, y los datos coinciden con lo visible: teléfono +593980840114 (la página muestra +593 98 084 0114), correo info@rutashuttle.com y dirección «González Suárez y San Alejo, Puerto López» (igual que el pie de página). El FAQPage declara 11 preguntas y la página muestra 11 preguntas de acordeón en la sección «Good to know before you ride».",
-      "mejoras": []
+      "evidencia": [
+        "1 bloque JSON-LD, sin bloques inválidos; presente en el HTML crudo (crudo.jsonld = 3 nodos)",
+        "Tipos: LocalBusiness, WebSite, FAQPage",
+        "Schema name «Ruta Shuttle» = nombre en el encabezado y og:site_name",
+        "telephone +593980840114 coincide con «Phone +593 98 084 0114» del pie y la sección Contact",
+        "address del schema coincide con «Registered office: González Suárez y San Alejo, Puerto López, Manabí, Ecuador»",
+        "preguntasFaq: 11 en el schema y 11 elementos details/summary visibles",
+        "sameAs incluye Instagram, Google Maps y Tripadvisor, los mismos perfiles enlazados en el pie"
+      ],
+      "mejoras": [],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-5",
+      "area": "aeo",
+      "numero": 5,
       "nombre": "Contenido legible sin JavaScript",
+      "valeDosSi": "El texto principal ya viene en el HTML inicial, porque muchos bots de IA no ejecutan JavaScript",
+      "comoSeRevisa": "Script: compara el HTML crudo con la página ya cargada",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "El HTML crudo trae el 100% del texto visible (1184 de 1184 palabras). El H1 «Ecuador Transportation, Door to Door», los H2 y H3 de rutas y vehículos, la descripción de la oferta y los precios («From$20», «From$125», «From$210») ya están en el HTML inicial, y las 11 respuestas del FAQ también.",
-      "mejoras": []
+      "evidencia": [
+        "palabrasHtmlCrudo 1184 = palabrasRenderizado 1184 (proporción 1)",
+        "encabezadosCrudo: «H1: Ecuador Transportation, Door to Door», «H2: Find your ride», «H3: Cuenca»…",
+        "crudo.encabezados = 45 y crudo.jsonld = 3, igual que lo renderizado",
+        "primerasPalabrasCrudo: «Skip to content», alt de la imagen principal, «Private transfers across Ecuador»"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-6",
+      "area": "aeo",
+      "numero": 6,
       "nombre": "Acceso para bots de IA",
+      "valeDosSi": "El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended; un llms.txt suma como bonus, porque todavía no es un estándar",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "El robots.txt permite expresamente a GPTBot, ClaudeBot, PerplexityBot y Google-Extended con «Allow: /», y también a OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, Perplexity-User y Applebot-Extended. No hay ningún Disallow que afecte a secciones clave. La línea «Content-Signal: search=yes, ai-input=yes, ai-train=yes» no la entiende el parser, pero es permisiva y no bloquea nada. Bonus informativo: existe /llms.txt con descripción del negocio, que no cambia el puntaje.",
-      "mejoras": []
+      "evidencia": [
+        "robots.txt: «User-agent: GPTBot / Allow: /», lo mismo para ClaudeBot, PerplexityBot y Google-Extended",
+        "User-agent: * con «Allow: /» y sin ningún Disallow",
+        "Sitemap declarado: https://rutashuttle.com/sitemap.xml",
+        "llms.txt existe en https://rutashuttle.com/llms.txt (bonus, sin efecto en el puntaje)"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-7",
+      "area": "aeo",
+      "numero": 7,
       "nombre": "Formato fácil de extraer",
+      "valeDosSi": "Párrafos cortos, listas, tablas o pasos numerados, con un tema por sección",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Los párrafos son cortos (promedio de 22 palabras, ninguno largo), hay 18 elementos de lista (rutas por ciudad, \"Every ride includes\"), los pasos de reserva van en tres bloques cortos con H3 y cada sección trata un solo tema (destinos, cómo funciona, rutas, vehículos, FAQ). No hay tablas ni listas numeradas, pero el contenido no las exige.",
-      "mejoras": []
+      "evidencia": [
+        "34 párrafos, 22 palabras en promedio, 0 párrafos largos",
+        "Lista \"Private, insured vehicle / Pickup and drop-off at your door / Help with your luggage...\"",
+        "\"How it works\": Choose your route / Pick a date and vehicle / Meet your driver",
+        "Vehículos con capacidad por tipo: \"Van — 4 to 6 passengers\""
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-8",
+      "area": "aeo",
+      "numero": 8,
       "nombre": "Identidad clara y consistente",
+      "valeDosSi": "El nombre, la descripción, la ubicación y el contacto son iguales en toda la página y en el schema, con enlaces a las redes oficiales",
+      "comoSeRevisa": "Agente + script",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "El nombre «Ruta Shuttle» coincide en <title>, og:site_name, logo, pie y en el schema (LocalBusiness y WebSite); la razón social «Ruta del Spondylus Rutsponsa S.A.» aparece en el © y la propia página explica que Ruta Shuttle es su nombre comercial. La descripción es idéntica en meta, og y schema. El teléfono (+593 98 084 0114), el correo (info@rutashuttle.com) y la dirección del pie (González Suárez y San Alejo, Puerto López, Manabí) coinciden con el schema. Hay enlaces a Instagram, Tripadvisor y WhatsApp, y el sameAs reafirma Instagram, Tripadvisor y Google Maps.",
-      "mejoras": []
+      "evidencia": [
+        "Nombre: title «… | Ruta Shuttle», og:site_name «Ruta Shuttle», schema name «Ruta Shuttle», alt del logo «Ruta Shuttle»",
+        "Pie: «© 2026 Ruta del Spondylus Rutsponsa S.A., RUC 1391854234001»; texto Acerca de: «Ruta Shuttle is the trade name of Ruta del Spondylus Rutsponsa S.A.»",
+        "Descripción idéntica en meta description, og:description y schema",
+        "Teléfono: pie «+593 98 084 0114» = schema «+593980840114»; WhatsApp distinto y etiquetado aparte («+593 98 779 6896»)",
+        "Correo: info@rutashuttle.com en página y en schema («emailinfo@…» del script es la etiqueta «Email» pegada al correo, no una discrepancia)",
+        "Dirección: pie «Registered office: González Suárez y San Alejo, Puerto López, Manabí, Ecuador» = schema «…Puerto López, Manabí, EC» (el script la marcó vacía en la página, pero sí está en el pie)",
+        "Redes en página: instagram.com/ruta_shuttle_transporte/, Tripadvisor, wa.me/593987796896; sameAs: Instagram, Google Maps (cid) y Tripadvisor"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-9",
+      "area": "aeo",
+      "numero": 9,
       "nombre": "Datos concretos",
+      "valeDosSi": "Hay cifras, precios, horarios, fechas o ejemplos en lugar de frases genéricas tipo \"somos los mejores\"",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Casi todas las afirmaciones traen datos verificables: precios desde $20, $25, $35, $125, $210; duraciones (\"3.5 to 4 h\", \"45 to 60 min\"); capacidades por vehículo; cancelación gratis hasta 24 h antes; fundación en 2017; nombres de aeropuertos; teléfonos y RUC. Hay muy pocas frases genéricas.",
-      "mejoras": []
+      "evidencia": [
+        "\"15 routes from $20\", \"6 routes from $25\", \"7 routes from $35\"",
+        "\"Cuenca to Baños — From $210 — 6 to 6.5 h\"",
+        "\"A sedan or SUV carries 1 to 3 passengers, a van 4 to 6, a large van 7 to 10, and a minibus or bus 11 to 40.\"",
+        "\"founded in 2017 in Puerto López\""
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-10",
+      "area": "aeo",
+      "numero": 10,
       "nombre": "Señales de confianza",
+      "valeDosSi": "Se ve quién está detrás (autor o equipo), cuándo se actualizó, una sección \"acerca de\" y fuentes o testimonios reales",
+      "comoSeRevisa": "Agente",
       "puntaje": 1,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Solo hay dos señales claras: una sección «Acerca de» (enlace /about/ en menú y pie, más el bloque «Local drivers, from the Andes to the coast» con fundación en 2017) y un © 2026 actual. La identidad de quién opera es débil: aparece la razón social y el RUC, pero ninguna persona ni equipo con nombre. No hay testimonios, calificaciones ni fuentes con enlace en la página; solo un enlace a Tripadvisor en el pie, sin mostrar reseñas.",
+      "evidencia": [
+        "Acerca de: enlaces «About us» → https://rutashuttle.com/about/ (menú y pie) y bloque en la home: «an Ecuadorian tourist transport company founded in 2017 in Puerto López»",
+        "Quién está detrás: solo entidad legal («Ruta del Spondylus Rutsponsa S.A.», RUC 1391854234001); autor null, mencionaEquipo false, sin nombres ni fotos de personas",
+        "Actualización: sin <time>, sin dateModified, sin «last updated»; solo «© 2026» (año actual) en el pie",
+        "Testimonios: citas 0, schemaReview false, sin encabezado de reseñas; fuentesExternas 0",
+        "Tripadvisor aparece solo como enlace del pie (texto «Tripadvisor»), sin calificación ni extractos visibles"
+      ],
       "mejoras": [
         "Agrega a la home (por ejemplo, tras «Local drivers, from the Andes to the coast») 3 a 5 testimonios reales con nombre, país y ruta contratada, o una calificación con fuente, como «4.9/5 en Tripadvisor (N reseñas)» enlazada a la ficha; marca solo reseñas genuinas con Review/AggregateRating en el schema.",
         "Presenta al equipo con nombres y fotos (fundador o gerente y algunos conductores) en el bloque «Acerca de» o en /about/, y refléjalo en el schema Organization con founder o employee.",
         "Muestra una fecha visible de actualización de precios y rutas (por ejemplo, «Prices updated: noviembre 2026») y agrega dateModified en un nodo WebPage del JSON-LD."
-      ]
+      ],
+      "confianza": "media",
+      "ajusteAlScript": null
     }
   ],
   "advertencias": []

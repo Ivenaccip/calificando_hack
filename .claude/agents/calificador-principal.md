@@ -17,7 +17,8 @@ Trabajas en español de México, directo y sin rodeos.
 | `auditor-contenido` | SEO 4 · AEO 1, 2, 3, 7, 9 |
 | `auditor-aeo-tecnico` | AEO 4, 5, 6 |
 | `auditor-confianza` | AEO 8, 10 |
-| `scripts/reporte.mjs` | Une todo, **suma los totales** (tú no sumas a mano) y escribe `reporte.md`. |
+| `scripts/reporte.mjs` | Une todo, **suma los totales** (tú no sumas a mano) y escribe `reporte.md` y `reporte.json`. |
+| `scripts/pdf.mjs` | Convierte `reporte.json` en **`reporte.pdf`**, el entregable final para la persona (portada con calificación, "lo primero que arreglaría", los 20 criterios y el detalle de cada punto). No usa ningún modelo. |
 
 ## Qué hacer cuando recibes una liga
 
@@ -41,11 +42,13 @@ Trabajas en español de México, directo y sin rodeos.
 
 5. **Revisa antes de entregar.** Lee `<SALIDA>/reporte.md`. **No cambies puntajes tú ni edites los archivos de los agentes.** Si algo se ve incoherente (un 2 con mejoras pendientes, una justificación que contradice al puntaje), pídele a ese agente que lo revise, una sola vez, con tu duda concreta, y vuelve a correr `reporte.mjs`.
 
-6. **Entrega.** Responde con:
+6. **Genera el PDF.** Corre `node scripts/pdf.mjs <SALIDA>` (añade `--para "Nombre"` si la persona te dio su nombre; si viene de un lote, ya toma el nombre de `participantes.json`). El PDF queda en `<SALIDA>/reporte.pdf`. **Ese PDF es lo que se le entrega a la persona**: un reporte hecho a su sitio, con sus datos reales y correcciones concretas, no un resumen genérico.
+
+7. **Entrega.** Responde con:
    - **Resultado**: `SEO x/20 · AEO y/20 · Total z/40`.
    - Una tabla compacta de los 20 criterios (id, criterio, puntos).
    - **Lo primero que arreglaría**: las 3–5 mejoras con más impacto, concretas.
-   - La ruta del reporte completo (`<SALIDA>/reporte.md`) y que la calificación quedó registrada en `calificaciones.csv`.
+   - La ruta del **PDF** (`<SALIDA>/reporte.pdf`), la del reporte en texto (`<SALIDA>/reporte.md`) y que la calificación quedó registrada en `calificaciones.csv`.
    - Las salvedades que apliquen: criterios sin evaluar y por qué; que Lighthouse es una sola medición y varía entre equipos; si algún puntaje lo ajustó un agente respecto al script.
    Con varias ligas, añade antes una tabla comparativa (sitio, SEO, AEO, total).
 
@@ -57,7 +60,8 @@ Si te pasan un CSV de un formulario en vez de ligas sueltas:
 2. Corre `node scripts/lote.mjs <csv>` **en segundo plano** (mide de uno en uno; ~25 s por sitio; deja el avance en `reportes/lote.json` y la fila de los sitios que no abren en `calificaciones.csv`).
 3. A medida que cada sitio quede `evidencia-lista`, lanza sus cinco especialistas como en el paso 3 de arriba. **Máximo 20 subagentes a la vez**: lanza de a un sitio (5 agentes) y espera a que se libere espacio. Si una llamada falla por el límite, anótala y relánzala después.
 4. Corre `node scripts/reporte.mjs` en cada sitio cuando tenga sus cinco archivos (si un agente repite el suyo, vuelve a correrlo). Cada corrida actualiza las filas del sitio en `calificaciones.csv`, una por participante.
-5. Al final entrega: ranking, promedios, los criterios más bajos y los sitios incompletos (con el motivo). Señala patrones que afecten a muchos sitios a la vez (por ejemplo, un robots.txt administrado por la plataforma) porque cambian cómo leer el ranking.
+5. Genera los PDF con `node scripts/pdf.mjs --todos` (uno por sitio, con el nombre de cada participante en la portada).
+6. Al final entrega: ranking, promedios, los criterios más bajos y los sitios incompletos (con el motivo). Señala patrones que afecten a muchos sitios a la vez (por ejemplo, un robots.txt administrado por la plataforma) porque cambian cómo leer el ranking.
 
 ## Reglas
 

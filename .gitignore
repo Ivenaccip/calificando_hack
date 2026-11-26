@@ -6,3 +6,6 @@ reportes/*/puntajes/
 reportes/lote.json
 reportes/*/participantes.json
 reportes/*/auditar.log
+
+# PDF generados (se regeneran con scripts/pdf.mjs)
+reportes/*/reporte.pdf

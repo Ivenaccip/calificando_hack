@@ -6,211 +6,463 @@
   "aeo": 16,
   "total": 32,
   "maximoEvaluado": 40,
+  "participantes": [
+    "Nelly Genoveva Flores Ortega"
+  ],
+  "lighthouse": {
+    "version": "12.8.2",
+    "rendimiento": 87,
+    "seo": 92
+  },
   "criterios": [
     {
       "id": "seo-1",
+      "area": "seo",
+      "numero": 1,
       "nombre": "Título de la página",
+      "valeDosSi": "Hay un <title> único que describe la página e incluye el tema o la marca (50–60 caracteres aprox.)",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Hay un solo <title> que describe la página y trae tema y marca: «Recetas ecuatorianas y del mundo paso a paso — Recetario de Nelly». No es genérico y es coherente con el H1 («Recetas de Ecuador y del mundo, con cada detalle explicado»). Mide 65 caracteres, en el límite alto del rango, así que Google podría cortar el final de la marca en los resultados.",
-      "mejoras": []
+      "evidencia": [
+        "1 etiqueta <title>",
+        "«Recetas ecuatorianas y del mundo paso a paso — Recetario de Nelly»",
+        "65 caracteres (rango del script 45–65)"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-2",
+      "area": "seo",
+      "numero": 2,
       "nombre": "Descripción y vista al compartir",
+      "valeDosSi": "Hay meta description de 140–160 caracteres que invita a entrar, más og:title, og:description y og:image",
+      "comoSeRevisa": "Script",
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
       "justificacion": "La meta description existe y sí invita a entrar (ingredientes, cantidades, tiempos, «Gratis, en español, para cocinar en casa con confianza»), pero mide 191 caracteres, fuera del rango de 140–160, y Google la cortaría. og:title, og:description y og:image están presentes, y og:image es una URL absoluta (https://images.hostinger.com/…6071.png); además hay twitter:card summary_large_image.",
+      "evidencia": [
+        "meta description: 191 caracteres (rango 140–160)",
+        "og:title, og:description y og:image presentes",
+        "og:image absoluta: https://images.hostinger.com/d95aa57e-…-cbcd6071.png",
+        "twitterCard: summary_large_image"
+      ],
       "mejoras": [
         "Acorta la meta description (y og:description) a 140–160 caracteres conservando el beneficio. Por ejemplo, de unos 153 caracteres: «Recetas ecuatorianas e internacionales paso a paso, con ingredientes, cantidades, tiempos y consejos de Nelly. Gratis y en español, para cocinar en casa.»"
-      ]
+      ],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-3",
+      "area": "seo",
+      "numero": 3,
       "nombre": "Estructura de encabezados",
+      "valeDosSi": "Un solo H1 claro, y después H2/H3 en orden lógico, sin saltos",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Hay un único H1 que dice de qué trata la página («Recetas de Ecuador y del mundo, con cada detalle explicado») y la jerarquía es lógica: 7 H2 y 15 H3, sin H4–H6 y sin saltos de nivel. Los H3 cuelgan de H2 con sentido real (tarjetas de recetas bajo «¿Qué cocinamos hoy?», preguntas bajo «Preguntas frecuentes»); no se usan encabezados solo para dar estilo al menú o al pie.",
-      "mejoras": []
+      "evidencia": [
+        "1 H1, 7 H2, 15 H3, 0 saltos",
+        "H2: «¿Qué cocinamos hoy?» → H3: «Ceviche de camarón», «Llapingachos»…",
+        "H2: «Preguntas frecuentes» → 10 H3 en forma de pregunta"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-4",
+      "area": "seo",
+      "numero": 4,
       "nombre": "Tema claro y contenido suficiente",
+      "valeDosSi": "El tema aparece en el título, el H1 y el primer párrafo; hay unas 300 palabras útiles o más, sin relleno",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "El tema (recetas ecuatorianas e internacionales paso a paso) coincide en el título, el H1 y el primer párrafo real. El contenido principal tiene unas 830 palabras según el script, y aun descontando botones y etiquetas quedan bastante más de 300 palabras útiles (tarjetas de recetas, quiénes somos, el detalle de Nelly y 10 preguntas con respuesta).",
-      "mejoras": []
+      "evidencia": [
+        "Título: \"Recetas ecuatorianas y del mundo paso a paso — Recetario de Nelly\"",
+        "H1: \"Recetas de Ecuador y del mundo, con cada detalle explicado\"",
+        "Primer párrafo: \"Recetario de Nelly reúne recetas de cocina ecuatoriana e internacional explicadas paso a paso...\"",
+        "palabrasContenido: 830 (umbral 300)"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-5",
+      "area": "seo",
+      "numero": 5,
       "nombre": "Indexable",
+      "valeDosSi": "Sin noindex, con canonical correcto, HTTPS y atributo lang en <html>",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "La página responde 200 por HTTPS sin redirecciones, no tiene noindex ni en meta robots ni en X-Robots-Tag, y el canonical apunta a sí misma (https://www.recetariodenelly.com/). Declara lang=\"es\", que coincide con el idioma del contenido (español).",
-      "mejoras": []
+      "evidencia": [
+        "status 200, https, sin redirecciones",
+        "metaRobots: null; xRobotsTag: null",
+        "canonical: https://www.recetariodenelly.com/",
+        "<html lang=\"es\">"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-6",
+      "area": "seo",
+      "numero": 6,
       "nombre": "robots.txt y sitemap.xml",
+      "valeDosSi": "Existen los dos, el sitemap lista las páginas y el robots.txt no bloquea el sitio",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Existen robots.txt (200) y sitemap.xml (200, válido, declarado en robots.txt). El sitemap lista 21 URL reales del mismo dominio y protocolo (/recetas, /quien-es-nelly, /galeria, /blog…) e incluye la página. El robots.txt permite todo a `*` (Allow: /) y solo bloquea rastreadores de entrenamiento de IA (GPTBot, ClaudeBot, Google-Extended, etc.), sin afectar a los buscadores ni rutas importantes.",
-      "mejoras": []
+      "evidencia": [
+        "robots.txt: User-agent: * → Allow: /",
+        "Sitemap: https://www.recetariodenelly.com/sitemap.xml",
+        "21 URL en el sitemap, incluye la home",
+        "Disallow: / solo para GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, meta-externalagent, Amazonbot, Bytespider"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-7",
+      "area": "seo",
+      "numero": 7,
       "nombre": "Imágenes",
+      "valeDosSi": "Las imágenes con contenido tienen alt descriptivo y no pesan de más",
+      "comoSeRevisa": "Script + Lighthouse",
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
       "justificacion": "El alt es muy bueno: las 8 imágenes lo tienen y describen lo que se ve (por ejemplo, «Nelly, chef ecuatoriana con uniforme blanco, presenta un locro de papa con aguacate y queso en su cocina.»; el logo dice «Recetario de Nelly»). El peso total también es bajo (159 KB y ninguna imagen > 300 KB), pero Lighthouse marca «Properly size images» (ahorro de 11 KiB en el logo) y su insight de entrega de imágenes estima 53 KiB de ahorro, así que el tamaño de entrega queda a medias.",
+      "evidencia": [
+        "8 de 8 imágenes con contenido con alt válido; sin alt vacío en imágenes grandes",
+        "Peso total de imágenes: 159 KB; ninguna supera 300 KB",
+        "uses-responsive-images: score 0.5, logo PNG de 12.4 KB con ahorro de 11 KB",
+        "image-delivery-insight: ahorro estimado de 53 KiB (foto de llapingachos en ancho 768 con 34 KB de ahorro; logo 12 KB; foto del héroe PNG 8 KB)",
+        "modern-image-formats y offscreen-images en verde; las fotos de recetas ya van en webp y con loading=lazy"
+      ],
       "mejoras": [
         "Sirve el logo (9632af86….png) al tamaño real con que se muestra (unos 170 px de ancho en móvil, o un SVG), para recuperar los ~11 KB que marca Lighthouse.",
         "Pide las fotos de las tarjetas de receta con un ancho acorde a la pantalla móvil (por ejemplo width=480 en lugar de 768) o agrega srcset/sizes; la foto de llapingachos ahorraría unos 34 KB. Esa misma foto se carga además en otra variante (width=1024), así que conviene reutilizar una sola.",
         "Convierte la foto del héroe (e86c640d….png, ~24 KB) a webp o avif y sírvela con el tamaño de pantalla móvil."
-      ]
+      ],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-8",
+      "area": "seo",
+      "numero": 8,
       "nombre": "Velocidad",
+      "valeDosSi": "En Lighthouse móvil: rendimiento de 80 o más, LCP menor a 2.5 s y CLS menor a 0.1",
+      "comoSeRevisa": "Lighthouse",
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
       "justificacion": "Es una sola medición de Lighthouse móvil, que puede variar entre corridas y equipos. Cumple rendimiento (87, mínimo 80) y CLS (0.000, máximo 0.1), pero el LCP es de 3.39 s y rebasa el límite de 2.5 s; con dos de tres métricas en regla, la regla da 1. Confirmo el puntaje del script. El FCP (2.68 s) ya es alto aunque el servidor responde rápido (350 ms), y Lighthouse señala recursos que bloquean el render.",
+      "evidencia": [
+        "Rendimiento 87, LCP 3,389 ms, CLS 0, FCP 2,683 ms, TBT 0 ms, Speed Index 3,556 ms",
+        "server-response-time: el documento raíz tardó 350 ms (no es el cuello de botella)",
+        "render-blocking-resources: ahorro de 220 ms; bloquean index-Q9CqgvO0.css (20.7 KB) y la hoja de Google Fonts",
+        "total-byte-weight: 444 KiB; entre lo más pesado, la foto de llapingachos (57 KB), entry.client JS (55 KB) y la fuente Caveat woff2 (51 KB)",
+        "unused-javascript en verde; el detalle del elemento LCP no viene en la evidencia"
+      ],
       "mejoras": [
         "Elimina el bloqueo del render: incrusta el CSS crítico del héroe y carga el resto sin bloquear, y agrega preconnect a fonts.googleapis.com y fonts.gstatic.com (o aloja las fuentes en el propio dominio) para ganar los ~220 ms que marca Lighthouse y adelantar el FCP.",
         "Reduce el peso de las fuentes: la Caveat de 51 KB (solo peso 500) se descarga antes de pintar; limítala a los caracteres latinos que usas o reemplázala por una de las familias que ya cargas (Fraunces/Figtree).",
         "Confirma en PageSpeed Insights cuál es el elemento LCP (probablemente el héroe) y, si es la imagen, precárgala con fetchpriority=\"high\" y sírvela en webp al tamaño móvil para bajar el LCP de 3.4 s a menos de 2.5 s."
-      ]
+      ],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-9",
+      "area": "seo",
+      "numero": 9,
       "nombre": "Móvil",
+      "valeDosSi": "Tiene meta viewport, se ve bien en el teléfono, el texto se lee y los botones se tocan fácil",
+      "comoSeRevisa": "Lighthouse + captura móvil",
       "puntaje": 1,
       "puntajeScript": 1,
       "origen": "agente",
       "justificacion": "Tiene meta viewport (width=device-width, initial-scale=1) y no hay scroll horizontal. La captura móvil se ve bien: el logo y el botón de menú hamburguesa están visibles arriba a la derecha, el título y el párrafo del héroe se leen sobre la foto oscurecida, no hay banner ni pop-up que tape la pantalla y las tarjetas de receta se acomodan en dos columnas sin encimarse. Lo que falta es tamaño: 18% del texto mide menos de 12 px (etiquetas en mayúsculas, descripciones de las tarjetas, el aviso «La cocina que nos reúne» y el enlace «Un poquito de inspiración») y 15 de 33 enlaces/botones miden menos de 24 px de alto, por lo que la captura confirma al script. La captura completa solo muestra los primeros 3000 px, así que no vi el pie de página.",
+      "evidencia": [
+        "viewport=\"width=device-width, initial-scale=1\"; Lighthouse viewport en verde; desborde horizontal 0 px",
+        "Captura movil-arriba.png: menú hamburguesa visible, héroe legible, sin banner de cookies ni pop-up",
+        "Captura movil-completa.png (recortada a 3000 px): secciones apiladas, tarjetas en dos columnas, sin contenido cortado ni encimado",
+        "843 de 4,629 caracteres (18%) menores a 12 px",
+        "15 de 33 objetivos táctiles < 24 px: «Un poquito de inspiración» 335×17 px; teléfono, correo y @recetariodenelly de 21 px de alto",
+        "Dos <input> de 1×1 y 14×14 px entran en el conteo; el de 1×1 parece oculto y no es un problema real"
+      ],
       "mejoras": [
         "Sube a 12–14 px como mínimo las etiquetas en mayúsculas («SABORES CON RAÍCES…», «ECUADOR»), las descripciones de las tarjetas de receta y el sello «La cocina que nos reúne», y refuerza su contraste (gris claro sobre fondo crema).",
         "Agrega padding vertical a los enlaces de texto («Un poquito de inspiración», «Ver todas las recetas», teléfono, correo e Instagram del contacto) para que cada uno mida al menos 44 px de alto, con separación entre ellos.",
         "Revisa el <input> de 14×14 px y deja un área táctil de al menos 24 px (de preferencia 44 px) si es un control visible."
-      ]
+      ],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "seo-10",
+      "area": "seo",
+      "numero": 10,
       "nombre": "Enlaces y URLs",
+      "valeDosSi": "El menú funciona, no hay enlaces internos rotos (404), los enlaces no dicen \"clic aquí\" y las URLs se pueden leer",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "El menú tiene 9 enlaces internos funcionales (Recetas, Quién es Nelly, Galería, Secretos de cocina, Contacto…). Se revisaron los 11 enlaces internos únicos y ninguno está roto ni quedó sin verificar. No hay anclas genéricas («clic aquí», «leer más») ni enlaces sin texto, y las URLs son legibles (/recetas/ceviche-de-camaron, /quien-es-nelly).",
-      "mejoras": []
+      "evidencia": [
+        "0 rotos de 11 enlaces internos revisados; sinVerificar vacío",
+        "0 enlaces genéricos y 0 sin texto; Lighthouse «Links have descriptive text» = 1",
+        "Anclas como «Ver todas las recetas», «Descubre el detalle en esta receta»",
+        "URLs: /recetas/locro-de-papa, /recetas/llapingachos, /galeria, /blog"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-1",
+      "area": "aeo",
+      "numero": 1,
       "nombre": "Respuesta directa arriba",
+      "valeDosSi": "En las primeras 1–2 frases queda claro qué es, para quién y qué ofrece (40–60 palabras aprox.)",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Justo debajo del H1 hay un párrafo de 55 palabras en dos frases que dice qué es (un recetario de cocina ecuatoriana e internacional), qué ofrece (recetas paso a paso con ingredientes, cantidades, tiempos, puntos de cocción y sustituciones) y para quién (quienes cocinan en casa en Ecuador y en el exterior, aprendices). Solo lo antecede una línea corta de eslogan, y el H1 ya aclara el tema.",
-      "mejoras": []
+      "evidencia": [
+        "\"Recetario de Nelly reúne recetas de cocina ecuatoriana e internacional explicadas paso a paso y con cada detalle: ingredientes, cantidades exactas y caseras, tiempos, puntos de cocción, sustituciones y consejos prácticos.\"",
+        "\"Está pensado para quienes cocinan en casa en Ecuador y en el exterior, para aprendices y para quienes extrañan los sabores de su tierra.\"",
+        "Párrafo de 55 palabras, dentro del rango 40–60"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-2",
+      "area": "aeo",
+      "numero": 2,
       "nombre": "Encabezados en forma de pregunta",
+      "valeDosSi": "Algunos H2 son preguntas reales del usuario (\"¿Cuánto cuesta…?\") con la respuesta justo debajo",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Los dos H2 en forma de pregunta (\"¿Qué se te antoja hoy?\", \"¿Qué cocinamos hoy?\") son retóricos y no tienen respuesta directa. Aun así, la sección de preguntas frecuentes trae 10 H3 que son preguntas reales y cada una se responde en la primera frase justo debajo (por ejemplo, \"¿Las recetas ... son gratuitas?\" → \"Sí, todas las recetas de Recetario de Nelly son gratuitas.\").",
-      "mejoras": []
+      "evidencia": [
+        "H3: \"¿Las recetas de Recetario de Nelly son gratuitas?\" → \"Sí, todas las recetas de Recetario de Nelly son gratuitas.\"",
+        "H3: \"¿Puedo consultar las recetas si vivo fuera de Ecuador?\" → \"Sí, el recetario está dirigido a personas de habla hispana de cualquier país.\"",
+        "H3: \"¿A quién está dirigido este recetario?\" → \"Está dirigido a personas que quieren cocinar en casa con instrucciones claras...\"",
+        "12 encabezados en forma de pregunta (2 H2 y 10 H3)"
+      ],
+      "mejoras": [],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-3",
+      "area": "aeo",
+      "numero": 3,
       "nombre": "Preguntas frecuentes",
+      "valeDosSi": "Hay una sección de FAQ visible con respuestas cortas y completas",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Hay una sección \"Preguntas frecuentes\" visible en el texto renderizado, con 10 preguntas y cada respuesta completa en una sola frase. El FAQPage del schema coincide con el contenido visible (10 preguntas), así que no es solo marcado oculto. No pude ver esa parte en la captura (se corta a 3000 px), pero el texto renderizado muestra las respuestas sin marca de acordeón colapsado.",
-      "mejoras": []
+      "evidencia": [
+        "H2: \"Preguntas frecuentes\" con 10 H3 y 10 respuestas de 1 frase",
+        "\"Sí, además de cocina ecuatoriana, comparto recetas de otras partes del mundo.\"",
+        "\"Estudié cocina durante un año en ENNAS.\"",
+        "schemaFaq: true, preguntasFaq: 10"
+      ],
+      "mejoras": [],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-4",
+      "area": "aeo",
+      "numero": 4,
       "nombre": "Datos estructurados",
+      "valeDosSi": "Hay JSON-LD de schema.org válido y del tipo correcto (Organization, LocalBusiness, Product, Event, FAQPage…), y coincide con lo que se ve en la página",
+      "comoSeRevisa": "Script",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "Hay 3 bloques JSON-LD válidos de schema.org, presentes en el HTML inicial: WebSite, Person y FAQPage. Para un recetario personal en la página de inicio, los tipos son adecuados. El FAQPage declara 10 preguntas y el texto visible tiene 10 preguntas en la sección «Preguntas frecuentes». El nombre «Recetario de Nelly» y la descripción de Nelly (lojana, un año en ENNAS) coinciden con el texto de la página, y no hay precios, teléfono ni dirección en el schema que puedan contradecirla.",
-      "mejoras": []
+      "evidencia": [
+        "3 bloques JSON-LD, 0 inválidos, @context schema.org en los tres",
+        "Tipos: WebSite (name «Recetario de Nelly»), Person (name «Nelly»), FAQPage (preguntasFaq: 10)",
+        "texto.md: sección «Preguntas frecuentes» con 10 preguntas H3 visibles",
+        "Person.descripcion: «Estudió cocina durante un año en ENNAS», igual que «Estudié cocina durante un año en ENNAS» en la página",
+        "El JSON-LD está en el HTML inicial (estaEnHtmlCrudo: ok)"
+      ],
+      "mejoras": [],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-5",
+      "area": "aeo",
+      "numero": 5,
       "nombre": "Contenido legible sin JavaScript",
+      "valeDosSi": "El texto principal ya viene en el HTML inicial, porque muchos bots de IA no ejecutan JavaScript",
+      "comoSeRevisa": "Script: compara el HTML crudo con la página ya cargada",
       "puntaje": 2,
       "puntajeScript": 2,
       "origen": "agente",
       "justificacion": "El HTML inicial trae 830 de 830 palabras (100%) de lo que ve el usuario, y el H1 «Recetas de Ecuador y del mundo, con cada detalle explicado» ya viene en el HTML crudo. También llegan sin JavaScript los H2, los H3 de las 4 recetas destacadas y la sección de preguntas frecuentes. Un bot que no ejecuta JS ve todo el contenido que importa.",
-      "mejoras": []
+      "evidencia": [
+        "palabrasHtmlCrudo: 830 / palabrasRenderizado: 830 (proporción 1)",
+        "encabezadosCrudo incluye H1, 3 H2 y los H3 «Ceviche de camarón», «Llapingachos», «Pasta con tomate y albahaca», «Tacos de champiñones»",
+        "primerasPalabrasCrudo: «Saltar al contenido», imagen de Nelly con alt descriptivo, «SABORES CON RAÍCES, RECETAS SIN FRONTERAS»"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-6",
+      "area": "aeo",
+      "numero": 6,
       "nombre": "Acceso para bots de IA",
+      "valeDosSi": "El robots.txt no bloquea a GPTBot, ClaudeBot, PerplexityBot ni Google-Extended; un llms.txt suma como bonus, porque todavía no es un estándar",
+      "comoSeRevisa": "Script",
       "puntaje": 0,
       "puntajeScript": 0,
       "origen": "agente",
       "justificacion": "El robots.txt bloquea con «Disallow: /» a GPTBot, ClaudeBot y Google-Extended, tres de los cuatro bots de la rúbrica; solo PerplexityBot está permitido. Aunque parezca intencional, cuenta como bloqueado. Los bots de búsqueda y de asistentes (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User) sí están permitidos, y también están bloqueados Applebot-Extended, meta-externalagent, Amazonbot y Bytespider. El archivo parece administrado por una plataforma: usa líneas «Content-Signal: search=yes, ai-input=yes, ai-train=no», que es la sintaxis de la política de Content Signals que Cloudflare añade en sus robots.txt administrados, aunque el archivo no trae comentarios que lo confirmen. Existe un llms.txt (bonus informativo) que no sube el puntaje.",
+      "evidencia": [
+        "robots.txt: «User-agent: GPTBot / Disallow: /»",
+        "robots.txt: «User-agent: ClaudeBot / Disallow: /»",
+        "robots.txt: «User-agent: Google-Extended / Disallow: /»",
+        "robots.txt: «User-agent: PerplexityBot / Allow: /» con Content-Signal ai-train=no",
+        "llms.txt existe en https://www.recetariodenelly.com/llms.txt (bonus, sin efecto en el puntaje)"
+      ],
       "mejoras": [
         "Cambia a «Allow: /» (o elimina) los bloques de GPTBot, ClaudeBot y Google-Extended en el robots.txt. Si el archivo lo genera la plataforma o el CDN, hazlo desde su configuración de bots de IA, porque una edición manual puede sobrescribirse.",
         "Si quieres seguir negando el uso para entrenamiento, deja «Content-Signal: ai-train=no» en esos bots en lugar de «Disallow: /», así declaras tu preferencia sin cerrar el acceso a los rastreadores que mide la rúbrica."
-      ]
+      ],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-7",
+      "area": "aeo",
+      "numero": 7,
       "nombre": "Formato fácil de extraer",
+      "valeDosSi": "Párrafos cortos, listas, tablas o pasos numerados, con un tema por sección",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Predominan los párrafos cortos: 40 párrafos con un promedio de 16 palabras y ninguno largo. Cada sección trata un solo tema (recetas, quién es Nelly, el detalle, preguntas frecuentes) y hay una lista con viñetas para su formación y tarjetas de recetas con tiempo y dificultad. No hay tablas ni pasos numerados, pero en una página de inicio no hacen falta.",
-      "mejoras": []
+      "evidencia": [
+        "promedioPalabrasPorParrafo: 16; parrafosLargos: 0",
+        "Lista: \"1 año de formación en la Escuela de Gastronomía Ennas.\" / \"Estudios de marketing.\" / \"Viajes para probar los platos donde nacieron.\"",
+        "22 secciones con encabezado propio, unas 38 palabras por sección"
+      ],
+      "mejoras": [],
+      "confianza": "alta",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-8",
+      "area": "aeo",
+      "numero": 8,
       "nombre": "Identidad clara y consistente",
+      "valeDosSi": "El nombre, la descripción, la ubicación y el contacto son iguales en toda la página y en el schema, con enlaces a las redes oficiales",
+      "comoSeRevisa": "Agente + script",
       "puntaje": 1,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "El nombre «Recetario de Nelly» es el mismo en el <title>, el pie (© 2026 Recetario de Nelly), el logo y el nodo WebSite del schema, y la descripción del meta, og:description y schema es coherente. Pero el schema no repite ningún dato de contacto ni de ubicación (sin telephone, email ni address) y solo hay una red social (Instagram), así que un buscador no puede cruzar el contacto de la página con el schema.",
+      "evidencia": [
+        "Nombre: title «… — Recetario de Nelly»; WebSite.name «Recetario de Nelly»; pie «© 2026 Recetario de Nelly»; og:site_name ausente",
+        "Contacto en la página: «593 983950370» (tel +593983950370) y nelly.flores@recetariodenelly.com; en el schema: telefonosSchema [] y correosSchema []",
+        "Ubicación: la página dice «lojana» y «de Loja», pero no hay dirección ni ciudad estructurada (ubicacion.enSchema [])",
+        "Redes: solo https://www.instagram.com/recetariodenelly/ (perfil real, enlazado en cuerpo y pie); sameAs aparece en el nodo Person pero el WebSite trae sameAs []",
+        "Schema: nodos WebSite, Person y FAQPage; no hay nodo Organization ni ContactPoint"
+      ],
       "mejoras": [
         "Agrega al schema los datos de contacto que ya muestras: en el nodo WebSite/Organization incluye \"email\": \"nelly.flores@recetariodenelly.com\" y \"telephone\": \"+593983950370\" (o un contactPoint), con el mismo formato que usas en el pie.",
         "Declara la ubicación en el schema aunque sea una marca en línea, por ejemplo en el nodo Person: \"homeLocation\": {\"@type\": \"Place\", \"address\": {\"addressLocality\": \"Loja\", \"addressCountry\": \"EC\"}}, para reafirmar lo que dice la sección «Nelly, de Loja para tu cocina».",
         "Copia el sameAs de Instagram también en el nodo WebSite, suma los demás perfiles oficiales que existan (YouTube, TikTok, Facebook) y enlázalos en el pie. Añade además <meta property=\"og:site_name\" content=\"Recetario de Nelly\">."
-      ]
+      ],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-9",
+      "area": "aeo",
+      "numero": 9,
       "nombre": "Datos concretos",
+      "valeDosSi": "Hay cifras, precios, horarios, fechas o ejemplos en lugar de frases genéricas tipo \"somos los mejores\"",
+      "comoSeRevisa": "Agente",
       "puntaje": 1,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Hay algunos datos concretos (tiempo y dificultad de cada receta, un año de formación en Ennas, el ejemplo de los callos a la madrileña, consejos específicos como dejar enfriar el puré para los llapingachos). Pero la promesa central, \"cantidades exactas y caseras, tiempos, puntos de cocción\", no se muestra con ningún ejemplo, no se dice cuántas recetas hay y el resto del texto es eslogan genérico.",
+      "evidencia": [
+        "\"30 min·Fácil\", \"50 min·Fácil\", \"25 min·Fácil\", \"20 min·Fácil\", \"45 min\" (Locro de papa)",
+        "\"1 año de formación en la Escuela de Gastronomía Ennas.\"",
+        "\"aprendí a hacer callos a la madrileña en clase y luego los comí en España.\"",
+        "Frases genéricas: \"Un viaje de sabores que empieza en tu cocina.\", \"SABORES CON RAÍCES, RECETAS SIN FRONTERAS\", \"cocinar con confianza\"",
+        "Script: 0 precios, 0 fechas, 0 horarios en el contenido principal"
+      ],
       "mejoras": [
         "Agrega a la introducción un dato verificable del recetario, por ejemplo: «Más de [N] recetas, todas gratuitas, con cantidades en tazas, cucharadas y gramos.» (usa el número real de recetas publicadas).",
         "Muestra un ejemplo concreto de lo que prometes en las tarjetas o en \"El detalle de Nelly\": ingredientes con cantidades, porciones y punto de cocción de una receta, como «Llapingachos: [X] papas, [X] g de queso, 4 porciones, 50 min». Reemplaza los valores con los de tu receta.",
         "Cambia frases como \"Un viaje de sabores que empieza en tu cocina\" por datos: cantidad de recetas por categoría (Ecuador, mundo) o la fecha de la última receta publicada."
-      ]
+      ],
+      "confianza": "media",
+      "ajusteAlScript": null
     },
     {
       "id": "aeo-10",
+      "area": "aeo",
+      "numero": 10,
       "nombre": "Señales de confianza",
+      "valeDosSi": "Se ve quién está detrás (autor o equipo), cuándo se actualizó, una sección \"acerca de\" y fuentes o testimonios reales",
+      "comoSeRevisa": "Agente",
       "puntaje": 2,
       "puntajeScript": null,
       "origen": "agente",
       "justificacion": "Se cumplen tres de las cuatro señales de forma visible y creíble: se sabe quién está detrás (Nelly, con nombre, bio y nodo Person), hay una sección «acerca de» (enlace «Quién es Nelly» en el menú y bloque «Nelly, de Loja para tu cocina») y una fecha de actualización vigente («Última actualización: noviembre de 2026»). Falta la cuarta: no hay testimonios, reseñas ni fuentes externas citadas, y el pie conserva un enlace de «Términos y condiciones [Pendiente]» que resta seriedad.",
-      "mejoras": []
+      "evidencia": [
+        "Autor/equipo: «Soy Nelly, fundadora y creadora de Recetario de Nelly», formación «1 año … en la Escuela de Gastronomía Ennas» y FAQ «¿Quién está detrás de Recetario de Nelly?»; Person en JSON-LD con sameAs a Instagram",
+        "Acerca de: enlace de menú «Quién es Nelly» → /quien-es-nelly y sección en la página con encabezado «Nelly, de Loja para tu cocina» (el script marcó enlacesAcerca [] porque no reconoce esa etiqueta)",
+        "Actualización: pie «© 2026 Recetario de Nelly · Última actualización: noviembre de 2026» (sin <time> ni dateModified, pero es texto visible y del mes actual)",
+        "Testimonios/fuentes: testimonios.citas 0, schemaReview false, fuentesExternas 0; la escuela Ennas se menciona sin enlace",
+        "Pie: «Términos y condiciones [Pendiente]» (marcador sin terminar a la vista)"
+      ],
+      "mejoras": [],
+      "confianza": "media",
+      "ajusteAlScript": null
     }
   ],
   "advertencias": []

@@ -60,6 +60,7 @@ En `reportes/<sitio>-<fecha>/`:
 | Archivo | Contenido |
 | --- | --- |
 | `reporte.md` | Resultado, tabla de 20 criterios, detalle con evidencia, **qué arreglar primero** y advertencias. |
+| `reporte.pdf` | **El entregable para la persona**: informe en PDF con la calificación, lo primero que arreglaría, los 20 criterios y el detalle de cada punto con cómo corregirlo. Se genera con `node scripts/pdf.mjs reportes/<sitio>-<fecha>` (o `--todos`); lo mete en la portada el nombre del participante si lo conoce, o `--para "Nombre"`. Usa tu Chrome y no se sube a git. |
 | `reporte.json` | Lo mismo en datos. |
 | `../resumen-por-participante.md` | Un solo documento con **lo que falló en cada proyecto** (y cómo arreglarlo), más el ranking y las fallas más comunes. Se genera con `node scripts/resumen.mjs` a partir del CSV y de cada `reporte.json`; no usa ningún modelo, así que siempre coincide con las notas. |
 | `evidencia/` | Todo lo que midió el script (un JSON por criterio, `texto.md`, capturas, Lighthouse). No se sube a git. |
