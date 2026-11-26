@@ -132,12 +132,23 @@ Decisiones que tomé donde la rúbrica es ambigua:
 - Las imágenes con `alt=""` se tratan como decorativas, salvo las grandes (≥ 150 px), que se marcan como sospechosas para que el agente las revise.
 - Los enlaces que responden 401/403/429 o timeout se reportan como "sin verificar", no como rotos.
 
+## Página pública "Califica tu sitio" (artefacto de Claude)
+
+`artefacto/` contiene una página de una sola pieza donde cualquier persona pega el código de su sitio y recibe su calificación y un PDF.
+
+- `artefacto/plantilla.html` es el código de la página (motor de verificaciones, interfaz, llamadas a los agentes y generador de PDF).
+- `node scripts/build-artefacto.mjs` genera `artefacto/index.html` metiendo dentro la rúbrica (`rubrica/rubrica.json`) y las instrucciones reales de los cinco especialistas (`.claude/agents/*.md` y `rubrica/guia-auditores.md`). Si cambias la rúbrica o a un agente, vuelve a correrlo y republica.
+- La página no puede abrir sitios por su cuenta (un artefacto no puede hacer peticiones a otros dominios). Por eso la persona pega el código fuente (Ctrl+U) y, opcionalmente, su robots.txt, su sitemap y los números de PageSpeed Insights. Lo que falta queda "sin evaluar" y el PDF explica cómo completarlo.
+- Los cinco agentes corren en paralelo con la sesión de Claude de quien visita la página. El PDF se arma en el navegador y no pasa por ningún servidor propio.
+- La auditoría completa a partir de solo la liga (capturas del teléfono, Lighthouse propio, enlaces rotos, HTML renderizado vs. crudo) sigue viviendo en el pipeline de arriba.
+
 ## Ajustar la rúbrica
 
 - Cambiar el texto o el orden de un criterio: `rubrica/rubrica.json`.
 - Cambiar umbrales: `scripts/lib/config.mjs`.
 - Cambiar cómo razona un especialista: `.claude/agents/<nombre>.md`.
 - Instrucciones comunes a todos: `rubrica/guia-auditores.md`.
+- Después de cualquiera de los tres cambios anteriores, regenera la página pública con `node scripts/build-artefacto.mjs`.
 
 ## Usar solo los scripts (sin agentes)
 
