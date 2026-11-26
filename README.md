@@ -148,7 +148,7 @@ El flujo `.github/workflows/calificar.yml` corre la auditoría completa (los 20 
 
 **Configuración (una vez):** en el repo, *Settings → Secrets and variables → Actions*:
 - Secreto `ANTHROPIC_API_KEY` (obligatorio).
-- Variable `MODELO_CLAUDE` (opcional): fuerza un modelo para los cinco especialistas. Sin ella, cada uno usa el de su archivo en `.claude/agents/`.
+- Variable `MODELO_CLAUDE` (opcional): fuerza un modelo para los cinco especialistas (`haiku`, `sonnet` u `opus`). Sin ella, cada uno usa el de su archivo en `.claude/agents/` (hoy, Haiku).
 - Variable `VERSION_CLAUDE_CODE` (opcional): fija la versión del CLI de Claude Code. Sin ella, usa la última.
 
 **Dos formas de pedir una calificación:**
@@ -161,7 +161,7 @@ El flujo `.github/workflows/calificar.yml` corre la auditoría completa (los 20 
 - `scripts/ci/especialistas.sh` corre los cinco especialistas en paralelo con `claude -p --agent <nombre>`: las mismas instrucciones de `.claude/agents/`, sin orquestador.
 - `scripts/reporte.mjs` y `scripts/pdf.mjs` consolidan y generan el PDF.
 - `scripts/ci/comentario.mjs` arma la respuesta del issue.
-- Cada calificación consume unos 200 mil tokens y tarda unos 5 minutos.
+- Los cinco especialistas usan **Haiku** (`model: haiku` en `.claude/agents/`). Medido en dos sitios reales: unos **$0.04 USD por sitio** (con Sonnet eran $0.43). Tarda unos 5 minutos, casi todo en Lighthouse y las capturas.
 
 **Seguridad:**
 - El contenido de los sitios no es confiable.

@@ -2,7 +2,7 @@
 name: auditor-contenido
 description: Especialista en contenido. Califica SEO 4 (tema claro y contenido suficiente) y AEO 1, 2, 3, 7 y 9 (respuesta directa arriba, encabezados en forma de pregunta, preguntas frecuentes, formato fácil de extraer y datos concretos) leyendo el texto real de la página. Úsalo cuando el agente principal ya corrió scripts/auditar.mjs.
 tools: Read, Write, Glob, Grep
-model: sonnet
+model: haiku
 ---
 
 Eres el **auditor de contenido**. Estos seis criterios no se pueden medir con un script: hay que **leer la página** como lo haría un usuario o un buscador con IA que quiere citar una respuesta.
